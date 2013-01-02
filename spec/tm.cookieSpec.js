@@ -5,25 +5,25 @@ describe('namespace "tm.cookie"', function(){
         var ckVal1 = "abc def";
         var ckVal2 = "xyz";
 
-        //tm.eraseCookie(ckName);
+        //tm.cookie.erase(ckName);
 
         expect(document.cookie).not.toContain(ckName);
-        expect(tm.readCookie(ckName)).toBeNull();
+        expect(tm.cookie.read(ckName)).toBeNull();
 
-        tm.createCookie(ckName, ckVal1);
+        tm.cookie.create(ckName, ckVal1);
         expect(document.cookie).toContain(ckName + "=" + encodeURIComponent(ckVal1));
-        expect(tm.readCookie(ckName)).not.toBeNull();
-        expect(tm.readCookie(ckName)).toBe(ckVal1);
-        expect(tm.readCookie(ckName)).not.toBe(ckVal2);
+        expect(tm.cookie.read(ckName)).not.toBeNull();
+        expect(tm.cookie.read(ckName)).toBe(ckVal1);
+        expect(tm.cookie.read(ckName)).not.toBe(ckVal2);
 
-        tm.createCookie(ckName, ckVal2);
+        tm.cookie.create(ckName, ckVal2);
         expect(document.cookie).toContain(ckName + "=" + encodeURIComponent(ckVal2));
-        expect(tm.readCookie(ckName)).toBe(ckVal2);
-        expect(tm.readCookie(ckName)).not.toBe(ckVal1);
+        expect(tm.cookie.read(ckName)).toBe(ckVal2);
+        expect(tm.cookie.read(ckName)).not.toBe(ckVal1);
 
-        tm.eraseCookie(ckName);
+        tm.cookie.erase(ckName);
         expect(document.cookie).not.toContain(ckName);
-        expect(tm.readCookie(ckName)).toBeNull();
+        expect(tm.cookie.read(ckName)).toBeNull();
     });
 
 });

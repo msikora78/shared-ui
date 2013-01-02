@@ -31,7 +31,7 @@ tm.date.formatYMD = function(date) {
  * @return {String}    Formatted date string
  */
 tm.date.formatMDY = function(date) {
-    return date.getMonth() + 1  + "/" + date.getDate() + "/" + date.getYear();
+    return date.getMonth() + 1  + "/" + date.getDate() + "/" + date.getFullYear();
 };
 
 /** Alias for tm.date.formatMDY */
