@@ -1,0 +1,93 @@
+
+/* Museo Sans font */
+@font-face {
+    font-family: 'MuseoSans500';
+    src: url('/fonts/MuseoSans/museo-sans-500.eot'); /* IE9 Compat Modes */
+    src: url('/fonts/MuseoSans/museo-sans-500.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/MuseoSans/museo-sans-500.woff') format('woff'),
+         url('/fonts/MuseoSans/museo-sans-500.ttf') format('truetype'); /* IE6-IE8, Modern Browsers, Safari/Android/iOS */
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MuseoSans700';
+    src: url('/fonts/MuseoSans/museo-sans-700.eot');
+    src: url('/fonts/MuseoSans/museo-sans-700.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/MuseoSans/museo-sans-700.woff') format('woff'),
+         url('/fonts/MuseoSans/museo-sans-700.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+  height: 100%;
+  overflow: auto;
+}
+
+
+body {
+	font-family: 'MuseoSans500', Arial, sans-serif;
+	font-size: 13px;
+	height: 100%;
+  overflow: auto;
+  *text-align: center; /* IE7 doesnt center content with margin: 0 auto; */
+}
+
+/* common tm360 styles */
+body {
+  background-color: #696a6e;
+  background-image: url(/a/public/images/bg-workspace.png);
+  background-repeat: repeat-x;
+}
+
+
+/* adaptive (2-width) sizing */
+#container {
+  width: 1252px;
+  background-color: #ffffff;
+  padding: 0;
+  margin: 0 auto;
+  *text-align: left;
+}
+
+.small-screen #container {
+  width: 944px;
+}
+
+/* non-adaptive sizing: https://confluence.tm.tmcs/confluence/display/UE/TM360#TM360-1280Mattefor1024Apps */
+#container.non-adaptive {
+  background-color: #d3d3d7;
+}
+#container.non-adaptive > div {
+  background-color: #ffffff;
+  margin: 0 auto;
+  width: 944px;
+}
+
+/* begin: jQuery UI Datepicker moving pixels fix */
+  table.ui-datepicker-calendar {border-collapse: separate;}
+  .ui-datepicker-calendar td {border: 1px solid transparent;}
+/* end: jQuery UI Datepicker moving pixels fix */
+
+/* begin: jQuery UI Datepicker emphasis on selected dates */
+.ui-datepicker .ui-datepicker-calendar .ui-state-highlight a {
+  background: #743620 none; /* a color that fits the widget theme */
+  color: white; /* a color that is readeable with the color above */
+}
+/* end: jQuery UI Datepicker emphasis on selected dates */
+
+
+/* For general iPad layouts */
+@media only screen and (device-width: 768px) {
+
+}
+
+/* For iPad portrait layouts only */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+
+}
+
+/* For iPad landscape layouts only */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+
+}

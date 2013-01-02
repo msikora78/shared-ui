@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+        <title>tm360 Shared UI Demo</title>
+
+        <!-- 3rd party Shared CSS Libs (not in git repo) -->
+        <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/html5boilerplate-base.css" />
+        <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/jquery-ui/ui-lightness/jquery-ui-1.8.22.custom.css" />
+        <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/bootstrap-2.1.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/html5boilerplate-last.css" />
+
+        <!-- 3rd party Shared JS Libs (not in git repo) -->
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/json2.js"></script>
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-1.7.2.min.js"></script>
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-ui-1.8.22.custom.min.js"></script>
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ui.multidatespicker-1.6.1.js"></script>
+        <!-- script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ba-throttle-debounce-1.1.min.js"></script -->
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/underscore_1.3.3.min.js"></script>
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.1.0.min.js"></script>
+        <!--
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/backbone-0.9.2.min.js"></script>
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/backbone-marionette-0.9.12.min.js"></script>
+        -->
+
+
+
+        <!-- tm360 Shared-UI CSS -->
+        <link rel="stylesheet" href="css/tm360-base.css" />
+        <link rel="stylesheet" href="css/tm360-universal.css" />
+        <link rel="stylesheet" href="css/bootstrap-content-rewrite-fix.css" />
+
+        <!-- tm360 Shared-UI JS -->
+        <script src="js/tm.js"></script>
+        <script src="js/tm.cookie.js"></script>
+        <script src="js/tm.string.js"></script>
+        <script src="js/tm.date.js"></script>
+
+
+
+    </head>
+    <body class="tm360">
+        <div id="container">
+            <h1>Shared UI - Component Demos</h1>
+            <p>demos here</p>
+
+            <div class="container-fluid">
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>1. Snap Width</h5>
+                    </div>
+                    <div class="span9">
+                        <div class="well">
+                            The app/gadget you are viewing now has 2-width snapping enabled. Resize your browser window width around the 1244px threshold to see gadget maintain alignment with tm360 nav logo and icons. See <a href='https://confluence.tm.tmcs/confluence/display/PJ31/Shared+UI+components+for+new+app+development#SharedUIcomponentsfornewappdevelopment-Width"Snapping"' target="_blank">Width "Snapping"</a> for implementation details.
+                        </div>
+                    </div>
+                </div> <!-- .row-fluid -->
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>2. Typography</h5>
+                    </div>
+                    <div class="span9">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <div class="well">
+                                    Some predefined font-style CSS classes are available to provide a consistent look-and-feel for tm360 apps. (Inspect the elements below in Firebug or Chrome Dev Tools to discover the appropriate tag or classname to use.)
+                                </div>
+                            </div>
+                        </div> <!-- .row-fluid -->
+
+                        <div class="row-fluid">
+                            <div class="span6 arial">
+                                <div class="well">
+                                    Arial, <strong>Arial Bold</strong>
+                                    <h1>Heading 1</h1>
+                                    <h2>Heading 2</h2>
+                                    <h3>Heading 3</h3>
+                                    <h4>Heading 4</h4>
+                                    <h5>Heading 5</h5>
+                                    <h6>Heading 6</h6>
+                                    Normal <strong>Bold</strong> <em>Italic</em><br/>
+                                    <span class="arial1">Style 1</span><br/>
+                                    <span class="arial2">Style 2</span><br/>
+                                    <span class="arial3">Style 3</span><br/>
+                                    <span class="arial4">Style 4</span><br/>
+                                    <span class="arial5">Style 5</span><br/>
+                                    <span class="arial6">Style 6 <a href="#">Link</a></span><br/>
+                                    <span class="arial7">Style 7</span>
+                                </div>
+                            </div>
+                            <div class="span6 museo">
+                                <div class="well">
+                                    MuseoSans500, <span class="museoBold">MuseoSans700</span>
+                                    <h1>Heading 1</h1>
+                                    <h2>Heading 2</h2>
+                                    <h3>Heading 3</h3>
+                                    <h4>Heading 4</h4>
+                                    <h5>Heading 5</h5>
+                                    <h6>Heading 6</h6>
+                                    Normal <strong>Bold</strong> <em>Italic</em><br/>
+                                    <span class="museo8">Style 8</span><br/>
+                                    <span class="museo9">Style 9</span>
+                                </div>
+                            </div>
+                        </div> <!-- .row-fluid -->
+                    </div>
+                </div> <!-- .row-fluid -->
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>3. Styled Form Elements</h5>
+                    </div>
+                    <div class="span9">
+
+                        <div class="well">
+                            In addition to text styling, many form elements have been styled according to the <a href="https://confluence.tm.tmcs/confluence/display/UE/Permissioning+App+Specifications#PermissioningAppSpecifications-UniversalUIElements" target="_blank">Universal UI Elements</a> spec.
+                        </div>
+
+                        <form class="form-search">
+                            <div class="well">
+                                <input type="text" class="input-medium search-query">
+                                <button type="submit" class="btn">Search</button>
+                            </div>
+                        </form>
+                        <form class="form-inline">
+                            <div class="well">
+                                <input type="text" class="input-small" placeholder="Email">
+                                <input type="password" class="input-small" placeholder="Password">
+                                <label class="checkbox">
+                                    <input type="checkbox"> Remember me
+                                </label>
+                                <button type="submit" class="btn">Sign in</button>
+                            </div>
+                        </form>
+                        <form>
+                            <div class="well">
+                                <div class="control-group">
+                                    <label class="control-label" for="input1">Input Label</label>
+                                    <div class="controls">
+                                        <input type="text" id="input1" placeholder="Text input" />
+                                        <span class="help-inline">Inline help text</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <input type="text" placeholder="Disabled" disabled />
+                                        <span class="help-block">Block help text</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="textarea1">Textarea Label</label>
+                                    <div class="controls">
+                                        <textarea id="textarea1" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="control-group error">
+                                    <label class="control-label" for="input2">Input Error</label>
+                                    <div class="controls">
+                                        <input type="text" id="input2" value="invalid text" />
+                                        <span class="help-error">Error help text</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <label class="checkbox inline">
+                                            <input type="checkbox" value="" />
+                                            Checkbox 1
+                                        </label>
+                                        <label class="checkbox inline">
+                                            <input type="checkbox" value="" />
+                                            Checkbox 2
+                                        </label>
+                                        <label class="checkbox inline">
+                                            <input type="checkbox" value="" disabled />
+                                            Checkbox Disabled
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked />
+                                            Radio 1
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" />
+                                            Radio 2
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" disabled />
+                                            Disabled
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <div class="btn-group">
+                                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                Dropdown Label
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a tabindex="-1" href="#1">Item 1</a></li>
+                                                <li><a tabindex="-1" href="#2">Item 2</a></li>
+                                                <li><a tabindex="-1" href="#3">Item 3</a></li>
+                                                <li><a tabindex="-1" href="#4">Item 4</a></li>
+                                                <li><a tabindex="-1" href="#5">Item 5</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <div class="btn-group">
+                                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                Extra Long Dropdown Label Extra Long
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a tabindex="-1" href="#1">Item 1 with an extra, extra, extra, extra long label</a></li>
+                                                <li><a tabindex="-1" href="#2">Item 2</a></li>
+                                                <li><a tabindex="-1" href="#3">Item 3</a></li>
+                                                <li><a tabindex="-1" href="#4">Item 4</a></li>
+                                                <li><a tabindex="-1" href="#5">Item 5</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-primary">Submit</button>
+                                    <button type="button" class="btn">Cancel</button>
+                                    <button type="button" class="btn btn-primary disabled" disabled>Disabled</button>
+                                    <button type="button" class="btn disabled" disabled>Disabled</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- .row-fluid -->
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>4. Loading Spinners</h5>
+                    </div>
+                    <div class="span3">
+                        <div class="well">
+                            24x24: <img src="/shared/img/spinner-24x24.gif" />
+                        </div>
+                    </div>
+                    <div class="span3">
+                        <div class="well">
+                            16x16: <img src="/shared/img/loader_16px_on_fff.gif" />
+                        </div>
+                    </div>
+                </div> <!-- .row-fluid -->
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>5. jQuery UI</h5>
+                    </div>
+                    <div class="span9">
+                        <div class="well">
+                            <div class="control-group">
+                                <label class="control-label" for="dateselect">Date:</label>
+                                <div class="controls">
+                                    <input type="text" id="dateselect" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="multidateselect">Multi Date:</label>
+                                <div class="controls">
+                                    <input type="text" id="multidateselect" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row-fluid -->
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>6. ?</h5>
+                    </div>
+                    <div class="span9">
+                        <div class="well">
+                            More coming soon!!!
+                        </div>
+                    </div>
+                </div> <!-- .row-fluid -->
+
+            </div>
+
+        </div>
+    </body>
+</html>
