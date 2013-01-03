@@ -15,7 +15,7 @@
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-1.7.2.min.js"></script>
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-ui-1.8.22.custom.min.js"></script>
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ui.multidatespicker-1.6.1.js"></script>
-        <!-- script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ba-throttle-debounce-1.1.min.js"></script -->
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ba-throttle-debounce-1.1.min.js"></script>
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/underscore_1.3.3.min.js"></script>
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.1.0.min.js"></script>
         <!--
@@ -28,7 +28,7 @@
         <!-- tm360 Shared-UI CSS -->
         <link rel="stylesheet" href="css/tm360-base.css" />
         <link rel="stylesheet" href="css/tm360-universal.css" />
-        <link rel="stylesheet" href="css/bootstrap-content-rewrite-fix.css" />
+        <!-- link rel="stylesheet" href="css/bootstrap-content-rewrite-fix.css" / -->
 
         <!-- tm360 Shared-UI JS -->
         <script src="js/tm.js"></script>
@@ -245,12 +245,12 @@
                     </div>
                     <div class="span3">
                         <div class="well">
-                            24x24: <img src="/shared/img/spinner-24x24.gif" />
+                            24x24: <img src="css/img/spinner-24x24.gif" />
                         </div>
                     </div>
                     <div class="span3">
                         <div class="well">
-                            16x16: <img src="/shared/img/loader_16px_on_fff.gif" />
+                            16x16: <img src="css/img/loader_16px_on_fff.gif" />
                         </div>
                     </div>
                 </div> <!-- .row-fluid -->
@@ -291,5 +291,32 @@
             </div>
 
         </div>
+
+
+        <script>
+            (function(){
+
+                function adjustDisplayArea(){
+                    // check/apply 'small-screen' class to body for 2-width container
+                    tm.widthCheck();
+                }
+
+                function init(){
+                    adjustDisplayArea();
+                    // on resize, throttle tm.widthCheck calls to once every 200ms
+                    var resizeHandler = $.throttle(200, adjustDisplayArea);
+                    $(window).resize( resizeHandler );
+
+                    // date picker
+                    $("#dateselect").datepicker();
+                    $("#multidateselect").multiDatesPicker();
+                }
+
+                // jquery onload
+                $(init);
+
+            })();
+        </script>
+
     </body>
 </html>
