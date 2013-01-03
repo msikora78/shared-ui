@@ -2,19 +2,19 @@
 /* Museo Sans font */
 @font-face {
     font-family: 'MuseoSans500';
-    src: url('/fonts/MuseoSans/museo-sans-500.eot'); /* IE9 Compat Modes */
-    src: url('/fonts/MuseoSans/museo-sans-500.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/MuseoSans/museo-sans-500.woff') format('woff'),
-         url('/fonts/MuseoSans/museo-sans-500.ttf') format('truetype'); /* IE6-IE8, Modern Browsers, Safari/Android/iOS */
+    src: url('MuseoSans/museo-sans-500.eot');
+    src: url('MuseoSans/museo-sans-500.eot?#iefix') format('embedded-opentype'),
+         url('MuseoSans/museo-sans-500.woff') format('woff'),
+         url('MuseoSans/museo-sans-500.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'MuseoSans700';
-    src: url('/fonts/MuseoSans/museo-sans-700.eot');
-    src: url('/fonts/MuseoSans/museo-sans-700.eot?#iefix') format('embedded-opentype'),
-         url('/fonts/MuseoSans/museo-sans-700.woff') format('woff'),
-         url('/fonts/MuseoSans/museo-sans-700.ttf') format('truetype');
+    src: url('MuseoSans/museo-sans-700.eot');
+    src: url('MuseoSans/museo-sans-700.eot?#iefix') format('embedded-opentype'),
+         url('MuseoSans/museo-sans-700.woff') format('woff'),
+         url('MuseoSans/museo-sans-700.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,19 +24,20 @@ html {
   overflow: auto;
 }
 
-
 body {
 	font-family: 'MuseoSans500', Arial, sans-serif;
 	font-size: 13px;
 	height: 100%;
   overflow: auto;
+  position: relative;
   *text-align: center; /* IE7 doesnt center content with margin: 0 auto; */
 }
+
 
 /* common tm360 styles */
 body {
   background-color: #696a6e;
-  background-image: url(/a/public/images/bg-workspace.png);
+  background-image: url(img/bg-workspace.png);
   background-repeat: repeat-x;
 }
 

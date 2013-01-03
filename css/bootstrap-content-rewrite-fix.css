@@ -1,0 +1,174 @@
+/* Bootstrap v2.1.0 FIX FOR CONTENT-REWRITE
+ *
+ * Shindig/OpenSocial "content-rewrite" feature skips
+ * the more exotic CSS3 selector syntax such as [class*="span"]
+ *
+ * This file is not needed if you exclude the bootstrap CSS (or
+ * all files) from content-rewriting by adding the following
+ * under your Gadget Spec <ModulePrefs> node:
+ *   <Optional feature="content-rewrite">
+ *     <Param name="exclude-url">.*</Param>
+ *   </Optional>
+ */
+
+.span1,
+.span2,
+.span3,
+.span4,
+.span5,
+.span6,
+.span7,
+.span8,
+.span9,
+.span10,
+.span11,
+.span12 {
+  float: left;
+  margin-left: 20px;
+}
+
+.row-fluid .span1,
+.row-fluid .span2,
+.row-fluid .span3,
+.row-fluid .span4,
+.row-fluid .span5,
+.row-fluid .span6,
+.row-fluid .span7,
+.row-fluid .span8,
+.row-fluid .span9,
+.row-fluid .span10,
+.row-fluid .span11,
+.row-fluid .span12 {
+  display: block;
+  float: left;
+  width: 100%;
+  min-height: 30px;
+  margin-left: 2.127659574468085%;
+  *margin-left: 2.074468085106383%;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.row-fluid .span1:first-child,
+.row-fluid .span2:first-child,
+.row-fluid .span3:first-child,
+.row-fluid .span4:first-child,
+.row-fluid .span5:first-child,
+.row-fluid .span6:first-child,
+.row-fluid .span7:first-child,
+.row-fluid .span8:first-child,
+.row-fluid .span9:first-child,
+.row-fluid .span10:first-child,
+.row-fluid .span11:first-child,
+.row-fluid .span12:first-child {
+  margin-left: 0;
+}
+
+.span1.hide,
+.span2.hide,
+.span3.hide,
+.span4.hide,
+.span5.hide,
+.span6.hide,
+.span7.hide,
+.span8.hide,
+.span9.hide,
+.span10.hide,
+.span11.hide,
+.span12.hide,
+.row-fluid .span1.hide,
+.row-fluid .span2.hide,
+.row-fluid .span3.hide,
+.row-fluid .span4.hide,
+.row-fluid .span5.hide,
+.row-fluid .span6.hide,
+.row-fluid .span7.hide,
+.row-fluid .span8.hide,
+.row-fluid .span9.hide,
+.row-fluid .span10.hide,
+.row-fluid .span11.hide,
+.row-fluid .span12.hide {
+  display: none;
+}
+
+.span1.pull-right,
+.span2.pull-right,
+.span3.pull-right,
+.span4.pull-right,
+.span5.pull-right,
+.span6.pull-right,
+.span7.pull-right,
+.span8.pull-right,
+.span9.pull-right,
+.span10.pull-right,
+.span11.pull-right,
+.span12.pull-right,
+.row-fluid .span1.pull-right,
+.row-fluid .span2.pull-right,
+.row-fluid .span3.pull-right,
+.row-fluid .span4.pull-right,
+.row-fluid .span5.pull-right,
+.row-fluid .span6.pull-right,
+.row-fluid .span7.pull-right,
+.row-fluid .span8.pull-right,
+.row-fluid .span9.pull-right,
+.row-fluid .span10.pull-right,
+.row-fluid .span11.pull-right,
+.row-fluid .span12.pull-right {
+  float: right;
+}
+
+table .span1,
+table .span2,
+table .span3,
+table .span4,
+table .span5,
+table .span6,
+table .span7,
+table .span8,
+table .span9,
+table .span10,
+table .span11,
+table .span12,
+table .span13,
+table .span14,
+table .span15,
+table .span16,
+table .span17,
+table .span18,
+table .span19,
+table .span20,
+table .span21,
+table .span22,
+table .span23,
+table .span24,
+.row-fluid table .span1,
+.row-fluid table .span2,
+.row-fluid table .span3,
+.row-fluid table .span4,
+.row-fluid table .span5,
+.row-fluid table .span6,
+.row-fluid table .span7,
+.row-fluid table .span8,
+.row-fluid table .span9,
+.row-fluid table .span10,
+.row-fluid table .span11,
+.row-fluid table .span12,
+.row-fluid table .span13,
+.row-fluid table .span14,
+.row-fluid table .span15,
+.row-fluid table .span16,
+.row-fluid table .span17,
+.row-fluid table .span18,
+.row-fluid table .span19,
+.row-fluid table .span20,
+.row-fluid table .span21,
+.row-fluid table .span22,
+.row-fluid table .span23,
+.row-fluid table .span24 {
+  display: table-cell;
+  float: none;
+  margin-left: 0;
+}
+
