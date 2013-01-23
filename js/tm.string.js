@@ -64,3 +64,24 @@ tm.string.camelize = function(s) {
 tm.string.lowerCamelize = function(s) {
     return tm.string.uncapitalize(tm.string.camelize(s));
 };
+
+/**
+ * @function
+ * Truncates a string and adds ellipses (...).
+ *
+ * Examples:
+ *  tm.string.truncate("Foo bar baz", 4); // F...
+ *  tm.string.truncate("Foo bar baz", 10); // Foo bar...
+ *  tm.string.truncate("Foo bar baz", 11); // Foo bar baz
+ *  tm.string.truncate("Foo bar baz", 100); // Foo bar baz
+ *
+ * @param {String} s  starting string
+ * @param {Int} n  max length of the string (3+)
+ * @return {String}   truncated or original string
+ */
+tm.string.truncate = function(s, n) {
+    if (n >= s.length){
+        return s;
+    }
+    return s.substring(0, n-3) + "...";
+};
