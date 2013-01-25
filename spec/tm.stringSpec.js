@@ -24,4 +24,12 @@ describe('namespace "tm.string"', function(){
         expect(tm.string.lowerCamelize("Foo-BAR-Baz")).toBe("fooBARBaz");
     });
 
+    it('truncates strings', function(){
+        expect(tm.string.truncate("", 4)).toBe("");
+        expect(tm.string.truncate("Foo bar baz", 4)).toBe("F...");
+        expect(tm.string.truncate("Foo bar baz", 10)).toBe("Foo bar...");
+        expect(tm.string.truncate("Foo bar baz", 11)).toBe("Foo bar baz");
+        expect(tm.string.truncate("Foo bar baz", 100)).toBe("Foo bar baz");
+    });
+
 });
