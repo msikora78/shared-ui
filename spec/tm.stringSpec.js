@@ -32,4 +32,16 @@ describe('namespace "tm.string"', function(){
         expect(tm.string.truncate("Foo bar baz", 100)).toBe("Foo bar baz");
     });
 
+    it('validates email strings', function(){
+        expect(tm.string.validateEmail("foo@bar.com")).toBe(true);
+        expect(tm.string.validateEmail("foo@bar.baz.com")).toBe(true);
+        expect(tm.string.validateEmail("foo@bar")).toBe(false);
+        expect(tm.string.validateEmail("foo.bar")).toBe(false);
+        expect(tm.string.validateEmail("")).toBe(false);
+        expect(tm.string.validateEmail("foo@bar@com")).toBe(false);
+        expect(tm.string.validateEmail("1@2.3")).toBe(false);
+        expect(tm.string.validateEmail("foo@.com")).toBe(false);
+        expect(tm.string.validateEmail("foo@bar@.com")).toBe(false);
+    });
+
 });
