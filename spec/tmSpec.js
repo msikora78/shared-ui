@@ -46,4 +46,22 @@ describe('namespace "tm"', function(){
         expect(objB.key1).toBeNull();
     });
 
+    it('detects iOS device', function(){
+        var isIOS = false;
+        var ua = navigator.userAgent;
+        if (ua.indexOf("iPhone") >= 0 || ua.indexOf("iPod") >= 0 || ua.indexOf("iPad") >= 0){
+            isIOS = true;
+        }
+        expect(tm.iOS).toBe(isIOS);
+    });
+
+    it('detects hi resolution displays', function(){
+        var isHiRes = false;
+        var dpr = window.devicePixelRatio;
+        if (dpr && dpr >= 2){
+            isHiRes = true;
+        }
+        expect(tm.hiResDisplay).toBe(isHiRes);
+    });
+
 });
