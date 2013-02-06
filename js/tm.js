@@ -154,3 +154,15 @@ tm.widthCheck = function(useScreenWidth){
 
     return isSmall;
 };
+
+/**
+ * @boolean
+ * Convenience flag set to true if iOS device detected.
+ */
+tm.iOS = /iPhone|iPod|iPad/.test(navigator.userAgent);
+
+/**
+ * @boolean
+ * Convenience flag set to true if high resolution display detected (ie. Retina display).
+ */
+tm.hiResDisplay = !!(window.devicePixelRatio && window.devicePixelRatio >= 2);

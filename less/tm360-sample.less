@@ -1,0 +1,11 @@
+@red: #F03848;
+@text: 'Now supporting LESS CSS!';
+
+#container > p {
+    padding-left: 1em;
+
+    &:after {
+        color: @red;
+        content: @text;
+    }
+}
