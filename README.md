@@ -8,14 +8,18 @@ https://github.com/tm360/shared-ui/wiki
 
 ### RELEASE HISTORY
 
-#### tm360-2.0
+#### tm360-2.1
+* added support for [LESS CSS](http://www.lesscss.org/) 
+* added helper methods (truncate, validateEmail)
+* added convenience flags for iOS and Retina display detection
 
+#### tm360-2.0
 * relocated Museo Sans font within /css for less error-prone referencing from tm360-base.css
-* added tm360-universal.css classes prefixed with ".tm360" to allow selective adoption
+* added tm360-universal.css classes prefixed with ".tm360" to enable selective use
 * added Jasmine test lib, specRunner.html and demo.html
 
 #### tm360-1.0
 * initial release of tm360 Shared-UI library
 * CSS includes styles for Museo Sans base, width snapping
-* JS includes "window.tm" namespace, tm.widthCheck, and a small suite of helper method
+* JS includes "window.tm" namespace, tm.widthCheck, and a suite of helper methods
 
