@@ -15,7 +15,7 @@ define(['injectable!tm/widgets/modalDialog', 'mock/gadgetPrefMock'], function(mo
 
 			afterEach(function() {
 				testElement.remove();
-			})
+			});
 
 			it('should use the default renderer', function() {
 				var widget = new ModalDialog(testElement, {

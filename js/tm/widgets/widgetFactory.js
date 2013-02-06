@@ -3,6 +3,9 @@
 
 	function factory($) {
 		return {
+			/**
+			 *	Makes a widget from a prototype
+			 */
 			make: function(name, WidgetPrototype) {
 				$.fn[name] = function() {
 					var args = Array.prototype.slice.call(arguments);
@@ -32,7 +35,10 @@
 					return typeof returnedValue !== 'undefined' ? returnedValue : this;
 				}
 			},
-			fn: {
+			/**
+			 *	Base functionalities for any widgets
+			 */
+			mixin: {
 				destroy: function() {
 					$.removeData(this.element);
 				},
