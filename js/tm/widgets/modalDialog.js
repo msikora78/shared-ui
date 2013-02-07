@@ -114,7 +114,9 @@
 		define(['jquery', 'tm/widgets/widgetFactory', 'gadgets.Pref', 'bootstrap'], factory);
 	}
 	else {
-		factory($, tm.widgets.WidgetFactory, gadgets.Pref());
+		tm.namespace('tm.widgets');
+
+		tm.widgets.ModalDialog = factory($, tm.widgets.WidgetFactory, gadgets.Pref());
 	}
 
 })();

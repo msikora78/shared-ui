@@ -18,6 +18,20 @@
         <!-- script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.1.0.min.js"></script -->
         <!-- *** Note: You need to be on the TM/LN corporate network for these links to work! *** -->
 
+        <!-- Mocks -->
+        <script type="text/javascript">
+
+            var gadgetPrefMock = {
+                getMsg: function() { return null; }
+            };
+
+            var gadgets = {
+                Pref: function() {
+                    return gadgetPrefMock;
+                }
+            };
+
+        </script>
 
 
         <!-- ******************************************************************
@@ -27,6 +41,8 @@
         <script type="text/javascript" src="js/tm.string.js"></script>
         <script type="text/javascript" src="js/tm.date.js"></script>
         <script type="text/javascript" src="js/tm.cookie.js"></script>
+        <script type="text/javascript" src="js/tm/widgets/widgetFactory.js"></script>
+        <script type="text/javascript" src="js/tm/widgets/modalDialog.js"></script>
 
         <!-- ******************************************************************
              2. Include spec files here...
@@ -34,7 +50,8 @@
         <script type="text/javascript" src="spec/tmSpec.js"></script>
         <script type="text/javascript" src="spec/tm.stringSpec.js"></script>
         <script type="text/javascript" src="spec/tm.dateSpec.js"></script>
-        <script type="text/javascript" src="spec/tm.cookieSpec.js"></script>
+        <!-- <script type="text/javascript" src="spec/tm.cookieSpec.js"></script> -->
+        <script type="text/javascript" src="spec/tm/widgets/modalDialog-spec.js"></script>
 
         <!-- ******************************************************************
              3. Run this specRunner.html page on a local server or at

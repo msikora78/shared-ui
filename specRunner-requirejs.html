@@ -49,6 +49,10 @@
                 return window;
             });
 
+            define('document', [], function() {
+                return document;
+            });
+
             define('gadgets.Pref', [], function() {
                 return {};
             });
@@ -70,7 +74,10 @@
                 }
             });
 
-            requirejs(['spec/tm/widgets/modalDialog-spec'], function() {
+            requirejs([
+                'spec/tm.cookieSpec.js',
+                'spec/tm/widgets/modalDialog-spec'
+                ], function() {
                 jasmineEnv.execute();
             });
 
