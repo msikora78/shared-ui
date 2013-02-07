@@ -4,7 +4,7 @@
 	/**
 	 *	Creates a modal dialog to 
 	 */
-	function factory($, widgetFactory, gadgetPref) {
+	function factory($, gadgetPref) {
 
 		// Standard button types for a modal dialog
 		var buttonTypes = {
@@ -103,20 +103,16 @@
 			}
 		}
 
-		widgetFactory.make('tmModalDialog', ModalDialog);
-
 		return ModalDialog;
 
 	}
 
 	// If requirejs is present, we want to use it, otherwise, we want to use the global declarations to get the dependencies
 	if (typeof define === 'function' && define.amd) {
-		define(['jquery', 'tm/widgets/widgetFactory', 'gadgets.Pref', 'bootstrap'], factory);
+		define(['jquery', 'gadgets.Pref', 'bootstrap'], factory);
 	}
 	else {
-		tm.namespace('tm.widgets');
-
-		tm.widgets.ModalDialog = factory($, tm.widgets.WidgetFactory, gadgets.Pref());
+		tm.widgets.widgetFactory.make('tmModalDialog', factory($, gadgets.Pref()));
 	}
 
 })();

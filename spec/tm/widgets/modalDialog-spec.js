@@ -6,11 +6,10 @@ if (typeof define === 'function' && define.amd) {
 
 				var ModalDialog;
 				var testElement;
-				var widgetFactoryMock = { make: function() {} };
 				var gadgetPref = gadgetPrefMock({ 'tm.widgets.modalDialog.ok': 'ok' });
 
 				beforeEach(function() {
-					ModalDialog = modalDialogInjectable($, widgetFactoryMock, gadgetPref);
+					ModalDialog = modalDialogInjectable($, gadgetPref);
 					testElement = $('<div></div>');
 				});
 
@@ -54,9 +53,9 @@ if (typeof define === 'function' && define.amd) {
 	});
 }
 else {
-	describe('tm.widgets.modalDialog', function() {
+	describe('$.fn.tmModalDialog', function() {
 		it('should be defined', function() {
-			expect(tm.widgets.ModalDialog).toBeDefined();
+			expect($.fn.tmModalDialog).toBeDefined();
 		});
 	});
 }

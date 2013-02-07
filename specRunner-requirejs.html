@@ -41,6 +41,18 @@
                 return htmlReporter.specFilter(spec);
             };
 
+            requirejs.config({
+                baseUrl: 'js',
+                paths: {
+                    injectable: '../plugin/injectable',
+                    spec: '../spec',
+                    mock: '../mock'
+                },
+                shim: {
+                    'spec/all': ['injectable']
+                }
+            });
+
             define('console', [], function() {
                 return console;
             });
@@ -53,8 +65,8 @@
                 return document;
             });
 
-            define('gadgets.Pref', [], function() {
-                return {};
+            define('gadgets.Pref', ['mock/gadgetPrefMock'], function(gadgetPrefMock) {
+                return gadgetPrefMock({});
             });
 
             define('jquery', [], function() {
@@ -65,19 +77,7 @@
                 return $;
             });
 
-            requirejs.config({
-                baseUrl: 'js',
-                paths: {
-                    injectable: '../plugin/injectable',
-                    spec: '../spec',
-                    mock: '../mock'
-                }
-            });
-
-            requirejs([
-                'spec/tm.cookieSpec.js',
-                'spec/tm/widgets/modalDialog-spec'
-                ], function() {
+            requirejs(['spec/all'], function() {
                 jasmineEnv.execute();
             });
 

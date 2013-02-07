@@ -7,6 +7,8 @@
 			 *	Makes a widget from a prototype
 			 */
 			make: function(name, WidgetPrototype) {
+				var self = this;
+
 				$.fn[name] = function() {
 					var args = Array.prototype.slice.call(arguments);
 					var returnedValue;
@@ -16,7 +18,7 @@
 						var widget = $.data(element, name);
 
 						if (!widget) {
-							widget = $.extend({}, this.mixin, WidgetPrototype.prototype);
+							widget = $.extend({}, self.mixin, WidgetPrototype.prototype);
 
 							WidgetPrototype.call(widget, element, args[0]);
 
@@ -24,8 +26,8 @@
 						}
 
 						if (typeof args[0] === 'string') {
-							var name = args[0];
-							var fn = widget[name] || basePrototype[name] || function() { throw new Error('Not a function: ' + name); };
+							var functionName = args[0];
+							var fn = widget[functionName] || function() { throw new Error('Not a function: ' + functionName); };
 
 							returnedValue = fn.apply(widget, args.slice(1));
 						}
@@ -43,9 +45,10 @@
 					$.removeData(this.element);
 				},
 				option: function(name, value) {
-					var fn = 'set' + name.replace(/^\w/, function(a) { return a.toUpperCase(); });
+					var prefix = typeof value !== 'undefined' ? 'set' : 'get';
+					var fn = prefix + name.replace(/^\w/, function(a) { return a.toUpperCase(); });
 
-					this[fn] && this[fn](value);
+					return this[fn] && this[fn](value);
 				}
 			}
 		}
@@ -58,7 +61,7 @@
 	else {
 		tm.namespace('tm.widgets');
 
-		tm.widgets.WidgetFactory = factory($);
+		tm.widgets.widgetFactory = factory($);
 	}
 
 })();

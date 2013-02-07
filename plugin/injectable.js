@@ -1,29 +1,21 @@
 /**
  *	This plugin should only be used for unit testing. It wraps a module factory in another function to allow dependency injection
  */
-
 define([], function() {
 	'use strict';
 
-    var overriden = false;
-    var modulesToWrap = [];
+    var moduleFactories = {};
     
     /**
-     *	Stub the surrogate function that checks if the factory should be wrapped.
+     *	Stub the surrogate function that will cache the factories
      *	@param {Function} fn function to wrap
      */
  	function stub(fn) {
         return function() {
             var args = Array.prototype.slice.call(arguments);
             var module = args[0];
-            var index = modulesToWrap.indexOf(module.id);
-            
-            if (index !== -1) {
-                modulesToWrap.splice(index, 1);
-                return function() {
-                    return fn.apply(this, arguments);
-                };
-            }
+
+            moduleFactories[module.id] = fn;
             
             return fn.apply(this, args.slice(1));
         };
@@ -67,10 +59,12 @@ define([], function() {
     	 *	@param {Object} config global configurations
     	 */
         load: function(name, req, load, config) {
-            modulesToWrap.push(name);
+            if (name in moduleFactories) {
+                return moduleFactories[name];
+            }
             
-            req([name], function (value) {
-                load(value);
+            req([name], function () {
+                load(moduleFactories[name]);
             });
         }
     };
