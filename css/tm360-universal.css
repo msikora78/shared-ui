@@ -176,11 +176,12 @@
     font-family: 'MuseoSans700';
     font-size: 12px;
     color: #4F5158;
-    line-height: 16px;
-    padding: 6px 12px 4px;
+    line-height: 14px;
+    padding: 8px 12px 4px;
     padding-top: 4px \9; /* ie78 */
     border: 1px solid #9296a3;
     text-shadow: 0 0 1px rgba(255, 255, 255, 0.25);
+    min-width: 82px;
     -webkit-border-radius: 3px;
        -moz-border-radius: 3px;
             border-radius: 3px;
@@ -246,6 +247,26 @@
             transition: none 0s ease 0s;
 }
 
+.tm360 .btn.disabled, 
+.tm360 .btn[disabled],
+.tm360 .btn.btn-primary.disabled, 
+.tm360 .btn.btn-primary[disabled]{
+    background: none;
+    text-shadow: none;
+    border: solid 1px #c8c9ce;
+    background-color: #fff;
+    color: #c8c9ce;
+}
+
+.tm360 .btn.disabled:hover, 
+.tm360 .btn[disabled]:hover,
+.tm360 .btn.btn-primary.disabled:hover, 
+.tm360 .btn.btn-primary[disabled]:hover{
+    -webkit-box-shadow: none;
+       -moz-box-shadow: none;
+            box-shadow: none;
+}
+
 .tm360 .btn-group {
     *border: 1px solid #ccc; /* ie7 */
 }
@@ -258,7 +279,7 @@
 }
 .tm360 .btn-group > .btn {
     color: #4F5158;
-    line-height: 16px;
+    line-height: 14px;
     border-color: #9296A3;
     -webkit-border-radius: 3px;
        -moz-border-radius: 3px;
@@ -279,7 +300,7 @@
 }
 .tm360 .btn-group > .dropdown-toggle {
     min-width: 122px;
-    padding: 6px 28px 4px 10px;
+    padding: 8px 28px 4px 10px;
     *padding: 2px 28px 0px 10px;
     text-align: left;
     *background-color: #f5f5f5;
@@ -336,4 +357,68 @@
     background-image: -o-linear-gradient(top, #ebebee, #ebebee);
     background-image: -moz-linear-gradient(top, #ebebee, #ebebee);
     background-image: linear-gradient(top, #ebebee, #ebebee);
+}
+
+
+
+.tm360 .modal{
+    /*border: 10px solid rgb(153, 153, 153);*/
+    border: 10px solid rgba(0, 0, 0, 0.25);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-border-radius: 0px;
+       -moz-border-radius: 0px;
+            border-radius: 0px;
+}
+
+.tm360 .modal.large{
+    width: 636px;
+}
+
+.tm360 .modal.custom{
+    width: auto;
+    height: auto;
+}
+
+.tm360 .modal h3{
+    font-family: 'MuseoSans500';
+    font-size: 18px;
+    font-weight: normal;
+    color: #4F5158;
+}
+
+.tm360 .modal-header{
+    padding: 16px 19px 0px 19px;
+    border: none;
+}
+
+.tm360 .modal-header .close{
+    display:none;
+    visibility: hidden;
+}
+
+.tm360 .modal-body{
+    padding: 10px 19px 5px 19px;
+    border: none;
+    font-family: Arial;
+    font-size: 14px;
+    color: #4F5158;
+}
+
+
+.tm360 .modal-backdrop.fade.in{
+    background-color: #000;
+    opacity: 0.25;
+    filter: alpha(opacity=25);
+}
+
+.tm360 .modal-backdrop{
+    background-color: #000;
+    opacity: 0.0;
+    filter: alpha(opacity=0);
+}
+
+.tm360 .modal .btn{
+    min-width: 56px;
 }

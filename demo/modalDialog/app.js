@@ -56,7 +56,7 @@ requirejs(['jquery', 'examples/all-javascript', 'examples/custom-renderer', 'exa
 	}
 
 	$.each(examples, function(i, example) {
-		previous = $('<fieldset/>').append(
+		previous = $('<fieldset class="span12"/>').append(
 			$('<legend/>').text(example.legend),
 			$('<div/>').html(example.html),
 			$('<pre/>').addClass('prettyprint lang-html').text(example.html),
