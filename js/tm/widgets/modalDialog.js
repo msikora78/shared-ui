@@ -56,7 +56,7 @@
 		var ModalDialog = function(element, opts) {
 			opts = $.extend({}, defaults, opts);
 
-			this.element = element.addClass('modal hide');
+			this.element = element.addClass('modal hide fade');
 			this.header = element.children('.modal-header');
 			this.body = element.children('.modal-body');
 			this.footer = element.children('.modal-footer');

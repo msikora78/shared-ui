@@ -19,7 +19,7 @@ requirejs.config({
 
 define('gadgets.Pref', ['mock/gadgetPrefMock'], function(gadgetPrefMock) {
 	return gadgetPrefMock({
-		'tm.widgets.modalDialog.ok': 'ok'
+		'tm.widgets.modalDialog.ok': 'OK'
 	});
 });
 
