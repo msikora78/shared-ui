@@ -4,6 +4,7 @@ requirejs.config({
 		'jquery': '../lib/jquery-1.7.2/jquery.min',
 		'bootstrap': '../lib/bootstrap-2.2.2/js/bootstrap.min',
 		'angular': 'http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min',
+		'jquery.throttle': '../lib/jquery.ba-throttle-debounce-1.1/jquery.ba-throttle-debounce.min',
 		'widget': '../plugin/widget',
 		'mock': '../mock',
 		'examples': '../demo/modalDialog/examples'
@@ -13,7 +14,8 @@ requirejs.config({
 		angular: {
 			exports: 'angular',
 			deps: ['jquery']
-		}
+		},
+		'jquery.throttle': ['jquery']
 	}
 });
 
@@ -36,9 +38,17 @@ define('console', ['jquery'], function($) {
 	})();
 });
 
-requirejs(['jquery', 'examples/all-javascript', 'examples/custom-renderer', 'examples/button-list', 'examples/all-markup', 'examples/angular-integration'], function($) {
+define('navigator', [], function() {
+	return navigator;
+});
+
+define('window', [], function() {
+	return window;
+});
+
+requirejs(['jquery', 'tm', 'jquery.throttle', 'examples/all-javascript', 'examples/custom-renderer', 'examples/button-list', 'examples/all-markup', 'examples/angular-integration'], function($, tm) {
 	var previous = $('#examples');
-	var examples = Array.prototype.slice.call(arguments, 1);
+	var examples = Array.prototype.slice.call(arguments, 3);
 
 	function cleanCode(code) {
 		var lines = code.replace(/\t/g, '    ').split('\n');
@@ -67,4 +77,10 @@ requirejs(['jquery', 'examples/all-javascript', 'examples/custom-renderer', 'exa
 	});
 
 	prettyPrint();
+
+	$(window).resize($.throttle(200, function() {
+		tm.widthCheck(false);
+	}));
+
+	tm.widthCheck(false);
 });

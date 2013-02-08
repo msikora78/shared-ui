@@ -66,6 +66,10 @@
                 return document;
             });
 
+            define('navigator', [], function() {
+                return navigator;
+            });
+
             define('gadgets.Pref', ['mock/gadgetPrefMock'], function(gadgetPrefMock) {
                 return gadgetPrefMock({});
             });
