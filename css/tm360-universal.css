@@ -380,7 +380,8 @@
             box-shadow: none;
 }
 
-.tm360 .small-screen .modal{
+.tm360 .small-screen .modal,
+.tm360.small-screen .modal{
     width: 482px;
 }
 
