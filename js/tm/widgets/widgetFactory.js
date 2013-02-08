@@ -20,7 +20,7 @@
 						if (!widget) {
 							widget = $.extend({}, self.mixin, WidgetPrototype.prototype);
 
-							WidgetPrototype.call(widget, element, args[0]);
+							WidgetPrototype.call(widget, $(element), args[0]);
 
 							$.data(element, name, widget);
 						}

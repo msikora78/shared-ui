@@ -16,14 +16,14 @@
 			return $('<p/>').text('' + content);
 		}
 
-		function createButton(buttonDef, modal) {
+		function createButton(buttonDef, element) {
 			var button = $('<button type="button" class="btn"></button>').text(buttonDef.text);
 
 			buttonTypes[buttonDef.type] && button.addClass(buttonTypes[buttonDef.type]);
 
 			if (buttonDef.callback) {
 				button.click(function(e) {
-					buttonDef.callback.call(this, e, modal);
+					buttonDef.callback.call(this, e, element);
 				});
 			}
 
@@ -41,8 +41,8 @@
 		var okButton = {
 			text: gadgetPref.getMsg('tm.widgets.modalDialog.ok'),
 			type: 'primary',
-			callback: function(e, modal) {
-				modal.modal('hide');
+			callback: function(e, element) {
+				element.modal('hide');
 			}
 		};
 
@@ -78,25 +78,25 @@
 				var buttons = $();
 
 				for (var i = 0; i < opts.buttons.length; i++) {
-					buttons.add(createButton(opts.buttons[i]));
+					buttons = buttons.add(createButton(opts.buttons[i], element));
 				}
 
 				this.footer = $('<div class="modal-footer"></div>').append(buttons).appendTo(element);
 			}
 
-			if (opts.content !== 'null') {
-				this.body.append(opts.renderer(opts.content));
+			if (opts.content !== null) {
+				this.body.empty().append(opts.renderer(opts.content));
 			}
 
-			this.element.modal({ keyboard: false });
+			this.element.modal({ keyboard: false, backdrop: 'static', show: false });
 		};
 
 		ModalDialog.prototype = {
 			show: function() {
-				this.modal.modal('show');
+				this.element.modal('show');
 			},
 			hide: function() {
-				this.modal.modal('hide');
+				this.element.modal('hide');
 			},
 			setContent: function(value) {
 				this.body.empty().append(this.renderer(value));

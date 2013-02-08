@@ -2,8 +2,8 @@ define(['tm/widgets/widgetFactory'], function(widgetFactory) {
 
 	return {
 		load: function(name, req, load, config) {
-			var widgetName = name.replace(/^.*?(\w)(\w*)$/, function(a, b, c) {
-				return 'tm' + b.toUpperCase() + c;
+			var widgetName = name.replace(/^.*?(\w)(\w*)$/, function(match, first, remainder) {
+				return 'tm' + first.toUpperCase() + remainder;
 			});
 
 			req([name], function(value) {
