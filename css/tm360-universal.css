@@ -414,8 +414,13 @@
     color: #4F5158;
 }
 
+.tm360 .modal-body p{
+    margin: 0;
+}
+
 .modal-footer{
     padding: 20px 21px 21px 20px;
+    margin-top: 20px;
     background-color: #f5f5f7;
 }
 
