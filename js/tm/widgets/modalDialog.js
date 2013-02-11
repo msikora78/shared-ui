@@ -2,7 +2,8 @@
 	'use strict';
 
 	/**
-	 *	Creates a modal dialog to 
+	 *	Creates the modal dialog prototype
+	 *  @returns {Function} modal dialog prototype
 	 */
 	function factory($, gadgetPref) {
 
@@ -12,10 +13,19 @@
 			action: 'btn-success'
 		};
 
+		/**
+		 *	Default renderer to use with a string content
+		 *	@param {String} content to render
+		 */
 		function defaultRenderer(content) {
 			return $('<p/>').text('' + content);
 		}
 
+		/**
+		 *	Creates a button from a button definition and binds a callback if required.
+		 *  @param {Object} buttonDef definition of the button
+		 *	@param {DIV} element modal dialog element
+		 */
 		function createButton(buttonDef, element) {
 			var button = $('<button type="button" class="btn"></button>').text(buttonDef.text);
 
@@ -38,6 +48,7 @@
 			return button;
 		}
 
+		// OK button to use by default if no other button is specified
 		var okButton = {
 			text: gadgetPref.getMsg('tm.widgets.modalDialog.ok'),
 			type: 'primary',
@@ -46,13 +57,22 @@
 			}
 		};
 
+		// Default options
 		var defaults = {
 			renderer: defaultRenderer,
 			content: null,
 			title: null,
-			buttons: [ okButton ]
+			buttons: [ okButton ],
+			size: null
 		};
 
+		/**
+		 *	Modal dialog's prototype with all the tm specific behaviors
+		 *	@class
+		 *	@constructor
+		 *	@param {DIV} element a div element to use to render the dialog
+		 *	@param {Object} opts creation options
+		 */
 		var ModalDialog = function(element, opts) {
 			opts = $.extend({}, defaults, opts);
 
@@ -88,16 +108,30 @@
 				this.body.empty().append(opts.renderer(opts.content));
 			}
 
+			if (opts.size === 'large') {
+				this.element.addClass('large');
+			}
+
 			this.element.modal({ keyboard: false, backdrop: 'static', show: false });
 		};
 
 		ModalDialog.prototype = {
+			/**
+			 *	Shows the dialog
+			 */
 			show: function() {
 				this.element.modal('show');
 			},
+			/**
+			 *	Hides the dialog
+			 */
 			hide: function() {
 				this.element.modal('hide');
 			},
+			/**
+			 *	Sets the content and render it
+			 * 	@param {Object} value to render
+			 */
 			setContent: function(value) {
 				this.body.empty().append(this.renderer(value));
 			}

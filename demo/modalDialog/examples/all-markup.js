@@ -1,7 +1,7 @@
 define(['jquery', 'widget!tm/widgets/modalDialog'], function($) {
 	return {
 		legend: 'all-markup',
-		html: '<div id="all-markup">\n' +
+		html: '<div id="all-markup" class="large">\n' +
 		'    <div class="modal-header">\n' +
 		'        <h3>My header</h3>\n' +
 		'    </div>\n' +

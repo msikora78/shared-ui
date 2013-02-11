@@ -69,7 +69,7 @@ requirejs(['jquery', 'tm', 'jquery.throttle', 'examples/all-javascript', 'exampl
 		previous = $('<fieldset/>').append(
 			$('<legend/>').text(example.legend),
 			$('<div/>').html(example.html),
-			$('<pre/>').addClass('prettyprint lang-html').text(example.html),
+			$('<pre/>').addClass('prettyprint lang-html').text(cleanCode(example.html)),
 			$('<pre/>').addClass('prettyprint lang-javascript').text(cleanCode(example.setup.toString()))
 		).insertAfter(previous);
 
