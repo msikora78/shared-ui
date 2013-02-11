@@ -55,7 +55,7 @@ define(['jquery', 'angular', 'widget!tm/widgets/modalDialog'], function($, angul
 				};
 			});
 
-			angular.bootstrap($('#angular-integration'), ['angular-integration']);
+			angular.bootstrap('#angular-integration', ['angular-integration']);
 		}
 	};
 
