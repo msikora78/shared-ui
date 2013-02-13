@@ -2,7 +2,7 @@
 
     function factory(document) {
 
-        var cookie = {};
+        var tmCookie = {};
 
         /**
          * @function
@@ -12,7 +12,7 @@
          * @param {String} value  Cookie value
          * @param {int}    days   Optional number of days the cookie should live
          */
-        cookie.create = function (name,value,days) {
+        tmCookie.create = function (name,value,days) {
             var expires = "";
             if (days) { // else session cookie
                 var date = new Date();
@@ -30,7 +30,7 @@
          * @param {String} name  Cookie id
          * @return {String|null} Cookie value
          */
-        cookie.read = function (name) {
+        tmCookie.read = function (name) {
             var nameEQ = name + "=";
             var ca = document.cookie.split(';');
             for(var i=0;i < ca.length;i++) {
@@ -51,11 +51,11 @@
          *
          * @param {String} name  Cookie id
          */
-        cookie.erase = function (name) {
-            cookie.create(name,"",-1);
+        tmCookie.erase = function (name) {
+            tmCookie.create(name,"",-1);
         };
 
-        return cookie;
+        return tmCookie;
     }
 
     if (typeof define === 'function' && define.amd) {
