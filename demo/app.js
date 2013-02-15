@@ -48,7 +48,7 @@ define('window', [], function() {
 
 var url = decodeURIComponent(location.search.match(/\burl=(.*)(?:&|$)/)[1]);
 
-requirejs(['jquery', 'tm', url, 'jquery.throttle'], function($, tm, data) {
+requirejs(['jquery', 'tm/core', url, 'jquery.throttle'], function($, tm, data) {
 	var previous = $('#examples');
 
 	$('h1').text(data.title);
