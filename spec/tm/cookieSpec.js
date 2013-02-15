@@ -1,6 +1,6 @@
 if (typeof define === 'function' && define.amd) {
 
-    define(['injectable!tm.cookie'], function(cookieInjectable) {
+    define(['injectable!tm/cookie'], function(cookieInjectable) {
 
         describe('tm.cookie', function() {
 
