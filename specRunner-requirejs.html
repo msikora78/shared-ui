@@ -70,8 +70,14 @@
                 return navigator;
             });
 
-            define('gadgets.Pref', ['mock/gadgetPrefMock'], function(gadgetPrefMock) {
-                return gadgetPrefMock({});
+            define('gadgets', ['mock/gadgetPrefMock'], function(gadgetPrefMock) {
+                var pref = gadgetPrefMock({});
+
+                return {
+                    Pref: function() {
+                        return pref;
+                    }
+                }
             });
 
             define('jquery', [], function() {

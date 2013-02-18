@@ -7,9 +7,14 @@ if (typeof define === 'function' && define.amd) {
 				var ModalDialog;
 				var testElement;
 				var gadgetPref = gadgetPrefMock({ 'tm.widgets.modalDialog.ok': 'ok' });
+				var gadgets = {
+					Pref: function() {
+						return gadgetPref;
+					}
+				}
 
 				beforeEach(function() {
-					ModalDialog = modalDialogInjectable($, gadgetPref);
+					ModalDialog = modalDialogInjectable($, gadgets);
 					testElement = $('<div></div>');
 				});
 
