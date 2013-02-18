@@ -46,12 +46,19 @@ define(['jquery', 'angular', 'widget!tm/widgets/modalDialog'], function($, angul
 			});
 
 			app.directive('tmModalDialog', function() {
-				return function(scope, iElement, iAttrs) {
-					var dialog = iElement.tmModalDialog();
+				return {
+					scope: true,
+					link: function(scope, iElement, iAttrs) {
+						var dialog = iElement.tmModalDialog();
 
-					scope.$watch(iAttrs.tmModalDialog, function(newValue) {
-						dialog.tmModalDialog(newValue ? 'show' : 'hide');
-					});
+						scope.$watch(iAttrs.tmModalDialog, function(newValue) {
+							dialog.tmModalDialog(newValue ? 'show' : 'hide');
+						});
+
+						scope.$on('$destroy', function() {
+							iElement.tmModalDialog('destroy');
+						});
+					}
 				};
 			});
 
