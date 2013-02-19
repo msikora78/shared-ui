@@ -6,10 +6,10 @@ if (typeof define === 'function' && define.amd) {
 
 				var ModalDialog;
 				var testElement;
-				var gadgetPref = gadgetPrefMock({ 'tm.widgets.modalDialog.ok': 'ok' });
+				var gadgetPrefs = gadgetPrefMock({ 'tm.widgets.modalDialog.ok': 'ok' });
 				var gadgets = {
-					Pref: function() {
-						return gadgetPref;
+					Prefs: function() {
+						return gadgetPrefs;
 					}
 				}
 

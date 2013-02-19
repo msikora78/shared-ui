@@ -19,10 +19,16 @@ requirejs.config({
 	}
 });
 
-define('gadgets.Pref', ['mock/gadgetPrefMock'], function(gadgetPrefMock) {
-	return gadgetPrefMock({
+define('gadgets', ['mock/gadgetPrefMock'], function(gadgetPrefMock) {
+	var prefs = gadgetPrefMock({
 		'tm.widgets.modalDialog.ok': 'OK'
 	});
+
+	return {
+		Prefs: function() {
+			return prefs;
+		}
+	};
 });
 
 define('console', ['jquery'], function($) {

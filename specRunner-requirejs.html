@@ -71,11 +71,11 @@
             });
 
             define('gadgets', ['mock/gadgetPrefMock'], function(gadgetPrefMock) {
-                var pref = gadgetPrefMock({});
+                var prefs = gadgetPrefMock({});
 
                 return {
-                    Pref: function() {
-                        return pref;
+                    Prefs: function() {
+                        return prefs;
                     }
                 }
             });

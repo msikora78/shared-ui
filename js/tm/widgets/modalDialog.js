@@ -6,7 +6,7 @@
 	 *  @returns {Function} modal dialog prototype
 	 */
 	function factory($, gadgets) {
-		var gadgetPref = gadgets.Pref();
+		var gadgetPrefs = gadgets.Prefs();
 
 		// Standard button types for a modal dialog
 		var buttonTypes = {
@@ -51,7 +51,7 @@
 
 		// OK button to use by default if no other button is specified
 		var okButton = {
-			text: gadgetPref.getMsg('tm.widgets.modalDialog.ok'),
+			text: gadgetPrefs.getMsg('tm.widgets.modalDialog.ok'),
 			type: 'primary',
 			callback: function(e, element) {
 				element.modal('hide');
