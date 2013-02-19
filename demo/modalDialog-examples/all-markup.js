@@ -1,5 +1,5 @@
 define(['jquery', 'widget!tm/widgets/modalDialog'], function($) {
-	return {
+	var data = {
 		legend: 'all-markup',
 		html: '<div id="all-markup" class="large">\n' +
 		'    <div class="modal-header">\n' +
@@ -14,16 +14,20 @@ define(['jquery', 'widget!tm/widgets/modalDialog'], function($) {
 		'    </div>\n' +
 		'</div>\n' +
 		'<button type="button" class="btn btn-primary" id="all-markup-button">Click me</button>',
-		setup: function() {
-			var dialog = $('#all-markup').tmModalDialog();
+		setupString: "function() {\n \
+			var dialog = $('#all-markup').tmModalDialog();\n \
+\n \
+			dialog.find('.btn').click(function() {\n \
+				dialog.tmModalDialog('hide');\n \
+			});\n \
+\n \
+			$('#all-markup-button').click(function() {\n \
+				dialog.tmModalDialog('show');\n \
+			});\n \
+		}"
+	};
 
-			dialog.find('.btn').click(function() {
-				dialog.tmModalDialog('hide');
-			});
+	data.setup = new Function('$', 'return ' + data.setupString).call(this, $);
 
-			$('#all-markup-button').click(function() {
-				dialog.tmModalDialog('show');
-			});
-		}
-	}
+	return data;
 });

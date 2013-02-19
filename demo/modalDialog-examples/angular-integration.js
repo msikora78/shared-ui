@@ -1,6 +1,6 @@
 define(['jquery', 'angular', 'widget!tm/widgets/modalDialog'], function($, angular) {
 
-	return {
+	var data = {
 		legend: 'angular-integration',
 		html: '<div id="angular-integration" ng-controller="angularIntegrationCtrl">\n' +
 			'	<div tm-modal-dialog="objectToEdit">\n' +
@@ -18,52 +18,56 @@ define(['jquery', 'angular', 'widget!tm/widgets/modalDialog'], function($, angul
 			'	</div>\n' +
 			'	<button type="button" class="btn btn-primary" ng-click="edit()">Click me</button>\n' +
 			'</div>',
-		setup: function() {
-			var app = angular.module('angular-integration', []);
-
-			app.controller('angularIntegrationCtrl', function($scope) {
-				var o = {
-					name: ''
-				};
-
-				$scope.edit = function() {
-					$scope.objectToEdit = {
-						name: o.name
-					};
-				};
-
-				$scope.save = function() {
-					o = $scope.objectToEdit;
-
-					$scope.objectToEdit = null;
-				};
-
-				$scope.cancel = function() {
-					$scope.objectToEdit = null;
-				};
-
-				$scope.objectToEdit = null;
-			});
-
-			app.directive('tmModalDialog', function() {
-				return {
-					scope: true,
-					link: function(scope, iElement, iAttrs) {
-						var dialog = iElement.tmModalDialog();
-
-						scope.$watch(iAttrs.tmModalDialog, function(newValue) {
-							dialog.tmModalDialog(newValue ? 'show' : 'hide');
-						});
-
-						scope.$on('$destroy', function() {
-							iElement.tmModalDialog('destroy');
-						});
-					}
-				};
-			});
-
-			angular.bootstrap('#angular-integration', ['angular-integration']);
-		}
+		setupString: "function() {\n \
+			var app = angular.module('angular-integration', []);\n \
+\n \
+			app.controller('angularIntegrationCtrl', function($scope) {\n \
+				var o = {\n \
+					name: ''\n \
+				};\n \
+\n \
+				$scope.edit = function() {\n \
+					$scope.objectToEdit = {\n \
+						name: o.name\n \
+					};\n \
+				};\n \
+\n \
+				$scope.save = function() {\n \
+					o = $scope.objectToEdit;\n \
+\n \
+					$scope.objectToEdit = null;\n \
+				};\n \
+\n \
+				$scope.cancel = function() {\n \
+					$scope.objectToEdit = null;\n \
+				};\n \
+\n \
+				$scope.objectToEdit = null;\n \
+			});\n \
+\n \
+			app.directive('tmModalDialog', function() {\n \
+				return {\n \
+					scope: true,\n \
+					link: function(scope, iElement, iAttrs) {\n \
+						var dialog = iElement.tmModalDialog();\n \
+\n \
+						scope.$watch(iAttrs.tmModalDialog, function(newValue) {\n \
+							dialog.tmModalDialog(newValue ? 'show' : 'hide');\n \
+						});\n \
+\n \
+						scope.$on('$destroy', function() {\n \
+							iElement.tmModalDialog('destroy');\n \
+						});\n \
+					}\n \
+				};\n \
+			});\n \
+\n \
+			angular.bootstrap('#angular-integration', ['angular-integration']);\n \
+		}"
 	};
+
+	data.setup = new Function('$', 'angular', 'return ' + data.setupString).call(this, $, angular);
+
+	return data;
 
 });

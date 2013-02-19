@@ -1,23 +1,27 @@
 define(['jquery', 'widget!tm/widgets/modalDialog'], function($) {
 
-	return {
+	var data = {
 		legend: 'custom-renderer',
 		html: '<div id="custom-renderer"></div>\n<button type="button" id="custom-renderer-button" class="btn btn-primary">Click me</button>',
-		setup: function() {
-			function renderError(err) {
-				return $('<p/>').text(err.message).after($('<p style="color: red"/>').text(err.code));
-			}
-
-			var dialog = $('#custom-renderer').tmModalDialog({
-				renderer: renderError,
-				content: { message: 'An error occured', code: 'THIS_IS_AN_ERROR' },
-				title: 'Error report'
-			});
-
-			$('#custom-renderer-button').click(function() {
-				dialog.tmModalDialog('show');
-			});
-		}
+		setupString: "function() {\n \
+			function renderError(err) {\n \
+				return $('<p/>').text(err.message).after($('<p style=\"color: red\"/>').text(err.code));\n \
+			}\n \
+\n \
+			var dialog = $('#custom-renderer').tmModalDialog({\n \
+				renderer: renderError,\n \
+				content: { message: 'An error occured', code: 'THIS_IS_AN_ERROR' },\n \
+				title: 'Error report'\n \
+			});\n \
+\n \
+			$('#custom-renderer-button').click(function() {\n \
+				dialog.tmModalDialog('show');\n \
+			});\n \
+		}"
 	};
+
+	data.setup = new Function('$', 'return ' + data.setupString).call(this, $);
+
+	return data;
 
 });

@@ -1,36 +1,40 @@
 define(['console', 'jquery', 'widget!tm/widgets/modalDialog'], function(console, $) {
 
-	return {
+	var data = {
 		legend: 'button-list',
 		html: '<div id="button-list"></div>\n<button type="button" id="button-list-button" class="btn btn-primary">Click me</button>',
-		setup: function() {
-			var yesButton = {
-				text: 'Yes',
-				type: 'primary',
-				callback: function(e, dialog) {
-					console.info('yes');
-					dialog.tmModalDialog('hide');
-				}
-			};
+		setupString: "function() {\n \
+			var yesButton = {\n \
+				text: 'Yes',\n \
+				type: 'primary',\n \
+				callback: function(e, dialog) {\n \
+					console.info('yes');\n \
+					dialog.tmModalDialog('hide');\n \
+				}\n \
+			};\n \
+\n \
+			var noButton = {\n \
+				text: 'No',\n \
+				callback: function(e, dialog) {\n \
+					console.info('no');\n \
+					dialog.tmModalDialog('hide');\n \
+				}\n \
+			};\n \
+\n \
+			var dialog = $('#button-list').tmModalDialog({\n \
+				title: 'button-list',\n \
+				content: 'Are you sure?',\n \
+				buttons: [noButton, yesButton]\n \
+			});\n \
+\n \
+			$('#button-list-button').click(function() {\n \
+				dialog.tmModalDialog('show');\n \
+			});\n \
+		}"
+	};
 
-			var noButton = {
-				text: 'No',
-				callback: function(e, dialog) {
-					console.info('no');
-					dialog.tmModalDialog('hide');
-				}
-			};
+	data.setup = new Function('console', '$', 'return ' + data.setupString).call(this, console, $);
 
-			var dialog = $('#button-list').tmModalDialog({
-				title: 'button-list',
-				content: 'Are you sure?',
-				buttons: [noButton, yesButton]
-			});
-
-			$('#button-list-button').click(function() {
-				dialog.tmModalDialog('show');
-			});
-		}
-	}
+	return data;
 
 });
