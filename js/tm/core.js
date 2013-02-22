@@ -150,7 +150,7 @@
     }
 
     if (typeof define === 'function' && define.amd) {
-        define(['window', 'navigator'], factory);
+        define(['global!window', 'global!navigator'], factory);
     }
     else {
         /** Prevent console.log from blowing up if it's not available. */

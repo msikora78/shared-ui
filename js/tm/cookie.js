@@ -59,7 +59,7 @@
     }
 
     if (typeof define === 'function' && define.amd) {
-        define(['document'], factory);
+        define(['global!document'], factory);
     }
     else {
 

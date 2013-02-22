@@ -7,7 +7,8 @@ requirejs.config({
 		'jquery.throttle': '../lib/jquery.ba-throttle-debounce-1.1/jquery.ba-throttle-debounce.min',
 		'widget': '../plugin/widget',
 		'mock': '../mock',
-		'demo': '../demo'
+		'demo': '../demo',
+		'global': '../plugin/global'
 	},
 	shim: {
 		bootstrap: ['jquery'],
@@ -19,7 +20,7 @@ requirejs.config({
 	}
 });
 
-define('gadgets', ['mock/gadgetPrefMock'], function(gadgetPrefMock) {
+define('global!gadgets', ['mock/gadgetPrefMock'], function(gadgetPrefMock) {
 	var prefs = gadgetPrefMock({
 		'tm.widgets.modalDialog.ok': 'OK'
 	});

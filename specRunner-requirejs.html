@@ -47,30 +47,15 @@
                     injectable: '../plugin/injectable',
                     widget: '../plugin/widget',
                     spec: '../spec',
-                    mock: '../mock'
+                    mock: '../mock',
+                    global: '../plugin/global'
                 },
                 shim: {
                     'spec/all': ['injectable']
                 }
             });
 
-            define('console', [], function() {
-                return console;
-            });
-
-            define('window', [], function() {
-                return window;
-            });
-
-            define('document', [], function() {
-                return document;
-            });
-
-            define('navigator', [], function() {
-                return navigator;
-            });
-
-            define('gadgets', ['mock/gadgetPrefMock'], function(gadgetPrefMock) {
+            define('global!gadgets', ['mock/gadgetPrefMock'], function(gadgetPrefMock) {
                 var prefs = gadgetPrefMock({});
 
                 return {

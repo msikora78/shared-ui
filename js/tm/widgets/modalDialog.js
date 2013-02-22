@@ -144,7 +144,7 @@
 
 	// If requirejs is present, we want to use it, otherwise, we want to use the global declarations to get the dependencies
 	if (typeof define === 'function' && define.amd) {
-		define(['jquery', 'gadgets', 'bootstrap'], factory);
+		define(['jquery', 'global!gadgets', 'bootstrap'], factory);
 	}
 	else {
 		tm.widgets.widgetFactory.make('tmModalDialog', factory($, gadgets));
