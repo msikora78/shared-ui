@@ -1,0 +1,43 @@
+/* shortlink button */
+.tm360 .shortlink-btn.btn {
+    padding: 6px 10px 4px;
+}
+
+.tm360 .shortlink-btn img {
+    margin-top: -4px;
+}
+
+/* popover content */
+.tm360 .shortlink-input {
+    text-align: right;
+}
+
+.tm360 .shortlink-input label {
+    display: block;
+    float: left;
+    padding-top: 5px;
+    text-align: left;
+    cursor: default;
+}
+
+.tm360 .shortlink-input input {
+    width: 150px;
+}
+
+.tm360 .shortlink-copy {
+    padding-top: 8px;
+    width: 100%;
+}
+
+.tm360 .shortlink-copy em {
+    display: none; /* changed to 'block' after copy to clipboard */
+    float: left;
+    padding: 5px 4px 0 12px;
+    color: #9296A3;
+    font-size: 12px;
+}
+
+.tm360 .shortlink-copy .shortlink-btn-container {
+    position: relative;
+    float: right;
+}
