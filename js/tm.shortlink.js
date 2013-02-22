@@ -1,9 +1,11 @@
 /**
  *  ShortLink component
- *  depends on ZeroClipboard (http://code.google.com/p/zeroclipboard)
+ *  if tm.shortlinkFlashCopy is true, depends on ZeroClipboard (http://code.google.com/p/zeroclipboard)
  */
  (function($, tm){
     var bodyInitialized = false;
+
+    tm.shortlinkFlashCopy = false; // setting to true replaces the "Right click link to copy to clipboard." instructions with a "Copy" button
 
     // Enable shortlink for button(s)
     tm.shortlink = function(buttonEl){
@@ -24,9 +26,8 @@
             nodes = buttonEl;
         }
 
-
         var popoverOpts = {
-            content: '<div class="shortlink-input"><label>Link:</label><input type="text" value="loading..." disabled="disabled"/></div><div class="shortlink-copy clearfix"><em>Copied to Clipboard</em><div class="shortlink-btn-container"><button class="btn btn-primary" type="button" disabled="disabled">Copy</button></div></div>',
+            content: '<div class="shortlink-input"><label>Link:</label><input type="text" value="loading..." disabled="disabled"/></div><div class="shortlink-copy clearfix"><em>Copied to Clipboard</em><div class="shortlink-btn-container"><button class="btn btn-primary" type="button">Copy</button></div><div class="copy-instr">Right click link to copy to clipboard.</div></div>',
             // remove title h3 from bootstrap implementation
             template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>'
         };
@@ -50,20 +51,28 @@
                 if (data && data.popover){
                     var tip = data.popover.$tip;
                     var inp = tip.find("input");
-                    var btn = tip.find("button");
                     var callback = function(val){
                         if (!val){
                             data.popover.hide();
-                            return;
                         }
                         inp.val(val).prop("disabled", false);
-                        btn.prop("disabled", false);
-                        var clip = new ZeroClipboard.Client();
-                        clip.addEventListener( 'onComplete', function(){
-                            tip.find(".shortlink-copy em").css("display", "block");
-                        });
-                        clip.setText(val);
-                        clip.glue(btn.get(0), btn.get(0).parentNode);
+                        if (tm.shortlinkFlashCopy){
+                            // show the button
+                            var btnContainer = tip.find(".shortlink-btn-container");
+                            btnContainer.css("display", "block");
+                            // enable flash copy-to-clipboard
+                            var clip = new ZeroClipboard.Client();
+                            clip.addEventListener('onComplete', function(){
+                                tip.find(".shortlink-copy em").css("display", "block");
+                            });
+                            clip.setText(val);
+                            var btn = btnContainer.find("button");
+                            clip.glue(btn.get(0), btn.get(0).parentNode);
+                        } else {
+                            tip.find(".copy-instr").css("display", "block");
+                            inp.focus();
+                            inp.select();
+                        }
                     };
                     if (tip.hasClass('in')){
                         if (tm.resolveObject("window.parent.tm.helper.generateShortLink")) {
@@ -71,7 +80,7 @@
                             var longurl = data.longurl || window.top.location.href;
                             window.parent.tm.helper.generateShortLink(longurl, callback);
                         } else {
-                            // assume standalone demo.html
+                            // no parent, assume standalone demo.html
                             callback("http://tm360.com/abcdef1");
                         }
                     }
