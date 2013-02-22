@@ -27,8 +27,10 @@
 .tm360 .shortlink-copy {
     padding-top: 8px;
     width: 100%;
+    height: 30px;
 }
 
+/* tm.shortlinkFlashCopy */
 .tm360 .shortlink-copy em {
     display: none; /* changed to 'block' after copy to clipboard */
     float: left;
@@ -38,6 +40,16 @@
 }
 
 .tm360 .shortlink-copy .shortlink-btn-container {
+    display: none; /* changed to 'block' after callback */
     position: relative;
     float: right;
+}
+
+/* !tm.shortlinkFlashCopy */
+.tm360 .shortlink-copy .copy-instr {
+    display: none; /* changed to 'block' after callback */
+    color: #9296A3;
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
 }
