@@ -8,7 +8,7 @@ https://github.com/tm360/shared-ui/wiki
 
 ### RELEASE HISTORY
 
-#### tm360-2.1
+#### tm360-2.2
 * added ShortLink component
 
 #### tm360-2.1
