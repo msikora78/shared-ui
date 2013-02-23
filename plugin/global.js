@@ -1,19 +1,28 @@
 var __this = this;
 
+define('globalBuilder', [], function() {
+	return {
+			load: function(name, req, load, config) {
+				load({});
+			}
+	}
+});
+
 define([], function() {
-	var global = typeof window !== 'undefined' ? window : __this;
+	var globalObject = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : __this;
 
 	return {
 		load: function(name, req, load, config) {
-			if (name in global) {
-				load(global[name]);
+			if (name in globalObject) {
+				load(globalObject[name]);
 			}
 			else if (name === 'window') {
-				load(global);
+				load(globalObject);
 			}
 			else {
 				load.error('undefined: ' + name);
 			}
-		}
+		},
+		pluginBuilder: 'globalBuilder'
 	};
 });
