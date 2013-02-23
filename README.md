@@ -9,6 +9,9 @@ https://github.com/tm360/shared-ui/wiki
 ### RELEASE HISTORY
 
 #### tm360-2.1
+* added ShortLink component
+
+#### tm360-2.1
 * added support for [LESS CSS](http://www.lesscss.org/) 
 * added helper methods (truncate, validateEmail)
 * added convenience flags for iOS and Retina display detection
