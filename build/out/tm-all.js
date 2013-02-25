@@ -150,7 +150,7 @@
     }
 
     if (typeof define === 'function' && define.amd) {
-        define(['window', 'navigator'], factory);
+        define(['global!window', 'global!navigator'], factory);
     }
     else {
         /** Prevent console.log from blowing up if it's not available. */
@@ -244,7 +244,7 @@
     }
 
     if (typeof define === 'function' && define.amd) {
-        define(['document'], factory);
+        define(['global!document'], factory);
     }
     else {
 
@@ -548,7 +548,8 @@
 	 *	Creates the modal dialog prototype
 	 *  @returns {Function} modal dialog prototype
 	 */
-	function factory($, gadgetPref) {
+	function factory($, gadgets) {
+		var gadgetPrefs = gadgets.Prefs();
 
 		// Standard button types for a modal dialog
 		var buttonTypes = {
@@ -593,7 +594,7 @@
 
 		// OK button to use by default if no other button is specified
 		var okButton = {
-			text: gadgetPref.getMsg('tm.widgets.modalDialog.ok'),
+			text: gadgetPrefs.getMsg('tm.widgets.modalDialog.ok'),
 			type: 'primary',
 			callback: function(e, element) {
 				element.modal('hide');
@@ -686,10 +687,10 @@
 
 	// If requirejs is present, we want to use it, otherwise, we want to use the global declarations to get the dependencies
 	if (typeof define === 'function' && define.amd) {
-		define(['jquery', 'gadgets.Pref', 'bootstrap'], factory);
+		define(['jquery', 'global!gadgets', 'bootstrap'], factory);
 	}
 	else {
-		tm.widgets.widgetFactory.make('tmModalDialog', factory($, gadgets.Pref()));
+		tm.widgets.widgetFactory.make('tmModalDialog', factory($, gadgets));
 	}
 
 })();
