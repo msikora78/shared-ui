@@ -60,7 +60,7 @@ define([], function() {
     	 */
         load: function(name, req, load, config) {
             if (name in moduleFactories) {
-                return moduleFactories[name];
+                load(moduleFactories[name]);
             }
             
             req([name], function () {
