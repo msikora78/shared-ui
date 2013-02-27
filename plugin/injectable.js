@@ -32,14 +32,14 @@ define([], function() {
         var index = args.length;
         
         while(index--) {
-            if (typeof args[index] === 'function') {
+            if (typeof args[index] === 'function' && index > 0) {
                 args.splice(index, 1, stub(args[index]));
             }
             else if (args[index] instanceof Array) {
                 args[index].unshift('module');
             }
         }
-        
+
         return d.apply(this, args);
     };
 

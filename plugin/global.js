@@ -1,12 +1,5 @@
 var __this = this;
 
-define('globalBuilder', [], function() {
-	return {
-			load: function(name, req, load, config) {
-				load({});
-			}
-	}
-});
 
 define([], function() {
 	var globalObject = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : __this;
