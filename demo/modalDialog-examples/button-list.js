@@ -1,4 +1,4 @@
-define(['console', 'jquery', 'widget!tm/widgets/modalDialog'], function(console, $) {
+define(['global!console', 'jquery', 'widget!tm/widgets/modalDialog'], function(console, $) {
 
 	var data = {
 		legend: 'button-list',
