@@ -3,6 +3,9 @@
 <head>
     <title>tm360 spec runner with requirejs</title>
     <link rel="stylesheet" type="text/css" href="lib/jasmine-1.2.0/jasmine.css">
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap-2.1.0/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/tm360-base.css" />
+    <link rel="stylesheet" type="text/css" href="css/tm360-universal.css" />
 
     <!-- jquery version to support -->
     <script type="text/javascript">
@@ -75,6 +78,8 @@
 
             requirejs(['spec/all'], function() {
                 jasmineEnv.execute();
+                jquery['1.7.2']('body').css('background-image', 'none');
+                jquery['1.7.2']('body').css('background-color', 'rgb(255,255,255)');
             });
 
         })();

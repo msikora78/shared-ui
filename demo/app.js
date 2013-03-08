@@ -76,14 +76,18 @@ requirejs(['jquery', 'tm/core', url, 'jquery.throttle'], function($, tm, data) {
 	}
 
 	$.each(data.examples, function(i, example) {
+		var $javascript = example.setup ? $('<pre/>').addClass('prettyprint lang-javascript').text(cleanCode(example.setup.toString())) : null;
+		var $description = example.description ? $('<p/>').html(cleanCode(example.description)) : $('<div/>');
+
 		previous = $('<fieldset/>').append(
 			$('<legend/>').text(example.legend),
+			$description,
 			$('<div/>').html(example.html),
 			$('<pre/>').addClass('prettyprint lang-html').text(cleanCode(example.html)),
-			$('<pre/>').addClass('prettyprint lang-javascript').text(cleanCode(example.setup.toString()))
+			$javascript
 		).insertAfter(previous);
 
-		example.setup();
+		example.setup && example.setup();
 	});
 
 	prettyPrint();
