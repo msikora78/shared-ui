@@ -6,7 +6,7 @@
 	 *  @returns {Function} modal dialog prototype
 	 */
 	function factory($, gadgets) {
-		var gadgetPrefs = gadgets.Prefs();
+		var gadgetPrefs = new gadgets.Prefs();
 
 		// Standard button types for a modal dialog
 		var buttonTypes = {
