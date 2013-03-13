@@ -5,6 +5,10 @@
         <title>tm360 Shared UI - Jasmine Spec Runner</title>
 
         <link rel="stylesheet" type="text/css" href="lib/jasmine-1.2.0/jasmine.css"/>
+        <link rel="stylesheet" type="text/css" href="lib/bootstrap-2.1.0/css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="css/tm360-base.css" />
+        <link rel="stylesheet" type="text/css" href="css/tm360-universal.css" />
+
         <script type="text/javascript" src="lib/jasmine-1.2.0/jasmine.js"></script>
         <script type="text/javascript" src="lib/jasmine-1.2.0/jasmine-html.js"></script>
 
@@ -15,7 +19,7 @@
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ui.multidatespicker-1.6.1.js"></script>
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ba-throttle-debounce-1.1.min.js"></script -->
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/underscore_1.3.3.min.js"></script>
-        <!-- script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.1.0.min.js"></script -->
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.1.0.min.js"></script>
         <!-- *** Note: You need to be on the TM/LN corporate network for these links to work! *** -->
 
         <!-- Mocks -->
@@ -47,10 +51,11 @@
         <!-- ******************************************************************
              2. Include spec files here...
              ****************************************************************** -->
-        <script type="text/javascript" src="spec/tm/coreSpec.js"></script>
+        <script type="text/javascript" src="spec/tm/widgets/util.js"></script>
+        <!-- <script type="text/javascript" src="spec/tm/coreSpec.js"></script>
         <script type="text/javascript" src="spec/tm/stringSpec.js"></script>
         <script type="text/javascript" src="spec/tm/dateSpec.js"></script>
-        <!-- <script type="text/javascript" src="spec/tm.cookieSpec.js"></script> -->
+        <script type="text/javascript" src="spec/tm.cookieSpec.js"></script> -->
         <script type="text/javascript" src="spec/tm/widgets/modalDialog-spec.js"></script>
 
         <!-- ******************************************************************
@@ -77,6 +82,8 @@
                 };
                 function execJasmine() {
                     jasmineEnv.execute();
+                    $('body').css('background-image', 'none');
+                    $('body').css('background-color', 'rgb(255,255,255)');
                 }
             })();
         </script>

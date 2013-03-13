@@ -1,66 +1,70 @@
-if (typeof define === 'function' && define.amd) {
-	define(['injectable!tm/widgets/modalDialog', 'mock/gadgetPrefMock'], function(modalDialogInjectable, gadgetPrefMock) {
+var isRequire = typeof define === 'function' && define.amd;
 
-		function runTestWith($) {
-			describe('with jquery v' + $.fn.jquery, function() {
+if (isRequire) {
+    define(['injectable!tm/widgets/modalDialog', 'mock/gadgetPrefMock', './util'], function(modalDialogInjectable, gadgetPrefMock, Util) {
+        var gadgetPrefs = gadgetPrefMock({
+            'tm.widgets.modalDialog.ok': 'ok'
+        });
+        var gadgets = {
+            Prefs: function() {
+                return gadgetPrefs;
+            }
+        }
 
-				var ModalDialog;
-				var testElement;
-				var gadgetPrefs = gadgetPrefMock({ 'tm.widgets.modalDialog.ok': 'ok' });
-				var gadgets = {
-					Prefs: function() {
-						return gadgetPrefs;
-					}
-				}
-
-				beforeEach(function() {
-					ModalDialog = modalDialogInjectable($, gadgets);
-					testElement = $('<div></div>');
-				});
-
-				afterEach(function() {
-					testElement.remove();
-				});
-
-				it('should use the default renderer', function() {
-					var widget = new ModalDialog(testElement, {
-						title: 'te&st',
-						content: '<b>hello world!'
-					});
-
-					expect(testElement.hasClass('modal')).toBe(true);
-					expect(testElement.hasClass('hide')).toBe(true);
-					expect(testElement.find('.modal-header h3').html()).toBe('te&amp;st');
-					expect(testElement.find('.modal-body').html()).toBe('<p>&lt;b&gt;hello world!</p>');
-				});
-
-				it('should call bootstrap\'s modal widget', function() {
-					spyOn($.fn, 'modal').andCallThrough();
-
-					var widget = new ModalDialog(testElement, {
-						title: 'te&st',
-						content: '<b>hello world!'
-					});
-
-					expect($.fn.modal).toHaveBeenCalled();
-				});
-
-			});
-		}
-
-		describe('tm.widgets.modalDialog', function() {
-			for (var version in jquery) {
-				if (jquery.hasOwnProperty(version)) {
-					runTestWith(jquery[version]);
-				}
-			}
-		});
-	});
+        describe('tm.widgets.modalDialog', function() {
+            for (var version in jquery) {
+                if (jquery.hasOwnProperty(version)) {
+                    var ModalDialog = modalDialogInjectable(jquery[version], gadgets);
+                    runTest(jquery[version], Util, ModalDialog);
+                }
+            }
+        });
+    });
 }
 else {
-	describe('$.fn.tmModalDialog', function() {
-		it('should be defined', function() {
-			expect($.fn.tmModalDialog).toBeDefined();
-		});
-	});
+    describe('tm.widgets.modalDialog', function() {
+        runTest($, tm.widgets.util);
+    });
+}
+
+function runTest($, Util, ModalDialog) {
+    describe('with jquery v' + $.fn.jquery, function() {
+        var $container, $modal, widget;
+
+        if (!isRequire) {
+            beforeEach(function() {
+                $modal = $('<div></div>');
+                $container = $('<div class="tm360" />').append($modal);
+                $('body').append($container);
+
+                $modal.tmModalDialog();
+                $modal.tmModalDialog('show');
+            });
+
+            afterEach(function() {
+                $modal.tmModalDialog('hide');
+                $container.remove();
+            });
+        }
+        else {
+            beforeEach(function() {
+                $modal = $('<div></div>');
+                $container = $('<div class="tm360" />').append($modal);
+                $('body').append($container);
+
+                widget = new ModalDialog($modal);
+                widget.show();
+            });
+
+            afterEach(function() {
+                widget.hide();
+                $container.remove();
+            });
+        }
+
+        it('should have a Lightbox Overlay of #000 at 25% opacity', function() {
+            var rgb = Util.convertHexaToRgb("000000");
+            expect($('.modal-backdrop.fade.in').css('background-color')).toBe(rgb);
+        });
+    });
 }
