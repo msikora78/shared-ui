@@ -11,12 +11,12 @@ define(['./util'], function(Util) {
 
                 if (disabled) {
                     classes.push('disabled');
-                } 
+                }
                 if (hover) {
                     classes.push('hover');
                 }
-                
-                $button = $('<button type="button" class="' + classes.join(' ')  + '">' + text + '</button>');
+
+                $button = $('<button type="button" class="' + classes.join(' ') + '">' + text + '</button>');
                 $container = $('<div class="tm360"/>').append($button);
                 $body.append($container);
             }
@@ -34,7 +34,7 @@ define(['./util'], function(Util) {
                         createButton(text, disabled, hover);
                     });
 
-                     afterEach(function() {
+                    afterEach(function() {
                         $container.remove();
                     });
 
@@ -86,7 +86,7 @@ define(['./util'], function(Util) {
                                 var rgb = Util.convertHexaToRgb("ffffff");
                                 expect($button.css('background-color')).toBe(rgb);
                             });
-                                                        
+
                             it('should have border #c8c9ce', function() {
                                 var rgb = Util.convertHexaToRgb("c8c9ce");
                                 expect(Util.styleSupport($button, 'border-color')).toBeTruthy();
@@ -98,7 +98,7 @@ define(['./util'], function(Util) {
 
                             it('should have #c8c9ce color', function() {
                                 var rgb = Util.convertHexaToRgb("c8c9ce");
-                                expect($button.css('color')).toBe(rgb);                                
+                                expect($button.css('color')).toBe(rgb);
                             });
                         });
                     } else if (hover) {
@@ -107,7 +107,7 @@ define(['./util'], function(Util) {
                                 var rgb = Util.convertHexaToRgb("2d93d4");
                                 expect($button.css('background-color')).toBe(rgb);
                             });
-                            
+
                             it('should have border #9296a3', function() {
                                 var rgb = Util.convertHexaToRgb("9296a3");
                                 expect(Util.styleSupport($button, 'border-color')).toBeTruthy();
@@ -119,7 +119,7 @@ define(['./util'], function(Util) {
 
                             it('should have #fff color', function() {
                                 var rgb = Util.convertHexaToRgb("ffffff");
-                                expect($button.css('color')).toBe(rgb);                                
+                                expect($button.css('color')).toBe(rgb);
                             });
 
                             it('should have box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25)', function() {
@@ -130,8 +130,7 @@ define(['./util'], function(Util) {
                                 //expect($button.css('text-shadow')).toBe('rgba(0, 0, 0, 0.25) -1px -1px -1px'); 
                             });
                         });
-                    }
-                    else {
+                    } else {
                         describe('default state', function() {
                             it('should have a gradient #6bbefd at top to #2d93d4 at bottom', function() {
                                 var rgbTop = Util.convertHexaToRgb("6bbefd");
@@ -152,7 +151,7 @@ define(['./util'], function(Util) {
 
                             it('should have #fff color ', function() {
                                 var rgb = Util.convertHexaToRgb("ffffff");
-                                expect($button.css('color')).toBe(rgb);                                
+                                expect($button.css('color')).toBe(rgb);
                             });
 
                             it('should have text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25) ', function() {

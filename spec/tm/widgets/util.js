@@ -39,7 +39,40 @@
         }
 
         function convertHexaToRgb(hexa) {
-            return "rgb(" + convertHexaToNumber(hexa.substr(0, 2)) + ", " + convertHexaToNumber(hexa.substr(2, 2)) + ", " + convertHexaToNumber(hexa.substr(4, 2)) + ")";
+            return "rgb(" + 
+                convertHexaToNumber(hexa.substr(0, 2)) + ", " + 
+                convertHexaToNumber(hexa.substr(2, 2)) + ", " + 
+                convertHexaToNumber(hexa.substr(4, 2)) + ")";
+        }
+
+        function convertHexaToRgba(hexa, opacity) {
+            return "rgba(" + 
+                convertHexaToNumber(hexa.substr(0, 2)) + ", " + 
+                convertHexaToNumber(hexa.substr(2, 2)) + ", " + 
+                convertHexaToNumber(hexa.substr(4, 2)) + ", " + 
+                opacity + ")";
+        }
+
+        function wait(expect, duration) {
+            setTimeout(function() {
+                expect();
+            }, duration || 1);
+        }
+
+        function evaluateBorderWidth($component, size) {
+            expect(styleSupport($component, 'border-width')).toBeTruthy();
+            expect($component.css(styleSupport($component, 'border-top-width'))).toBe(size);
+            expect($component.css(styleSupport($component, 'border-bottom-width'))).toBe(size);
+            expect($component.css(styleSupport($component, 'border-left-width'))).toBe(size);
+            expect($component.css(styleSupport($component, 'border-right-width'))).toBe(size);
+        }
+
+        function evaluateBorderColor($component, color) { 
+            expect(styleSupport($component, 'border-color')).toBeTruthy();
+            expect($component.css(styleSupport($component, 'border-top-color'))).toBe(color);
+            expect($component.css(styleSupport($component, 'border-bottom-color'))).toBe(color);
+            expect($component.css(styleSupport($component, 'border-left-color'))).toBe(color);
+            expect($component.css(styleSupport($component, 'border-right-color'))).toBe(color);
         }
 
         return {
@@ -47,7 +80,11 @@
             gradientSupport: gradientSupport,
             convertNumberToHexa: convertNumberToHexa,
             convertHexaToNumber: convertHexaToNumber,
-            convertHexaToRgb: convertHexaToRgb
+            convertHexaToRgb: convertHexaToRgb,
+            convertHexaToRgba: convertHexaToRgba,
+            wait: wait,
+            evaluateBorderWidth: evaluateBorderWidth,
+            evaluateBorderColor: evaluateBorderColor
         }
     }
 
