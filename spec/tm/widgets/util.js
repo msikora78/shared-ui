@@ -39,18 +39,50 @@
         }
 
         function convertHexaToRgb(hexa) {
-            return "rgb(" + 
-                convertHexaToNumber(hexa.substr(0, 2)) + ", " + 
-                convertHexaToNumber(hexa.substr(2, 2)) + ", " + 
+            return "rgb(" +
+                convertHexaToNumber(hexa.substr(0, 2)) + ", " +
+                convertHexaToNumber(hexa.substr(2, 2)) + ", " +
                 convertHexaToNumber(hexa.substr(4, 2)) + ")";
         }
 
         function convertHexaToRgba(hexa, opacity) {
-            return "rgba(" + 
-                convertHexaToNumber(hexa.substr(0, 2)) + ", " + 
-                convertHexaToNumber(hexa.substr(2, 2)) + ", " + 
-                convertHexaToNumber(hexa.substr(4, 2)) + ", " + 
+            return "rgba(" +
+                convertHexaToNumber(hexa.substr(0, 2)) + ", " +
+                convertHexaToNumber(hexa.substr(2, 2)) + ", " +
+                convertHexaToNumber(hexa.substr(4, 2)) + ", " +
                 opacity + ")";
+        }
+
+        function parseShadowValue(value) {
+            var r = /^rgba\((.*?), (.*?), (.*?), (.*?)\) (.*?)$/;
+            var m = r.exec(value);
+            var mArgs = m[5].split(" ");
+            var parsedValue = {
+                rgba: {
+                    r: m[1],
+                    g: m[2],
+                    b: m[3],
+                    a: Math.round(parseFloat(m[4])*100)/100
+                },
+                hShadow: mArgs[0],
+                vShadow: mArgs[1],
+                blur: mArgs[2],
+                spread: mArgs[3]
+            }
+
+            parsedValue.toString = function() {
+                return "rgba("
+                    + this.rgba.r + ', '
+                    + this.rgba.g + ', '
+                    + this.rgba.b + ', '
+                    + this.rgba.a + ') '
+                    + this.hShadow + ' '
+                    + this.vShadow + ' '
+                    + this.blur
+                    + ((this.spread) ? ' ' + this.spread : '');
+            }
+
+            return parsedValue;
         }
 
         function wait(expect, duration) {
@@ -67,7 +99,7 @@
             expect($component.css(styleSupport($component, 'border-right-width'))).toBe(size);
         }
 
-        function evaluateBorderColor($component, color) { 
+        function evaluateBorderColor($component, color) {
             expect(styleSupport($component, 'border-color')).toBeTruthy();
             expect($component.css(styleSupport($component, 'border-top-color'))).toBe(color);
             expect($component.css(styleSupport($component, 'border-bottom-color'))).toBe(color);
@@ -84,7 +116,8 @@
             convertHexaToRgba: convertHexaToRgba,
             wait: wait,
             evaluateBorderWidth: evaluateBorderWidth,
-            evaluateBorderColor: evaluateBorderColor
+            evaluateBorderColor: evaluateBorderColor,
+            parseShadowValue: parseShadowValue
         }
     }
 
