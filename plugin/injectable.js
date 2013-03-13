@@ -15,7 +15,16 @@ define([], function() {
             var args = Array.prototype.slice.call(arguments);
             var module = args[0];
 
-            moduleFactories[module.id] = fn;
+            moduleFactories[module.id] = function() {
+                fn.injectable = true;
+
+                try {
+                    return fn.apply(this, arguments);
+                }
+                finally {
+                    delete fn['injectable'];
+                }
+            };
             
             return fn.apply(this, args.slice(1));
         };
