@@ -1,25 +1,26 @@
-define(['./util'], function(Util) {
+(function() {
+    var isRequire = typeof define === 'function' && define.amd;
 
-    function runTestWith($) {
-        var $body = $('body');
+    if (isRequire) {
+        define(['./util'], function(Util) {
+            describe('Primary Button', function() {
+                for (var version in jquery) {
+                    if (jquery.hasOwnProperty(version)) {
+                        runTest(jquery[version], Util);
+                    }
+                }
+            });
+        });
+    } else {
+        describe('Primary Button', function() {
+            runTest($, tm.widgets.util);
+        });
+    }
+
+    function runTest($, Util) {
 
         describe('with jquery v' + $.fn.jquery, function() {
             var $container, $button;
-
-            function createButton(text, disabled, hover) {
-                var classes = ['btn', 'btn-primary'];
-
-                if (disabled) {
-                    classes.push('disabled');
-                } 
-                if (hover) {
-                    classes.push('hover');
-                }
-                
-                $button = $('<button type="button" class="' + classes.join(' ')  + '">' + text + '</button>');
-                $container = $('<div class="tm360"/>').append($button);
-                $body.append($container);
-            }
 
             function runAllTest(text, disabled, hover) {
                 var desc = '';
@@ -27,11 +28,20 @@ define(['./util'], function(Util) {
                 desc += hover ? 'hover ' : '';
                 desc += 'with text "' + text + '"';
 
-                //var desc = disabled ? 'disabled with text "' + text + '"' : 'with text "' + text + '"';
-
                 describe(desc, function() {
                     beforeEach(function() {
-                        createButton(text, disabled, hover);
+                        var classes = ['btn', 'btn-primary'];
+
+                        if (disabled) {
+                            classes.push('disabled');
+                        } 
+                        if (hover) {
+                            classes.push('hover');
+                        }
+                        
+                        $button = $('<button type="button" class="' + classes.join(' ')  + '">' + text + '</button>');
+                        $container = $('<div class="tm360"/>').append($button);
+                        $('body').append($container);
                     });
 
                      afterEach(function() {
@@ -175,12 +185,4 @@ define(['./util'], function(Util) {
             runAllTest('Button with a very very long text', true, true);
         });
     }
-
-    describe('Primary Button', function() {
-        for (var version in jquery) {
-            if (jquery.hasOwnProperty(version)) {
-                runTestWith(jquery[version]);
-            }
-        }
-    });
-});
+})();
