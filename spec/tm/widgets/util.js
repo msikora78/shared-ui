@@ -74,7 +74,7 @@
         }
 
         function parseShadowValue(value) {
-            var r = /^rgba\((\d),\s*(\d),\s*(\d),\s*(.*?)\)\s*(.*?)$/;
+            var r = /^rgba\((\d+),\s*(\d+),\s*(\d+),\s*(.*?)\)\s*(.*?)$/;
             var m = r.exec(value);
             var mArgs = m[5].split(" ");
             var parsedValue = {
