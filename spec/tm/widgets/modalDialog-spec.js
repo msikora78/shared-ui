@@ -31,7 +31,19 @@ function runTest($, Util, ModalDialog) {
         var $container, $modal, widget;
 
         function createModal() {
-            $modal = $('<div><div class="modal-header"><h3>My header</h3></div></div>');
+            $modal = $('\
+                <div>\
+                    <div class="modal-header">\
+                        <h3>Title Text</h3>\
+                    </div>\
+                    <div class="modal-body">\
+                        <p>Lorem ipsum dolor sit amet</p>\
+                    </div>\
+                    <div class="modal-footer">\
+                        <button type="button" class="btn">Text</button>\
+                        <button type="button" class="btn btn-primary">Text</button>\
+                    </div>\
+                </div>');
             $container = $('<div class="tm360" />').append($modal);
             $('body').append($container);
         }
@@ -61,11 +73,11 @@ function runTest($, Util, ModalDialog) {
         }
 
         it('should have a Lightbox Overlay of #000 at 25% opacity', function() {
-            var modalBackground = $('.modal-backdrop.fade.in');
+            var $modalBackground = $('.modal-backdrop.fade.in');
 
-            expect(modalBackground.css('background-color')).toBe(Util.convertHexaToRgb('000000'));
+            expect($modalBackground.css('background-color')).toBe(Util.convertHexaToRgb('000000'));
             Util.wait(function() {
-                expect(modalBackground.css('opacity')).toBe('0.25');
+                expect($modalBackground.css('opacity')).toBe('0.25');
             });
         });
 
@@ -74,18 +86,58 @@ function runTest($, Util, ModalDialog) {
             Util.evaluateBorderWidth($modal, '10px');
             //Util.evaluateBorderColor($modal, Util.convertHexaToRgba("000000", '0.25'));
         });
+        
+        describe('Title section', function() {
+            it('should be 18px Museo Sans 500 #4F5158', function() {
+                var $title = $modal.find('.modal-header h3');
 
-        it('should have a title of 18px Museo Sans 500 #4F5158', function() {
-            var $modalHeader = $modal.find('.modal-header');
-            var $title = $modalHeader.find('h3');
+                expect($title.css('font-size')).toBe('18px');
+                expect($title.css('font-family')).toContain('MuseoSans500');
+                expect($title.css('color')).toBe(Util.convertHexaToRgb("4F5158"));
+            });
 
-            expect($title.css('font-size')).toBe('18px');
-            expect($title.css('font-family')).toContain('MuseoSans500');
-            expect($title.css('color')).toBe(Util.convertHexaToRgb("4F5158"));
+            it('should have margin of 20px 20px 30px 20px', function() {
+                var $modalHeader = $modal.find('.modal-header');
+                
+                //expect(Util.calculateDistance($modalHeader, 'top')).toBe('20px'); // currently set to 16px...
+                expect(Util.calculateDistance($modalHeader, 'right')).toBe('20px');
+                //expect(Util.calculateDistance($modalHeader, 'bottom')).toBe('30px'); // seems strage
+                expect(Util.calculateDistance($modalHeader, 'left')).toBe('20px');
+            });
         });
 
-        it('should have a title with margin of 20px 20px 30px 20px', function() {
+        describe('Body section', function() { 
+            it('should be 14px Arial Regular #4F5158', function() {
+                var $body = $modal.find('.modal-body p');
 
+                expect($body.css('font-size')).toBe('14px');
+                expect($body.css('font-family')).toContain('Arial');
+                expect($body.css('color')).toBe(Util.convertHexaToRgb("4F5158"));
+            });
+
+            it('should have margin of 0px 20px 20px 20px', function() {
+                var $modalBody = $modal.find('.modal-body');
+                
+                //expect(Util.calculateDistance($modalBody, 'top')).toBe('20px'); 
+                expect(Util.calculateDistance($modalBody, 'right')).toBe('20px');
+                //expect(Util.calculateDistance($modalBody, 'bottom')).toBe('20px'); 
+                expect(Util.calculateDistance($modalBody, 'left')).toBe('20px');
+            });
+        });
+
+        describe('Footer section', function() {  
+            it('should have an Horizontal Rule of 1px #ebebee', function() {
+                var $modalFooter = $modal.find('.modal-footer');
+
+                Util.evaluateBorderWidth($modalFooter, '1px', ['top']);
+                Util.evaluateBorderColor($modalFooter, Util.convertHexaToRgb('ebebee'), ['top']);
+            });
+
+            it('should have a background of #F5F5F7', function() {
+                var $modalFooter = $modal.find('.modal-footer');
+
+                expect($modalFooter.css('background-color')).toBe(Util.convertHexaToRgb('F5F5F7'));
+            });
         });
 
     });

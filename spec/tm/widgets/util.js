@@ -39,18 +39,11 @@
         }
 
         function convertHexaToRgb(hexa) {
-            return "rgb(" + 
-                convertHexaToNumber(hexa.substr(0, 2)) + ", " + 
-                convertHexaToNumber(hexa.substr(2, 2)) + ", " + 
-                convertHexaToNumber(hexa.substr(4, 2)) + ")";
+            return "rgb(" + convertHexaToNumber(hexa.substr(0, 2)) + ", " + convertHexaToNumber(hexa.substr(2, 2)) + ", " + convertHexaToNumber(hexa.substr(4, 2)) + ")";
         }
 
         function convertHexaToRgba(hexa, opacity) {
-            return "rgba(" + 
-                convertHexaToNumber(hexa.substr(0, 2)) + ", " + 
-                convertHexaToNumber(hexa.substr(2, 2)) + ", " + 
-                convertHexaToNumber(hexa.substr(4, 2)) + ", " + 
-                opacity + ")";
+            return "rgba(" + convertHexaToNumber(hexa.substr(0, 2)) + ", " + convertHexaToNumber(hexa.substr(2, 2)) + ", " + convertHexaToNumber(hexa.substr(4, 2)) + ", " + opacity + ")";
         }
 
         function wait(expect, duration) {
@@ -59,20 +52,38 @@
             }, duration || 1);
         }
 
-        function evaluateBorderWidth($component, size) {
+        function evaluateBorderWidth($component, size, directions) {
+            directions = directions ? directions : ['top', 'bottom', 'left', 'right'];
+
             expect(styleSupport($component, 'border-width')).toBeTruthy();
-            expect($component.css(styleSupport($component, 'border-top-width'))).toBe(size);
-            expect($component.css(styleSupport($component, 'border-bottom-width'))).toBe(size);
-            expect($component.css(styleSupport($component, 'border-left-width'))).toBe(size);
-            expect($component.css(styleSupport($component, 'border-right-width'))).toBe(size);
+            for (var i = 0; i < directions.length; i++) {
+                var direction = directions[i];
+                expect($component.css(styleSupport($component, 'border-' + direction + '-width'))).toBe(size);
+            };
         }
 
-        function evaluateBorderColor($component, color) { 
+        function evaluateBorderColor($component, color, directions) {
+            directions = directions ? directions : ['top', 'bottom', 'left', 'right'];
+
             expect(styleSupport($component, 'border-color')).toBeTruthy();
-            expect($component.css(styleSupport($component, 'border-top-color'))).toBe(color);
-            expect($component.css(styleSupport($component, 'border-bottom-color'))).toBe(color);
-            expect($component.css(styleSupport($component, 'border-left-color'))).toBe(color);
-            expect($component.css(styleSupport($component, 'border-right-color'))).toBe(color);
+            for (var i = 0; i < directions.length; i++) {
+                var direction = directions[i];
+                expect($component.css(styleSupport($component, 'border-' + direction + '-color'))).toBe(color);
+
+            };
+        }
+
+        function calculateDistance($component, direction) {
+            function findSize(style) {
+                var size = $component.css(style);
+                return size ? parseInt(size.replace("px", "")) : 0;
+            }
+
+            var padding = findSize('padding-' + direction);
+            var margin = findSize('margin-' + direction + '-width');
+            var border = findSize('border-' + direction + '-width');
+
+            return (padding + margin + border) + "px";
         }
 
         return {
@@ -83,6 +94,7 @@
             convertHexaToRgb: convertHexaToRgb,
             convertHexaToRgba: convertHexaToRgba,
             wait: wait,
+            calculateDistance: calculateDistance,
             evaluateBorderWidth: evaluateBorderWidth,
             evaluateBorderColor: evaluateBorderColor
         }
@@ -90,8 +102,7 @@
 
     if (typeof define === 'function' && define.amd) {
         define([], factory);
-    }
-    else {
+    } else {
         tm.namespace("tm.widgets.util");
         tm.widgets.util = factory();
     }
