@@ -50,15 +50,38 @@
                 opacity + ")";
         }
 
+        function parseRGBA(value) {
+            var r = /^rgba\((\d),\s*(\d),\s*(\d),\s*(.*?)\)$/;
+            var m = r.exec(value);
+            var parsedValue = {
+                rgba: {
+                    r: parseInt(m[1]),
+                    g: parseInt(m[2]),
+                    b: parseInt(m[3]),
+                    a: Math.round(parseFloat(m[4])*100)/100
+                }
+            }
+
+            parsedValue.toString = function() {
+                return "rgba("
+                    + this.rgba.r + ', '
+                    + this.rgba.g + ', '
+                    + this.rgba.b + ', '
+                    + this.rgba.a + ')';
+            }
+
+            return parsedValue;
+        }
+
         function parseShadowValue(value) {
-            var r = /^rgba\((.*?), (.*?), (.*?), (.*?)\) (.*?)$/;
+            var r = /^rgba\((\d),\s*(\d),\s*(\d),\s*(.*?)\)\s*(.*?)$/;
             var m = r.exec(value);
             var mArgs = m[5].split(" ");
             var parsedValue = {
                 rgba: {
-                    r: m[1],
-                    g: m[2],
-                    b: m[3],
+                    r: parseInt(m[1]),
+                    g: parseInt(m[2]),
+                    b: parseInt(m[3]),
                     a: Math.round(parseFloat(m[4])*100)/100
                 },
                 hShadow: mArgs[0],
