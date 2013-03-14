@@ -1,6 +1,6 @@
 (function() {
 
-    function factory() {
+    function factory($) {
         function styleSupport($element, style) {
             var supportedProp;
 
@@ -105,10 +105,14 @@
             return parsedValue;
         }
 
-        function wait(expect, duration) {
+        function wait(duration) {
+            var deferred = $.Deferred();
+
             setTimeout(function() {
-                expect();
+                deferred.resolve();
             }, duration || 1);
+
+            return deferred.promise();
         }
 
         function evaluateBorderWidth($component, size, directions) {
@@ -160,9 +164,9 @@
     }
 
     if (typeof define === 'function' && define.amd) {
-        define([], factory);
+        define(['jquery'], factory);
     } else {
         tm.namespace("tm.widgets.util");
-        tm.widgets.util = factory();
+        tm.widgets.util = factory($);
     }
 })();
