@@ -226,12 +226,14 @@
     margin-left: 8px;
 }
 
-.tm360 .btn:hover, {
+.tm360 .btn:hover,
+.tm360 .btn.hover {
     background-color: #ffffff;
     background-image: none;
-    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    text-shadow: none;
+    -webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
     -webkit-transition: none 0s ease 0s;
     -moz-transition: none 0s ease 0s;
     -ms-transition: none 0s ease 0s;
@@ -309,10 +311,12 @@
 
 .tm360 .btn.btn-success:hover,
 .tm360 .btn.btn-success.hover {
+    background-color: #10a946;
     background-position: 0 -15px;
-    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
-    -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
     -webkit-transition: none 0s ease 0s;
     -moz-transition: none 0s ease 0s;
     -ms-transition: none 0s ease 0s;
