@@ -1,26 +1,25 @@
-(function() {
-    var isRequire = typeof define === 'function' && define.amd;
-
-    if (isRequire) {
-        define(['./util'], function(Util) {
-            describe('Primary Button', function() {
-                for (var version in jquery) {
-                    if (jquery.hasOwnProperty(version)) {
-                        runTest(jquery[version], Util);
-                    }
-                }
-            });
-        });
-    } else {
-        describe('Primary Button', function() {
-            runTest($, tm.widgets.util);
-        });
-    }
+define(['./util'], function(Util) {
+    describe('Primary Button', function() {
+        for (var version in jquery) {
+            if (jquery.hasOwnProperty(version)) {
+                runTest(jquery[version], Util);
+            }
+        }
+    });
 
     function runTest($, Util) {
 
         describe('with jquery v' + $.fn.jquery, function() {
             var $container, $button;
+
+            runAllTest('Text');
+            runAllTest('Text', true);
+            runAllTest('Text', false, true);
+            runAllTest('Text', true, true);
+            runAllTest('Button with a very very long text');
+            runAllTest('Button with a very very long text', true);
+            runAllTest('Button with a very very long text', false, true);
+            runAllTest('Button with a very very long text', true, true);
 
             function runAllTest(text, disabled, hover) {
                 var desc = '';
@@ -174,15 +173,6 @@
                     }
                 });
             }
-
-            runAllTest('Text');
-            runAllTest('Text', true);
-            runAllTest('Text', false, true);
-            runAllTest('Text', true, true);
-            runAllTest('Button with a very very long text');
-            runAllTest('Button with a very very long text', true);
-            runAllTest('Button with a very very long text', false, true);
-            runAllTest('Button with a very very long text', true, true);
         });
     }
-})();
+});
