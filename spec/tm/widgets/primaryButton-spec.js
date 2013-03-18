@@ -61,7 +61,7 @@ define(['./util'], function(Util) {
                             expect($button.outerHeight()).toBe(28);
                         });
 
-                        it('should always be a 10px left and right margin', function()  {
+                        it('should always be a 10px left and right padding', function()  {
                             expect(($button.innerWidth() - $button.width()) / 2).toBe(10);
                         });
 
