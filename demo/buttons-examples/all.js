@@ -1,4 +1,4 @@
-define(['./primary-button', './primary-buttonWithLongText', './important-button', './important-buttonWithLongText', './secondary-button', './secondary-buttonWithLongText'], function() {
+define(['./primary-button', './primary-buttonWithLongText', './secondary-button', './secondary-buttonWithLongText', './important-button', './important-buttonWithLongText'], function() {
     return {
         title: 'Buttons',
         examples: Array.prototype.slice.call(arguments)
