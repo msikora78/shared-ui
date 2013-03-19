@@ -6,10 +6,10 @@ define(['jquery'], function($) {
         html:'\
 <div id="primary-buttons-container">\n\
   <p>\n\
-    <button type="button" id="default-state-button" class="btn btn-primary">Text</button>\n\
+    <button type="button" id="primary-button" class="btn btn-primary">Text</button>\n\
   </p>\n\
   <p>\n\
-    <button type="button" id="inactive-state-button" class="btn btn-primary" disabled>Inactive</button>\n\
+    <button type="button" id="inactive-primary-button" class="btn btn-primary" disabled>Inactive</button>\n\
   </p>\n\
 </div>',
 		setupString: 'function() {\n\

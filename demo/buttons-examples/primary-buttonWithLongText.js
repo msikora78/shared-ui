@@ -5,10 +5,10 @@ define(['jquery'], function($) {
         html:'\
 <div id="primary-buttons-longtext-container">\n\
   <p>\n\
-    <button type="button" id="default-state" class="btn btn-primary">Button with a very very long text</button>\n\
+    <button type="button" id="longtext-primary-button" class="btn btn-primary">Button with a very very long text</button>\n\
   </p>\n\
   <p>\n\
-    <button type="button" id="inactive-state" class="btn btn-primary" disabled>Inactive button with a very long text</button>\n\
+    <button type="button" id="inactive-longtext-primary-button" class="btn btn-primary" disabled>Inactive button with a very long text</button>\n\
   </p>\n\
 </div>',
 		setupString: 'function() {\n\
