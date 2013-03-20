@@ -44,11 +44,18 @@
         -->
 
         <!-- tm360 Shared-UI JS -->
+	<script>
+	    var Prefs = function(){};
+	    Prefs.prototype.getMsg = function() {};
+	    gadgets = {Prefs : Prefs};
+	</script>
+
         <script src="js/tm/core.js"></script>
         <script src="js/tm/cookie.js"></script>
         <script src="js/tm/string.js"></script>
         <script src="js/tm/date.js"></script>
-
+	<script src="js/tm/widgets/widgetFactory.js"></script>
+	<script src="js/tm/widgets/modalDialog.js"></script>
     </head>
     <body class="tm360">
         <div id="container">
@@ -311,9 +318,16 @@
                     </div>
                     <div class="span9">
                         <div class="well">
-                            <a href="demo/index.html?url=demo%2FmodalDialog-examples%2Fall">ModalDialog</a>
+			    <div class="control-group">
+				<div id="button-list"></div>
+				<button type="button" id="button-list-button" class="btn btn-primary">Click me</button>
+			    </div>
+			    <div class="control-group">
+				<a href="demo/index.html?url=demo%2FmodalDialog-examples%2Fall">See more modal dialogs</a>
+			    </div>
                         </div>
                     </div>
+
                 </div> <!-- .row-fluid -->
 
                 <div class="row-fluid">
@@ -350,6 +364,31 @@
                     $("#dateselect").datepicker();
                     $("#multidateselect").multiDatesPicker();
                 }
+
+		var yesButton = {
+		    text: 'Yes',
+		    type: 'primary',
+		    callback: function(e, dialog) {
+			dialog.tmModalDialog('hide');
+		    }
+		};
+
+		var noButton = {
+		    text: 'No',
+		    callback: function(e, dialog) {
+			dialog.tmModalDialog('hide');
+		    }
+		};
+
+		var dialog = $('#button-list').tmModalDialog({
+		    title: 'button-list',
+		    content: 'Are you sure?',
+		    buttons: [noButton, yesButton]
+		});
+
+		$('#button-list-button').click(function() {
+		    dialog.tmModalDialog('show');
+		});
 
                 // jquery onload
                 $(init);

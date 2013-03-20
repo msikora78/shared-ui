@@ -110,7 +110,7 @@
 
             setTimeout(function() {
                 deferred.resolve();
-            }, duration || 1);
+	    }, duration || 100);
 
             return deferred.promise();
         }
@@ -125,12 +125,16 @@
             };
         }
 
-        function evaluateBorderColor($component, color, directions) {
+	function evaluateBorderColor($component, color, directions, isRgba) {
             directions = directions ? directions : ['top', 'bottom', 'left', 'right'];
             expect(styleSupport($component, 'border-color')).toBeTruthy();
             for (var i = 0; i < directions.length; i++) {
                 var direction = directions[i];
-                expect($component.css(styleSupport($component, 'border-' + direction + '-color'))).toBe(color);
+		var cssColor = $component.css(styleSupport($component, 'border-' + direction + '-color'));
+		if (isRgba) {
+		    cssColor = parseRGBA(cssColor).toString();
+		}
+		expect(cssColor).toBe(color);
 
             };
         }

@@ -20,46 +20,62 @@ define(['injectable!tm/widgets/modalDialog', 'mock/gadgetPrefMock', './util'], f
     function runTest($, Util, ModalDialog) {
 
         describe('with jquery v' + $.fn.jquery, function() {
-            var $container, $modal, widget;
-    
+	    var $container, $modal, widget, primaryButton, secondaryButton;
+
             runAllTest(false);
             runAllTest(true);
 
-            function runAllTest(isLarge) { 
+	    function runAllTest(isLarge) {
                 describe(isLarge ? 'large size' : 'standard size', function() {
                     beforeEach(function() {
                         if (isLarge) {
-                            $modal = $('<div class="large">' + 
-                                    '<div class="modal-header">' + 
-                                        '<h3>Title Text</h3>' + 
-                                    '</div>' + 
-                                    '<div class="modal-body">' + 
-                                        '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>' + 
-                                    '</div>' + 
-                                    '<div class="modal-footer">' + 
-                                        '<button type="button" class="btn">Text</button>' + 
-                                        '<button type="button" class="btn btn-primary">Text</button>' + 
-                                    '</div>' + 
+			    $modal = $('<div class="large">' +
+				'<div class="modal-header">' +
+				'<h3>Title Text</h3>' +
+				'</div>' +
+				'<div class="modal-body">' +
+				'<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>' +
+				'</div>' +
                                 '</div>');
 
                         } else {
-                            $modal = $('<div>' + 
-                                    '<div class="modal-header">' + 
-                                        '<h3>Title Text</h3>' + 
-                                    '</div>' + 
-                                    '<div class="modal-body">' + 
-                                        '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>' + 
-                                    '</div>' + 
-                                    '<div class="modal-footer">' + 
-                                        '<button type="button" class="btn">Text</button>' + 
-                                        '<button type="button" class="btn btn-primary">Text</button>' + 
-                                    '</div>' + 
+			    $modal = $('<div>' +
+				'<div class="modal-header">' +
+				'<h3>Title Text</h3>' +
+				'</div>' +
+				'<div class="modal-body">' +
+				'<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>' +
+				'</div>' +
                                 '</div>');
                         }
                         $container = $('<div class="tm360" />').append($modal);
                         $('body').append($container);
-                        
-                        widget = new ModalDialog($modal);
+
+			primaryButton = {
+			    attributes: {
+				'data-primary-action': true
+			    },
+			    callback: function(e, dialog) {
+				dialog.hide();
+			    }
+			};
+
+			secondaryButton = {
+			    attributes: {
+				'data-secondary-action': true
+			    },
+			    callback: function(e, dialog) {
+				dialog.hide();
+			    }
+			};
+			spyOn(primaryButton, 'callback').andCallThrough();
+			spyOn(secondaryButton, 'callback').andCallThrough();
+
+			var options = {
+			    buttons: [secondaryButton, primaryButton]
+			};
+
+			widget = new ModalDialog($modal, options);
                         widget.show();
                     });
 
@@ -80,7 +96,7 @@ define(['injectable!tm/widgets/modalDialog', 'mock/gadgetPrefMock', './util'], f
                     it('should have a #FFF background with a 10px border that’s #000 at 25% opacity', function() {
                         expect($modal.css('background-color')).toBe(Util.convertHexaToRgb('ffffff'));
                         Util.evaluateBorderWidth($modal, '10px');
-                        //Util.evaluateBorderColor($modal, Util.parseShadowValue(Util.convertHexaToRgba("000000", '0.25')));
+			Util.evaluateBorderColor($modal, Util.convertHexaToRgba("000000", '0.25'), null, true);
                     });
 
                     if (isLarge) {
@@ -103,15 +119,6 @@ define(['injectable!tm/widgets/modalDialog', 'mock/gadgetPrefMock', './util'], f
                             expect($title.css('font-family')).toContain('MuseoSans500');
                             expect($title.css('color')).toBe(Util.convertHexaToRgb("4F5158"));
                         });
-
-                        it('should have margin of 20px 20px 30px 20px', function() {
-                            var $modalHeader = $modal.find('.modal-header');
-
-                            //expect(Util.calculateDistance($modalHeader, 'top')).toBe('20px');
-                            expect(Util.calculateDistance($modalHeader, 'right')).toBe('20px');
-                            //expect(Util.calculateDistance($modalHeader, 'bottom')).toBe('30px');
-                            expect(Util.calculateDistance($modalHeader, 'left')).toBe('20px');
-                        });
                     });
 
                     describe('Body section', function() {
@@ -121,15 +128,6 @@ define(['injectable!tm/widgets/modalDialog', 'mock/gadgetPrefMock', './util'], f
                             expect($body.css('font-size')).toBe('14px');
                             expect($body.css('font-family')).toContain('Arial');
                             expect($body.css('color')).toBe(Util.convertHexaToRgb("4F5158"));
-                        });
-
-                        it('should have margin of 0px 20px 20px 20px', function() {
-                            var $modalBody = $modal.find('.modal-body');
-
-                            //expect(Util.calculateDistance($modalBody, 'top')).toBe('20px'); 
-                            expect(Util.calculateDistance($modalBody, 'right')).toBe('20px');
-                            //expect(Util.calculateDistance($modalBody, 'bottom')).toBe('20px'); 
-                            expect(Util.calculateDistance($modalBody, 'left')).toBe('20px');
                         });
                     });
 
@@ -147,6 +145,24 @@ define(['injectable!tm/widgets/modalDialog', 'mock/gadgetPrefMock', './util'], f
                             expect($modalFooter.css('background-color')).toBe(Util.convertHexaToRgb('F5F5F7'));
                         });
                     });
+
+		    describe('Behaviour', function() {
+			it('should execute the primary action when user hit ENTER', function() {
+			    var e = $.Event("keyup");
+			    e.keyCode = e.which = 13;
+			    $modal.trigger(e);
+
+			    expect(primaryButton.callback).toHaveBeenCalled();
+			});
+
+			it('should execute the secondary action when user hit ESC', function() {
+			    var e = $.Event("keyup");
+			    e.keyCode = e.which = 27;
+			    $modal.trigger(e);
+
+			    expect(secondaryButton.callback).toHaveBeenCalled();
+			});
+		    });
                 });
             }
         });

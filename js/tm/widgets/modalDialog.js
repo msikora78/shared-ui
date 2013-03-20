@@ -5,9 +5,11 @@
      *	Creates the modal dialog prototype
      *  @returns {Function} modal dialog prototype
      */
-
     function factory($, gadgets) {
         var gadgetPrefs = new gadgets.Prefs();
+
+	var ENTER = 13;
+	var ESC = 27;
 
         // Standard button types for a modal dialog
         var buttonTypes = {
@@ -19,7 +21,6 @@
          *	Default renderer to use with a string content
          *	@param {String} content to render
          */
-
         function defaultRenderer(content) {
             return $('<p/>').text('' + content);
         }
@@ -29,7 +30,6 @@
          *  @param {Object} buttonDef definition of the button
          *	@param {DIV} element modal dialog element
          */
-
         function createButton(buttonDef, element) {
             var button = $('<button type="button" class="btn"></button>').text(buttonDef.text);
 
@@ -51,6 +51,33 @@
 
             return button;
         }
+
+	function getEventHandler($element, type) {
+
+	    var eventHandler = null;
+
+	    if ($element && $element.length){
+		var events = $element.data('events') || $._data($element[0], "events");
+		if (events) {
+		    $.each(events, function(i, event) {
+			$.each(event, function(i, handler) {
+			    if (handler.origType === type) {
+				eventHandler = handler.handler;
+			    }
+			});
+		    });
+		}
+
+		if (!eventHandler) {
+		    var func = $element.attr('on' + type);
+		    if (func) {
+			eventHandler = Function(func);
+		    }
+		}
+
+		return eventHandler;
+	    }
+	}
 
         // OK button to use by default if no other button is specified
         var okButton = {
@@ -80,7 +107,7 @@
         var ModalDialog = function(element, opts) {
             opts = $.extend({}, defaults, opts);
 
-            this.element = element.addClass('modal hide fade');
+	    this.element = element.addClass('modal hide fade').attr("tabindex", "-1");
             this.header = element.children('.modal-header');
             this.body = element.children('.modal-body');
             this.footer = element.children('.modal-footer');
@@ -125,16 +152,49 @@
 
         ModalDialog.prototype = {
             /**
+	     * Bind an action
+	     * @param  {String} action action name
+	     * @param  {Integer} which  key code
+	     */
+	    bindAction: function(action, which) {
+		var $action = this.element.find('.btn[' + action + ']');
+
+		var handler = getEventHandler($action, 'click');
+		if (handler) {
+		    $(document).on('keyup.tmModalDialog', function(e) {
+			e.which == which && handler();
+		    });
+		}
+	    },
+
+	    /**
+	     * Unbind an action
+	     * @param  {String} action action name
+	     */
+	    unbindAction: function(action) {
+		var $action = this.element.find('.btn[' + action + ']');
+
+		var handler = getEventHandler($action, 'click');
+		if (handler) {
+		    $(document).off('keyup.tmModalDialog');
+		}
+	    },
+
+	    /**
              *	Shows the dialog
              */
             show: function() {
                 this.element.modal('show');
+		this.bindAction('data-primary-action', ENTER);
+		this.bindAction('data-secondary-action', ESC);
             },
             /**
              *	Hides the dialog
              */
             hide: function() {
                 this.element.modal('hide');
+		this.unbindAction('data-primary-action', ENTER);
+		this.unbindAction('data-secondary-action', ESC);
             },
             /**
              *	Sets the content and render it
