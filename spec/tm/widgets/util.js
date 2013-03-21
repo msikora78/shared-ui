@@ -43,11 +43,7 @@
         }
 
         function convertHexaToRgba(hexa, opacity) {
-            return "rgba(" +
-                convertHexaToNumber(hexa.substr(0, 2)) + ", " +
-                convertHexaToNumber(hexa.substr(2, 2)) + ", " +
-                convertHexaToNumber(hexa.substr(4, 2)) + ", " +
-                opacity + ")";
+            return "rgba(" + convertHexaToNumber(hexa.substr(0, 2)) + ", " + convertHexaToNumber(hexa.substr(2, 2)) + ", " + convertHexaToNumber(hexa.substr(4, 2)) + ", " + opacity + ")";
         }
 
         function parseRGBA(value) {
@@ -58,16 +54,12 @@
                     r: parseInt(m[1]),
                     g: parseInt(m[2]),
                     b: parseInt(m[3]),
-                    a: Math.round(parseFloat(m[4])*100)/100
+                    a: Math.round(parseFloat(m[4]) * 100) / 100
                 }
             }
 
             parsedValue.toString = function() {
-                return "rgba("
-                    + this.rgba.r + ', '
-                    + this.rgba.g + ', '
-                    + this.rgba.b + ', '
-                    + this.rgba.a + ')';
+                return "rgba(" + this.rgba.r + ', ' + this.rgba.g + ', ' + this.rgba.b + ', ' + this.rgba.a + ')';
             }
 
             return parsedValue;
@@ -82,7 +74,7 @@
                     r: parseInt(m[1]),
                     g: parseInt(m[2]),
                     b: parseInt(m[3]),
-                    a: Math.round(parseFloat(m[4])*100)/100
+                    a: Math.round(parseFloat(m[4]) * 100) / 100
                 },
                 hShadow: mArgs[0],
                 vShadow: mArgs[1],
@@ -91,15 +83,7 @@
             }
 
             parsedValue.toString = function() {
-                return "rgba("
-                    + this.rgba.r + ', '
-                    + this.rgba.g + ', '
-                    + this.rgba.b + ', '
-                    + this.rgba.a + ') '
-                    + this.hShadow + ' '
-                    + this.vShadow + ' '
-                    + this.blur
-                    + ((this.spread) ? ' ' + this.spread : '');
+                return "rgba(" + this.rgba.r + ', ' + this.rgba.g + ', ' + this.rgba.b + ', ' + this.rgba.a + ') ' + this.hShadow + ' ' + this.vShadow + ' ' + this.blur + ((this.spread) ? ' ' + this.spread : '');
             }
 
             return parsedValue;
@@ -110,7 +94,7 @@
 
             setTimeout(function() {
                 deferred.resolve();
-	    }, duration || 100);
+            }, duration || 100);
 
             return deferred.promise();
         }
@@ -125,18 +109,21 @@
             };
         }
 
-	function evaluateBorderColor($component, color, directions, isRgba) {
+        function evaluateBorderColor($component, color, directions, isRgba) {
             directions = directions ? directions : ['top', 'bottom', 'left', 'right'];
             expect(styleSupport($component, 'border-color')).toBeTruthy();
             for (var i = 0; i < directions.length; i++) {
                 var direction = directions[i];
-		var cssColor = $component.css(styleSupport($component, 'border-' + direction + '-color'));
-		if (isRgba) {
-		    cssColor = parseRGBA(cssColor).toString();
-		}
-		expect(cssColor).toBe(color);
-
+                var cssColor = $component.css(styleSupport($component, 'border-' + direction + '-color'));
+                if (isRgba) {
+                    cssColor = parseRGBA(cssColor).toString();
+                }
+                expect(cssColor).toBe(color);
             };
+        }
+
+        function evaluateBackgroundColor($component, color) {
+            expect($component.css('background-color')).toBe(color);
         }
 
         function calculateDistance($component, direction) {
@@ -163,6 +150,7 @@
             calculateDistance: calculateDistance,
             evaluateBorderWidth: evaluateBorderWidth,
             evaluateBorderColor: evaluateBorderColor,
+            evaluateBackgroundColor: evaluateBackgroundColor,
             parseShadowValue: parseShadowValue
         }
     }

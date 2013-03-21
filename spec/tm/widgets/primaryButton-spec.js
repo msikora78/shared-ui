@@ -77,6 +77,7 @@ define(['./util'], function(Util) {
 
                         it('should be 1px border', function() {
                             var size = '1px';
+                            Util.evaluateBorderWidth($button, '1px');
                             expect(Util.styleSupport($button, 'border-width')).toBeTruthy();
                             expect($button.css(Util.styleSupport($button, 'border-top-width'))).toBe(size);
                             expect($button.css(Util.styleSupport($button, 'border-bottom-width'))).toBe(size);
