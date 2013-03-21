@@ -122,6 +122,15 @@
             };
         }
 
+        function evaluateBorderRadius($component, size, directions) {
+            directions = directions ? directions : ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
+            expect(styleSupport($component, 'border-radius')).toBeTruthy();
+            for (var i = 0; i < directions.length; i++) {
+                var direction = directions[i];
+                expect($component.css(styleSupport($component, 'border-' + direction + '-radius'))).toBe(size);
+            };
+        }
+
         function evaluateBackgroundColor($component, color) {
             expect($component.css('background-color')).toBe(color);
         }
@@ -151,6 +160,7 @@
             evaluateBorderWidth: evaluateBorderWidth,
             evaluateBorderColor: evaluateBorderColor,
             evaluateBackgroundColor: evaluateBackgroundColor,
+            evaluateBorderRadius: evaluateBorderRadius,
             parseShadowValue: parseShadowValue
         }
     }
