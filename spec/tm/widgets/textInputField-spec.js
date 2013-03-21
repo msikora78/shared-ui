@@ -10,7 +10,7 @@ define(['./util'], function(Util) {
     function runTest($, Util) {
 
         describe('with jquery v' + $.fn.jquery, function() {
-            var $container, $input;
+            var $container, $input, $inlineError;
 
             runAllTest(false);
             runAllTest(true);
@@ -21,9 +21,12 @@ define(['./util'], function(Util) {
 
                     beforeEach(function() {
                         $input = $('<input type="text" />');
+                        $inlineError = $('<span class="help-error">Error help text</span>');
+
                         if (isError){
                             var errorDiv = $('<div class="control-group error"/>');
                             errorDiv.append($input);
+                            errorDiv.append($inlineError);
                             $container = $('<div class="tm360"/>').append(errorDiv);
                         }
                         else {
@@ -40,6 +43,12 @@ define(['./util'], function(Util) {
                         expect($input.outerHeight()).toBe(28);
                     });
 
+                    it('should be 12px Arial Regular, #4f5158', function() {
+                        expect($input.css('font-family')).toContain('Arial');
+                        expect($input.css('font-size')).toBe('12px');
+                        expect($input.css('color')).toBe(Util.convertHexaToRgb('4f5158'));
+                    });
+
                     if (!isError) {
                         describe('default state', function() {
                             it('should have a #fff with 1px #c8c9ce border', function() {
@@ -54,22 +63,6 @@ define(['./util'], function(Util) {
                             });
                         });
 
-                        describe('active state', function() {
-                            beforeEach(function(){
-                                $input.focus();
-                            });
-
-                            it('should have a #fff with 1px #9296a3 border', function() {
-                                Util.evaluateBackgroundColor($input, Util.convertHexaToRgb("ffffff"));
-                                Util.evaluateBorderWidth($input, '1px');
-                                Util.evaluateBorderColor($input,  Util.convertHexaToRgb("9296a3"));
-                            });
-
-                            it('should have 3px #2d93d4 inner shadow at 1px distance, 0° angle, 35% opacity ', function() {
-                                var shadow = Util.parseShadowValue($input.css('box-shadow'));
-                                expect(shadow.toString()).toBe(Util.convertHexaToRgba('2d93d4', '0.35') + ' -1px 0px 3px 0px');
-                            });
-                        });
                     }
                     else {
                         describe('default state', function() {
@@ -85,10 +78,29 @@ define(['./util'], function(Util) {
                             });
                         });
 
-                        describe('active state', function() {
-                            //TBD
+                        describe('inline error', function() {
+                            it('should have 3px padding-top', function(){
+                                expect($inlineError.css('padding-top')).toBe('3px');
+                            });
                         });
                     }
+
+                    /*describe('active state', function() {
+                        beforeEach(function(){
+                            $input.focus();
+                        });
+
+                        it('should have a #fff with 1px #9296a3 border', function() {
+                            Util.evaluateBackgroundColor($input, Util.convertHexaToRgb("ffffff"));
+                            Util.evaluateBorderWidth($input, '1px');
+                            Util.evaluateBorderColor($input,  Util.convertHexaToRgb("9296a3"));
+                        });
+
+                        it('should have 3px #2d93d4 inner shadow at 1px distance, 0° angle, 35% opacity ', function() {
+                            var shadow = Util.parseShadowValue($input.css('box-shadow'));
+                            expect(shadow.toString()).toBe(Util.convertHexaToRgba('2d93d4', '0.35') + ' -1px 0px 3px 0px');
+                        });
+                    });*/
                 });
             }
         });
