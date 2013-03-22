@@ -55,33 +55,6 @@
             return button;
         }
 
-        function getEventHandler($element, type) {
-
-            var eventHandler = null;
-
-            if ($element && $element.length) {
-                var events = $element.data('events') || $._data($element[0], "events");
-                if (events) {
-                    $.each(events, function(i, event) {
-                        $.each(event, function(i, handler) {
-                            if (handler.origType === type) {
-                                eventHandler = handler.handler;
-                            }
-                        });
-                    });
-                }
-
-                if (!eventHandler) {
-                    var func = $element.attr('on' + type);
-                    if (func) {
-                        eventHandler = Function(func);
-                    }
-                }
-
-                return eventHandler;
-            }
-        }
-
         // OK button to use by default if no other button is specified
         var okButton = {
             text: gadgetPrefs.getMsg('tm.widgets.modalDialog.ok'),
@@ -162,12 +135,9 @@
             bindAction: function(action, which) {
                 var $action = this.element.find('.btn[' + action + ']');
 
-                var handler = getEventHandler($action, 'click');
-                if (handler) {
-                    $(document).on('keyup.tmModalDialog', function(e) {
-                        e.which == which && handler();
-                    });
-                }
+                $(document).on('keyup.tmModalDialog', function(e) {
+                    e.which == which && $action.click();
+                });
             },
 
             /**
@@ -175,12 +145,7 @@
              * @param  {String} action action name
              */
             unbindAction: function(action) {
-                var $action = this.element.find('.btn[' + action + ']');
-
-                var handler = getEventHandler($action, 'click');
-                if (handler) {
-                    $(document).off('keyup.tmModalDialog');
-                }
+                $(document).off('keyup.tmModalDialog');
             },
 
             /**
