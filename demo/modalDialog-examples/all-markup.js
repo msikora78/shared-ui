@@ -18,16 +18,12 @@ define(['jquery', 'widget!tm/widgets/modalDialog'], function($) {
     '    <div class="modal-footer">\n' +
     '        <button type="button" class="btn" >Maybe</button>\n' +
     '        <button type="button" data-secondary-action class="btn" >No</button>\n' +
-    '        <button type="button" data-primary-action class="btn btn-primary">Yes</button>\n' +
+    '        <button type="button" data-primary-action class="btn btn-primary" onclick="alert(\'Yes\')">Yes</button>\n' +
     '    </div>\n' +
     '</div>\n' +
     '<button type="button" class="btn btn-primary" id="all-markup-button">Click me</button>',
     setupString: "function() {\n \
         var dialog = $('#all-markup').tmModalDialog();\n \
-\n \
-        dialog.find('.btn[data-primary-action]').click(function() {\n \
-        alert('Yes');\n \
-        });\n \
 \n \
         dialog.find('.btn[data-secondary-action]').click(function() {\n \
         dialog.tmModalDialog('hide');\n \
