@@ -473,6 +473,13 @@
     box-shadow: none;
 }
 
+.tm360 .modal.fade {
+  -webkit-transition: initial;
+     -moz-transition: initial;
+       -o-transition: initial;
+          transition: initial;
+}
+
 .tm360 .modal.large {
     width: 636px;
 }

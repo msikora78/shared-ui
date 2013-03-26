@@ -33,28 +33,23 @@ define(['./util'], function(Util) {
 
                         if (disabled) {
                             classes.push('disabled');
-                        } 
+                        }
                         if (hover) {
                             classes.push('hover');
                         }
-                        
-                        $button = $('<button type="button" class="' + classes.join(' ')  + '">' + text + '</button>');
+
+                        $button = $('<button type="button" class="' + classes.join(' ') + '">' + text + '</button>');
                         $container = $('<div class="tm360"/>').append($button);
                         $('body').append($container);
                     });
 
-                     afterEach(function() {
+                    afterEach(function() {
                         $container.remove();
                     });
 
                     describe('common features', function() {
                         it('should be 3px rounded corners', function() {
-                            var size = '3px';
-                            expect(Util.styleSupport($button, 'border-radius')).toBeTruthy();
-                            expect($button.css(Util.styleSupport($button, 'border-top-left-radius'))).toBe(size);
-                            expect($button.css(Util.styleSupport($button, 'border-top-right-radius'))).toBe(size);
-                            expect($button.css(Util.styleSupport($button, 'border-bottom-left-radius'))).toBe(size);
-                            expect($button.css(Util.styleSupport($button, 'border-bottom-right-radius'))).toBe(size);
+                            Util.evaluateBorderRadius($button, '3px');
                         });
 
                         it('should always be a 10px left and right margin', function()  {
@@ -76,12 +71,7 @@ define(['./util'], function(Util) {
                         }
 
                         it('should be 1px border', function() {
-                            var size = '1px';
-                            expect(Util.styleSupport($button, 'border-width')).toBeTruthy();
-                            expect($button.css(Util.styleSupport($button, 'border-top-width'))).toBe(size);
-                            expect($button.css(Util.styleSupport($button, 'border-bottom-width'))).toBe(size);
-                            expect($button.css(Util.styleSupport($button, 'border-left-width'))).toBe(size);
-                            expect($button.css(Util.styleSupport($button, 'border-right-width'))).toBe(size);
+                            Util.evaluateBorderWidth($button, '1px');
                         });
 
                         it('should be 14px Museo Sans 500', function() {
@@ -95,19 +85,14 @@ define(['./util'], function(Util) {
                                 var rgb = Util.convertHexaToRgb("ffffff");
                                 expect($button.css('background-color')).toBe(rgb);
                             });
-                                                        
+
                             it('should have border #c8c9ce', function() {
-                                var rgb = Util.convertHexaToRgb("c8c9ce");
-                                expect(Util.styleSupport($button, 'border-color')).toBeTruthy();
-                                expect($button.css(Util.styleSupport($button, 'border-top-color'))).toBe(rgb);
-                                expect($button.css(Util.styleSupport($button, 'border-bottom-color'))).toBe(rgb);
-                                expect($button.css(Util.styleSupport($button, 'border-left-color'))).toBe(rgb);
-                                expect($button.css(Util.styleSupport($button, 'border-right-color'))).toBe(rgb);
+                                Util.evaluateBorderColor($button, Util.convertHexaToRgb("c8c9ce"));
                             });
 
                             it('should have #c8c9ce color', function() {
                                 var rgb = Util.convertHexaToRgb("c8c9ce");
-                                expect($button.css('color')).toBe(rgb);                                
+                                expect($button.css('color')).toBe(rgb);
                             });
                         });
                     } else if (hover) {
@@ -116,33 +101,27 @@ define(['./util'], function(Util) {
                                 var rgb = Util.convertHexaToRgb("10a946");
                                 expect($button.css('background-color')).toBe(rgb);
                             });
-                            
+
                             it('should have border #4f5158', function() {
-                                var rgb = Util.convertHexaToRgb("4f5158");
-                                expect(Util.styleSupport($button, 'border-color')).toBeTruthy();
-                                expect($button.css(Util.styleSupport($button, 'border-top-color'))).toBe(rgb);
-                                expect($button.css(Util.styleSupport($button, 'border-bottom-color'))).toBe(rgb);
-                                expect($button.css(Util.styleSupport($button, 'border-left-color'))).toBe(rgb);
-                                expect($button.css(Util.styleSupport($button, 'border-right-color'))).toBe(rgb);
+                                Util.evaluateBorderColor($button, Util.convertHexaToRgb("4f5158"));
                             });
 
                             it('should have #fff color', function() {
                                 var rgb = Util.convertHexaToRgb("ffffff");
-                                expect($button.css('color')).toBe(rgb);                                
+                                expect($button.css('color')).toBe(rgb);
                             });
 
                             it('should have box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25)', function() {
                                 var boxShadow = Util.parseShadowValue($button.css('box-shadow'));
-                                expect(boxShadow.toString()).toBe('rgba(0, 0, 0, 0.25) 0px 1px 3px 0px'); 
+                                expect(boxShadow.toString()).toBe('rgba(0, 0, 0, 0.25) 0px 1px 3px 0px');
                             });
 
                             it('should have text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25)', function() {
                                 var textShadow = Util.parseShadowValue($button.css('text-shadow'));
-                                expect(textShadow.toString()).toBe('rgba(0, 0, 0, 0.25) -1px -1px 1px'); 
+                                expect(textShadow.toString()).toBe('rgba(0, 0, 0, 0.25) -1px -1px 1px');
                             });
                         });
-                    }
-                    else {
+                    } else {
                         describe('default state', function() {
                             it('should have a gradient #38c56a at top to #10a946 at bottom', function() {
                                 var rgbTop = Util.convertHexaToRgb("38c56a");
@@ -153,22 +132,17 @@ define(['./util'], function(Util) {
                             });
 
                             it('should be border #4f5158', function() {
-                                var rgb = Util.convertHexaToRgb("4f5158");
-                                expect(Util.styleSupport($button, 'border-color')).toBeTruthy();
-                                expect($button.css(Util.styleSupport($button, 'border-top-color'))).toBe(rgb);
-                                expect($button.css(Util.styleSupport($button, 'border-bottom-color'))).toBe(rgb);
-                                expect($button.css(Util.styleSupport($button, 'border-left-color'))).toBe(rgb);
-                                expect($button.css(Util.styleSupport($button, 'border-right-color'))).toBe(rgb);
+                                Util.evaluateBorderColor($button, Util.convertHexaToRgb("4f5158"));
                             });
 
                             it('should have #fff color ', function() {
                                 var rgb = Util.convertHexaToRgb("FFFFFF");
-                                expect($button.css('color')).toBe(rgb);                                
+                                expect($button.css('color')).toBe(rgb);
                             });
 
                             it('should have text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25) ', function() {
                                 var textShadow = Util.parseShadowValue($button.css('text-shadow'));
-                                expect(textShadow.toString()).toBe('rgba(0, 0, 0, 0.25) -1px -1px 1px'); 
+                                expect(textShadow.toString()).toBe('rgba(0, 0, 0, 0.25) -1px -1px 1px');
                             });
                         });
                     }

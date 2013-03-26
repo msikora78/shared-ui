@@ -9,6 +9,9 @@
     function factory($, gadgets) {
         var gadgetPrefs = new gadgets.Prefs();
 
+        var ENTER = 13;
+        var ESC = 27;
+
         // Standard button types for a modal dialog
         var buttonTypes = {
             primary: 'btn-primary',
@@ -80,7 +83,7 @@
         var ModalDialog = function(element, opts) {
             opts = $.extend({}, defaults, opts);
 
-            this.element = element.addClass('modal hide fade');
+            this.element = element.addClass('modal hide fade').attr("tabindex", "-1");
             this.header = element.children('.modal-header');
             this.body = element.children('.modal-body');
             this.footer = element.children('.modal-footer');
@@ -125,16 +128,41 @@
 
         ModalDialog.prototype = {
             /**
+             * Bind an action
+             * @param  {String} action action name
+             * @param  {Integer} which  key code
+             */
+            bindAction: function(action, which) {
+                var $action = this.element.find('.btn[' + action + ']');
+
+                $(document).on('keyup.tmModalDialog', function(e) {
+                    e.which == which && $action.click();
+                });
+            },
+
+            /**
+             * Unbind an action
+             * @param  {String} action action name
+             */
+            unbindAction: function(action) {
+                $(document).off('keyup.tmModalDialog');
+            },
+
+            /**
              *	Shows the dialog
              */
             show: function() {
                 this.element.modal('show');
+                this.bindAction('data-primary-action', ENTER);
+                this.bindAction('data-secondary-action', ESC);
             },
             /**
              *	Hides the dialog
              */
             hide: function() {
                 this.element.modal('hide');
+                this.unbindAction('data-primary-action', ENTER);
+                this.unbindAction('data-secondary-action', ESC);
             },
             /**
              *	Sets the content and render it
