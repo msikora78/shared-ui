@@ -3,9 +3,12 @@
 
 	function factory($) {
 		var spriteHeight = "25";
-		var labelsEventsHandledByBrowser = !$.browser.msie || parseFloat($.browser.version) > 8;
+		var labelsEventsHandledByBrowser = true;
 
 		var CheckableBase = function(element, opts, spriteLeft, className) {
+			if ($.browser) {
+				labelsEventsHandledByBrowser = !$.browser.msie || parseFloat($.browser.version) > 8;
+			}
 			this._labelsEventsHandledByBrowser = labelsEventsHandledByBrowser;
 			this.spriteLeft = spriteLeft;
 			this.className = className;			
