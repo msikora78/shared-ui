@@ -12,12 +12,12 @@ define(['jquery', 'widget!tm/widgets/checkbox'], function($) {
               state: <span id="checkbox1state">false</span>\n\
               <button type="button" id="toggleViaWidget" class="btn">Toggle enabled</button>\n\
             </p>\n\
-            <div>\n\
+            <p>\n\
               <label for="checkbox2" class="inline">\n\
                 <input type="checkbox" id="checkbox2" class="checkbox" checked />Checkbox2\n\
               </label>\n\
               state: <span id="checkbox2state">true</span>\n\
-            </div>\n\
+            </p>\n\
             <p>\n\
               <label for="checkbox3" class="inline">\n\
                 <input type="checkbox" id="checkbox3" class="checkbox" disabled />Checkbox3\n\
@@ -36,7 +36,6 @@ define(['jquery', 'widget!tm/widgets/checkbox'], function($) {
     $("input[type=checkbox]").tmCheckbox().change( function() {\n\
         var isChecked = $(this).attr("checked") != undefined;\n\
         $("#" + $(this).attr("id") + "state").text(isChecked); \n\
-        console.log("Checked changed");\n\
     });\n\
 \n\
     $("#toggleViaWidget").click( function() {\n\
@@ -46,7 +45,7 @@ define(['jquery', 'widget!tm/widgets/checkbox'], function($) {
 \n\
     $("#reset").click(function() {\n\
         setTimeout(function() {\n\
-            $("input").triggerHandler("change");\n\
+            $("#checkbox-container input").triggerHandler("change");\n\
         }, 0);\n\
     });\n\
 }'

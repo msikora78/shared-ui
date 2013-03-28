@@ -168,10 +168,22 @@
 .tm360 .tmCheckbox {
     width: 13px;
     height: 18px;
-    padding: 0 5px 0 0;
+    padding-right: 5px;
+    margin-bottom: -2px;
     display: inline-block;
     cursor: pointer;
-    background: url("img/checkbox.png") no-repeat;
+    background: url("img/checkboxes-radiobuttons.png") no-repeat;
+}
+
+.tm360 .tmRadiobutton {
+    width: 13px;
+    height: 18px;
+    padding-right: 5px;
+    margin-bottom: -2px;
+    display: inline-block;
+    cursor: pointer;
+    background: url("img/checkboxes-radiobuttons.png") no-repeat;
+    background-position: 20px 0px;
 }
 
 .tm360 .control-group.error .checkbox,

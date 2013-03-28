@@ -71,6 +71,22 @@
 
         /**
          * @function
+         * 
+         *
+         * Example:
+         *  
+         * @param {String} 
+         * @return {Object}      
+         */
+        tm.inheritMethods = function(baseClass, currentClass) {
+            var inheritedMethods = function() {
+            };
+            inheritedMethods.prototype = baseClass.prototype;
+            currentClass.prototype = new inheritedMethods();
+        };
+        
+        /**
+         * @function
          * Copies all properties from one or more objects into a new object. 
          * Similar to jQuery.extend, but skips properties with null 
          * values and doesn't affect the original objects.
