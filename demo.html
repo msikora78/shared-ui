@@ -56,6 +56,9 @@
         <script src="js/tm/date.js"></script>
 	<script src="js/tm/widgets/widgetFactory.js"></script>
 	<script src="js/tm/widgets/modalDialog.js"></script>
+    <script src="js/tm/widgets/checkbox.js"></script>
+    <script src="js/tm/widgets/radiobutton.js"></script>
+
     </head>
     <body class="tm360">
         <div id="container">
@@ -201,6 +204,9 @@
                                             Checkbox Disabled
                                         </label>
                                     </div>
+                                    <div style="margin-top: 10px;">
+                                        <a href="demo/index.html?url=demo%2Fcheckboxes-and-radiobuttons-examples%2Fall">See more ...</a>
+                                    </div>
                                 </div>
                                 <div class="control-group">
                                     <div class="controls">
@@ -220,6 +226,9 @@
                                             <input type="radio" id="inactive-selected-radiobutton" disabled checked />
                                             Disabled selected radio
                                         </label>
+                                    </div>
+                                    <div style="margin-top: 10px;">
+                                        <a href="demo/index.html?url=demo%2Fcheckboxes-and-radiobuttons-examples%2Fall">See more ...</a>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -367,6 +376,8 @@
                     // date picker
                     $("#dateselect").datepicker();
                     $("#multidateselect").multiDatesPicker();
+                    $('input[type="checkbox"]').tmCheckbox();
+                    $('input[type="radio"]').tmRadiobutton();
                 }
 
 		var yesButton = {

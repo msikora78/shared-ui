@@ -23,21 +23,6 @@
 		}
 
 		CheckableBase.prototype = {
-			_click: function(e) {
-				if ($(e.target).prop("tagName") != "INPUT") {
-					if (!this.element.attr("disabled")) {
-						this._onClick && this._onClick();
-						this.element.triggerHandler("change");
-						this.element.triggerHandler("click");
-						e.stopImmediatePropagation();
-					}
-				}
-			},
-
-			_elementClick: function(e) {
-				this._onElementClick && this._onElementClick(e);
-			},
-
 			setEnabled: function(isEnabled) {
 				if (isEnabled) {
 					this.element.removeAttr("disabled");
@@ -53,6 +38,21 @@
 
 			setChecked: function(isChecked) {
 				this._setState(isChecked);
+			},
+
+			_click: function(e) {
+				if ($(e.target).prop("tagName") != "INPUT") {
+					if (!this.element.attr("disabled")) {
+						this._onClick && this._onClick();
+						this.element.triggerHandler("change");
+						this.element.triggerHandler("click");
+						e.stopImmediatePropagation();
+					}
+				}
+			},
+
+			_elementClick: function(e) {
+				this._onElementClick && this._onElementClick(e);
 			},
 
 			_setState: function(state, element) {
