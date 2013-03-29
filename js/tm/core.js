@@ -71,12 +71,13 @@
 
         /**
          * @function
-         * 
+         * Allows to "inherit" the methods from a baseclass.
          *
          * Example:
-         *  
-         * @param {String} 
-         * @return {Object}      
+         *  tm.inheritMethods(checkableBase, Checkbox);
+         *
+         * @param {Object} baseClass Object to inherit from.
+         * @param {Object} currentClass Object that will receive the methods of baseClass
          */
         tm.inheritMethods = function(baseClass, currentClass) {
             var inheritedMethods = function() {
