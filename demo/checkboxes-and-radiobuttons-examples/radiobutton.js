@@ -14,15 +14,18 @@ define(['jquery', 'widget!tm/widgets/radiobutton'], function($) {
               </label>\n\
             </p>\n\
             <p>\n\
-              <label for="radio2" class="inline">\n\
+              <label for="radio2" style="display: inline;">\n\
                 <input type="radio" id="radio2" name="activeGroup" value="2" checked />Radiobutton2\n\
               </label>\n\
-              Selected value: <span id="activeGroupState">2</span>\n\
+              <span style="margin-left: 25px; display: inline;">\n\
+                  Selected value: <span id="activeGroupState">2</span>\n\
+              </span>\n\
             </p>\n\
             <p>\n\
-              <label for="radio3" class="inline">\n\
+              <label for="radio3" style="display: inline;">\n\
                 <input type="radio" id="radio3" name="inactiveGroup" disabled />Radiobutton3\n\
               </label>\n\
+              <input type="reset" id="resetRadioButtons" class="btn btn-primary" style="display: inline; margin-left: 25px;" value="Reset form" />\n\
             </p>\n\
             <p>\n\
               <label for="radio4" class="inline">\n\
@@ -30,7 +33,6 @@ define(['jquery', 'widget!tm/widgets/radiobutton'], function($) {
               </label>\n\
             </p>\n\
             <p>\n\
-              <input type="reset" id="reset" class="btn btn-primary" value="Reset form" />\n\
             </p>\n\
           </form>',
     setupString: 'function() {\n\
@@ -43,10 +45,10 @@ define(['jquery', 'widget!tm/widgets/radiobutton'], function($) {
         $("#radio1").tmRadiobutton("setEnabled", isEnabled);\n\
     });\n\
 \n\
-    $("#reset").click(function() {\n\
+    $("#resetRadioButtons").click(function() {\n\
         setTimeout(function() {\n\
-            $("#radiobutton-container input").each(function(i, input){\n\
-                input.triggerHandler("change");\n\
+            $("#radiobutton-container input").each(function(){\n\
+                $(this).triggerHandler && $(this).triggerHandler("change");\n\
             });\n\
         }, 0);\n\
     });\n\

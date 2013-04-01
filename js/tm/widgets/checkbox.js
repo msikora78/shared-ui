@@ -14,7 +14,9 @@
 		core.inheritMethods(checkableBase, Checkbox);
 
 		Checkbox.prototype._onClick = function(e) { 
-			this._toggleState(); 
+			if (this._labelsEventsHandledByBrowser) {
+				this._toggleState();
+			}
 		};
 
 		Checkbox.prototype._onElementClick = function(e) { 
@@ -22,6 +24,7 @@
 				this._setState(this.element.prop("checked")); 
 			} else {
 				this._toggleState();
+				$(e.target).triggerHandler("change");
 			}
 		};
 
