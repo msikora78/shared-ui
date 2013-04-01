@@ -32,7 +32,7 @@
 	if (typeof define === 'function' && define.amd) {
 		define(['jquery', 'global!gadgets', 'tm/core', 'tm/widgets/checkableBase', 'bootstrap'], factory);
 	} else {
-		tm.widgets.widgetFactory.make('tmCheckbox', factory($, gadgets, tm, checkableBase));
+		tm.widgets.widgetFactory.make('tmCheckbox', factory($, gadgets, tm, tm.widgets.checkableBase));
 	}
 
 })();
