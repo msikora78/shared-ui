@@ -43,7 +43,7 @@
 			_click: function(e) {
 				if ($(e.target).prop("tagName") != "INPUT") {
 					if (!this.element.attr("disabled")) {
-						this._onClick && this._onClick();
+						this._onClick && this._onClick(e);
 						this.element.triggerHandler("change");
 						this.element.triggerHandler("click");
 						e.stopImmediatePropagation();

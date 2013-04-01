@@ -14,17 +14,12 @@
 		core.inheritMethods(checkableBase, Checkbox);
 
 		Checkbox.prototype._onClick = function(e) { 
-			if (this._labelsEventsHandledByBrowser) {
-				this._toggleState();
-			}
+			this._toggleState();
 		};
 
 		Checkbox.prototype._onElementClick = function(e) { 
 			if (this._labelsEventsHandledByBrowser) {
 				this._setState(this.element.prop("checked")); 
-			} else {
-				this._toggleState();
-				$(e.target).triggerHandler("change");
 			}
 		};
 
