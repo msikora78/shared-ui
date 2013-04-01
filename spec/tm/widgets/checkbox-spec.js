@@ -21,16 +21,15 @@ define(['injectable!tm/widgets/checkbox', 'tm/widgets/checkableBase', 'mock/gadg
         describe('with jquery v' + $.fn.jquery, function() {
             var $container, $checkbox, widget;
             
-            runAllTest('Text');
-            runAllTest('Text', true);
-            runAllTest('Text', true, true);
-            runAllTest('Text', false, true);
+            runAllTest();
+            runAllTest(true);
+            runAllTest(true, true);
+            runAllTest(false, true);
 
-            function runAllTest(text, checked, disabled) {
+            function runAllTest(checked, disabled) {
                 var desc = '';
-                desc += disabled ? 'inactive ' : '';
-                desc += checked ? 'selected ' : 'unselected ';
-                desc += 'with text "' + text + '"';
+                desc += checked ? 'Selected ' : 'Unselected ';
+                desc += disabled ? 'inactive ' : 'active';
 
                 describe(desc, function() {
                     beforeEach(function() {
@@ -54,52 +53,44 @@ define(['injectable!tm/widgets/checkbox', 'tm/widgets/checkableBase', 'mock/gadg
                         $container.remove();
                     });
 
+                    if (checked && disabled)  {
+                        it('should be disabled and checked', function() {
+                            expect($checkbox.prop("disabled")).toBe(true);
+                            expect($checkbox.prop("checked")).toBe(true);
+                        });
+                        it('should have background-position at 0px -75px', function() {
+                            expect($checkbox.next().css("background-position")).toBe("0px -75px");
+                        });
+                    } else if (disabled)  {
+                        it('should be disabled', function() {
+                            expect($checkbox.prop("disabled")).toBe(true);
+                        });
+                        it('should have background-position at 0px -25px', function() {
+                            expect($checkbox.next().css("background-position")).toBe("0px -25px");
+                        });
+                    } else if (checked) {
+                        it('should be checked', function() {
+                            expect($checkbox.prop("checked")).toBe(true);
+                        });                            
+                        it('should have background-position at 0px -50px', function() {
+                            expect($checkbox.next().css("background-position")).toBe("0px -50px");
+                        });
+                    }
+                    else {
+                        it('should not be checked or disabled', function() {
+                            expect($checkbox.attr("checked")).toBe(undefined);
+                            expect($checkbox.attr("disabled")).toBe(undefined);
+                        });                            
+                        it('should have background-position at 0px 0px', function() {
+                            expect($checkbox.next().css("background-position")).toBe("0px 0px");
+                        });
+                    }
+
                     describe('CSS common attributes', function() {
                         it('should be 18px height', function() {
                             expect($checkbox.next().outerHeight()).toBe(18);
                         });
                     });
-
-                    if (checked && disabled)  {
-                        describe('inactive state', function() {
-                            it('should be disabled and checked', function() {
-                                expect($checkbox.prop("disabled")).toBe(true);
-                                expect($checkbox.prop("checked")).toBe(true);
-                            });
-                            it('should have background-position at 0px -75px', function() {
-                                expect($checkbox.next().css("background-position")).toBe("0px -75px");
-                            })
-                     });
-                    } else if (disabled)  {
-                        describe('inactive state', function() {
-                            it('should be disabled', function() {
-                                expect($checkbox.prop("disabled")).toBe(true);
-                            });
-                            it('should have background-position at 0px -25px', function() {
-                                expect($checkbox.next().css("background-position")).toBe("0px -25px");
-                            })
-                        });
-                    } else if (checked) {
-                        describe('checked state', function() {
-                            it('should be checked', function() {
-                                expect($checkbox.prop("checked")).toBe(true);
-                            });                            
-                            it('should have background-position at 0px -50px', function() {
-                                expect($checkbox.next().css("background-position")).toBe("0px -50px");
-                            })
-                        });
-                    }
-                    else {
-                        describe('default state', function() {
-                            it('should not be checked or disabled', function() {
-                                expect($checkbox.attr("checked")).toBe(undefined);
-                                expect($checkbox.attr("disabled")).toBe(undefined);
-                            });                            
-                            it('should have background-position at 0px 0px', function() {
-                                expect($checkbox.next().css("background-position")).toBe("0px 0px");
-                            })
-                        });
-                    }
                 });
             }
         });
