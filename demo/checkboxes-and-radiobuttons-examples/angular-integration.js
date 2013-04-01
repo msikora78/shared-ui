@@ -1,7 +1,7 @@
 define(['jquery', 'angular', 'widget!tm/widgets/checkbox', 'widget!tm/widgets/radiobutton'], function($, angular) {
 	
 	var data = {
-		legend: 'Checkbox angular integration',
+		legend: 'Angular integration',
 		description: 'Checkboxes and Radiobuttons widget applied in an angular directive.',
 		html: '<div id="angularContainer" ng-controller="checkboxesController">\n\
 				<div>\n\

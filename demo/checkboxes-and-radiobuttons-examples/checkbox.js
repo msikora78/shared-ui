@@ -45,7 +45,9 @@ define(['jquery', 'widget!tm/widgets/checkbox'], function($) {
 \n\
     $("#reset").click(function() {\n\
         setTimeout(function() {\n\
-            $("#checkbox-container input").triggerHandler("change");\n\
+            $("#checkbox-container input").each(function(i, input){\n\
+                input.triggerHandler("change");\n\
+            });\n\
         }, 0);\n\
     });\n\
 }'
