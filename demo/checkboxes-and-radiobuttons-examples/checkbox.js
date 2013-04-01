@@ -6,11 +6,13 @@ define(['jquery', 'widget!tm/widgets/checkbox'], function($) {
         html:'\
           <form id="checkbox-container" type="">\n\
             <p>\n\
-              <label for="checkbox1">\n\
+              <label for="checkbox1" style="display: inline;">\n\
                 <input type="checkbox" id="checkbox1" />Checkbox1\n\
               </label>\n\
+              <label style="margin-left: 25px; display: inline;">\n\
+                <input type="checkbox" id="toggleCheckbox1Enable" checked />Enabled\n\
+              </label><br>\n\
               state: <span id="checkbox1state">false</span>\n\
-              <button type="button" id="toggleViaWidget" class="btn">Toggle enabled</button>\n\
             </p>\n\
             <p>\n\
               <label for="checkbox2" class="inline">\n\
@@ -38,8 +40,8 @@ define(['jquery', 'widget!tm/widgets/checkbox'], function($) {
         $("#" + $(this).attr("id") + "state").text(isChecked); \n\
     });\n\
 \n\
-    $("#toggleViaWidget").click( function() {\n\
-        var isEnabled = $("#checkbox1").tmCheckbox("getEnabled");\n\
+    $("#toggleCheckbox1Enable").change( function() {\n\
+        var isEnabled = $("#toggleCheckbox1Enable").prop("checked");\n\
         $("#checkbox1").tmCheckbox("setEnabled", isEnabled);\n\
     });\n\
 \n\
