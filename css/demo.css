@@ -1,0 +1,24 @@
+.console {
+	height: 100px; 
+	width: 250px; 
+	overflow-y: auto; 
+	background-color: whiteSmoke;
+	border-style: solid; 
+	border-color: #CCCCCC;
+	border-width: 1px;
+	padding: 5px;
+}
+
+/*Buttons examples*/
+#overview-buttons-container {
+	padding-bottom: 20px;
+}
+
+#overview-buttons-container div {
+	padding-bottom: 10px;
+}
+
+#overview-buttons-container table tr td {
+	padding-right: 20px;
+	width: 50%;
+}
