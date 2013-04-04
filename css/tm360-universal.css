@@ -172,7 +172,7 @@
     margin-bottom: -2px;
     display: inline-block;
     cursor: pointer;
-    background: url("img/checkboxes-radiobuttons.png") no-repeat;
+    background: url("img/grfx-perm-01.png") no-repeat;
 }
 
 .tm360 .tmRadiobutton {
@@ -182,8 +182,7 @@
     margin-bottom: -2px;
     display: inline-block;
     cursor: pointer;
-    background: url("img/checkboxes-radiobuttons.png") no-repeat;
-    background-position: 20px 0px;
+    background: url("img/grfx-perm-01.png") no-repeat;
 }
 
 .tm360 .control-group.error .checkbox,
@@ -372,8 +371,10 @@
 .tm360 .btn-group {
     *border: 1px solid #ccc;
  /* ie7 */
+    width: auto;
+    top: -3px;
+    display: inline-block;
 }
-
 .tm360 .btn-group.open {
     *border-color: #aaa;
  /* ie7 */
@@ -393,22 +394,27 @@
     border-radius: 3px;
 }
 
+.tm360 .btn-group > button.btn {
+    width: 100%;
+}
+
 .tm360 .btn-group.open > .btn {
     border-color: #1f2127;
 }
 
 .tm360 .btn .caret {
     position: absolute;
-    margin-top: 5px;
+    margin-top: 3px;
     *margin-top: 1px;
     opacity: 1;
     right: 10px;
     border-top: 4px solid #4F5158;
     filter: alpha(opacity=100);
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
 }
 
 .tm360 .btn-group > .dropdown-toggle {
-    min-width: 122px;
     padding: 8px 28px 4px 10px;
     *padding: 2px 28px 0px 10px;
     text-align: left;
@@ -428,6 +434,8 @@
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    padding: 10px 0;
+    min-width: 99.5%;
 }
 
 .tm360 .btn-group.open > .btn.dropdown-toggle {
@@ -449,12 +457,20 @@
 
 .tm360 .dropdown-menu a {
     color: #4F5158;
-    line-height: 28px;
-    padding: 4px 10px 2px;
+    line-height: 18px;
+    padding: 10px 10px 7px;
     margin: 0 10px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+    cursor: pointer;
+    white-space: normal;
+}
+
+.tm360 .dropdown-menu a.nowrap {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .tm360 .dropdown-menu li > a:hover,

@@ -2,13 +2,15 @@
 	"use strict";
 
 	function factory($, gadgets, core, checkableBase) {
-		
-		var className = "tmCheckbox";
-		var spriteLeft = "0";
 
 		var Checkbox = function(element, opts) {
-			checkableBase.call(this, element, opts, spriteLeft, className);
-			this.element = element;
+			this.spriteLeft = "178";
+			this.spriteHeight = "24";
+			this.spriteWidth = "20";
+			this.spriteTop = "6";
+			this.className = "tmCheckbox";
+
+			checkableBase.call(this, element, opts);
 		};
 
 		core.inheritMethods(checkableBase, Checkbox);

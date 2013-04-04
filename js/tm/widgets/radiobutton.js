@@ -3,11 +3,14 @@
 
 	function factory($, gadgets, core, checkableBase) {
 
-		var className = "tmRadiobutton";
-		var spriteLeft = "-20";
-
 		var Radiobutton = function(element, opts) {
-			checkableBase.call(this, element, opts, spriteLeft, className);
+			this.spriteLeft = "342";
+			this.spriteHeight = "24";
+			this.spriteWidth = "24";
+			this.spriteTop = "6";
+			this.className = "tmRadiobutton";
+
+			checkableBase.call(this, element, opts);
 
 			this.groupName = $(this.element).attr("name");
 			this.parentForm = this.element.closest('form');

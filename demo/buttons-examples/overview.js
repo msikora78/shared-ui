@@ -4,17 +4,17 @@ define(['jquery'], function($) {
         legend: 'Overview',
         description: 'Standard bootstrap buttons.',
         html:'\
-<div id="overview-buttons-container">\n\
+<div id="overview-buttons-container" class="demo-container">\n\
     <table><tr><td>\n\
-        <div>\n\
+        <div class="demo-group">\n\
             <button id="overviewPrimaryButton" type="button" class="btn btn-primary">Primary</button>\n\
             <button id="overviewInactivePrimaryButton" type="button" class="btn btn-primary disabled" disabled>Disabled</button>\n\
         </div>\n\
-        <div>\n\
+        <div class="demo-group">\n\
             <button id="overviewSecondaryButton" type="button" class="btn">Secondary</button>\n\
             <button id="overviewInactiveSecondaryButton" type="button" class="btn disabled" disabled>Disabled</button>\n\
         </div>\n\
-        <div>\n\
+        <div class="demo-group">\n\
             <button id="overviewImportantButton" type="button" class="btn btn-success">Important</button>\n\
             <button id="overviewInactiveImportantButton" type="button" class="btn btn-success disabled" disabled>Disabled</button>\n\
         </div>\n\

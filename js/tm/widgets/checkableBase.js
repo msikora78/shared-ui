@@ -2,18 +2,15 @@
 	"use strict";
 
 	function factory($) {
-		var spriteHeight = "25";
 		var labelsEventsHandledByBrowser = true;
 
-		var CheckableBase = function(element, opts, spriteLeft, className) {
+		var CheckableBase = function(element, opts) {
 			if ($.browser) {
 				labelsEventsHandledByBrowser = !$.browser.msie || parseFloat($.browser.version) > 8;
 			}
 			this._labelsEventsHandledByBrowser = labelsEventsHandledByBrowser;
-			this.spriteLeft = spriteLeft;
-			this.className = className;			
 			this.element = $(element).hide();
-			this.span = $('<span class="' + className + '" />').insertAfter(this.element);;
+			this.span = $('<span class="' + this.className + '" />').insertAfter(this.element);;
 			this.parentLabel = this.element.closest("label");
 			this.linkedLabels = $("label[for='" + this.element.attr('id') + "']");
 
@@ -60,9 +57,8 @@
 					element = this.element;
 				}
 
-				var translateState = (state) ? spriteHeight * -2 : 0,
-					translateActive = (element.attr("disabled")) ? spriteHeight * -1 : 0,
-					translation = translateState + translateActive;
+				var spriteX = ((element.attr("disabled")) ? this.spriteWidth * -1 : 0) - this.spriteLeft;
+				var spriteY = ((state) ? this.spriteHeight * -1 : 0) - this.spriteTop;
 
 				if (state) {
 					element.prop("checked", true);
@@ -71,7 +67,7 @@
 					element.prop("checked", false);
 				}
 
-				element.next().css({backgroundPosition: this.spriteLeft + "px " + translation + "px"});
+				element.next().css({backgroundPosition: spriteX + "px " + spriteY + "px"});
 			},
 
 			_toggleState: function() {

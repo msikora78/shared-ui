@@ -13,6 +13,7 @@
         <!-- tm360 Shared-UI CSS -->
         <link rel="stylesheet" href="css/tm360-base.css" />
         <link rel="stylesheet" href="css/tm360-universal.css" />
+        <link rel="stylesheet" href="css/demo.css" />
         <!-- link rel="stylesheet" href="css/bootstrap-content-rewrite-fix.css" / -->
 
 
@@ -44,21 +45,21 @@
         -->
 
         <!-- tm360 Shared-UI JS -->
-	<script>
-	    var Prefs = function(){};
-	    Prefs.prototype.getMsg = function() {};
-	    gadgets = {Prefs : Prefs};
-	</script>
+    	<script>
+    	    var Prefs = function(){};
+    	    Prefs.prototype.getMsg = function() {};
+    	    gadgets = {Prefs : Prefs};
+    	</script>
 
         <script src="js/tm/core.js"></script>
         <script src="js/tm/cookie.js"></script>
         <script src="js/tm/string.js"></script>
         <script src="js/tm/date.js"></script>
-	<script src="js/tm/widgets/widgetFactory.js"></script>
-	<script src="js/tm/widgets/modalDialog.js"></script>
-    <script src="js/tm/widgets/checkableBase.js"></script>
-    <script src="js/tm/widgets/checkbox.js"></script>
-    <script src="js/tm/widgets/radiobutton.js"></script>
+    	<script src="js/tm/widgets/widgetFactory.js"></script>
+    	<script src="js/tm/widgets/modalDialog.js"></script>
+        <script src="js/tm/widgets/checkableBase.js"></script>
+        <script src="js/tm/widgets/checkbox.js"></script>
+        <script src="js/tm/widgets/radiobutton.js"></script>
 
     </head>
     <body class="tm360">
@@ -190,7 +191,7 @@
                                         <span class="help-error">Error help text</span>
                                     </div>
                                 </div>
-                                <div class="control-group">
+                                <div class="control-group top-hr">
                                     <div class="controls">
                                         <label class="checkbox">
                                             <input type="checkbox" value="" />
@@ -208,9 +209,6 @@
                                             <input type="checkbox" value="" disabled checked />
                                             Disabled checked checkbox
                                         </label>
-                                    </div>
-                                    <div style="margin-top: 10px;">
-                                        <a href="demo/index.html?url=demo%2Fcheckboxes-and-radiobuttons-examples%2Fall">See more ...</a>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -233,11 +231,11 @@
                                         </label>
                                     </div>
                                     <div style="margin-top: 10px;">
-                                        <a href="demo/index.html?url=demo%2Fcheckboxes-and-radiobuttons-examples%2Fall">See more ...</a>
+                                        <a href="demo/index.html?url=demo%2Fcheckboxes-and-radiobuttons-examples%2Fall">See more checkboxes and radiobuttons ...</a>
                                     </div>
                                 </div>
-                                <div class="control-group">
-                                    <div class="controls">
+                                <div class="control-group top-hr">
+                                    <div class="controls demo-group">
                                         <div class="btn-group">
                                             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                                                 Dropdown Label
@@ -252,9 +250,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="control-group">
-                                    <div class="controls">
+                                    <div class="controls demo-group">
                                         <div class="btn-group">
                                             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                                                 Extra Long Dropdown Label Extra Long
@@ -269,21 +265,24 @@
                                             </ul>
                                         </div>
                                     </div>
+                                    <div style="margin-top: 10px;">
+                                        <a href="demo/index.html?url=demo%2Fdropdown-button-with-menu-examples%2Fall">See more dropdowns ...</a>
+                                    </div>
                                 </div>
-                                <div class="form-actions">
-                                    <div>
+                                <div class="control-group top-hr">
+                                    <div class="demo-group">
                                         <button type="button" class="btn btn-primary">Primary</button>
                                         <button type="button" class="btn btn-primary disabled" disabled>Disabled</button>
                                     </div>
-                                    <div style="margin-top: 10px;">
+                                    <div class="demo-group">
                                         <button type="button" class="btn">Secondary</button>
                                         <button type="button" class="btn disabled" disabled>Disabled</button>
                                     </div>
-                                    <div style="margin-top: 10px;">
+                                    <div class="demo-group">
                                         <button type="button" class="btn btn-success">Important</button>
                                         <button type="button" class="btn btn-success disabled" disabled>Disabled</button>
                                     </div>
-                                    <div style="margin-top: 10px;">
+                                    <div>
                                         <a href="demo/index.html?url=demo%2Fbuttons-examples%2Fall">See more buttons</a>
                                     </div>
                                 </div>
@@ -336,13 +335,13 @@
                     </div>
                     <div class="span9">
                         <div class="well">
-			    <div class="control-group">
-				<div id="button-list"></div>
-				<button type="button" id="button-list-button" class="btn btn-primary">Click me</button>
-			    </div>
-			    <div class="control-group">
-				<a href="demo/index.html?url=demo%2FmodalDialog-examples%2Fall">See more modal dialogs</a>
-			    </div>
+            			    <div class="control-group">
+                				<div id="button-list"></div>
+                				<button type="button" id="button-list-button" class="btn btn-primary">Click me</button>
+            			    </div>
+            			    <div class="control-group">
+            				    <a href="demo/index.html?url=demo%2FmodalDialog-examples%2Fall">See more modal dialogs</a>
+            			    </div>
                         </div>
                     </div>
 
@@ -385,30 +384,30 @@
                     $('input[type="radio"]').tmRadiobutton();
                 }
 
-		var yesButton = {
-		    text: 'Yes',
-		    type: 'primary',
-		    callback: function(e, dialog) {
-			dialog.tmModalDialog('hide');
-		    }
-		};
+        		var yesButton = {
+        		    text: 'Yes',
+        		    type: 'primary',
+        		    callback: function(e, dialog) {
+        			dialog.tmModalDialog('hide');
+        		    }
+        		};
 
-		var noButton = {
-		    text: 'No',
-		    callback: function(e, dialog) {
-			dialog.tmModalDialog('hide');
-		    }
-		};
+        		var noButton = {
+        		    text: 'No',
+        		    callback: function(e, dialog) {
+        			dialog.tmModalDialog('hide');
+        		    }
+        		};
 
-		var dialog = $('#button-list').tmModalDialog({
-		    title: 'button-list',
-		    content: 'Are you sure?',
-		    buttons: [noButton, yesButton]
-		});
+        		var dialog = $('#button-list').tmModalDialog({
+        		    title: 'button-list',
+        		    content: 'Are you sure?',
+        		    buttons: [noButton, yesButton]
+        		});
 
-		$('#button-list-button').click(function() {
-		    dialog.tmModalDialog('show');
-		});
+        		$('#button-list-button').click(function() {
+        		    dialog.tmModalDialog('show');
+        		});
 
                 // jquery onload
                 $(init);
