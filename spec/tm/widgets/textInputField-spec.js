@@ -1,5 +1,5 @@
 define(['./util'], function(Util) {
-    describe('Text Input Filed', function() {
+    describe('Text Input Field', function() {
         for (var version in jquery) {
             if (jquery.hasOwnProperty(version)) {
                 runTest(jquery[version], Util);
@@ -59,7 +59,7 @@ define(['./util'], function(Util) {
 
                             it('should have 3px #000 inner shadow at 1px distance, 0° angle, 15% opacity', function() {
                                 var shadow = Util.parseShadowValue($input.css('box-shadow'));
-                                expect(shadow.toString()).toBe(Util.convertHexaToRgba('000000', '0.15') + ' -1px 0px 3px 0px');
+                                expect(shadow.toString()).toBe(Util.convertHexaToRgba('000000', '0.15') + ' inset -1px 0px 3px 0px');
                             });
                         });
 
@@ -74,7 +74,7 @@ define(['./util'], function(Util) {
 
                             it('should have 3px #f03848 inner shadow at 1px distance, 0° angle, 35% opacity', function() {
                                 var shadow = Util.parseShadowValue($input.css('box-shadow'));
-                                expect(shadow.toString()).toBe(Util.convertHexaToRgba('f03848', '0.35') + ' -1px 0px 3px 0px');
+                                expect(shadow.toString()).toBe(Util.convertHexaToRgba('f03848', '0.35') + ' inset -1px 0px 3px 0px');
                             });
                         });
 

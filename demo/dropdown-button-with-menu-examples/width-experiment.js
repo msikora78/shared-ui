@@ -3,7 +3,7 @@ define(['jquery', 'bootstrap', 'widget!tm/widgets/checkbox'], function($) {
 
 	var data = {
 		legend: 'Play with dropdown menu width',
-		description: '<p>Experimenting with dropdown width at 100% of button width...</p><p>The simplest way to ensure that the dropdown-menu has the same width as the dropdown-toggle is to use a button as the dropdown-toggle and set the widths of the dropdown-toggle to 100% and dropdown-menu to 99.5%. For large labels it there is a little gap.</p>',
+		description: 'Experimenting with dropdown width at 100% of button width...</p>',
 		html: '\
 			<div id="dropdown-overview-container" class="demo-container">\n\
 	            <div id="widthDemo" class="demo-group">\n\
@@ -12,8 +12,8 @@ define(['jquery', 'bootstrap', 'widget!tm/widgets/checkbox'], function($) {
 		            <button id="uxExtraLarge" type="button" class="btn">Extra large</button>\n\
 		            <button id="uxAutoWidth" type="button" class="btn">Set width from label</button>\n\
 		            <div id="uxMenu" class="btn-group" style="display: inline-block; width: 150px;">\n\
-		                <button id="uxDropdownToggle" class="btn dropdown-toggle" data-toggle="dropdown" style="width: 100%;"><span>Do something</span><span class="caret" /></button>\n\
-						<ul class="dropdown-menu" style="width: 99.5%;">\n\
+		                <button id="uxDropdownToggle" class="btn dropdown-toggle" data-toggle="dropdown"><span>Do something</span><span class="caret" /></button>\n\
+						<ul class="dropdown-menu">\n\
 		                    <li><a tabindex="-1" href="#1">Action 1</a></li>\n\
 		                    <li><a tabindex="-1" href="#2">Action 2</a></li>\n\
 		                    <li><a tabindex="-1" href="#3">Perform an action that has a quite long title</a></li>\n\
@@ -21,8 +21,8 @@ define(['jquery', 'bootstrap', 'widget!tm/widgets/checkbox'], function($) {
 		            </div>\n\
 		        </div>\n\
 	            <div class="demo-group">\n\
-					<label><input type="checkbox" id="uxNoWrap" />Enable nowrap on menu items</label>\n\
-					<label><input type="checkbox" id="uxMinWidth" />Use min-width on dropdown-menu</label>\n\
+					<label><input type="checkbox" id="uxNoWrap" />Disable wrapping on menu items</label>\n\
+					<label><input type="checkbox" id="uxMinWidth" />Force width on dropdown-menu</label>\n\
 				</div>\n\
 		    </div>',
 		setupString: '\
@@ -51,10 +51,9 @@ define(['jquery', 'bootstrap', 'widget!tm/widgets/checkbox'], function($) {
 				$("#uxMinWidth").tmCheckbox().change(function() {\n\
 					if ($(this).prop("checked")) {\n\
 						$("#widthDemo .dropdown-menu").removeAttr("style");\n\
-						$("#widthDemo .dropdown-menu").css("min-width", "99.5%");\n\
+						$("#widthDemo .dropdown-menu").css("width", "99.5%");\n\
 					} else {\n\
 						$("#widthDemo .dropdown-menu").removeAttr("style");\n\
-						$("#widthDemo .dropdown-menu").css("width", "99.5%");\n\
 					}\n\
 				});\n\
 			}'

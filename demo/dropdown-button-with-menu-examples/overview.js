@@ -15,13 +15,6 @@ define(['jquery', 'bootstrap'], function($){
 		                </ul>\n\
 		            </div>\n\
 		            <div class="btn-group" style="display: inline-block;">\n\
-		                <a class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">Select very long title action<span class="caret" /></a>\n\
-		                <ul class="dropdown-menu">\n\
-		                    <li><a tabindex="-1" href="#1">Action 1</a></li>\n\
-		                    <li><a tabindex="-1" href="#2">Action 2</a></li>\n\
-		                </ul>\n\
-		            </div>\n\
-		            <div class="btn-group" style="display: inline-block;">\n\
 		                <a class="btn dropdown-toggle disabled" data-toggle="dropdown" href="javascript:void(0)">Select action<span class="caret" /></a>\n\
 		                <ul class="dropdown-menu">\n\
 		                    <li><a tabindex="-1" href="#1">Action 1</a></li>\n\
@@ -32,13 +25,6 @@ define(['jquery', 'bootstrap'], function($){
 	            <div class="demo-group">\n\
 		            <div class="btn-group" style="display: inline-block;">\n\
 		                <button class="btn dropdown-toggle" data-toggle="dropdown">Button action<span class="caret" /></button>\n\
-		                <ul class="dropdown-menu">\n\
-		                    <li><a tabindex="-1" href="#1">Action 1</a></li>\n\
-		                    <li><a tabindex="-1" href="#2">Action 2</a></li>\n\
-		                </ul>\n\
-		            </div>\n\
-		            <div class="btn-group" style="display: inline-block;">\n\
-		                <button class="btn dropdown-toggle" data-toggle="dropdown">Button very long title action<span class="caret" /></button>\n\
 		                <ul class="dropdown-menu">\n\
 		                    <li><a tabindex="-1" href="#1">Action 1</a></li>\n\
 		                    <li><a tabindex="-1" href="#2">Action 2</a></li>\n\

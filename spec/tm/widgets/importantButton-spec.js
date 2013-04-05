@@ -117,7 +117,7 @@ define(['./util'], function(Util) {
                             });
 
                             it('should have text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25)', function() {
-                                var textShadow = Util.parseShadowValue($button.css('text-shadow'));
+                                var textShadow = Util.parseTextShadowValue($button.css('text-shadow'));
                                 expect(textShadow.toString()).toBe('rgba(0, 0, 0, 0.25) -1px -1px 1px');
                             });
                         });
@@ -142,7 +142,7 @@ define(['./util'], function(Util) {
 
                             it('should have text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25) ', function() {
                                 var textShadow = Util.parseShadowValue($button.css('text-shadow'));
-                                expect(textShadow.toString()).toBe('rgba(0, 0, 0, 0.25) -1px -1px 1px');
+                                expect(textShadow.toString()).toBe('rgba(0, 0, 0, 0.25) -1px -1px 1px 0px');
                             });
                         });
                     }

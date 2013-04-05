@@ -7,6 +7,7 @@ define([
     'spec/tm/widgets/textInputField-spec',
     'spec/tm/widgets/radioButton-spec',
     'spec/tm/widgets/checkbox-spec',
+    'spec/tm/widgets/dropdownButtonMenu-spec',
     'spec/tm/widgets/modalDialog-spec'
     ], function($) {
 

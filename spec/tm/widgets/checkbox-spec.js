@@ -58,22 +58,22 @@ define(['injectable!tm/widgets/checkbox', 'tm/widgets/checkableBase', 'mock/gadg
                             expect($checkbox.prop("disabled")).toBe(true);
                             expect($checkbox.prop("checked")).toBe(true);
                         });
-                        it('should have background-position at 0px -75px', function() {
-                            expect($checkbox.next().css("background-position")).toBe("0px -75px");
+                        it('should have background-position at -198px -30px', function() {
+                            expect($checkbox.next().css("background-position")).toBe("-198px -30px");
                         });
                     } else if (disabled)  {
                         it('should be disabled', function() {
                             expect($checkbox.prop("disabled")).toBe(true);
                         });
-                        it('should have background-position at 0px -25px', function() {
-                            expect($checkbox.next().css("background-position")).toBe("0px -25px");
+                        it('should have background-position at -198px -6px', function() {
+                            expect($checkbox.next().css("background-position")).toBe("-198px -6px");
                         });
                     } else if (checked) {
                         it('should be checked', function() {
                             expect($checkbox.prop("checked")).toBe(true);
                         });                            
-                        it('should have background-position at 0px -50px', function() {
-                            expect($checkbox.next().css("background-position")).toBe("0px -50px");
+                        it('should have background-position at -178px -30px', function() {
+                            expect($checkbox.next().css("background-position")).toBe("-178px -30px");
                         });
                     }
                     else {
@@ -81,8 +81,8 @@ define(['injectable!tm/widgets/checkbox', 'tm/widgets/checkableBase', 'mock/gadg
                             expect($checkbox.attr("checked")).toBe(undefined);
                             expect($checkbox.attr("disabled")).toBe(undefined);
                         });                            
-                        it('should have background-position at 0px 0px', function() {
-                            expect($checkbox.next().css("background-position")).toBe("0px 0px");
+                        it('should have background-position at -178px -6px', function() {
+                            expect($checkbox.next().css("background-position")).toBe("-178px -6px");
                         });
                     }
 
