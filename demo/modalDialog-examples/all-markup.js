@@ -21,7 +21,7 @@ define(['jquery', 'widget!tm/widgets/modalDialog'], function($) {
     '        <button type="button" data-primary-action class="btn btn-primary" onclick="alert(\'Yes\')">Yes</button>\n' +
     '    </div>\n' +
     '</div>\n' +
-    '<button type="button" class="btn btn-primary" id="all-markup-button">Click me</button>',
+    '<p><button type="button" class="btn btn-primary" id="all-markup-button">Click me</button></p>',
     setupString: "function() {\n \
         var dialog = $('#all-markup').tmModalDialog();\n \
 \n \

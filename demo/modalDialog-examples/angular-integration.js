@@ -16,7 +16,7 @@ define(['jquery', 'angular', 'widget!tm/widgets/modalDialog'], function($, angul
 			'			<button type="button" ng-click="save()" class="btn btn-primary">Save</button>\n' +
 			'		</div>\n' +
 			'	</div>\n' +
-			'	<button type="button" class="btn btn-primary" ng-click="edit()">Click me</button>\n' +
+			'	<p><button type="button" class="btn btn-primary" ng-click="edit()">Click me</button></p>\n' +
 			'</div>',
 		setupString: "function() {\n \
 			var app = angular.module('angular-integration', []);\n \

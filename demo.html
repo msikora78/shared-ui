@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
         <title>tm360 Shared UI Demo</title>
@@ -13,6 +13,7 @@
         <!-- tm360 Shared-UI CSS -->
         <link rel="stylesheet" href="css/tm360-base.css" />
         <link rel="stylesheet" href="css/tm360-universal.css" />
+        <link rel="stylesheet" href="css/tm360-shortlink.css" />
         <!-- link rel="stylesheet" href="css/bootstrap-content-rewrite-fix.css" / -->
 
 
@@ -44,11 +45,11 @@
         -->
 
         <!-- tm360 Shared-UI JS -->
-	<script>
-	    var Prefs = function(){};
-	    Prefs.prototype.getMsg = function() {};
-	    gadgets = {Prefs : Prefs};
-	</script>
+		<script>
+			var Prefs = function(){};
+			Prefs.prototype.getMsg = function() {};
+			gadgets = {Prefs : Prefs};
+		</script>
 
         <script src="js/tm/core.js"></script>
         <script src="js/tm/cookie.js"></script>
@@ -63,13 +64,9 @@
                 <div class="row-fluid">
                     <div class="span12">
                         <h1>Shared UI - Component Demos</h1>
-                        <p>This is the demo page for tm360 Shared-UI components. </p>
+                        <p id="pIntro">This is the demo page for tm360 Shared-UI components. </p>
                     </div>
                 </div>
-            </div>
-            
-            <div class="container-fluid">
-
                 <div class="row-fluid">
                     <div class="span3">
                         <h5>1. Snap Width</h5>
@@ -252,7 +249,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-actions">
+                                <div class="control-group">
                                     <div>
                                         <button type="button" class="btn btn-primary">Primary</button>
                                         <button type="button" class="btn btn-primary disabled" disabled>Disabled</button>
@@ -311,28 +308,47 @@
                         </div>
                     </div>
                 </div> <!-- .row-fluid -->
-
                 <div class="row-fluid">
                     <div class="span3">
-                        <h5>6. Modal Dialog</h5>
+                        <h5>6. ShortLink Component</h5>
                     </div>
                     <div class="span9">
                         <div class="well">
-			    <div class="control-group">
-				<div id="button-list"></div>
-				<button type="button" id="button-list-button" class="btn btn-primary">Click me</button>
-			    </div>
-			    <div class="control-group">
-				<a href="demo/index.html?url=demo%2FmodalDialog-examples%2Fall">See more modal dialogs</a>
-			    </div>
+                            <p>Click to generate a sample (non-working) shortlink:  
+                                <button class="shortlink-btn btn">
+                                    <img src="css/img/link-icon.png"/></button>
+                            </p>
+                            <p>And another, where the popover appears to the right:
+                                <button class="shortlink-btn btn" data-placement="right">
+                                    <img src="css/img/link-icon.png"/></button>
+                            </p>
+                            <p>See the <a href="https://confluence.tm.tmcs/confluence/display/PJ31/URL+Shortening+in+tm360" target="_blank">URL Shortening in tm360</a> Confluence page for more info.</p>
+                        </div>
+                    </div>
+                </div> <!-- .row-fluid -->
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>7. Modal Dialog</h5>
+                    </div>
+                    <div class="span9">
+                        <div class="well">
+                <div class="control-group">
+                <div id="button-list"></div>
+                <button type="button" id="button-list-button" class="btn btn-primary">Click me</button>
+                </div>
+                <div class="control-group">
+                <a href="demo/index.html?url=demo%2FmodalDialog-examples%2Fall">See more modal dialogs</a>
+                </div>
                         </div>
                     </div>
 
                 </div> <!-- .row-fluid -->
 
+
                 <div class="row-fluid">
                     <div class="span3">
-                        <h5>7. ?</h5>
+                        <h5>8. TBD</h5>
                     </div>
                     <div class="span9">
                         <div class="well">
@@ -365,30 +381,30 @@
                     $("#multidateselect").multiDatesPicker();
                 }
 
-		var yesButton = {
-		    text: 'Yes',
-		    type: 'primary',
-		    callback: function(e, dialog) {
-			dialog.tmModalDialog('hide');
-		    }
-		};
+        		var yesButton = {
+        		    text: 'Yes',
+        		    type: 'primary',
+        		    callback: function(e, dialog) {
+        			dialog.tmModalDialog('hide');
+        		    }
+        		};
 
-		var noButton = {
-		    text: 'No',
-		    callback: function(e, dialog) {
-			dialog.tmModalDialog('hide');
-		    }
-		};
+        		var noButton = {
+        		    text: 'No',
+        		    callback: function(e, dialog) {
+        			dialog.tmModalDialog('hide');
+        		    }
+        		};
 
-		var dialog = $('#button-list').tmModalDialog({
-		    title: 'button-list',
-		    content: 'Are you sure?',
-		    buttons: [noButton, yesButton]
-		});
+        		var dialog = $('#button-list').tmModalDialog({
+        		    title: 'button-list',
+        		    content: 'Are you sure?',
+        		    buttons: [noButton, yesButton]
+        		});
 
-		$('#button-list-button').click(function() {
-		    dialog.tmModalDialog('show');
-		});
+        		$('#button-list-button').click(function() {
+        		    dialog.tmModalDialog('show');
+        		});
 
                 // jquery onload
                 $(init);

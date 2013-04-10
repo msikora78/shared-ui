@@ -194,7 +194,7 @@
 
 .tm360 .btn,
 .tm360 .modal .btn {
-    font-family: 'MuseoSans500';
+    font-family: MuseoSans500,sans-serif;
     font-size: 12px;
     color: #4F5158;
     line-height: 14px;

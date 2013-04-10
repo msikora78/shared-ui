@@ -2,7 +2,8 @@ define(['global!console', 'jquery', 'widget!tm/widgets/modalDialog'], function(c
 
 	var data = {
 		legend: 'button-list',
-		html: '<div id="button-list"></div>\n<button type="button" id="button-list-button" class="btn btn-primary">Click me</button>',
+		html: '<div id="button-list"></div>\n\
+			<p><button type="button" id="button-list-button" class="btn btn-primary">Click me</button></p>',
 		setupString: "function() {\n \
 			var yesButton = {\n \
 				text: 'Yes',\n \
