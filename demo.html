@@ -55,8 +55,9 @@
         <script src="js/tm/cookie.js"></script>
         <script src="js/tm/string.js"></script>
         <script src="js/tm/date.js"></script>
-	<script src="js/tm/widgets/widgetFactory.js"></script>
-	<script src="js/tm/widgets/modalDialog.js"></script>
+        <script src="js/tm.shortlink.js"></script>
+    	<script src="js/tm/widgets/widgetFactory.js"></script>
+	    <script src="js/tm/widgets/modalDialog.js"></script>
     </head>
     <body class="tm360">
         <div id="container">
@@ -379,6 +380,9 @@
                     // date picker
                     $("#dateselect").datepicker();
                     $("#multidateselect").multiDatesPicker();
+
+                    // shortlink
+                    tm.shortlink();
                 }
 
         		var yesButton = {
