@@ -88,8 +88,9 @@ define(['injectable!tm/widgets/modalDialog', 'mock/gadgetPrefMock', './util'], f
                         var $modalBackground = $('.modal-backdrop.fade.in');
 
                         expect($modalBackground.css('background-color')).toBe(Util.convertHexaToRgb('000000'));
-                        Util.wait().done(function() {
-                            expect($modalBackground.css('opacity')).toBe('0.25');
+                        Util.wait(2000).done(function() {
+                            var opacity = Math.round($modalBackground.css('opacity') * 100) / 100;
+                            expect(opacity).toBe(0.25);
                         });
                     });
 
