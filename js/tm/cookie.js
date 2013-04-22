@@ -1,3 +1,6 @@
+/** 
+ * @namespace tm.cookie  Convenience methods for handling cookies.
+ */
 (function() {
 
     function factory(document) {
@@ -38,7 +41,7 @@
                 while (c.charAt(0)==' ') {
                     c = c.substring(1,c.length);
                 }
-                if (c.indexOf(nameEQ) == 0) {
+                if (c.indexOf(nameEQ) === 0) {
                     return decodeURIComponent( c.substring(nameEQ.length,c.length) );
                 }
             }
@@ -58,18 +61,13 @@
         return tmCookie;
     }
 
+    // Use requirejs to manage dependencies, if available
     if (typeof define === 'function' && define.amd) {
         define(['global!document'], factory);
     }
     else {
-
-        /** 
-         * @namespace Convenience methods for handling cookies.
-         */
         tm.namespace("tm.cookie");
-
         tm.cookie = factory(document);
-
     }
 
 })();

@@ -1,3 +1,6 @@
+/**
+ * @namespace tm.date  Convenience methods for handling dates and times.
+ */
 (function() {
 
     function factory() {
@@ -75,18 +78,13 @@
         return tmDate;
     }
 
+    // Use requirejs to manage dependencies, if available
     if (typeof define === 'function' && define.amd) {
         define([], factory);
     }
     else {
-
-        /**
-         * @namespace Convenience methods for handling dates and times.
-         */
         tm.namespace("tm.date");
-
         tm.date = factory();
-
     }
 
 })();

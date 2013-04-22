@@ -1,3 +1,6 @@
+/******************************************************************
+ Include spec files here...
+******************************************************************/ 
 define([
     'spec/tm/cookieSpec.js',
     'spec/tm/widgets/widgetFactory-spec',
@@ -5,7 +8,4 @@ define([
     'spec/tm/widgets/secondaryButton-spec',
     'spec/tm/widgets/importantButton-spec',
     'spec/tm/widgets/modalDialog-spec'
-    ], function($) {
-
-});
-
+]);

@@ -49,7 +49,7 @@ if (typeof define === 'function' && define.amd) {
                 tmCookie.erase('abc');
 
                 expect(documentMock.cookie.indexOf('abc=;')).toBe(0);
-            })
+            });
 
         });
 
@@ -65,22 +65,24 @@ else {
             var ckVal1 = "abc def";
             var ckVal2 = "xyz";
 
-            //tm.cookie.erase(ckName);
-
+            // cookie shouldn't exist
             expect(document.cookie).not.toContain(ckName);
             expect(tm.cookie.read(ckName)).toBeNull();
 
+            // create it
             tm.cookie.create(ckName, ckVal1);
             expect(document.cookie).toContain(ckName + "=" + encodeURIComponent(ckVal1));
             expect(tm.cookie.read(ckName)).not.toBeNull();
             expect(tm.cookie.read(ckName)).toBe(ckVal1);
             expect(tm.cookie.read(ckName)).not.toBe(ckVal2);
 
+            // change its value
             tm.cookie.create(ckName, ckVal2);
             expect(document.cookie).toContain(ckName + "=" + encodeURIComponent(ckVal2));
             expect(tm.cookie.read(ckName)).toBe(ckVal2);
             expect(tm.cookie.read(ckName)).not.toBe(ckVal1);
 
+            // erase it
             tm.cookie.erase(ckName);
             expect(document.cookie).not.toContain(ckName);
             expect(tm.cookie.read(ckName)).toBeNull();

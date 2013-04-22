@@ -1,91 +1,68 @@
 <!DOCTYPE html>
+<!-- ******************************************************************
+    Run this specRunner.html page on a local server or at
+    http://tm360.github.com/shared-ui/specRunner.html
+****************************************************************** --> 
 <html>
-<head>
-    <title>tm360 spec runner with requirejs</title>
-    <link rel="stylesheet" type="text/css" href="lib/jasmine-1.2.0/jasmine.css">
-    <link rel="stylesheet" type="text/css" href="lib/bootstrap-2.1.0/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/tm360-base.css" />
-    <link rel="stylesheet" type="text/css" href="css/tm360-universal.css" />
+    <head>
+        <title>tm360 spec runner</title>
 
-    <!-- jquery version to support -->
-    <script type="text/javascript">
-        var jquery = {};
-    </script>
+        <link rel="stylesheet" type="text/css" href="lib/jasmine-1.2.0/jasmine.css">
+        <script type="text/javascript" src="lib/jasmine-1.2.0/jasmine.js"></script>
+        <script type="text/javascript" src="lib/jasmine-1.2.0/jasmine-html.js"></script>
 
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script type="text/javascript" src="lib/bootstrap-2.2.2/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        jquery['1.9.0'] = $.noConflict(true);
-    </script>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript" src="lib/bootstrap-2.2.2/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        jquery['1.8.3'] = $.noConflict(true);
-    </script>
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript" src="lib/bootstrap-2.2.2/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        jquery['1.7.2'] = $.noConflict(true);
-    </script>
+        <!-- 
+            TODO: Refactor spec/tm/widgets/* (and /mock/* and /plugin/*) 
+                  for this non-requirejs version of specRunner. 
+        -->
 
-    <script type="text/javascript" src="lib/jasmine-1.2.0/jasmine.js"></script>
-    <script type="text/javascript" src="lib/jasmine-1.2.0/jasmine-html.js"></script>
-    <script type="text/javascript" src="lib/require-2.1.2/require.js"></script>
-    <script type="text/javascript">
-        (function() {
-            var jasmineEnv = jasmine.getEnv();
+        <!-- 3rd party Shared JS Libs (not in git repo) -->
+        <script type="text/javascript" src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/json2.js"></script>
+        <script type="text/javascript" src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/underscore_1.3.3.min.js"></script>
+        <!-- *** Note: You need to be on the TM/LN corporate network for "websys.tmcs" links to work! *** -->
 
-            jasmineEnv.updateInterval = 1000;
 
-            var htmlReporter = new jasmine.HtmlReporter();
+        <!-- ******************************************************************
+             1. Include source files here...
+             ****************************************************************** -->
+        <script type="text/javascript" src="js/tm/core.js"></script>
+        <script type="text/javascript" src="js/tm/string.js"></script>
+        <script type="text/javascript" src="js/tm/date.js"></script>
+        <script type="text/javascript" src="js/tm/cookie.js"></script>
 
-            jasmineEnv.addReporter(htmlReporter);
+        <!-- ******************************************************************
+             2. Include spec and mock files here...
+             ****************************************************************** -->
+        <script type="text/javascript" src="spec/tm/coreSpec.js"></script>
+        <script type="text/javascript" src="spec/tm/stringSpec.js"></script>
+        <script type="text/javascript" src="spec/tm/dateSpec.js"></script>
+        <script type="text/javascript" src="spec/tm/cookieSpec.js"></script>
 
-            jasmineEnv.specFilter = function(spec) {
-                return htmlReporter.specFilter(spec);
-            };
 
-            requirejs.config({
-                baseUrl: 'js',
-                paths: {
-                    injectable: '../plugin/injectable',
-                    widget: '../plugin/widget',
-                    spec: '../spec',
-                    mock: '../mock',
-                    global: '../plugin/global'
-                },
-                shim: {
-                    'spec/all': ['injectable']
-                }
-            });
-
-            define('global!gadgets', ['mock/gadgetPrefMock'], function(gadgetPrefMock) {
-                var prefs = gadgetPrefMock({});
-
-                return {
-                    Prefs: function() {
-                        return prefs;
+        <script type="text/javascript">
+            (function() {
+                var jasmineEnv = jasmine.getEnv();
+                jasmineEnv.updateInterval = 1000;
+                var htmlReporter = new jasmine.HtmlReporter();
+                jasmineEnv.addReporter(htmlReporter);
+                jasmineEnv.specFilter = function(spec) {
+                    return htmlReporter.specFilter(spec);
+                };
+                var currentWindowOnload = window.onload;
+                window.onload = function() {
+                    if (currentWindowOnload) {
+                        currentWindowOnload();
                     }
+                    execJasmine();
+                };
+                function execJasmine(){
+                    jasmineEnv.execute();
                 }
-            });
+            })();
+        </script>
+    </head>
+    <body>
 
-            define('jquery', [], function() {
-                return jquery['1.7.2'];
-            });
-
-            define('bootstrap', ['jquery'], function($) {
-                return $;
-            });
-
-            requirejs(['spec/all'], function() {
-                jasmineEnv.execute();
-                jquery['1.7.2']('body').css('background-image', 'none');
-                jquery['1.7.2']('body').css('background-color', 'rgb(255,255,255)');
-            });
-
-        })();
-    </script>
-</head>
-<body>
-</body>
+    </body>
 </html>

@@ -5,10 +5,9 @@
         <title>tm360 Shared UI Demo</title>
 
         <!-- 3rd party Shared CSS Libs (not in git repo) -->
-        <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/html5boilerplate-base.css" />
+        <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/normalize-1.1.0.css" />
         <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/jquery-ui/ui-lightness/jquery-ui-1.8.22.custom.css" />
         <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/bootstrap-2.1.0/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/html5boilerplate-last.css" />
 
         <!-- tm360 Shared-UI CSS -->
         <link rel="stylesheet" href="css/tm360-base.css" />
@@ -30,39 +29,13 @@
         <script src="lib/less-1.3.3/less-1.3.3.min.js"></script>
         <!-- Note: LESS files will be compiled to CSS via command line before checking into tm360 versioned "shared" folder for deployment. -->
 
-
-        <!-- 3rd party Shared JS Libs (not in git repo) -->
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/json2.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-1.7.2.min.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-ui-1.8.22.custom.min.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ui.multidatespicker-1.6.1.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ba-throttle-debounce-1.1.min.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/underscore_1.3.3.min.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.1.0.min.js"></script>
-        <!-- Plugin for x-browser Copy-to-Clipboard http://code.google.com/p/zeroclipboard -->
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/ZeroClipboard.js"></script>
         <script>
-            ZeroClipboard.setMoviePath( 'https://portal.shared.dev2.websys.tmcs/shared/js/lib/ZeroClipboard.swf' );
+            // mock gadgets.Prefs for modalDialog
+            var Prefs = function(){};
+            Prefs.prototype.getMsg = function() {};
+            gadgets = {Prefs : Prefs};
         </script>
-        <!--
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/backbone-0.9.2.min.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/backbone-marionette-0.9.12.min.js"></script>
-        -->
 
-        <!-- tm360 Shared-UI JS -->
-		<script>
-			var Prefs = function(){};
-			Prefs.prototype.getMsg = function() {};
-			gadgets = {Prefs : Prefs};
-		</script>
-
-        <script src="js/tm/core.js"></script>
-        <script src="js/tm/cookie.js"></script>
-        <script src="js/tm/string.js"></script>
-        <script src="js/tm/date.js"></script>
-        <script src="js/tm.shortlink.js"></script>
-    	<script src="js/tm/widgets/widgetFactory.js"></script>
-	    <script src="js/tm/widgets/modalDialog.js"></script>
     </head>
     <body class="tm360">
         <div id="container">
@@ -70,7 +43,8 @@
                 <div class="row-fluid">
                     <div class="span12">
                         <h1>Shared UI - Component Demos</h1>
-                        <p id="pIntro">This is the demo page for tm360 Shared-UI components. </p>
+                        <p style="padding-left: 1em" id="pIntro">This is the demo page for tm360 Shared-UI components. </p>
+                        <p style="padding-left: 1em">Run SpecRunner tests: <a href="specRunner.html">Base</a> and <a href="specRunner-requirejs.html">Widgets (uses RequireJS)</a></p>
                     </div>
                 </div>
                 <div class="row-fluid">
@@ -367,6 +341,28 @@
 
         </div>
 
+        <!-- 3rd party Shared JS Libs (not in git repo) -->
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/json2.js"></script>
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-1.7.2.min.js"></script>
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-ui-1.8.22.custom.min.js"></script>
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ui.multidatespicker-1.6.1.js"></script>
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ba-throttle-debounce-1.1.min.js"></script>
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/underscore_1.3.3.min.js"></script>
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.1.0.min.js"></script>        
+        <!-- Plugin for x-browser Copy-to-Clipboard http://code.google.com/p/zeroclipboard -->
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/ZeroClipboard.js"></script>
+        <script>
+            ZeroClipboard.setMoviePath( 'https://portal.shared.dev2.websys.tmcs/shared/js/lib/ZeroClipboard.swf' );
+        </script>
+
+        <!-- tm360 Shared-UI JS -->
+        <script src="js/tm/core.js"></script>
+        <script src="js/tm/cookie.js"></script>
+        <script src="js/tm/string.js"></script>
+        <script src="js/tm/date.js"></script>
+        <script src="js/tm.shortlink.js"></script>
+        <script src="js/tm/widgets/widgetFactory.js"></script>
+        <script src="js/tm/widgets/modalDialog.js"></script>
 
         <script>
             (function(){
@@ -374,47 +370,52 @@
                 function adjustDisplayArea(){
                     // check/apply 'small-screen' class to body for 2-width container
                     tm.widthCheck();
+                    // check on resize too, throttling calls to once every 200ms
+                    var resizeHandler = $.throttle(200, function(){
+                        tm.widthCheck();
+                    });
+                    $(window).resize( resizeHandler );
+                }
+
+                function activateModalDialog(){
+                    var yesButton = {
+                        text: 'Yes',
+                        type: 'primary',
+                        callback: function(e, dialog) {
+                            dialog.tmModalDialog('hide');
+                        }
+                    };
+
+                    var noButton = {
+                        text: 'No',
+                        callback: function(e, dialog) {
+                            dialog.tmModalDialog('hide');
+                        }
+                    };
+
+                    var dialog = $('#button-list').tmModalDialog({
+                        title: 'button-list',
+                        content: 'Are you sure?',
+                        buttons: [noButton, yesButton]
+                    });
+
+                    $('#button-list-button').click(function() {
+                        dialog.tmModalDialog('show');
+                    });
                 }
 
                 function init(){
                     adjustDisplayArea();
-                    // on resize, throttle tm.widthCheck calls to once every 200ms
-                    var resizeHandler = $.throttle(200, adjustDisplayArea);
-                    $(window).resize( resizeHandler );
 
                     // date picker
                     $("#dateselect").datepicker();
                     $("#multidateselect").multiDatesPicker();
 
-                    // shortlink
                     tm.shortlink();
                     tm.shortlinkFlashCopy = true;
+
+                    activateModalDialog();
                 }
-
-        		var yesButton = {
-        		    text: 'Yes',
-        		    type: 'primary',
-        		    callback: function(e, dialog) {
-        			dialog.tmModalDialog('hide');
-        		    }
-        		};
-
-        		var noButton = {
-        		    text: 'No',
-        		    callback: function(e, dialog) {
-        			dialog.tmModalDialog('hide');
-        		    }
-        		};
-
-        		var dialog = $('#button-list').tmModalDialog({
-        		    title: 'button-list',
-        		    content: 'Are you sure?',
-        		    buttons: [noButton, yesButton]
-        		});
-
-        		$('#button-list-button').click(function() {
-        		    dialog.tmModalDialog('show');
-        		});
 
                 // jquery onload
                 $(init);
