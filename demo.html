@@ -6,14 +6,14 @@
 
         <!-- 3rd party Shared CSS Libs (not in git repo) -->
         <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/normalize-1.1.0.css" />
-        <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/jquery-ui/ui-lightness/jquery-ui-1.8.22.custom.css" />
+        <!-- <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/jquery-ui/ui-lightness/jquery-ui-1.8.22.custom.css" /> -->
         <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/bootstrap-2.1.0/css/bootstrap.min.css" />
 
         <!-- tm360 Shared-UI CSS -->
         <link rel="stylesheet" href="css/tm360-base.css" />
         <link rel="stylesheet" href="css/tm360-universal.css" />
-        <link rel="stylesheet" href="css/tm360-shortlink.css" />
-        <!-- link rel="stylesheet" href="css/bootstrap-content-rewrite-fix.css" / -->
+        <!-- <link rel="stylesheet" href="css/tm360-shortlink.css" /> -->
+        <!-- <link rel="stylesheet" href="css/bootstrap-content-rewrite-fix.css" /> -->
 
 
         <!-- tm360 Shared-UI LESS -->
@@ -42,9 +42,11 @@
             <div class="container-fluid" style="padding-top:20px;">
                 <div class="row-fluid">
                     <div class="span12">
-                        <h1>Shared UI - Component Demos</h1>
+                        <h1>Shared UI Demos</h1>
                         <p style="padding-left: 1em" id="pIntro">This is the demo page for tm360 Shared-UI components. </p>
-                        <p style="padding-left: 1em">Run SpecRunner tests: <a href="specRunner.html">Base</a> and <a href="specRunner-requirejs.html">Widgets (uses RequireJS)</a></p>
+                        <p style="padding-left: 1em">View <a href="https://confluence.tm.tmcs/confluence/display/UE/Reusable+UI+Components+Documentation" target="_blank">Reusable UI Components Doc</a> for visual specifications.</p>
+                        <p style="padding-left: 1em">Javascript unit tests are available for <a href="specRunner.html" target="_blank">utility methods</a> and <a href="specRunner-requirejs.html" target="_blank">Widgets (uses RequireJS)</a>.
+                        <br/>&nbsp;</p>
                     </div>
                 </div>
                 <div class="row-fluid">
@@ -60,65 +62,11 @@
 
                 <div class="row-fluid">
                     <div class="span3">
-                        <h5>2. Typography</h5>
-                    </div>
-                    <div class="span9">
-                        <div class="row-fluid">
-                            <div class="span12">
-                                <div class="well">
-                                    Some predefined font-style CSS classes are available to provide a consistent look-and-feel for tm360 apps. (Inspect the elements below in Firebug or Chrome Dev Tools to discover the appropriate tag or classname to use.)
-                                </div>
-                            </div>
-                        </div> <!-- .row-fluid -->
-
-                        <div class="row-fluid">
-                            <div class="span6 arial">
-                                <div class="well">
-                                    Arial, <strong>Arial Bold</strong>
-                                    <h1>Heading 1</h1>
-                                    <h2>Heading 2</h2>
-                                    <h3>Heading 3</h3>
-                                    <h4>Heading 4</h4>
-                                    <h5>Heading 5</h5>
-                                    <h6>Heading 6</h6>
-                                    Normal <strong>Bold</strong> <em>Italic</em><br/>
-                                    <span class="arial1">Style 1</span><br/>
-                                    <span class="arial2">Style 2</span><br/>
-                                    <span class="arial3">Style 3</span><br/>
-                                    <span class="arial4">Style 4</span><br/>
-                                    <span class="arial5">Style 5</span><br/>
-                                    <span class="arial6">Style 6 <a href="#">Link</a></span><br/>
-                                    <span class="arial7">Style 7</span>
-                                </div>
-                            </div>
-                            <div class="span6 museo">
-                                <div class="well">
-                                    MuseoSans500, <span class="museoBold">MuseoSans700</span>
-                                    <h1>Heading 1</h1>
-                                    <h2>Heading 2</h2>
-                                    <h3>Heading 3</h3>
-                                    <h4>Heading 4</h4>
-                                    <h5>Heading 5</h5>
-                                    <h6>Heading 6</h6>
-                                    Normal <strong>Bold</strong> <em>Italic</em><br/>
-                                    <span class="museo8">Style 8</span><br/>
-                                    <span class="museo9">Style 9</span>
-                                </div>
-                            </div>
-                        </div> <!-- .row-fluid -->
-                    </div>
-                </div> <!-- .row-fluid -->
-
-                <div class="row-fluid">
-                    <div class="span3">
-                        <h5>3. Styled Form Elements</h5>
+                        <h5>2. Form Elements</h5>
                     </div>
                     <div class="span9">
 
-                        <div class="well">
-                            In addition to text styling, many form elements have been styled according to the <a href="https://confluence.tm.tmcs/confluence/display/UE/Permissioning+App+Specifications#PermissioningAppSpecifications-UniversalUIElements" target="_blank">Universal UI Elements</a> spec.
-                        </div>
-
+                        <!-- 
                         <form class="form-search">
                             <div class="well">
                                 <input type="text" class="input-medium search-query">
@@ -135,8 +83,10 @@
                                 <button type="submit" class="btn">Sign in</button>
                             </div>
                         </form>
+                        -->
                         <form>
                             <div class="well">
+                                <!--
                                 <div class="control-group">
                                     <label class="control-label" for="input1">Input Label</label>
                                     <div class="controls">
@@ -229,31 +179,37 @@
                                         </div>
                                     </div>
                                 </div>
+                                -->
                                 <div class="control-group">
-                                    <div>
+                                    <div class="controls">
                                         <button type="button" class="btn btn-primary">Primary</button>
                                         <button type="button" class="btn btn-primary disabled" disabled>Disabled</button>
                                     </div>
-                                    <div style="margin-top: 10px;">
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
                                         <button type="button" class="btn">Secondary</button>
                                         <button type="button" class="btn disabled" disabled>Disabled</button>
                                     </div>
-                                    <div style="margin-top: 10px;">
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
                                         <button type="button" class="btn btn-success">Important</button>
                                         <button type="button" class="btn btn-success disabled" disabled>Disabled</button>
                                     </div>
-                                    <div style="margin-top: 10px;">
-                                        <a href="demo/index.html?url=demo%2Fbuttons-examples%2Fall">See more buttons</a>
-                                    </div>
+                                </div>
+                                <div>
+                                    <a href="demo/index.html?url=demo%2Fbuttons-examples%2Fall" target="_blank">See more buttons</a>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div> <!-- .row-fluid -->
 
+                <!--
                 <div class="row-fluid">
                     <div class="span3">
-                        <h5>4. Loading Spinners</h5>
+                        <h5>3. Loading Spinners</h5>
                     </div>
                     <div class="span3">
                         <div class="well">
@@ -265,8 +221,25 @@
                             16x16: <img src="css/img/loader_16px_on_fff.gif" />
                         </div>
                     </div>
-                </div> <!-- .row-fluid -->
+                </div>--> <!-- .row-fluid -->
 
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>3. Modal Dialog</h5>
+                    </div>
+                    <div class="span9">
+                        <div class="well">
+                            <div class="control-group">
+                                <div id="button-list"></div>
+                                <button type="button" id="button-list-button" class="btn btn-primary">Click me</button>
+                            </div>
+                            <div>
+                                <a href="demo/index.html?url=demo%2FmodalDialog-examples%2Fall" target="_blank">See more modal dialogs</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row-fluid -->
+                <!--
                 <div class="row-fluid">
                     <div class="span3">
                         <h5>5. jQuery UI</h5>
@@ -287,10 +260,11 @@
                             </div>
                         </div>
                     </div>
-                </div> <!-- .row-fluid -->
+                </div> --> <!-- .row-fluid -->
+                <!-- 
                 <div class="row-fluid">
                     <div class="span3">
-                        <h5>6. ShortLink Component</h5>
+                        <h5>5. ShortLink Component</h5>
                     </div>
                     <div class="span9">
                         <div class="well">
@@ -305,30 +279,11 @@
                             <p>See the <a href="https://confluence.tm.tmcs/confluence/display/PJ31/URL+Shortening+in+tm360" target="_blank">URL Shortening in tm360</a> Confluence page for more info.</p>
                         </div>
                     </div>
-                </div> <!-- .row-fluid -->
+                </div> --> <!-- .row-fluid -->
 
                 <div class="row-fluid">
                     <div class="span3">
-                        <h5>7. Modal Dialog</h5>
-                    </div>
-                    <div class="span9">
-                        <div class="well">
-                <div class="control-group">
-                <div id="button-list"></div>
-                <button type="button" id="button-list-button" class="btn btn-primary">Click me</button>
-                </div>
-                <div class="control-group">
-                <a href="demo/index.html?url=demo%2FmodalDialog-examples%2Fall">See more modal dialogs</a>
-                </div>
-                        </div>
-                    </div>
-
-                </div> <!-- .row-fluid -->
-
-
-                <div class="row-fluid">
-                    <div class="span3">
-                        <h5>8. TBD</h5>
+                        <h5>TBD</h5>
                     </div>
                     <div class="span9">
                         <div class="well">
@@ -342,10 +297,10 @@
         </div>
 
         <!-- 3rd party Shared JS Libs (not in git repo) -->
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/json2.js"></script>
+        <!-- <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/json2.js"></script> -->
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-1.7.2.min.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-ui-1.8.22.custom.min.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ui.multidatespicker-1.6.1.js"></script>
+        <!-- <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-ui-1.8.22.custom.min.js"></script> -->
+        <!-- <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ui.multidatespicker-1.6.1.js"></script> -->
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ba-throttle-debounce-1.1.min.js"></script>
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/underscore_1.3.3.min.js"></script>
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.1.0.min.js"></script>        
@@ -357,10 +312,12 @@
 
         <!-- tm360 Shared-UI JS -->
         <script src="js/tm/core.js"></script>
+        <!-- 
         <script src="js/tm/cookie.js"></script>
         <script src="js/tm/string.js"></script>
         <script src="js/tm/date.js"></script>
-        <script src="js/tm.shortlink.js"></script>
+        <script src="js/tm/shortlink.js"></script>
+        -->
         <script src="js/tm/widgets/widgetFactory.js"></script>
         <script src="js/tm/widgets/modalDialog.js"></script>
 
@@ -408,11 +365,11 @@
                     adjustDisplayArea();
 
                     // date picker
-                    $("#dateselect").datepicker();
-                    $("#multidateselect").multiDatesPicker();
+                    //$("#dateselect").datepicker();
+                    //$("#multidateselect").multiDatesPicker();
 
-                    tm.shortlink();
-                    tm.shortlinkFlashCopy = true;
+                    //tm.shortlink();
+                    //tm.shortlinkFlashCopy = true;
 
                     activateModalDialog();
                 }
