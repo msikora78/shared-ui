@@ -34,7 +34,6 @@ cat $OUTDIR_JS/tm.js \
     $OUTDIR_JS/tm.widgets.modalDialog.js \
     > $OUTDIR_JS/tm-all.js
 
-# uglify
 echo "Uglifying Javascript (tm-all.min.js)"
 cat $OUTDIR_JS/tm-all.js | uglifyjs -nc -o $OUTDIR_JS/tm-all.min.js
 
@@ -56,5 +55,5 @@ cat $OUTDIR_CSS/tm360-base.css \
 echo "Minifying CSS (tm360-all.min.css)"
 lessc -x $OUTDIR_CSS/tm360-all.css > $OUTDIR_CSS/tm360-all.min.css
 
-echo "shared-ui build DONE!"
+echo "shared-ui tm360-$VERSION build DONE!"
 echo

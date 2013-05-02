@@ -2,6 +2,8 @@
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"/>
+
         <title>tm360 Shared UI Demo</title>
 
         <!-- 3rd party Shared CSS Libs (not in git repo) -->
@@ -45,7 +47,8 @@
                         <h1>Shared UI Demos</h1>
                         <p style="padding-left: 1em" id="pIntro">This is the demo page for tm360 Shared-UI components. </p>
                         <p style="padding-left: 1em">View <a href="https://confluence.tm.tmcs/confluence/display/UE/Reusable+UI+Components+Documentation" target="_blank">Reusable UI Components Doc</a> for visual specifications.</p>
-                        <p style="padding-left: 1em">Javascript unit tests are available for <a href="specRunner.html" target="_blank">utility methods</a> and <a href="specRunner-requirejs.html" target="_blank">Widgets (uses RequireJS)</a>.
+                        <p style="padding-left: 1em">Javascript unit tests are available for <a href="specRunner.html" target="_blank">utility methods</a> and <a href="specRunner-requirejs.html" target="_blank">Widgets (uses RequireJS)</a>.</p>
+                        <p style="padding-left: 1em">This page references assets on Dev2. If layout isn't being rendered properly, <a href="https://portal.shared.dev2.websys.tmcs/" target="_blank">click here</a> to "unlock", then return to this page and refresh.
                         <br/>&nbsp;</p>
                     </div>
                 </div>
@@ -372,6 +375,13 @@
                     //tm.shortlinkFlashCopy = true;
 
                     activateModalDialog();
+
+                    // disable iOS overscroll
+                    if (tm.iOS){
+                        $(document).on('touchmove', function(e) {
+                            e.preventDefault(); 
+                        });
+                    }
                 }
 
                 // jquery onload
