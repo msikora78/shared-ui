@@ -4,10 +4,6 @@
 define([], function() {
     'use strict';
 
-    define('optionalFallback', [], function() {
-        return {};
-    });
-
     function parse(name) {
         var arr = name.split(':');
 
@@ -18,17 +14,17 @@ define([], function() {
     }
 
     return {
-        normalize: function(name, normalize) {
-            var parsed = parse(name);
-            return parsed.optionalModuleName + ':' + (parsed.fallbackModuleName || 'optionalFallback');
-        },
-
         load: function(name, req, load, config) {
             var parsed = parse(name);
             if (config.paths[parsed.optionalModuleName] === undefined) {
-                req([parsed.fallbackModuleName], function(val) {
-                    load(val);
-                })
+                if (parsed.fallbackModuleName === undefined) {
+                    load(undefined);
+                }
+                else {
+                    req([parsed.fallbackModuleName], function(val) {
+                        load(val);
+                    })
+                }
             }
             else {
                 req([parsed.optionalModuleName], function(val) {

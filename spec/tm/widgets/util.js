@@ -48,6 +48,11 @@
 
         function parseRGBA(value) {
             var r = /^rgba\((\d),\s*(\d),\s*(\d),\s*(.*?)\)$/;
+            
+            if (value == "transparent") {
+                return { rgba: { r: 0, g: 0, b: 0, a: 0 }};
+            }
+
             var m = r.exec(value);
             var parsedValue = {
                 rgba: {
@@ -65,28 +70,78 @@
             return parsedValue;
         }
 
-        function parseShadowValue(value) {
+        function parseShadowValue(value, parseSpread) {
             var r = /^rgba\((\d+),\s*(\d+),\s*(\d+),\s*(.*?)\)\s*(.*?)$/;
-            var m = r.exec(value);
-            var mArgs = m[5].split(" ");
-            var parsedValue = {
-                rgba: {
-                    r: parseInt(m[1]),
-                    g: parseInt(m[2]),
-                    b: parseInt(m[3]),
-                    a: Math.round(parseFloat(m[4]) * 100) / 100
-                },
-                hShadow: mArgs[0],
-                vShadow: mArgs[1],
-                blur: mArgs[2],
-                spread: mArgs[3]
+            var inset = false;
+
+            if (parseSpread == undefined) {
+                parseSpread = true;
             }
 
-            parsedValue.toString = function() {
-                return "rgba(" + this.rgba.r + ', ' + this.rgba.g + ', ' + this.rgba.b + ', ' + this.rgba.a + ') ' + this.hShadow + ' ' + this.vShadow + ' ' + this.blur + ((this.spread) ? ' ' + this.spread : '');
-            }
+            if (value && value != 'none') {
+                if (value.indexOf("inset") > -1) {
+                    inset = true;
+                    value = value.replace('inset', '');
+                }
 
-            return parsedValue;
+                if (r.test(value)) {
+                    var m = r.exec(value);
+
+                    var mArgs = m[5].split(" ");
+                    var parsedValue = {
+                        rgba: {
+                            r: parseInt(m[1]),
+                            g: parseInt(m[2]),
+                            b: parseInt(m[3]),
+                            a: Math.round(parseFloat(m[4]) * 100) / 100
+                        },
+                        hShadow: mArgs[0],
+                        vShadow: mArgs[1],
+                        blur: mArgs[2],
+                        spread: mArgs[3],
+                        inset: inset
+                    }
+                }
+                else {                   
+                    r = /^(.*?)\s*rgba\((\d+),\s*(\d+),\s*(\d+),\s*(.*?)\)$/;
+                    m = r.exec(value);
+
+                    var mArgs = m[1].split(" ");
+                    var parsedValue = {
+                        rgba: {
+                            r: parseInt(m[2]),
+                            g: parseInt(m[3]),
+                            b: parseInt(m[4]),
+                            a: Math.round(parseFloat(m[5]) * 100) / 100
+                        },
+                        hShadow: mArgs[0],
+                        vShadow: mArgs[1],
+                        blur: mArgs[2],
+                        spread: mArgs[3],
+                        inset: inset
+                    }
+                }
+
+                if (parseSpread) {
+                    parsedValue.toString = function() {
+                        return "rgba(" + this.rgba.r + ', ' + this.rgba.g + ', ' + this.rgba.b + ', ' + this.rgba.a + ') ' + ((this.inset) ? 'inset ' : '') + this.hShadow + ' ' + this.vShadow + ' ' + this.blur + ((this.spread) ? ' ' + this.spread : ' 0px');
+                    }
+                }
+                else {
+                    parsedValue.toString = function() {
+                        return "rgba(" + this.rgba.r + ', ' + this.rgba.g + ', ' + this.rgba.b + ', ' + this.rgba.a + ') ' + this.hShadow + ' ' + this.vShadow + ' ' + this.blur;
+                    }   
+                }
+
+                return parsedValue;
+            }
+            else {
+                return value;
+            }
+        }
+
+        function parseTextShadowValue(value) {
+            return parseShadowValue(value, false);
         }
 
         function wait(duration) {
@@ -119,7 +174,6 @@
                     cssColor = parseRGBA(cssColor).toString();
                 }
                 expect(cssColor).toBe(color);
-
             };
         }
 
@@ -130,6 +184,10 @@
                 var direction = directions[i];
                 expect($component.css(styleSupport($component, 'border-' + direction + '-radius'))).toBe(size);
             };
+        }
+
+        function evaluateBackgroundColor($component, color) {
+            expect($component.css('background-color')).toBe(color);
         }
 
         function calculateDistance($component, direction) {
@@ -156,8 +214,11 @@
             calculateDistance: calculateDistance,
             evaluateBorderWidth: evaluateBorderWidth,
             evaluateBorderColor: evaluateBorderColor,
+            evaluateBackgroundColor: evaluateBackgroundColor,
             evaluateBorderRadius: evaluateBorderRadius,
-            parseShadowValue: parseShadowValue
+            parseShadowValue: parseShadowValue,
+            parseTextShadowValue: parseTextShadowValue,
+            parseRGBA: parseRGBA
         }
     }
 

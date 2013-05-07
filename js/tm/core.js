@@ -71,6 +71,23 @@
 
         /**
          * @function
+         * Allows to "inherit" the methods from a baseclass.
+         *
+         * Example:
+         *  tm.inheritMethods(checkableBase, Checkbox);
+         *
+         * @param {Object} baseClass Object to inherit from.
+         * @param {Object} currentClass Object that will receive the methods of baseClass
+         */
+        tm.inheritMethods = function(baseClass, currentClass) {
+            var inheritedMethods = function() {
+            };
+            inheritedMethods.prototype = baseClass.prototype;
+            currentClass.prototype = new inheritedMethods();
+        };
+        
+        /**
+         * @function
          * Copies all properties from one or more objects into a new object. 
          * Similar to jQuery.extend, but skips properties with null 
          * values and doesn't affect the original objects.

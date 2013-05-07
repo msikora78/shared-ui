@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="css/tm360-base.css" />
         <link rel="stylesheet" href="css/tm360-universal.css" />
         <link rel="stylesheet" href="css/tm360-shortlink.css" />
+        <link rel="stylesheet" href="css/demo.css" />
         <!-- link rel="stylesheet" href="css/bootstrap-content-rewrite-fix.css" / -->
 
 
@@ -62,7 +63,10 @@
         <script src="js/tm/date.js"></script>
         <script src="js/tm.shortlink.js"></script>
     	<script src="js/tm/widgets/widgetFactory.js"></script>
-	    <script src="js/tm/widgets/modalDialog.js"></script>
+    	<script src="js/tm/widgets/modalDialog.js"></script>
+        <script src="js/tm/widgets/checkableBase.js"></script>
+        <script src="js/tm/widgets/checkbox.js"></script>
+        <script src="js/tm/widgets/radiobutton.js"></script>
     </head>
     <body class="tm360">
         <div id="container">
@@ -189,40 +193,68 @@
                                         <span class="help-error">Error help text</span>
                                     </div>
                                 </div>
-                                <div class="control-group">
+                                <div class="control-group top-hr">
                                     <div class="controls">
-                                        <label class="checkbox inline">
+                                        <label class="checkbox">
                                             <input type="checkbox" value="" />
-                                            Checkbox 1
+                                            Checkbox
                                         </label>
-                                        <label class="checkbox inline">
-                                            <input type="checkbox" value="" />
-                                            Checkbox 2
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="" checked />
+                                            Checked checkbox
                                         </label>
-                                        <label class="checkbox inline">
+                                        <label class="checkbox">
                                             <input type="checkbox" value="" disabled />
-                                            Checkbox Disabled
+                                            Disabled checkbox
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="" disabled checked />
+                                            Disabled checked checkbox
                                         </label>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <div class="controls">
                                         <label class="radio">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked />
-                                            Radio 1
+                                            <input type="radio" name="optionsRadios" id="radiobutton" value="option1" />
+                                            Radio
                                         </label>
                                         <label class="radio">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" />
-                                            Radio 2
+                                            <input type="radio" name="optionsRadios" id="selected-radiobutton" value="option2" checked />
+                                            Selected radio
                                         </label>
                                         <label class="radio">
-                                            <input type="radio" disabled />
-                                            Disabled
+                                            <input type="radio" id="inactive-radiobutton" disabled />
+                                            Disabled radio
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" id="inactive-selected-radiobutton" disabled checked />
+                                            Disabled selected radio
                                         </label>
                                     </div>
+                                    <div style="margin-top: 10px;">
+                                        <a href="demo/index.html?url=demo%2Fcheckboxes-and-radiobuttons-examples%2Fall">See more checkboxes and radiobuttons ...</a>
+                                    </div>
                                 </div>
-                                <div class="control-group">
-                                    <div class="controls">
+                                <div class="control-group top-hr">
+                                    <div class="demo-group">
+                                        <button type="button" class="btn btn-primary">Primary</button>
+                                        <button type="button" class="btn btn-primary disabled" disabled>Disabled</button>
+                                    </div>
+                                    <div class="demo-group">
+                                        <button type="button" class="btn">Secondary</button>
+                                        <button type="button" class="btn disabled" disabled>Disabled</button>
+                                    </div>
+                                    <div class="demo-group">
+                                        <button type="button" class="btn btn-success">Important</button>
+                                        <button type="button" class="btn btn-success disabled" disabled>Disabled</button>
+                                    </div>
+                                    <div>
+                                        <a href="demo/index.html?url=demo%2Fbuttons-examples%2Fall">See more buttons</a>
+                                    </div>
+                                </div>
+                                <div class="control-group top-hr">
+                                    <div class="controls demo-group">
                                         <div class="btn-group">
                                             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                                                 Dropdown Label
@@ -237,9 +269,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="control-group">
-                                    <div class="controls">
+                                    <div class="controls demo-group">
                                         <div class="btn-group">
                                             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                                                 Extra Long Dropdown Label Extra Long
@@ -264,12 +294,15 @@
                                         <button type="button" class="btn">Secondary</button>
                                         <button type="button" class="btn disabled" disabled>Disabled</button>
                                     </div>
-                                    <div style="margin-top: 10px;">
+									<div style="margin-top: 10px;">
                                         <button type="button" class="btn btn-success">Important</button>
                                         <button type="button" class="btn btn-success disabled" disabled>Disabled</button>
                                     </div>
                                     <div style="margin-top: 10px;">
                                         <a href="demo/index.html?url=demo%2Fbuttons-examples%2Fall">See more buttons</a>
+                                    </div>
+                                    <div style="margin-top: 10px;">
+                                        <a href="demo/index.html?url=demo%2Fdropdown-button-with-menu-examples%2Fall">See more dropdowns ...</a>
                                     </div>
                                 </div>
                             </div>
@@ -339,13 +372,13 @@
                     </div>
                     <div class="span9">
                         <div class="well">
-                <div class="control-group">
-                <div id="button-list"></div>
-                <button type="button" id="button-list-button" class="btn btn-primary">Click me</button>
-                </div>
-                <div class="control-group">
-                <a href="demo/index.html?url=demo%2FmodalDialog-examples%2Fall">See more modal dialogs</a>
-                </div>
+            			    <div class="control-group">
+                				<div id="button-list"></div>
+                				<button type="button" id="button-list-button" class="btn btn-primary">Click me</button>
+            			    </div>
+            			    <div class="control-group">
+            				    <a href="demo/index.html?url=demo%2FmodalDialog-examples%2Fall">See more modal dialogs</a>
+            			    </div>
                         </div>
                     </div>
 
@@ -389,6 +422,10 @@
                     // shortlink
                     tm.shortlink();
                     tm.shortlinkFlashCopy = true;
+
+					// Checkables
+                    $('input[type="checkbox"]').tmCheckbox();
+                    $('input[type="radio"]').tmRadiobutton();
                 }
 
         		var yesButton = {
