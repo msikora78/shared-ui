@@ -1,5 +1,9 @@
 /* Note: All styles depend on class="tm360" wrapper element (on body or specific div) */
 
+*:focus {
+    outline: none;
+}
+
 .tm360 .arial {
     font-family: Arial, sans-serif;
 }
