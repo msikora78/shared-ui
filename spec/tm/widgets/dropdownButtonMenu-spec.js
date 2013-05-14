@@ -58,8 +58,8 @@ define(['./util'], function(Util) {
                             Util.evaluateBorderRadius($toggleButton, '3px');
                         });
 
-                        it('should be 28px height', function() {
-                            expect($toggleButton.outerHeight()).toBe(28);
+                        it('should be 29px height', function() {
+                            expect($toggleButton.outerHeight()).toBe(29);
                         });
 
                         it('should be 1px border', function() {
@@ -80,8 +80,7 @@ define(['./util'], function(Util) {
 						• Icon: TBD?
 						*/
                         it('should have a #fff background', function() {
-                            var rgb = Util.convertHexaToRgb("ffffff");
-                            expect($toggleButton.css('background-color')).toBe(rgb);
+                            Util.evaluateBackgroundColor($toggleButton, 'ffffff');
                         });
 
                         it('should have border #c8c9ce', function() {
@@ -89,8 +88,7 @@ define(['./util'], function(Util) {
                         });
 
                         it('should have #c8c9ce color', function() {
-                            var rgb = Util.convertHexaToRgb("c8c9ce");
-                            expect($toggleButton.css('color')).toBe(rgb);
+                            Util.evaluateColor($toggleButton, 'c8c9ce');
                         });
 					} else if (open) {
 						/*
@@ -100,8 +98,7 @@ define(['./util'], function(Util) {
 						• Icon: White down arrow in: grfx_01.png
 						*/
                         it('should have a #4f5158 background', function() {
-                            var rgb = Util.convertHexaToRgb("4f5158");
-                            expect($toggleButton.css('background-color')).toBe(rgb);
+                            Util.evaluateBackgroundColor($toggleButton, '4f5158');
                         });
 
                         it('should have border #1f2127', function() {
@@ -109,13 +106,11 @@ define(['./util'], function(Util) {
                         });
 
                         it('should have #FFFFFF color', function() {
-                            var rgb = Util.convertHexaToRgb("FFFFFF");
-                            expect($toggleButton.css('color')).toBe(rgb);
+                            Util.evaluateColor($toggleButton, 'FFFFFF');
                         });
 
                         it('should have text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25) ', function() {
-                            var textShadow = Util.parseTextShadowValue($toggleButton.css('text-shadow'));
-                            expect(textShadow.toString() || 'none').toBe('none');
+                            Util.evaluateTextShadow($toggleButton, 'none');
                         });
 						
                         describe('Dropdown menu', function() {
@@ -144,8 +139,7 @@ define(['./util'], function(Util) {
 							• 12px Museo Sans 500, #4f5158 
 							*/
 							it('should have #4F5158 color', function() {
-								var rgb = Util.convertHexaToRgb("4F5158");
-                            	expect($menuitem.css('color')).toBe(rgb);
+                                Util.evaluateColor($menuitem, '4F5158');
 							});
 
 							it('should have 12px font size', function() {
@@ -198,8 +192,7 @@ define(['./util'], function(Util) {
 						• Text: Same as (a) 
 						*/
                         it('should have a #ffffff background', function() {
-                            var rgb = Util.convertHexaToRgb("ffffff");
-                            expect($toggleButton.css('background-color')).toBe(rgb);
+                            Util.evaluateBackgroundColor($toggleButton, 'ffffff');
                         });
 
                         it('should have border #9296a3', function() {
@@ -207,17 +200,15 @@ define(['./util'], function(Util) {
                         });
 
                         it('should have #4F5158 color', function() {
-                            var rgb = Util.convertHexaToRgb("4F5158");
-                            expect($toggleButton.css('color')).toBe(rgb);
+                            Util.evaluateColor($toggleButton, '4F5158');
                         });
 
                         it('should have box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25)', function() {
-                            var boxShadow = Util.parseShadowValue($toggleButton.css('box-shadow'));
-                            expect(boxShadow.toString()).toBe('rgba(0, 0, 0, 0.25) 0px 2px 5px 0px');
+                            Util.evaluateBoxShadow($toggleButton, 'rgba(0, 0, 0, 0.25) 0px 2px 5px 0px');
                         });
 
                         it('should have no text-shadow', function() {
-                            expect($toggleButton.css('text-shadow') || 'none').toBe('none');
+                            Util.evaluateTextShadow($toggleButton, 'none');
                         });
                     } else {
 						/*
@@ -239,13 +230,11 @@ define(['./util'], function(Util) {
                         });
 
                         it('should have #4F5158 color ', function() {
-                            var rgb = Util.convertHexaToRgb("4F5158");
-                            expect($toggleButton.css('color')).toBe(rgb);
+                            Util.evaluateColor($toggleButton, '4F5158');
                         });
 
                         it('should have text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25) ', function() {
-                            var textShadow = Util.parseTextShadowValue($toggleButton.css('text-shadow'));
-                            expect(textShadow.toString()).toBe('rgba(255, 255, 255, 0.25) 0px 0px 1px');
+                            Util.evaluateTextShadow($toggleButton, 'rgba(255, 255, 255, 0.25) 0px 0px 1px')
                         });
                     }
                 });

@@ -46,7 +46,7 @@ define(['./util'], function(Util) {
                     it('should be 12px Arial Regular, #4f5158', function() {
                         expect($input.css('font-family')).toContain('Arial');
                         expect($input.css('font-size')).toBe('12px');
-                        expect($input.css('color')).toBe(Util.convertHexaToRgb('4f5158'));
+                        Util.evaluateColor($input, '4f5158')
                     });
 
                     if (!isError) {

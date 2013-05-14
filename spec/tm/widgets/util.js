@@ -39,7 +39,18 @@
         }
 
         function convertHexaToRgb(hexa) {
-            return "rgb(" + convertHexaToNumber(hexa.substr(0, 2)) + ", " + convertHexaToNumber(hexa.substr(2, 2)) + ", " + convertHexaToNumber(hexa.substr(4, 2)) + ")";
+            if (hexa.substring(0,3) == 'rgb') {
+                return hexa;
+            }
+            hexa = hexa.replace('#', '');
+
+            // manage shrinked values
+            if (hexa.length == 3) {
+                return "rgb(" + convertHexaToNumber(hexa.substr(0, 1) + hexa.substr(0, 1)) + ", " + convertHexaToNumber(hexa.substr(1, 1) + hexa.substr(1, 1)) + ", " + convertHexaToNumber(hexa.substr(2, 1) + hexa.substr(2, 1)) + ")";
+            }
+            else {
+                return "rgb(" + convertHexaToNumber(hexa.substr(0, 2)) + ", " + convertHexaToNumber(hexa.substr(2, 2)) + ", " + convertHexaToNumber(hexa.substr(4, 2)) + ")";
+            }
         }
 
         function convertHexaToRgba(hexa, opacity) {
@@ -95,10 +106,10 @@
                             b: parseInt(m[3]),
                             a: Math.round(parseFloat(m[4]) * 100) / 100
                         },
-                        hShadow: mArgs[0],
-                        vShadow: mArgs[1],
-                        blur: mArgs[2],
-                        spread: mArgs[3],
+                        hShadow: mArgs[0] || '0px',
+                        vShadow: mArgs[1] || '0px',
+                        blur: mArgs[2] || '0px',
+                        spread: mArgs[3] || '0px',
                         inset: inset
                     }
                 }
@@ -107,6 +118,9 @@
                     m = r.exec(value);
 
                     var mArgs = m[1].split(" ");
+                    if (mArgs[0] == '') {
+                        mArgs.shift();
+                    }
                     var parsedValue = {
                         rgba: {
                             r: parseInt(m[2]),
@@ -114,10 +128,10 @@
                             b: parseInt(m[4]),
                             a: Math.round(parseFloat(m[5]) * 100) / 100
                         },
-                        hShadow: mArgs[0],
-                        vShadow: mArgs[1],
-                        blur: mArgs[2],
-                        spread: mArgs[3],
+                        hShadow: mArgs[0] || '0px',
+                        vShadow: mArgs[1] || '0px',
+                        blur: mArgs[2] || '0px',
+                        spread: mArgs[3] || '0px',
                         inset: inset
                     }
                 }
@@ -169,7 +183,7 @@
             expect(styleSupport($component, 'border-color')).toBeTruthy();
             for (var i = 0; i < directions.length; i++) {
                 var direction = directions[i];
-                var cssColor = $component.css(styleSupport($component, 'border-' + direction + '-color'));
+                var cssColor = convertHexaToRgb($component.css(styleSupport($component, 'border-' + direction + '-color')));
                 if (isRgba) {
                     cssColor = parseRGBA(cssColor).toString();
                 }
@@ -186,8 +200,38 @@
             };
         }
 
+        function evaluateColor($component, color) {
+            var expectedrgb = convertHexaToRgb(color);
+            var actualrgb = convertHexaToRgb($component.css('color'));
+            expect(actualrgb).toBe(expectedrgb);
+        }
+
         function evaluateBackgroundColor($component, color) {
-            expect($component.css('background-color')).toBe(color);
+            var expectedrgb = convertHexaToRgb(color);
+            var actualrgb = convertHexaToRgb($component.css('background-color'));
+            expect(actualrgb).toBe(expectedrgb);
+        }
+
+        function evaluateTextShadow($component, value) {
+            var actualValue = $component.css('text-shadow');
+
+            // ie doesn't return 'none'
+            if (value == 'none' && convertHexaToRgb(actualValue) == $component.css('color')) {
+                actualValue = 'none';
+            }
+
+            expect(parseTextShadowValue(actualValue).toString() || 'none').toBe(value);
+        }
+
+        function evaluateBoxShadow($component, value) {
+            var actualValue = $component.css('box-shadow');
+
+            // ie doesn't return 'none'
+            if (value == 'none' && convertHexaToRgb(actualValue) == $component.css('color')) {
+                actualValue = 'none';
+            }
+
+            expect(parseShadowValue(actualValue).toString() || 'none').toBe(value);
         }
 
         function calculateDistance($component, direction) {
@@ -215,7 +259,10 @@
             evaluateBorderWidth: evaluateBorderWidth,
             evaluateBorderColor: evaluateBorderColor,
             evaluateBackgroundColor: evaluateBackgroundColor,
+            evaluateColor: evaluateColor,
             evaluateBorderRadius: evaluateBorderRadius,
+            evaluateTextShadow: evaluateTextShadow,
+            evaluateBoxShadow: evaluateBoxShadow,
             parseShadowValue: parseShadowValue,
             parseTextShadowValue: parseTextShadowValue,
             parseRGBA: parseRGBA
