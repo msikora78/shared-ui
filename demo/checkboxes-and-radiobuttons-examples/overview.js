@@ -6,7 +6,6 @@ define(['jquery', 'widget!tm/widgets/checkbox', 'widget!tm/widgets/radiobutton']
 		html:'\
 			<div id="checkboxes-container">\n\
 				<h5>Checkboxes</h5>\n\
-				<input type="checkbox" /><br>\n\
 				<label><input type="checkbox" value="1" />Option 1</label>\n\
 				<label><input type="checkbox" value="2" />Option 2</label>\n\
 				<input id="chk" type="checkbox" value="3" /><label for="chk" style="display: inline;">Option 3</label>\n\
@@ -21,7 +20,7 @@ define(['jquery', 'widget!tm/widgets/checkbox', 'widget!tm/widgets/radiobutton']
 				<br>\n\
 				Radio buttons group value: <span id="groupValue" />\n\
 			</div><br>',
-	setupString: 'function() {\n\
+		setupString: 'function() {\n\
 			$("#checkboxes-container input").tmCheckbox().change(function() {\n\
 				var values = [];\n\
 				$.each($("#checkboxes-container input"), function(index, element) {\n\
