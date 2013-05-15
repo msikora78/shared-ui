@@ -8,13 +8,13 @@ define(['jquery', 'bootstrap'], function($) {
 		    <div id="javascriptEventsContainer" class="demo-container">\n\
 		    	<table><tr><td>\n\
 		                <div class="btn-group">\n\
-		                    <a href="javascript:void(0)" class="btn dropdown-toggle" data-toggle="dropdown">Select<span class="caret" /></a>\n\
+		                    <a class="btn dropdown-toggle" data-toggle="dropdown">Select<span class="caret" /></a>\n\
 		                    <ul class="dropdown-menu">\n\
-		                        <li><a id="action1">Action 1</a></li>\n\
-		                        <li><a id="action2">Action 2</a></li>\n\
-		                        <li><a id="action3">Action 3</a></li>\n\
-		                        <li><a id="action4">Action 4</a></li>\n\
-		                        <li><a id="action5">Action 5</a></li>\n\
+		                        <li><a id="action1" href="javascript:return 0;">Action 1</a></li>\n\
+		                        <li><a id="action2" href="javascript:return 0;">Action 2</a></li>\n\
+		                        <li><a id="action3" href="javascript:return 0;">Action 3</a></li>\n\
+		                        <li><a id="action4" href="javascript:return 0;">Action 4</a></li>\n\
+		                        <li><a id="action5" href="javascript:return 0;">Action 5</a></li>\n\
 		                    </ul>\n\
 		                </div>\n\
 			        </td><td>\n\
