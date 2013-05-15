@@ -14,9 +14,9 @@ define(['jquery', 'bootstrap', 'widget!tm/widgets/checkbox'], function($) {
 		            <div id="uxMenu" class="btn-group" style="display: inline-block; width: 150px;">\n\
 		                <button id="uxDropdownToggle" class="btn dropdown-toggle" data-toggle="dropdown"><span>Do something</span><span class="caret" /></button>\n\
 						<ul class="dropdown-menu">\n\
-		                    <li><a tabindex="-1" href="#1">Action 1</a></li>\n\
-		                    <li><a tabindex="-1" href="#2">Action 2</a></li>\n\
-		                    <li><a tabindex="-1" href="#3">Perform an action that has a quite long title</a></li>\n\
+		                    <li><a tabindex="-1" href="#dropDownMenu#1">Action 1</a></li>\n\
+		                    <li><a tabindex="-1" href="#dropDownMenu#2">Action 2</a></li>\n\
+		                    <li><a tabindex="-1" href="#dropDownMenu#3">Perform an action that has a quite long title</a></li>\n\
 		                </ul>\n\
 		            </div>\n\
 		        </div>\n\
