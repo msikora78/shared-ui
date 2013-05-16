@@ -1,7 +1,15 @@
 /* Note: All styles depend on class="tm360" wrapper element (on body or specific div) */
 
+.tm360 ::-ms-clear {
+    display: none;
+}
+
 .tm360 :focus {
-    outline:none;
+    outline: none;
+}
+    
+.tm360 input {
+    outline-style: none !important;
 }
 
 .tm360 ::-moz-focus-inner {
@@ -246,14 +254,7 @@
 }
 
 .tm360 .modal .btn {
-    margin-left: 8px;
-}
-
-.tm360 .btn:active,
-.tm360 .btn.active {
-    -webkit-box-shadow: none !important;
-    -moz-box-shadow: none !important;
-    box-shadow: none !important;
+    margin-left: 10px;
 }
 
 .tm360 .btn:hover,
@@ -417,6 +418,9 @@
 .tm360 .btn-group.open > .btn.dropdown-toggle {
     background-color: #4F5158;
     *background-color: #e6e6e6;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
 }
 
 .tm360 .open .btn {
@@ -468,6 +472,8 @@
 
 .tm360 .modal {
     /*border: 10px solid rgb(153, 153, 153);*/
+    top: 50%;
+    left: 50%;
     width: 482px;
     border: 10px solid rgba(0, 0, 0, 0.25);
     -webkit-background-clip: padding-box;
@@ -482,10 +488,19 @@
 }
 
 .tm360 .modal.fade {
-  -webkit-transition: initial;
-     -moz-transition: initial;
-       -o-transition: initial;
-          transition: initial;
+    top: 50%;
+    -webkit-transition: opacity 0.10s linear;
+    -moz-transition: opacity 0.10s linear;
+    -o-transition: opacity 0.10s linear;
+    transition: opacity 0.10s linear;
+}
+
+.tm360 .modal.fade.in {
+  opacity: 100%;
+}
+
+.tm360 .modal.fade.out {
+    opacity: 0;
 }
 
 .tm360 .modal.large {
@@ -539,8 +554,29 @@
     filter: alpha(opacity=25);
 }
 
+.tm360 .modal-backdrop.fade.out {
+    background-color: #000;
+    opacity: 0.25;
+    filter: alpha(opacity=25);
+}
+
 .tm360 .modal-backdrop {
     background-color: #000;
     opacity: 0.0;
     filter: alpha(opacity=0);
 }  
+
+.tm360 .popover {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.tm360 .popover-content {
+    padding: 19px;
+    padding-bottom: 15px;
+}
+
+.tm360 .popover-title {
+    display: none;
+}

@@ -18,6 +18,11 @@
             action: 'btn-success'
         };
 
+        var actionTypes = {
+            primary: 'data-primary-action',
+            secondary: 'data-secondary-action'
+        }
+
         /**
          *	Default renderer to use with a string content
          *	@param {String} content to render
@@ -81,6 +86,7 @@
          *	@param {Object} opts creation options
          */
         var ModalDialog = function(element, opts) {
+            var self = this;
             opts = $.extend({}, defaults, opts);
 
             this.element = element.addClass('modal hide fade').attr("tabindex", "-1");
@@ -124,45 +130,150 @@
                 backdrop: 'static',
                 show: false
             });
+
+            this.element.css(
+            {
+                'margin-top': function () {
+                    return (window.pageYOffset || 20) - (self.element.height() / 2) - 20;
+                },
+                'margin-left': function () {
+                    return (window.pageXOffset || 20) - (self.element.width() / 2) - 20;
+                }
+            });
+            
         };
 
         ModalDialog.prototype = {
+            /**
+             * Returns the primary action button
+             */
+            getBtnPrimary: function() {
+                return this.element.find('.btn-primary');
+            },
+
+            /**
+             * Returns the secondary action button
+             */
+            getBtnSecondary: function() {
+                return this.element.find('.btn:not(.btn-primary)');
+            },
+
             /**
              * Bind an action
              * @param  {String} action action name
              * @param  {Integer} which  key code
              */
-            bindAction: function(action, which) {
-                var $action = this.element.find('.btn[' + action + ']');
+            bindKeyUp: function(actionType, which) {
+                var $actionElement = this.element.find('.btn[' + actionType + ']');
+                var $btnPrimary = this.getBtnPrimary();
+                var $btnSecondary = this.getBtnSecondary();
+                var triggerEvent = null;
+
+                // If no data-action attr is set, try to set the default actions to buttons
+                if ($actionElement.length == 0) {
+
+                    // Set default primary action if only one primary button is found
+                    if (actionType == actionTypes.primary && $btnPrimary.length == 1) {
+                        $actionElement = $btnPrimary;
+                    }
+
+                    // Set default secondary action if only one secondary button is found
+                    if (actionType == actionTypes.secondary && $btnSecondary.length == 1) {
+                        $actionElement = $btnSecondary;
+                    }
+
+                    // Hide modal on esc even when no secondary button is defined
+                    if (actionType == actionTypes.secondary && $btnSecondary.length == 0) {
+                        $actionElement = this.element;
+                    }
+                }
+
+                if (actionType == actionTypes.primary) {
+                    triggerEvent = this.triggerPrimaryAction;
+                }
+
+                // Set default secondary action if only one secondary button is found
+                if (actionType == actionTypes.secondary) {
+                    if ($btnSecondary.length == 0) {
+                        triggerEvent = this.triggerDefaultSecondaryAction;
+                    }
+                    else {
+                        triggerEvent = this.triggerSecondaryAction;
+                    }
+                }
 
                 $(document).on('keyup.tmModalDialog', function(e) {
-                    e.which == which && $action.click();
+                    e.which == which && triggerEvent && triggerEvent($actionElement);
                 });
+            },
+
+            bindBackdropClick: function() {
+                var $btnSecondary = this.getBtnSecondary();
+                var self = this;
+                $('.modal-backdrop').on('click', function() {
+                    if ($btnSecondary.length == 0) {
+                        self.triggerDefaultSecondaryAction(self.element);
+                    }
+                    else {
+                        self.triggerSecondaryAction($btnSecondary);   
+                    }
+                });
+            },
+
+            /**
+             * triggers primary action on specified button
+             * @param  {input} btn Button on which to trigger click event
+             */
+            triggerPrimaryAction: function(btn) {
+                btn.click();
+            },
+
+            /**
+             * triggers secondary action on specified button
+             * @param  {input} btn Button on which to trigger click event
+             */
+            triggerSecondaryAction: function(btn) {
+                btn.click();
+            },
+
+            /**
+             * triggers default secondary action
+             * @param  {object} el Element on which to trigger modal.hide
+             */
+            triggerDefaultSecondaryAction: function(el) {
+                el.modal('hide');
             },
 
             /**
              * Unbind an action
              * @param  {String} action action name
              */
-            unbindAction: function(action) {
+            unbindKeyUp: function(action) {
                 $(document).off('keyup.tmModalDialog');
+            },
+
+            unbindBackdropClick: function() {
+                $('.modal-backdrop').off('click');
             },
 
             /**
              *	Shows the dialog
              */
             show: function() {
+                var self = this;
                 this.element.modal('show');
-                this.bindAction('data-primary-action', ENTER);
-                this.bindAction('data-secondary-action', ESC);
+                this.bindKeyUp(actionTypes.primary, ENTER);
+                this.bindKeyUp(actionTypes.secondary, ESC);
+                this.bindBackdropClick();
             },
             /**
              *	Hides the dialog
              */
             hide: function() {
                 this.element.modal('hide');
-                this.unbindAction('data-primary-action', ENTER);
-                this.unbindAction('data-secondary-action', ESC);
+                this.unbindKeyUp(actionTypes.primary, ENTER);
+                this.unbindKeyUp(actionTypes.secondary, ESC);
+                this.unbindBackdropClick();
             },
             /**
              *	Sets the content and render it

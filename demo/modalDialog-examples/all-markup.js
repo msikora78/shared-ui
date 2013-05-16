@@ -16,9 +16,9 @@ define(['jquery', 'widget!tm/widgets/modalDialog'], function($) {
     '        <p>Hac ex causa conlaticia stipe Valerius humatur ille Publicola et subsidiis amicorum mariti inops cum liberis uxor alitur Reguli et dotatur ex aerario filia Scipionis, cum nobilitas florem adultae virginis diuturnum absentia pauperis erubesceret patris.</p>\n' +
     '    </div>\n' +
     '    <div class="modal-footer">\n' +
+    '        <button type="button" data-secondary-action class="btn">No</button>\n' +
     '        <button type="button" class="btn" >Maybe</button>\n' +
-    '        <button type="button" data-secondary-action class="btn" >No</button>\n' +
-    '        <button type="button" data-primary-action class="btn btn-primary" onclick="alert(\'Yes\')">Yes</button>\n' +
+    '        <button type="button" data-primary-action class="btn btn-primary" onclick="alert(\'Yes\');">Yes</button>\n' +
     '    </div>\n' +
     '</div>\n' +
     '<p><button type="button" class="btn btn-primary" id="all-markup-button">Click me</button></p>',
@@ -26,11 +26,12 @@ define(['jquery', 'widget!tm/widgets/modalDialog'], function($) {
         var dialog = $('#all-markup').tmModalDialog();\n \
 \n \
         dialog.find('.btn[data-secondary-action]').click(function() {\n \
-        dialog.tmModalDialog('hide');\n \
+            dialog.tmModalDialog('hide');\n \
+            alert(\'No\')\n\
         });\n \
 \n \
         $('#all-markup-button').click(function() {\n \
-        dialog.tmModalDialog('show');\n \
+            dialog.tmModalDialog('show');\n \
         });\n \
     }"
     };

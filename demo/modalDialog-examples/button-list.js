@@ -3,13 +3,14 @@ define(['global!console', 'jquery', 'widget!tm/widgets/modalDialog'], function(c
 	var data = {
 		legend: 'button-list',
 		html: '<div id="button-list"></div>\n\
-			<p><button type="button" id="button-list-button" class="btn btn-primary">Click me</button></p>',
+			<p><button type="button" id="button-list-button" class="btn btn-primary">Click me</button></p>\n\
+			<p><input id="uxResult"/></p>',
 		setupString: "function() {\n \
 			var yesButton = {\n \
 				text: 'Yes',\n \
 				type: 'primary',\n \
 				callback: function(e, dialog) {\n \
-					console.info('yes');\n \
+					result.val('yes');\n \
 					dialog.tmModalDialog('hide');\n \
 				}\n \
 			};\n \
@@ -17,7 +18,7 @@ define(['global!console', 'jquery', 'widget!tm/widgets/modalDialog'], function(c
 			var noButton = {\n \
 				text: 'No',\n \
 				callback: function(e, dialog) {\n \
-					console.info('no');\n \
+					result.val('no');\n \
 					dialog.tmModalDialog('hide');\n \
 				}\n \
 			};\n \
@@ -28,8 +29,11 @@ define(['global!console', 'jquery', 'widget!tm/widgets/modalDialog'], function(c
 				buttons: [noButton, yesButton]\n \
 			});\n \
 \n \
+			var result = $('#uxResult');\n \
+\n \
 			$('#button-list-button').click(function() {\n \
 				dialog.tmModalDialog('show');\n \
+				result.val('');\n \
 			});\n \
 		}"
 	};
