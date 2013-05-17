@@ -95,26 +95,29 @@
             this.footer = element.children('.modal-footer');
             this.renderer = opts.renderer;
 
-            if (!this.header.length && !this.body.length && !this.footer.length) {
-                var content = element.children().detach();
-
-                this.body = $('<div class="modal-body"></div>').append(content).appendTo(element);
-            }
-
             if (!this.header.length) {
                 var title = $('<h3/>').text(opts.title);
 
                 this.header = $('<div class="modal-header"></div>').append(title).prependTo(element);
             }
 
+            if (!this.body.length) {
+                this.body = $('<div class="modal-body"></div>').insertAfter(this.header);
+            }
+
             if (!this.footer.length) {
                 var buttons = $();
+
+                // force default button type if buttons list contains one element.
+                if (opts.buttons.length == 1) {
+                    opts.buttons[0].type = defaults.buttons[0].type;
+                }
 
                 for (var i = 0; i < opts.buttons.length; i++) {
                     buttons = buttons.add(createButton(opts.buttons[i], element));
                 }
 
-                this.footer = $('<div class="modal-footer"></div>').append(buttons).appendTo(element);
+                this.footer = $('<div class="modal-footer"></div>').append(buttons).insertAfter(this.body);
             }
 
             if (opts.content !== null) {
@@ -131,16 +134,18 @@
                 show: false
             });
 
+            // Forcing offset to 10 when offset is undefined to fix ie8 rendering
             this.element.css(
             {
                 'margin-top': function () {
-                    return (window.pageYOffset || 20) - (self.element.height() / 2) - 20;
+                    var baseTop = (typeof window.pageYOffset != 'undefined' ? window.pageYOffset : 10);
+                    return baseTop - (self.element.height() / 2) - 20;
                 },
                 'margin-left': function () {
-                    return (window.pageXOffset || 20) - (self.element.width() / 2) - 20;
+                    var baseLeft = (typeof window.pageXOffset != 'undefined' ? window.pageXOffset : 10);
+                    return baseLeft - (self.element.width() / 2) - 20;
                 }
             });
-            
         };
 
         ModalDialog.prototype = {
@@ -167,7 +172,7 @@
                 var $actionElement = this.element.find('.btn[' + actionType + ']');
                 var $btnPrimary = this.getBtnPrimary();
                 var $btnSecondary = this.getBtnSecondary();
-                var triggerEvent = null;
+                var triggerEvent = this.triggerButtonClick;
 
                 // If no data-action attr is set, try to set the default actions to buttons
                 if ($actionElement.length == 0) {
@@ -178,27 +183,20 @@
                     }
 
                     // Set default secondary action if only one secondary button is found
-                    if (actionType == actionTypes.secondary && $btnSecondary.length == 1) {
-                        $actionElement = $btnSecondary;
+                    if (actionType == actionTypes.secondary) {
+                        if ($btnSecondary.length == 1) {
+                            $actionElement = $btnSecondary;
+                        }
+                        else {
+                            $actionElement = $btnPrimary;
+                        }
                     }
 
-                    // Hide modal on esc even when no secondary button is defined
-                    if (actionType == actionTypes.secondary && $btnSecondary.length == 0) {
+                    // Hide modal on esc even when no button is defined
+                    if ($btnPrimary.length == 0 && $btnSecondary.length == 0) {
                         $actionElement = this.element;
-                    }
-                }
-
-                if (actionType == actionTypes.primary) {
-                    triggerEvent = this.triggerPrimaryAction;
-                }
-
-                // Set default secondary action if only one secondary button is found
-                if (actionType == actionTypes.secondary) {
-                    if ($btnSecondary.length == 0) {
+                        // Set default secondary action if only one secondary button is found
                         triggerEvent = this.triggerDefaultSecondaryAction;
-                    }
-                    else {
-                        triggerEvent = this.triggerSecondaryAction;
                     }
                 }
 
@@ -208,31 +206,29 @@
             },
 
             bindBackdropClick: function() {
+                var $btnPrimary = this.getBtnPrimary();
                 var $btnSecondary = this.getBtnSecondary();
                 var self = this;
                 $('.modal-backdrop').on('click', function() {
                     if ($btnSecondary.length == 0) {
-                        self.triggerDefaultSecondaryAction(self.element);
+                        if ($btnPrimary.length == 0) {
+                            self.triggerDefaultSecondaryAction(self.element);
+                        }
+                        else {
+                            self.triggerButtonClick($btnPrimary);
+                        }
                     }
                     else {
-                        self.triggerSecondaryAction($btnSecondary);   
+                        self.triggerButtonClick($btnSecondary);
                     }
                 });
             },
 
             /**
-             * triggers primary action on specified button
+             * triggers click on specified button
              * @param  {input} btn Button on which to trigger click event
              */
-            triggerPrimaryAction: function(btn) {
-                btn.click();
-            },
-
-            /**
-             * triggers secondary action on specified button
-             * @param  {input} btn Button on which to trigger click event
-             */
-            triggerSecondaryAction: function(btn) {
+            triggerButtonClick: function(btn) {
                 btn.click();
             },
 

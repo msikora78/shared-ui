@@ -2,9 +2,10 @@ define(['global!console', 'jquery', 'widget!tm/widgets/modalDialog'], function(c
 
 	var data = {
 		legend: 'button-list',
+		description: 'You can supply a custom buttons list via javascript to the widget.',
 		html: '<div id="button-list"></div>\n\
 			<p><button type="button" id="button-list-button" class="btn btn-primary">Click me</button></p>\n\
-			<p><input id="uxResult"/></p>',
+			<p><input type="text" id="uxResult"/></p>',
 		setupString: "function() {\n \
 			var yesButton = {\n \
 				text: 'Yes',\n \

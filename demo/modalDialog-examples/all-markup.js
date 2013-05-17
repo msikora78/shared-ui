@@ -1,7 +1,7 @@
 define(['jquery', 'widget!tm/widgets/modalDialog'], function($) {
     var data = {
     legend: 'all-markup',
-    description: 'You can specify the action to be used when the user hit ESC (with <code>data-secondary-action</code>) or ENTER (with <code>data-primary-action</code>).',
+    description: '<p>You can create the modalDialog body completely via html markup.</p><p>Note that you can force the action to be used when the user hits the ENTER <code>data-primary-action</code> and ESC <code>data-secondary-action</code> keys.</p>',
     html: '<div id="all-markup" class="large">\n' +
     '    <div class="modal-header">\n' +
     '        <h3>My header</h3>\n' +

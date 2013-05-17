@@ -2,6 +2,7 @@ define(['jquery', 'angular', 'widget!tm/widgets/modalDialog'], function($, angul
 
 	var data = {
 		legend: 'angular-integration',
+		description: 'This demonstrates how to integrate the modalDialog component into an Angular directive in order to use it as a <code>tm-modal-dialog</code> html attribute.',
 		html: '<div id="angular-integration" ng-controller="angularIntegrationCtrl">\n' +
 			'	<div tm-modal-dialog="objectToEdit">\n' +
 			'		<div class="modal-header">\n' +
@@ -16,33 +17,34 @@ define(['jquery', 'angular', 'widget!tm/widgets/modalDialog'], function($, angul
 			'			<button type="button" ng-click="save()" class="btn btn-primary">Save</button>\n' +
 			'		</div>\n' +
 			'	</div>\n' +
-			'	<p><button type="button" class="btn btn-primary" ng-click="edit()">Click me</button></p>\n' +
+			'	<p><button type="button" class="btn btn-primary" ng-click="edit();">Click me</button> Hello <span ng-bind="object.name"></span>!</p>\n' +
 			'</div>',
 		setupString: "function() {\n \
 			var app = angular.module('angular-integration', []);\n \
 \n \
 			app.controller('angularIntegrationCtrl', function($scope) {\n \
-				var o = {\n \
-					name: ''\n \
-				};\n \
+				undoValue = '';\n \
+				$scope.object = {\n\
+					name: ''\n\
+				}\n\
 \n \
 				$scope.edit = function() {\n \
-					$scope.objectToEdit = {\n \
-						name: o.name\n \
-					};\n \
+					undoValue = $scope.object.name;\n \
+					$scope.objectToEdit = $scope.object; //This triggers modalDialog.show\n\
 				};\n \
 \n \
 				$scope.save = function() {\n \
-					o = $scope.objectToEdit;\n \
-\n \
+					undoValue = '';\n \
 					$scope.objectToEdit = null;\n \
 				};\n \
 \n \
 				$scope.cancel = function() {\n \
+					$scope.object.name = undoValue;\n \
 					$scope.objectToEdit = null;\n \
+					undoValue = '';\n \
 				};\n \
 \n \
-				$scope.objectToEdit = null;\n \
+				$scope.objectToEdit = null;\n\
 			});\n \
 \n \
 			app.directive('tmModalDialog', function() {\n \
