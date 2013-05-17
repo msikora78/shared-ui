@@ -9,8 +9,7 @@ define(['jquery', 'angular', 'widget!tm/widgets/modalDialog'], function($, angul
 			'			<h3>Angular Integration</h3>\n' +
 			'		</div>\n' +
 			'		<div class="modal-body">\n' +
-			'			<p>Enter name</p>\n' +
-			'			<input type="text" ng-model="objectToEdit.name" />\n' +
+			'			Enter name: <input type="text" ng-model="objectToEdit.name" />\n' +
 			'		</div>\n' +
 			'		<div class="modal-footer">\n' +
 			'			<button type="button" ng-click="cancel()" class="btn">Cancel</button>\n' +
