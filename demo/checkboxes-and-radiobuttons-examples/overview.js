@@ -1,4 +1,5 @@
 define(['jquery', 'widget!tm/widgets/checkbox', 'widget!tm/widgets/radiobutton'], function($) {
+	'use strict';
 
 	var data = {
 		legend: 'Overview',
@@ -20,23 +21,21 @@ define(['jquery', 'widget!tm/widgets/checkbox', 'widget!tm/widgets/radiobutton']
 				<br>\n\
 				Radio buttons group value: <span id="groupValue" />\n\
 			</div><br>',
-		setupString: 'function() {\n\
-			$("#checkboxes-container input").tmCheckbox().change(function() {\n\
-				var values = [];\n\
-				$.each($("#checkboxes-container input"), function(index, element) {\n\
-					if (element.checked) {\n\
-						values.push(element.value);\n\
-					}\n\
-				});\n\
-				$("#checkboxesValues").text(values.join(", "));\n\
-			});\n\
-			$("#radiobuttons-container input").tmRadiobutton().change(function() {\n\
-				$("#groupValue").text($(this).tmRadiobutton("getGroupSelection").val());\n\
-			});\n\
-		}'
+		js: function() {
+			$("#checkboxes-container input").tmCheckbox().change(function() {
+				var values = [];
+				$.each($("#checkboxes-container input"), function(index, element) {
+					if (element.checked) {
+						values.push(element.value);
+					}
+				});
+				$("#checkboxesValues").text(values.join(", "));
+			});
+			$("#radiobuttons-container input").tmRadiobutton().change(function() {
+				$("#groupValue").text($(this).tmRadiobutton("getGroupSelection").val());
+			});
+		}
 	};
-
-	data.setup = new Function('return ' + data.setupString).call(this);
 
 	return data;
 });

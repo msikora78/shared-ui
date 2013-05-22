@@ -1,9 +1,11 @@
 define(['jquery', 'angular', 'widget!tm/widgets/checkbox', 'widget!tm/widgets/radiobutton'], function($, angular) {
+	'use strict';
 	
 	var data = {
 		legend: 'Angular integration',
 		description: 'Checkboxes and Radiobuttons widget applied in an angular directive.',
-		html: '<div id="angularContainer" ng-controller="checkboxesController">\n\
+		html: '\
+			<div id="angularContainer" ng-controller="checkboxesController">\n\
 				<div>\n\
 					<label for="angCheckbox1">\n\
 						<input tm-checkbox ng-model="isChecked" type="checkbox" id="angCheckbox1" />\n\
@@ -18,45 +20,43 @@ define(['jquery', 'angular', 'widget!tm/widgets/checkbox', 'widget!tm/widgets/ra
 					<span>Current value: {{optionValue}}</span>\n\
 				</div>\n\
 			</div><br>',
-		setupString: 'function() {\n\
-			var app = angular.module("angular-checkbox", []);\n\
-\n\
-			app.controller("checkboxesController", function($scope) {\n\
-				$scope.isChecked = true;\n\
-				$scope.optionValue = "2";\n\
-			});\n\
-\n\
-			app\n\
-				.directive("tmCheckbox", function() {\n\
-					return {\n\
-						require: "?ngModel",\n\
-						link: function(scope, iElement, iAttrs, ngModel) {\n\
-							if (ngModel) {\n\
-								ngModel.$render = function() {\n\
-									iElement.tmCheckbox("setChecked", ngModel.$modelValue);\n\
-								}\n\
-							}\n\
-						}\n\
-					}\n\
-				})\n\
-				.directive("tmRadiobutton", function() {\n\
-					return {\n\
-						require: "?ngModel",\n\
-						link: function(scope, iElement, iAttrs, ngModel) {\n\
-							if (ngModel) {\n\
-								ngModel.$render = function() {\n\
-									iElement.tmRadiobutton("setChecked", ngModel.$modelValue == iElement.val());\n\
-								}\n\
-							}\n\
-						}\n\
-					}\n\
-				});\n\
-\n\
-			angular.bootstrap("#angularContainer", ["angular-checkbox"]);\n\
-		}'
-	};
+		js: function() {
+			var app = angular.module("angular-checkbox", []);
 
-	data.setup = new Function('$', 'angular', 'return ' + data.setupString).call(this, $, angular);
+			app.controller("checkboxesController", function($scope) {
+				$scope.isChecked = true;
+				$scope.optionValue = "2";
+			});
+
+			app
+				.directive("tmCheckbox", function() {
+					return {
+						require: "?ngModel",
+						link: function(scope, iElement, iAttrs, ngModel) {
+							if (ngModel) {
+								ngModel.$render = function() {
+									iElement.tmCheckbox("setChecked", ngModel.$modelValue);
+								}
+							}
+						}
+					}
+				})
+				.directive("tmRadiobutton", function() {
+					return {
+						require: "?ngModel",
+						link: function(scope, iElement, iAttrs, ngModel) {
+							if (ngModel) {
+								ngModel.$render = function() {
+									iElement.tmRadiobutton("setChecked", ngModel.$modelValue == iElement.val());
+								}
+							}
+						}
+					}
+				});
+
+			angular.bootstrap("#angularContainer", ["angular-checkbox"]);
+		}
+	};
 
 	return data;
 });

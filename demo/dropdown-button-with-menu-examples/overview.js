@@ -1,6 +1,6 @@
 define(['jquery', 'bootstrap'], function($){
 	'use strict';
-	
+
 	var data = {
 		legend: 'Overview',
 		description: 'A standard Bootstrap dropdown menu. Not to confuse with combobox, this control triggers an action rather than letting the user pick a value from a set.',
@@ -38,11 +38,8 @@ define(['jquery', 'bootstrap'], function($){
 		                </ul>\n\
 		            </div>\n\
 	            </div>\n\
-	        </div>',
-		setupString: 'function(){}'
+	        </div>'
 	};
-
-	data.setup = new Function('return ' + data.setupString).call(this);
 
 	return data;
 });

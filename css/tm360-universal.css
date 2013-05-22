@@ -580,6 +580,28 @@
     padding-bottom: 15px;
 }
 
-.tm360 .popover-title {
-    display: none;
+.tm360 .tmTooltip.popover {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.tm360 .tmTooltip .popover-title {
+    opacity: 1;
+    padding: 19px;
+    padding-bottom: 15px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    background-color: #FFF;
+    border-style: none;
+}
+
+.tm360 .btn:active {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
 }

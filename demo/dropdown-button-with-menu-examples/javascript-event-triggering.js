@@ -23,15 +23,13 @@ define(['jquery', 'bootstrap'], function($) {
 			        </td></tr>\n\
 		    	</table>\n\
 		    </div>',
-		setupString: 'function() {\n\
-			$("#javascriptEventsContainer .btn-group ul li a").click(function(e) {\n\
-				$("#javascript-events-console").html($("#javascript-events-console").html() + $(e.target).attr("id") + " clicked.<br>");\n\
-				$("#javascript-events-console").scrollTop($("#javascript-events-console")[0].scrollHeight);\n\
-			});\n\
-        }'
+		js: function() {
+			$("#javascriptEventsContainer .btn-group ul li a").click(function(e) {
+				$("#javascript-events-console").html($("#javascript-events-console").html() + $(e.target).attr("id") + " clicked.<br>");
+				$("#javascript-events-console").scrollTop($("#javascript-events-console")[0].scrollHeight);
+			});
+        }
 	};
-
-	data.setup = new Function('return ' + data.setupString).call(this);
 
 	return data;
 });

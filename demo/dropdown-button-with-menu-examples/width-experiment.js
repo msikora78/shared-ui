@@ -9,7 +9,6 @@ define(['jquery', 'bootstrap', 'widget!tm/widgets/checkbox'], function($) {
 	            <div id="widthDemo" class="demo-group">\n\
 		            <button id="uxNormal" type="button" class="btn btn-primary">Normal</button>\n\
 		            <button id="uxLarge" type="button" class="btn">Large</button>\n\
-		            <button id="uxExtraLarge" type="button" class="btn">Extra large</button>\n\
 		            <button id="uxAutoWidth" type="button" class="btn">Set width from label</button>\n\
 		            <div id="uxMenu" class="btn-group" style="display: inline-block; width: 150px;">\n\
 		                <button id="uxDropdownToggle" class="btn dropdown-toggle" data-toggle="dropdown"><span>Do something</span><span class="caret" /></button>\n\
@@ -25,41 +24,37 @@ define(['jquery', 'bootstrap', 'widget!tm/widgets/checkbox'], function($) {
 					<label><input type="checkbox" id="uxMinWidth" />Force width on dropdown-menu</label>\n\
 				</div>\n\
 		    </div>',
-		setupString: '\
-			function(){\n\
-				function setWidth(e, width) {\n\
-					$("#uxMenu").css("width", width);\n\
-					$("#widthDemo button").removeClass("btn-primary");\n\
-					$(e.target).addClass("btn-primary");\n\
-					$("#uxDropdownToggle span:first").text("Do something");\n\
-				}\n\
-\n\
-				$("#uxNormal").click(function(e) { setWidth(e, "150"); });\n\
-				$("#uxLarge").click(function(e) { setWidth(e, "300"); });\n\
-				$("#uxExtraLarge").click(function(e) { setWidth(e, "600"); });\n\
-				$("#uxAutoWidth").click(function(e) {\n\
-					setWidth(e, "auto");\n\
-					$("#uxDropdownToggle span:first").text("Do something that requires a very long label text");\n\
-				});\n\
-				$("#uxNoWrap").tmCheckbox().change(function() {\n\
-					if ($(this).prop("checked")) {\n\
-						$("#widthDemo .dropdown-menu a").addClass("nowrap");\n\
-					} else {\n\
-						$("#widthDemo .dropdown-menu a").removeClass("nowrap");\n\
-					}\n\
-				});\n\
-				$("#uxMinWidth").tmCheckbox().change(function() {\n\
-					if ($(this).prop("checked")) {\n\
-						$("#widthDemo .dropdown-menu").removeAttr("style");\n\
-						$("#widthDemo .dropdown-menu").css("width", "99.5%");\n\
-					} else {\n\
-						$("#widthDemo .dropdown-menu").removeAttr("style");\n\
-					}\n\
-				});\n\
-			}'
-	};
+		js: function() {
+			function setWidth(e, width) {
+				$("#uxMenu").css("width", width);
+				$("#widthDemo button").removeClass("btn-primary");
+				$(e.target).addClass("btn-primary");
+				$("#uxDropdownToggle span:first").text("Do something");
+			}
 
-	data.setup = new Function('return ' + data.setupString).call(this);
+			$("#uxNormal").click(function(e) { setWidth(e, "150"); });
+			$("#uxLarge").click(function(e) { setWidth(e, "300"); });
+			$("#uxAutoWidth").click(function(e) {
+				setWidth(e, "auto");
+				$("#uxDropdownToggle span:first").text("Do something that requires a very long label text");
+			});
+			$("#uxNoWrap").tmCheckbox().change(function() {
+				if ($(this).prop("checked")) {
+					$("#widthDemo .dropdown-menu a").addClass("nowrap");
+				} else {
+					$("#widthDemo .dropdown-menu a").removeClass("nowrap");
+				}
+			});
+			$("#uxMinWidth").tmCheckbox().change(function() {
+				if ($(this).prop("checked")) {
+					$("#widthDemo .dropdown-menu").removeAttr("style");
+					$("#widthDemo .dropdown-menu").css("width", "99.5%");
+				} else {
+					$("#widthDemo .dropdown-menu").removeAttr("style");
+				}
+			});
+		}
+	};
 
 	return data;
 });

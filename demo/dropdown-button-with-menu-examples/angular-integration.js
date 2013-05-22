@@ -13,20 +13,17 @@ define(['jquery', 'angular', 'bootstrap'], function($, angular) {
             		</ul>\n\
             	</div>\n\
             </div>',
-        setupString: '\
-        	function(){\n\
-				var app = angular.module("angular-dropdown", []);\n\
-\n\
-				app.controller("dropdownController", function($scope) {\n\
-					$scope.items = [];\n\
-					for (var i = 1; i <= 5; i++) { $scope.items.push({ title: "Action " + i, url: "#" + i }); }\n\
-				});\n\
-\n\
-				angular.bootstrap("#angularIntegrationContainer", ["angular-dropdown"]);\n\
-        	}'
-    };
+        js: function(){
+			var app = angular.module("angular-dropdown", []);
 
-	data.setup = new Function('return ' + data.setupString).call(this);
+			app.controller("dropdownController", function($scope) {
+				$scope.items = [];
+				for (var i = 1; i <= 5; i++) { $scope.items.push({ title: "Action " + i, url: "#" + i }); }
+			});
+
+			angular.bootstrap("#angularIntegrationContainer", ["angular-dropdown"]);
+    	}
+    };
 
 	return data;
 });

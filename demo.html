@@ -66,6 +66,7 @@
         <script src="js/tm/widgets/checkableBase.js"></script>
         <script src="js/tm/widgets/checkbox.js"></script>
         <script src="js/tm/widgets/radiobutton.js"></script>
+        <script src="js/tm/widgets/tooltip.js"></script>
     </head>
     <body class="tm360">
         <div id="container">
@@ -192,6 +193,9 @@
                                         <span class="help-error">Error help text</span>
                                     </div>
                                 </div>
+                                <div style="margin-top: 10px;">
+                                    <a href="demo/index.html?url=demo%2FtextInputFields-examples%2Fall">See more text input fields ...</a>
+                                </div>
                                 <div class="control-group top-hr">
                                     <div class="controls">
                                         <label class="checkbox">
@@ -249,7 +253,7 @@
                                         <button type="button" class="btn btn-success disabled" disabled>Disabled</button>
                                     </div>
                                     <div>
-                                        <a href="demo/index.html?url=demo%2Fbuttons-examples%2Fall">See more buttons</a>
+                                        <a href="demo/index.html?url=demo%2Fbuttons-examples%2Fall">See more buttons ...</a>
                                     </div>
                                 </div>
                                 <div class="control-group top-hr">
@@ -374,8 +378,8 @@
                     <div class="span9">
                         <div class="well">
                             <div class="control-group">
-                                <button id="tooltipBtn" class="btn" rel="popover" data-trigger="hover" type="button"
-                                    data-content="It's so simple to create a tooltip for my website!">Hover me!</button>
+                                <button id="tooltipBtn" class="btn" type="button"
+                                    title="It's so simple to create a tooltip for my website!">Hover me!</button>
                             </div>
                             <div class="control-group">
                                 <a href="demo/index.html?url=demo%2FnonModalDialog-examples%2Fall">See more non-modal dialogs</a>
@@ -453,7 +457,7 @@
         		    dialog.tmModalDialog('show');
         		});
 
-                $('#tooltipBtn').popover();
+                $('#tooltipBtn').tmTooltip();
 
                 // jquery onload
                 $(init);
