@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	function factory($, gadgets, core, checkableBase) {
+	function factory($, gadgets, tm, checkableBase) {
 
 		var Checkbox = function(element, opts) {
 			this.spriteLeft = "178";
@@ -13,7 +13,7 @@
 			checkableBase.call(this, element, opts);
 		};
 
-		core.inheritMethods(checkableBase, Checkbox);
+		tm.inheritMethods(checkableBase, Checkbox);
 
 		Checkbox.prototype._onClick = function(e) { 
 			this._toggleState();

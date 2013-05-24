@@ -1,4 +1,4 @@
-define(['jquery', 'bootstrap', 'widget!tm/widgets/tooltip'], function($) {
+define(['jquery', 'widget!tm/widgets/tooltip', 'widget!tm/widgets/popup'], function($) {
     'use strict';
 
     var data = {
@@ -6,15 +6,24 @@ define(['jquery', 'bootstrap', 'widget!tm/widgets/tooltip'], function($) {
         description: 'Non-modal dialogs.',
         html:'\
             <div id="overview-non-modal-container" class="demo-container">\n\
-                <button type="button" id="tooltipTarget" class="btn" \n\
-                    title="It\'s so simple to create a tooltip for my website!" data-placement="right">Tooltip</button>\n\
-                <button type="button" id="popupTarget" class="btn" \n\
-                    title="It\'s so simple to create a tooltip for my website!">Pop up</button>\n\
-                <button type="button" id="popupWithArrowTarget" class="btn" \n\
-                    title="It\'s so simple to create a tooltip for my website!">Pop up with arrow</button>\n\
+                <p><a id="tooltipTarget" \n\
+                    title="It\'s so simple to create a tooltip for my website!"\n\
+                    data-placement="top">Tooltip</a></p>\n\
+                <p><button type="button" class="btn" id="popupTarget"\n\
+                    title="Popup\'s title" \n\
+                    data-content="It\'s so simple to create a popup for my website!">Pop up</button>\n\
+                <button type="button" class="btn" id="popupWithNoTitle"\n\
+                    data-content="It\'s so simple to create a popup for my website!">Pop up with no Title</button>\n\
+                <button type="button" class="btn" id="popupWithArrowTarget"\n\
+                    title="Popup\'s title" \n\
+                    data-content="It\'s so simple to create a popup for my website!"\n\
+                    data-show-arrow="true">Pop up with arrow</button></p>\n\
             </div>',
         js: function() {
             $("#tooltipTarget").tmTooltip();
+            $("#popupTarget").tmPopup();
+            $("#popupWithArrowTarget").tmPopup();
+            $("#popupWithNoTitle").tmPopup();
         }
     };
 

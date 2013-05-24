@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	function factory($, gadgets, core, checkableBase) {
+	function factory($, gadgets, tm, checkableBase) {
 
 		var Radiobutton = function(element, opts) {
 			this.spriteLeft = "342";
@@ -19,7 +19,7 @@
 			};
 		};
 
-		core.inheritMethods(checkableBase, Radiobutton);
+		tm.inheritMethods(checkableBase, Radiobutton);
 
 		Radiobutton.prototype._manageRadiobuttonGroupState = function() {
 			var self = this,

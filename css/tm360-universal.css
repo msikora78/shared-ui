@@ -589,7 +589,7 @@
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
 }
 
-.tm360 .tmTooltip .popover-title {
+.tm360 .tmPopup .popover-title {
     opacity: 1;
     padding: 19px;
     padding-bottom: 15px;
@@ -598,6 +598,27 @@
     border-radius: 0px;
     background-color: #FFF;
     border-style: none;
+}
+
+.tm360 .tmPopup .with-title {
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.tm360 .tmPopup h1.popover-title {
+    font-size: 18px;
+    font-family: "MuseoSans500";
+    color: #4f5158;
+}
+
+.tm360 .popover .arrow .bottom {
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+}
+
+.tm360 .popover-footer {
+    margin-top: 15px;
+    text-align: right;
 }
 
 .tm360 .btn:active {

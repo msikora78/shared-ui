@@ -6,14 +6,14 @@
      *  @returns {Function} modal dialog prototype
      */
 
-    function factory($, gadgets) {
+    function factory($, gadgets, tm, tmPopup) {
         var gadgetPrefs = new gadgets.Prefs();
 
         // Default options
         var defaults = {
-            placement: 'bottom',
+            showArrow: true,
             trigger: 'hover',
-            template: '<div class="popover tmTooltip"><div class="arrow"></div><div class="popover-inner"><div class="popover-title"><p></p></div></div></div>'
+            template: '<div class="popover tmPopup"><div class="arrow"></div><div class="popover-inner"><div class="popover-title"><p></p></div></div></div>'
         };
 
         /**
@@ -26,18 +26,23 @@
         var Tooltip = function(element, opts) {
             var opts = $.extend({}, defaults, opts);
 
-            element.popover(opts);
+            if (opts.placement == null) {
+                opts.placement = element.attr('data-placement') || 'bottom';
+            }
+
+            element.tmPopup(opts);
         };
 
-        return Tooltip;
+        // tm.inheritMethods(tmPopup, Tooltip);
 
+        return Tooltip;
     }
 
     // If requirejs is present, we want to use it, otherwise, we want to use the global declarations to get the dependencies
     if (typeof define === 'function' && define.amd) {
-        define(['jquery', 'global!gadgets', 'bootstrap'], factory);
+        define(['jquery', 'global!gadgets', 'tm/core', 'tm/widgets/popup' ], factory);
     } else {
-        tm.widgets.widgetFactory.make('tmTooltip', factory($, gadgets));
+        tm.widgets.widgetFactory.make('tmTooltip', factory($, gadgets, tm));
     }
 
 })();

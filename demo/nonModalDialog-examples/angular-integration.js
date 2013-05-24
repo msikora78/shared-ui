@@ -1,24 +1,27 @@
-define(['jquery', 'angular', 'tm/core', 'widget!tm/widgets/modalDialog'], function($, angular, tm) {
+define(['jquery', 'angular', 'tm/core', 'widget!tm/widgets/popup'], function($, angular, tm) {
     'use strict';
 
     var data = {
         legend: 'Angular integration',
-        description: 'This demonstrates how to integrate the modalDialog component into an Angular directive in order to use it as a <code>tm-modal-dialog</code> html attribute.',
-        html: '\
+        description: 'Popup widget applied in an angular directive.',
+        html:'\
             <div id="angular-integration" ng-controller="angularIntegrationCtrl">\n\
-                <div tm-modal-dialog="objectToEdit">\n\
-                    <div class="modal-header">\n\
-                        <h3>Angular Integration</h3>\n\
-                    </div>\n\
-                    <div class="modal-body">\n\
+                <div id="popupTemplate">\n\
+                    <div class="popup-body">\n\
                         Enter your name: <input type="text" ng-model="objectToEdit.name" />\n\
                     </div>\n\
-                    <div class="modal-footer">\n\
+                    <div class="popover-footer">\n\
                         <button type="button" ng-click="cancel()" class="btn">Cancel</button>\n\
                         <button type="button" ng-click="save()" class="btn btn-primary">Save</button>\n\
                     </div>\n\
                 </div>\n\
-                <p><button type="button" class="btn btn-primary" ng-click="edit();">Click me</button> Hello <span ng-bind="object.name"></span>!</p>\n\
+                <p><button type="button" class="btn btn-primary"\n\
+                        tm-popup="objectToEdit" \n\
+                        ng-click="edit();"\n\
+                        title="Angular integration"\n\
+                        data-template-id="popupTemplate">Click me\n\
+                    </button>\n\
+                    Hello <span ng-bind="object.name"></span>!</p>\n\
             </div>',
         js: function() {
             var app = angular.module('angular-integration', []);
@@ -31,7 +34,7 @@ define(['jquery', 'angular', 'tm/core', 'widget!tm/widgets/modalDialog'], functi
 
                 $scope.edit = function() {
                     previousState = $.extend({}, $scope.object);
-                    $scope.objectToEdit = $scope.object; //This triggers modalDialog.show
+                    $scope.objectToEdit = $scope.object; //This triggers popup.show
                 };
 
                 $scope.save = function() {
@@ -48,21 +51,23 @@ define(['jquery', 'angular', 'tm/core', 'widget!tm/widgets/modalDialog'], functi
                 $scope.objectToEdit = null;
             });
 
-            app.directive('tmModalDialog', function() {
+            app.directive('tmPopup', function() {
                 return {
                     scope: true,
                     link: function(scope, iElement, iAttrs) {
-                        var dialog = iElement.tmModalDialog();
+                        var popup = iElement.tmPopup({
+                            trigger: 'manual'
+                        });
 
-                        scope.$watch(iAttrs.tmModalDialog, function(newValue) {
-                            dialog.tmModalDialog(newValue ? 'show' : 'hide');
+                        scope.$watch(iAttrs.tmPopup, function(newValue) {
+                            popup.tmPopup(newValue ? 'show' : 'hide');
                         });
 
                         scope.$on('$destroy', function() {
-                            iElement.tmModalDialog('destroy');
+                            iElement.tmPopup('destroy');
                         });
 
-                        dialog.on('shown', function() {
+                        popup.on('shown', function() {
                             $(this).find('input').focus();
                         });
                     }

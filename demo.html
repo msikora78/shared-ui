@@ -5,9 +5,9 @@
         <title>tm360 Shared UI Demo</title>
 
         <!-- 3rd party Shared CSS Libs (not in git repo) -->
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/html5boilerplate-base.css" />
         <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/jquery-ui/ui-lightness/jquery-ui-1.8.22.custom.css" />
-        <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/bootstrap-2.1.0/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/html5boilerplate-last.css" />
 
         <!-- tm360 Shared-UI CSS -->
@@ -38,7 +38,7 @@
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ui.multidatespicker-1.6.1.js"></script>
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ba-throttle-debounce-1.1.min.js"></script>
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/underscore_1.3.3.min.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.1.0.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
         <!-- Plugin for x-browser Copy-to-Clipboard http://code.google.com/p/zeroclipboard -->
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/ZeroClipboard.js"></script>
         <script>
@@ -66,6 +66,7 @@
         <script src="js/tm/widgets/checkableBase.js"></script>
         <script src="js/tm/widgets/checkbox.js"></script>
         <script src="js/tm/widgets/radiobutton.js"></script>
+        <script src="js/tm/widgets/popup.js"></script>
         <script src="js/tm/widgets/tooltip.js"></script>
     </head>
     <body class="tm360">
@@ -378,8 +379,18 @@
                     <div class="span9">
                         <div class="well">
                             <div class="control-group">
-                                <button id="tooltipBtn" class="btn" type="button"
-                                    title="It's so simple to create a tooltip for my website!">Hover me!</button>
+                                <p><a id="tooltipTarget"
+                                    title="It's so simple to create a tooltip!"
+                                    data-placement="top">Tooltip</a></p>
+                                <p><button type="button" class="btn" id="popupTarget"
+                                    title="Popup's title" 
+                                    data-content="It's so simple to create a popup!">Pop up</button>
+                                <button type="button" class="btn" id="popupWithNoTitle"
+                                    data-content="It's so simple to create a popup!">Pop up with no Title</button>
+                                <button type="button" class="btn" id="popupWithArrowTarget"
+                                    title="Popup's title" 
+                                    data-content="It's so simple to create a popup!"
+                                    data-show-arrow="true">Pop up with arrow</button></p>
                             </div>
                             <div class="control-group">
                                 <a href="demo/index.html?url=demo%2FnonModalDialog-examples%2Fall">See more non-modal dialogs</a>
@@ -391,7 +402,7 @@
 
                 <div class="row-fluid">
                     <div class="span3">
-                        <h5>8. TBD</h5>
+                        <h5>9. TBD</h5>
                     </div>
                     <div class="span9">
                         <div class="well">
@@ -457,7 +468,10 @@
         		    dialog.tmModalDialog('show');
         		});
 
-                $('#tooltipBtn').tmTooltip();
+                $("#tooltipTarget").tmTooltip();
+                $("#popupTarget").tmPopup();
+                $("#popupWithArrowTarget").tmPopup();
+                $("#popupWithNoTitle").tmPopup();
 
                 // jquery onload
                 $(init);

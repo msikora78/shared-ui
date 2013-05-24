@@ -2,7 +2,7 @@ requirejs.config({
 	baseUrl: '../js',
 	paths: {
 		'jquery': 'http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min',
-		'bootstrap': 'http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min',
+		'bootstrap': 'http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min',
 		'angular': 'http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min',
 		'jquery.throttle': '../lib/jquery.ba-throttle-debounce-1.1/jquery.ba-throttle-debounce.min',
 		'widget': '../plugin/widget',

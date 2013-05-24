@@ -1,4 +1,4 @@
-define(['jquery', 'bootstrap', 'widget!tm/widgets/tooltip'], function($) {
+define(['jquery', 'widget!tm/widgets/tooltip'], function($) {
     'use strict';
 
     var data = {
@@ -6,14 +6,29 @@ define(['jquery', 'bootstrap', 'widget!tm/widgets/tooltip'], function($) {
         description: 'Non-modal dialogs built using javascript only.',
         html:'\
             <div id="overview-non-modal-container" class="demo-container">\n\
-                <button type="button" id="javascriptTooltipTarget" class="btn">Tooltip</button>\n\
-                <button type="button" id="javascriptPopupTarget" class="btn">Pop up</button>\n\
-                <button type="button" id="javascriptPopupWithArrowTarget" class="btn">Pop up with arrow</button>\n\
+                <p><a id="javascriptTooltipTarget">Tooltip</a></p>\n\
+                <p>\n\
+                    <button type="button" id="javascriptPopupTarget" class="btn">Pop up</button>\n\
+                    <button type="button" id="javascriptPopupWithNoTitle" class="btn">Pop up with no title</button>\n\
+                    <button type="button" id="javascriptPopupWithArrowTarget" class="btn">Pop up with arrow</button>\n\
+                </p>\n\
             </div>',
         js: function() {
             $("#javascriptTooltipTarget").tmTooltip({
                 title: "It's so easy to create a tooltip for my website using only javascript.",
-                placement: 'right'
+                placement: 'top'
+            });
+            $('#javascriptPopupTarget').tmPopup({
+                title: "Popup's title",
+                content: "It's so easy to create a popup for my website using only javascript."
+            });
+            $('#javascriptPopupWithNoTitle').tmPopup({
+                content: "It's so easy to create a popup for my website using only javascript."
+            });
+            $('#javascriptPopupWithArrowTarget').tmPopup({
+                title: "Popup's title",
+                content: "It's so easy to create a popup for my website using only javascript.",
+                showArrow: true
             });
         }
     };

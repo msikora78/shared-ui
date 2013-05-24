@@ -29,7 +29,7 @@ body {
 	font-size: 13px;
 	height: 100%;
   overflow: auto;
-  /*position: relative;*/
+  position: relative;
   *text-align: center; /* IE7 doesnt center content with margin: 0 auto; */
 }
 
