@@ -6,7 +6,6 @@ define(['jquery', 'widget!tm/widgets/popup', 'widget!tm/widgets/checkbox'], func
         description: 'This example demonstrates the positioning of popups. The popup should always be fully visible within the boundaries of the browser window, changing orientation automatically if needed.',
         html:'\
             <div id="basic-popups-container" class="demo-container">\n\
-                <label><input id="uxShowArrows" type="checkbox" />Display popups arrows</label>\n\
                 <p><button type="button" class="btn" \n\
                         title="Popup\'s title" \n\
                         data-content="It\'s so simple to create a popup for my website!"\n\
@@ -51,13 +50,12 @@ define(['jquery', 'widget!tm/widgets/popup', 'widget!tm/widgets/checkbox'], func
                         data-placement="bottom-right">Bottom right\n\
                     </button>\n\
                 </p>\n\
+                <label><input id="uxShowArrows" type="checkbox" />Display popups arrows</label>\n\
             </div>',
         js: function() {
             $("#basic-popups-container .btn").tmPopup();
             $("#uxShowArrows").tmCheckbox().on('change', function() {
-                $("#basic-popups-container .btn").each(function(i, btn) {
-                    $(btn).data('popover').options.showArrow = $("#uxShowArrows").prop('checked');
-                });
+                $("#basic-popups-container .btn").tmPopup('option', 'showArrow', $("#uxShowArrows").prop('checked'));
             });
         }
     };

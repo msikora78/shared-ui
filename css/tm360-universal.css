@@ -495,12 +495,9 @@
     transition: opacity 0.10s linear;
 }
 
-.tm360 .modal.fade.in {
-  opacity: 100%;
-}
-
-.tm360 .modal.fade.out {
-    opacity: 0;
+.tm360 .modal.fade.in,
+.tm360 .modal.in {
+    opacity: 100%;
 }
 
 .tm360 .modal.large {
@@ -551,28 +548,27 @@
     box-shadow: none;
 }
 
-.tm360 .modal-backdrop.fade.in {
-    background-color: #000;
-    opacity: 0.25;
-    filter: alpha(opacity=25);
-}
-
-.tm360 .modal-backdrop.fade.out {
-    background-color: #000;
-    opacity: 0.25;
-    filter: alpha(opacity=25);
-}
-
-.tm360 .modal-backdrop {
+.modal-backdrop {
     background-color: #000;
     opacity: 0.0;
     filter: alpha(opacity=0);
 }  
 
+.modal-backdrop.fade.in,
+.modal-backdrop.in {
+    opacity: 0.25;
+    filter: alpha(opacity=25);
+}
+
 .tm360 .popover {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
+    border-color: #9296a3;
+    -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgb(146, 150, 163)
 }
 
 .tm360 .popover-content {
@@ -580,16 +576,9 @@
     padding-bottom: 15px;
 }
 
-.tm360 .tmTooltip.popover {
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 0px;
-    -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
-    -moz-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
-}
-
 .tm360 .tmPopup .popover-title {
+    color: #4f5158;
+    font-family: "MuseoSans500";
     opacity: 1;
     padding: 19px;
     padding-bottom: 15px;
@@ -607,13 +596,19 @@
 
 .tm360 .tmPopup h1.popover-title {
     font-size: 18px;
-    font-family: "MuseoSans500";
-    color: #4f5158;
 }
 
-.tm360 .popover .arrow .bottom {
-    border-top-width: 2px;
-    border-bottom-width: 2px;
+.tm360 .popover.top .arrow {
+    border-top-color: rgba(146, 150, 163, 1);
+}
+.tm360 .popover.bottom .arrow {
+    border-bottom-color: rgba(146, 150, 163, 1);
+}
+.tm360 .popover.left .arrow {
+    border-left-color: rgba(146, 150, 163, 1);
+}
+.tm360 .popover.right .arrow {
+    border-right-color: rgba(146, 150, 163, 1);
 }
 
 .tm360 .popover-footer {

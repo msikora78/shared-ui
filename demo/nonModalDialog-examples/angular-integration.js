@@ -15,7 +15,8 @@ define(['jquery', 'angular', 'tm/core', 'widget!tm/widgets/popup'], function($, 
                         <button type="button" ng-click="save()" class="btn btn-primary">Save</button>\n\
                     </div>\n\
                 </div>\n\
-                <p><button type="button" class="btn btn-primary"\n\
+                <p>\n\
+                    <button type="button" class="btn btn-primary"\n\
                         tm-popup="objectToEdit" \n\
                         ng-click="edit();"\n\
                         title="Angular integration"\n\

@@ -17,13 +17,16 @@ define(['jquery', 'widget!tm/widgets/tooltip', 'widget!tm/widgets/popup'], funct
                 <button type="button" class="btn" id="popupWithArrowTarget"\n\
                     title="Popup\'s title" \n\
                     data-content="It\'s so simple to create a popup for my website!"\n\
-                    data-show-arrow="true">Pop up with arrow</button></p>\n\
+                    data-show-arrow="true">Pop up with arrow</button>\n\
+                <button type="button" class="btn" id="popupWithArrowTargetLittle"\n\
+                                    title="Popup\'s title" \n\
+                                    data-content="It\'s so simple to create a popup!"\n\
+                                    data-show-arrow="true" style="min-width: 30px;">+</button></p>\n\
+                <div id="popupContainer" class="tm360"></div>\n\
             </div>',
         js: function() {
             $("#tooltipTarget").tmTooltip();
-            $("#popupTarget").tmPopup();
-            $("#popupWithArrowTarget").tmPopup();
-            $("#popupWithNoTitle").tmPopup();
+            $("#overview-non-modal-container .btn:not(a)").tmPopup();
         }
     };
 

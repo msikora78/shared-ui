@@ -168,10 +168,16 @@
             return deferred.promise();
         }
 
+        function evaluateBorderStyle($component, style, directions) {
+            directions = directions ? directions : ['top', 'bottom', 'left', 'right'];
+            for (var i = 0; i < directions.length; i++) {
+                var direction = directions[i];
+                expect($component.css(styleSupport($component, 'border-' + direction + '-style'))).toBe(style);
+            };
+        }
+
         function evaluateBorderWidth($component, size, directions) {
             directions = directions ? directions : ['top', 'bottom', 'left', 'right'];
-
-            expect(styleSupport($component, 'border-width')).toBeTruthy();
             for (var i = 0; i < directions.length; i++) {
                 var direction = directions[i];
                 expect($component.css(styleSupport($component, 'border-' + direction + '-width'))).toBe(size);
@@ -180,23 +186,26 @@
 
         function evaluateBorderColor($component, color, directions, isRgba) {
             directions = directions ? directions : ['top', 'bottom', 'left', 'right'];
-            expect(styleSupport($component, 'border-color')).toBeTruthy();
             for (var i = 0; i < directions.length; i++) {
                 var direction = directions[i];
                 var cssColor = convertHexaToRgb($component.css(styleSupport($component, 'border-' + direction + '-color')));
                 if (isRgba) {
                     cssColor = parseRGBA(cssColor).toString();
                 }
-                expect(cssColor).toBe(color);
+                expect(cssColor.replace(/\s/g, '')).toBe(color.replace(/\s/g, ''));
             };
         }
 
         function evaluateBorderRadius($component, size, directions) {
             directions = directions ? directions : ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
-            expect(styleSupport($component, 'border-radius')).toBeTruthy();
             for (var i = 0; i < directions.length; i++) {
                 var direction = directions[i];
-                expect($component.css(styleSupport($component, 'border-' + direction + '-radius'))).toBe(size);
+                var cssStyleAttribute = styleSupport($component, 'border-' + direction + '-radius');
+
+                if (cssStyleAttribute) {
+                    actualSize = $component.css(cssStyleAttribute);
+                    expect(actualSize).toBe(size);
+                }
             };
         }
 
@@ -215,12 +224,13 @@
         function evaluateTextShadow($component, value) {
             var actualValue = $component.css('text-shadow');
 
-            // ie doesn't return 'none'
-            if (value == 'none' && convertHexaToRgb(actualValue) == $component.css('color')) {
-                actualValue = 'none';
+            if (typeof actualValue != 'undefined') {
+                // ie doesn't return 'none'
+                if (value == 'none' && convertHexaToRgb(actualValue) == $component.css('color')) {
+                    actualValue = 'none';
+                }
+                expect(parseTextShadowValue(actualValue).toString() || 'none').toBe(value);
             }
-
-            expect(parseTextShadowValue(actualValue).toString() || 'none').toBe(value);
         }
 
         function evaluateBoxShadow($component, value) {
@@ -231,7 +241,19 @@
                 actualValue = 'none';
             }
 
-            expect(parseShadowValue(actualValue).toString() || 'none').toBe(value);
+            if (actualValue != undefined) {
+                expect(parseShadowValue(actualValue).toString() || 'none').toBe(value);
+            }
+        }
+
+        function evaluateGradient($component, top, bottom) {
+            var rgbTop = convertHexaToRgb(top);
+            var rgbBottom = convertHexaToRgb(bottom);
+            var gradient = gradientSupport($component);
+
+            if (typeof gradient != 'undefined') {
+                expect($component.css(styleSupport($component, 'background-image'))).toContain(rgbTop + ', ' + rgbBottom);
+            }
         }
 
         function calculateDistance($component, direction) {
@@ -256,13 +278,15 @@
             convertHexaToRgba: convertHexaToRgba,
             wait: wait,
             calculateDistance: calculateDistance,
+            evaluateBorderStyle: evaluateBorderStyle,
             evaluateBorderWidth: evaluateBorderWidth,
             evaluateBorderColor: evaluateBorderColor,
+            evaluateBorderRadius: evaluateBorderRadius,
             evaluateBackgroundColor: evaluateBackgroundColor,
             evaluateColor: evaluateColor,
-            evaluateBorderRadius: evaluateBorderRadius,
             evaluateTextShadow: evaluateTextShadow,
             evaluateBoxShadow: evaluateBoxShadow,
+            evaluateGradient: evaluateGradient,
             parseShadowValue: parseShadowValue,
             parseTextShadowValue: parseTextShadowValue,
             parseRGBA: parseRGBA

@@ -6,10 +6,10 @@ define(['jquery', 'widget!tm/widgets/popup'], function($) {
         description: 'This example demonstrates how to use the popups with templates.',
         html:'\
             <div id="advanced-popups-container" class="demo-container">\n\
-                <button id="advanced-popups-target" type="button" class="btn" \n\
+                <button id="advanced-popups-target" type="button" class="btn target" \n\
                     title="Templated popup"\n\
                     data-template-id="advanced-popup-template"\n\
-                    data-show-arrow="true">Show</button>\n\
+                    data-show-arrow="true">Click me</button>\n\
                 Hello <span id="yourName" />!\n\
                 <div id="advanced-popup-template" style="height: 100px;">\n\
                     <label>Enter name<input type="text"></input></label>\n\
@@ -22,8 +22,7 @@ define(['jquery', 'widget!tm/widgets/popup'], function($) {
             $("#advanced-popups-target").tmPopup();
             $("#advanced-popup-template-close").click(function() {
                 $('#yourName').text($("#advanced-popup-template input").val());
-                $("#advanced-popup-template input").val('');
-                $("#advanced-popups-target").tmPopup('hide', $("#advanced-popups-target"));
+                $("#advanced-popups-target").tmPopup('hide');
             });
         }
     };
