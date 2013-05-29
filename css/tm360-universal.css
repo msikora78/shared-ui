@@ -615,9 +615,3 @@
     margin-top: 15px;
     text-align: right;
 }
-
-.tm360 .btn:active {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-}
