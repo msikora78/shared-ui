@@ -52,8 +52,8 @@ define(['./util'], function(Util) {
                             Util.evaluateBorderRadius($button, '3px');
                         });
 
-                        it('should be 29px height', function() {
-                            expect($button.outerHeight()).toBe(29);
+                        it('should be 28px height', function() {
+                            expect($button.outerHeight()).toBe(28);
                         });
 
                         it('should always be a 10px left and right margin', function()  {
@@ -108,8 +108,7 @@ define(['./util'], function(Util) {
                             });
 
                             it('should have box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25)', function() {
-                                var boxShadow = Util.parseShadowValue($button.css('box-shadow'));
-                                expect(boxShadow.toString()).toBe('rgba(0, 0, 0, 0.25) 0px 2px 5px 0px');
+                                Util.evaluateBoxShadow($button, 'rgba(0, 0, 0, 0.25) 0px 2px 5px 0px');
                             });
 
                             it('should have no text-shadow', function() {
@@ -119,11 +118,7 @@ define(['./util'], function(Util) {
                     } else {
                         describe('default state', function() {
                             it('should have a gradient #fff at top to #d4d6d9 at bottom', function() {
-                                var rgbTop = Util.convertHexaToRgb("ffffff");
-                                var rgbBottom = Util.convertHexaToRgb("d4d6d9");
-                                var gradient = Util.gradientSupport($button);
-                                expect(gradient).toBeTruthy();
-                                expect($button.css(Util.styleSupport($button, 'background-image'))).toContain(rgbTop + ', ' + rgbBottom);
+                                Util.evaluateGradient($button, "#ffffff", "#d4d6d9");
                             });
 
                             it('should be border #9296a3', function() {

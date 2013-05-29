@@ -58,8 +58,8 @@ define(['./util'], function(Util) {
                             Util.evaluateBorderRadius($toggleButton, '3px');
                         });
 
-                        it('should be 29px height', function() {
-                            expect($toggleButton.outerHeight()).toBe(29);
+                        it('should be 28px height', function() {
+                            expect($toggleButton.outerHeight()).toBe(28);
                         });
 
                         it('should be 1px border', function() {
@@ -218,11 +218,7 @@ define(['./util'], function(Util) {
 						• Icon: Dark grey down arrow in: grfx_01.png
 						*/
                         it('should have a gradient #fff at top to #d4d6d9 at bottom', function() {
-                            var rgbTop = Util.convertHexaToRgb("ffffff");
-                            var rgbBottom = Util.convertHexaToRgb("d4d6d9");
-                            var gradient = Util.gradientSupport($toggleButton);
-                            expect(gradient).toBeTruthy();
-                            expect($toggleButton.css(Util.styleSupport($toggleButton, 'background-image'))).toContain(rgbTop + ', ' + rgbBottom);
+                            Util.evaluateGradient($toggleButton, "#ffffff", "#d4d6d9")
                         });
 
                         it('should be border #9296a3', function() {

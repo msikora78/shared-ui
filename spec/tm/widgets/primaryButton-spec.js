@@ -52,8 +52,8 @@ define(['./util'], function(Util) {
                             Util.evaluateBorderRadius($button, '3px');
                         });
 
-                        it('should be 29px height', function() {
-                            expect($button.outerHeight()).toBe(29);
+                        it('should be 28px height', function() {
+                            expect($button.outerHeight()).toBe(28);
                         });
 
                         it('should always be a 10px left and right padding', function()  {
@@ -108,23 +108,17 @@ define(['./util'], function(Util) {
                             });
 
                             it('should have box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25)', function() {
-                                var boxShadow = Util.parseShadowValue($button.css('box-shadow'));
-                                expect(boxShadow.toString()).toBe('rgba(0, 0, 0, 0.25) 0px 2px 5px 0px');
+                                Util.evaluateBoxShadow($button, 'rgba(0, 0, 0, 0.25) 0px 2px 5px 0px')
                             });
 
                             it('should have text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25) ', function() {
-                                var textShadow = Util.parseTextShadowValue($button.css('text-shadow'));
-                                expect(textShadow.toString()).toBe('rgba(0, 0, 0, 0.25) -1px -1px 1px');
+                                Util.evaluateTextShadow($button, 'rgba(0, 0, 0, 0.25) -1px -1px 1px')
                             });
                         });
                     } else {
                         describe('default state', function() {
                             it('should have a gradient #6bbefd at top to #2d93d4 at bottom', function() {
-                                var rgbTop = Util.convertHexaToRgb("6bbefd");
-                                var rgbBottom = Util.convertHexaToRgb("2d93d4");
-                                var gradient = Util.gradientSupport($button);
-                                expect(gradient).toBeTruthy();
-                                expect($button.css(Util.styleSupport($button, 'background-image'))).toContain(rgbTop + ', ' + rgbBottom);
+                                Util.evaluateGradient($button, "#6bbefd", "#2d93d4")
                             });
 
                             it('should be border #9296a3', function() {
@@ -136,8 +130,7 @@ define(['./util'], function(Util) {
                             });
 
                             it('should have text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25) ', function() {
-                                var boxShadow = Util.parseShadowValue($button.css('text-shadow'));
-                                expect(boxShadow.toString()).toBe('rgba(0, 0, 0, 0.25) -1px -1px 1px 0px');
+                                Util.evaluateTextShadow($button, 'rgba(0, 0, 0, 0.25) -1px -1px 1px')
                             });
                         });
                     }
