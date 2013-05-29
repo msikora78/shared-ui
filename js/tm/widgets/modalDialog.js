@@ -75,7 +75,8 @@
             content: null,
             title: null,
             buttons: [okButton],
-            size: null
+            size: null,
+            fade: true
         };
 
         /**
@@ -89,7 +90,7 @@
             var self = this;
             opts = $.extend({}, defaults, opts);
 
-            this.element = element.addClass('modal hide fade').attr("tabindex", "-1");
+            this.element = element.addClass('modal hide').addClass(opts.fade ? 'fade' : '').attr("tabindex", "-1");
             this.header = element.children('.modal-header');
             this.body = element.children('.modal-body');
             this.footer = element.children('.modal-footer');
