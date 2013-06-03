@@ -56,7 +56,5 @@ define(['jquery', 'widget!tm/widgets/radiobutton'], function($) {
         }
     };
 
-    data.setup = new Function('return ' + data.setupString).call(this);
-
     return data;
 });
