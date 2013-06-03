@@ -8,7 +8,7 @@ define(['jquery', 'widget!tm/widgets/popup'], function($) {
             <div id="advanced-popups-container" class="demo-container">\n\
                 <button id="advanced-popups-target" type="button" class="btn target" \n\
                     title="Templated popup"\n\
-                    data-template-id="advanced-popup-template"\n\
+                    data-custom-template-id="advanced-popup-template"\n\
                     data-show-arrow="true">Click me</button>\n\
                 Hello <span id="yourName" />!\n\
                 <div id="advanced-popup-template" style="height: 100px;">\n\
@@ -19,10 +19,12 @@ define(['jquery', 'widget!tm/widgets/popup'], function($) {
                 </div>\n\
             </div>',
         js: function() {
-            $("#advanced-popups-target").tmPopup();
+            $(".btn.target").tmPopup({
+                height: '175px'
+            });
             $("#advanced-popup-template-close").click(function() {
                 $('#yourName').text($("#advanced-popup-template input").val());
-                $("#advanced-popups-target").tmPopup('hide');
+                $(".btn.target").tmPopup('hide');
             });
         }
     };

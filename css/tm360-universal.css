@@ -7,7 +7,12 @@
 .tm360 :focus {
     outline: none;
 }
-    
+
+.tm360 h1 {
+    font-size: 36px;
+    line-height: 60px;
+}
+
 .tm360 input {
     outline-style: none !important;
 }
@@ -571,17 +576,23 @@
     border: 1px solid rgb(146, 150, 163)
 }
 
-.tm360 .popover-content {
+.tm360 .popover-inner {
     padding: 19px;
-    padding-bottom: 15px;
 }
 
-.tm360 .tmPopup .popover-title {
+.tm360 .popover .popover-content {
+    padding: 0px;
+}
+
+.tm360 .popover .popover-content.with-title {
+    padding-top: 15px;
+}
+
+.tm360 .popover .popover-title {
     color: #4f5158;
     font-family: "MuseoSans500";
     opacity: 1;
-    padding: 19px;
-    padding-bottom: 15px;
+    padding: 0px;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
@@ -589,13 +600,9 @@
     border-style: none;
 }
 
-.tm360 .tmPopup .with-title {
-    padding-top: 0px;
-    margin-top: 0px;
-}
-
-.tm360 .tmPopup h1.popover-title {
+.tm360 .popover h1.popover-title {
     font-size: 18px;
+    line-height: normal;
 }
 
 .tm360 .popover.top .arrow {
@@ -614,4 +621,8 @@
 .tm360 .popover-footer {
     margin-top: 15px;
     text-align: right;
+}
+
+.tm360 .tmTooltip {
+    z-index: 1020;
 }

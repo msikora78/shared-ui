@@ -13,7 +13,9 @@
         var defaults = {
             showArrow: true,
             trigger: 'hover',
-            template: '<div class="popover tmPopup tmTooltip"><div class="arrow"></div><div class="popover-inner"><div class="popover-title"><p></p></div></div></div>'
+            template: '<div class="popover tmTooltip"><div class="arrow"></div><div class="popover-inner"><div class="popover-title"><p></p></div></div></div>',
+            width: '180px',
+            height: 'auto'
         };
 
         /**

@@ -16,6 +16,7 @@
     display: block;
     float: left;
     padding-top: 5px;
+    padding-right: 5px;
     text-align: left;
     cursor: default;
 }

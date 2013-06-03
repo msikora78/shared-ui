@@ -20,7 +20,9 @@ define(['jquery', 'widget!tm/widgets/tooltip'], function($) {
             });
             $('#javascriptPopupTarget').tmPopup({
                 title: "Popup's title",
-                content: "It's so easy to create a popup for my website using only javascript."
+                content: "It's so easy to create a popup for my website using only javascript.",
+                width: '300px', 
+                height: '230px'
             });
             $('#javascriptPopupWithNoTitle').tmPopup({
                 content: "It's so easy to create a popup for my website using only javascript."
@@ -28,7 +30,9 @@ define(['jquery', 'widget!tm/widgets/tooltip'], function($) {
             $('#javascriptPopupWithArrowTarget').tmPopup({
                 title: "Popup's title",
                 content: "It's so easy to create a popup for my website using only javascript.",
-                showArrow: true
+                showArrow: true,
+                width: '450px',
+                height: 'auto'
             });
         }
     };

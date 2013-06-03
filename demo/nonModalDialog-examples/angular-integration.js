@@ -20,7 +20,7 @@ define(['jquery', 'angular', 'tm/core', 'widget!tm/widgets/popup'], function($, 
                         tm-popup="objectToEdit" \n\
                         ng-click="edit();"\n\
                         title="Angular integration"\n\
-                        data-template-id="popupTemplate">Click me\n\
+                        data-custom-template-id="popupTemplate">Click me\n\
                     </button>\n\
                     Hello <span ng-bind="object.name"></span>!</p>\n\
             </div>',
@@ -47,6 +47,9 @@ define(['jquery', 'angular', 'tm/core', 'widget!tm/widgets/popup'], function($, 
                     $scope.object = previousState;
                     $scope.objectToEdit = null;
                     previousState = null;
+                    if (!$scope.$$phase) {
+                        $scope.$apply(); 
+                    } 
                 };
 
                 $scope.objectToEdit = null;
@@ -57,7 +60,9 @@ define(['jquery', 'angular', 'tm/core', 'widget!tm/widgets/popup'], function($, 
                     scope: true,
                     link: function(scope, iElement, iAttrs) {
                         var popup = iElement.tmPopup({
-                            trigger: 'manual'
+                            trigger: 'manual',
+                            autoClose: true,
+                            height: '175px'
                         });
 
                         scope.$watch(iAttrs.tmPopup, function(newValue) {
@@ -65,11 +70,17 @@ define(['jquery', 'angular', 'tm/core', 'widget!tm/widgets/popup'], function($, 
                         });
 
                         scope.$on('$destroy', function() {
-                            iElement.tmPopup('destroy');
+                            popup.tmPopup('destroy');
                         });
 
                         popup.on('shown', function() {
-                            $(this).find('input').focus();
+                            popup.tmPopup('getPopup').find('input').focus();
+                        });
+
+                        popup.on('hidden', function() {
+                            if (scope.objectToEdit) {
+                                scope.cancel();
+                            }
                         });
                     }
                 };

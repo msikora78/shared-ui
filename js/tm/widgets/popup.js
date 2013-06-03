@@ -1,18 +1,23 @@
 (function() {
     'use strict';
 
+    var bodyInitialized = false;
+
     /**
      *  Creates the modal dialog prototype
      *  @returns {Function} modal dialog prototype
      */
-
     function factory($, gadgets, tm) {
         var gadgetPrefs = new gadgets.Prefs();
-
+        var defaultTemplate = '<div class="popover tmPopup"><div class="arrow"></div><div class="popover-inner"><h1 class="popover-title"></h1><div class="popover-content"></div></div></div>';
         // Default options
         var defaults = {
             trigger: 'click',
-            template: '<div class="popover tmPopup"><div class="arrow"></div><div class="popover-inner"><h1 class="popover-title"></h1><div class="popover-content"></div></div></div>'
+            template: defaultTemplate,
+            customTemplate: null,
+            autoClose: true,
+            width: '270px',
+            height: '210px'
         };
 
         var arrowOffset = 17; //Places the arrow at 20px from edge.
@@ -25,26 +30,33 @@
          *  @param {Object} opts creation options
          */
         var Popup = function(element, opts) {
+            var self = this;
             var opts = $.extend({}, defaults, opts);
-            var template = null;
+            var customTemplate = null;
             if (opts.placement == null) {
                 opts.placement = element.attr('data-placement') || 'bottom-right';
             }
             if (opts.showArrow == null) {
                 opts.showArrow = element.attr('data-show-arrow') == 'true';
             }
-            if (opts.templateId == null) {
-                opts.templateId = element.attr('data-template-id');
-                var template = $('#' + opts.templateId);
-                if (template.length) {
-                    opts.template = '<div class="popover tmPopup"><div class="arrow"></div><div class="popover-inner"><h1 class="popover-title"></h1><div class="popover-content"></div></div></div>';
-                    template.hide();
+            if (opts.customTemplateId == null) {
+                opts.customTemplateId = element.attr('data-custom-template-id');
+                customTemplate = $('#' + opts.customTemplateId);
+                customTemplate.hide();
+            }
+            if (opts.customTemplate != null) {
+                customTemplate = opts.customTemplate;
+                if (typeof customTemplate == 'string') {
+                    customTemplate = $(customTemplate);
                 }
+                customTemplate.hide().appendTo('body');
             }
             if (opts.title == null) {
                 opts.title = element.attr('title');
             }
-
+            if (opts.content == null) {
+                opts.content = element.attr('data-content') || '\n';
+            }
             opts.secondaryPlacement = opts.placement.split('-')[1]
             opts.placement = opts.placement.split('-')[0];
 
@@ -55,13 +67,21 @@
             element.popover(opts);
             $.extend(element.data('popover').options, opts);
 
-            element.on('shown', function(e) {
+            element.on('shown.tmPopup', function(e) {
                 var $target = $(e.target),
-                    $popup = $target.next('.tmPopup');
+                    $popup = $target.next('.popover');
 
-                if (opts.trigger == 'click') {
+                // specify these values by css instead.
+                $popup.css({
+                    height: opts.height,
+                    width: opts.width,
+                    maxHeight: opts.height,
+                    maxWidth: opts.width
+                });
+
+                if (opts.trigger != 'hover') {
                     $popup.focus();
-                    $('.tmPopup').each(function(i, popup) { 
+                    $('.popover').each(function(i, popup) { 
                         var $popupTarget = $(popup).prev();
                         if ($popupTarget[0] != element[0]) {
                             $popupTarget.popover('hide'); 
@@ -69,7 +89,7 @@
                     });
                 }
 
-                $popup.find('.popover-content').append(template.show());
+                $popup.find('.popover-content').append(customTemplate.show());
 
                 if ($target.data('popover').options.title != '') {
                     $popup.find('.popover-content').addClass('with-title');
@@ -90,7 +110,6 @@
                 // Fixes a bug where the arrow doesn't paint correctly on ie8
                 $popup.parent().addClass('ie8fix').removeClass('ie8fix');
 
-
                 if (!$target.data('popover').options.showArrow) {
                     $popup.find('.arrow').hide();
                 }
@@ -100,11 +119,28 @@
 
             });
 
-            element.on('hidden', function(e) {
-                var $target = $(e.target);
+            element.on('hidden.tmPopup', function(e) {
+                var $target = $(e.target),
+                    $popup = $target.next('.popover');
+
                 $target.data('popover').options.placement = opts.placement;
-                $('body').off('click.tmPopup.' + element.id);
+
+                $('body').append(customTemplate.hide());
             });
+
+            element.addClass('tmPopupTarget');
+
+            if (opts.autoClose) {
+                element.addClass('tmPopupAutoClose');
+                if (!bodyInitialized) {
+                    $('body').on('click', '.tmPopupTarget, .popover', false).on('click.tmPopup', function(e) {
+                        if ($('.popover.in').length > 0) {
+                            $('.tmPopupAutoClose').tmPopup('hide');
+                        }
+                    });
+                    bodyInitialized = true;
+                }
+            }
 
             if (opts.trigger == 'hover') {
                 element.click(function() {
@@ -128,11 +164,15 @@
             setShowArrow: function(value) {
                 this.options.showArrow = value;
                 this.element.data('popover').options.showArrow = value;
+            },
+
+            getPopup: function() {
+                return this.element.next('.popover');
             }
         }
 
         function testPosition($target) {
-            var $popup = $target.next('.tmPopup');
+            var $popup = $target.next('.popover');
             var offset = getOffset($popup);
             var placement = $target.data('popover').options.placement;
             if (placement == 'bottom' || placement == 'top') {
@@ -160,7 +200,7 @@
         }
 
         function adjustVerticalPosition(opts, $target) {
-            var $popup = $target.next('.tmPopup');
+            var $popup = $target.next('.popover');
             var $arrow = $popup.find('.arrow');
             var adjust = 0;
             var placement = opts.placement;
@@ -210,7 +250,7 @@
         }
 
         function adjustHorizontalPosition(opts, $target) {
-            var $popup = $target.next('.tmPopup');
+            var $popup = $target.next('.popover');
             var $arrow = $popup.find('.arrow');
             var adjust = 0;
             var placement = opts.placement;
@@ -274,6 +314,7 @@
 
         return Popup;
     }
+
 
     // If requirejs is present, we want to use it, otherwise, we want to use the global declarations to get the dependencies
     if (typeof define === 'function' && define.amd) {

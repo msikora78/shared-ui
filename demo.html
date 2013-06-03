@@ -42,7 +42,8 @@
         <!-- Plugin for x-browser Copy-to-Clipboard http://code.google.com/p/zeroclipboard -->
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/ZeroClipboard.js"></script>
         <script>
-            ZeroClipboard.setMoviePath( 'https://portal.shared.dev2.websys.tmcs/shared/js/lib/ZeroClipboard.swf' );
+            // ZeroClipboard.setMoviePath( 'https://portal.shared.dev2.websys.tmcs/shared/js/lib/ZeroClipboard.swf' );
+            ZeroClipboard.setMoviePath('http://davidwalsh.name/dw-content/ZeroClipboard.swf');
         </script>
         <!--
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/backbone-0.9.2.min.js"></script>
@@ -346,7 +347,7 @@
                                     <img src="css/img/link-icon.png"/></button>
                             </p>
                             <p>And another, where the popover appears to the right:
-                                <button class="shortlink-btn btn" data-placement="right">
+                                <button class="shortlink-btn btn" data-placement="right-bottom">
                                     <img src="css/img/link-icon.png"/></button>
                             </p>
                             <p>See the <a href="https://confluence.tm.tmcs/confluence/display/PJ31/URL+Shortening+in+tm360" target="_blank">URL Shortening in tm360</a> Confluence page for more info.</p>
@@ -432,15 +433,15 @@
                     adjustDisplayArea();
                     // on resize, throttle tm.widthCheck calls to once every 200ms
                     var resizeHandler = $.throttle(200, adjustDisplayArea);
-                    $(window).resize( resizeHandler );
+                    $(window).resize(resizeHandler);
 
                     // date picker
                     $("#dateselect").datepicker();
                     $("#multidateselect").multiDatesPicker();
 
                     // shortlink
-                    tm.shortlink();
                     tm.shortlinkFlashCopy = true;
+                    tm.shortlink();
 
 					// Checkables
                     $('input[type="checkbox"]').tmCheckbox();
@@ -458,14 +459,14 @@
         		    text: 'Yes',
         		    type: 'primary',
         		    callback: function(e, dialog) {
-        			dialog.tmModalDialog('hide');
+                        dialog.tmModalDialog('hide');
         		    }
         		};
 
         		var noButton = {
         		    text: 'No',
         		    callback: function(e, dialog) {
-        			dialog.tmModalDialog('hide');
+                        dialog.tmModalDialog('hide');
         		    }
         		};
 

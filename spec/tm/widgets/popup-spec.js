@@ -144,9 +144,6 @@ define(['injectable!tm/widgets/popup', 'mock/gadgetPrefMock', 'tm/core', './util
                     // stateless tests
                     describe('Popup\'s container', function() {
                         var arrowOffset = 17;
-                        it('should have #4f5158 color', function() {
-                            Util.evaluateColor($popup, "4f5158");
-                        });
                         it('should have #fff background-color', function() {
                             Util.evaluateBackgroundColor($popup, '#ffffff');
                         });
