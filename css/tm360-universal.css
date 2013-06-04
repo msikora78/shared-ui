@@ -360,7 +360,6 @@
     *border: 1px solid #ccc;
  /* ie7 */
     width: auto;
-    top: -3px;
     display: inline-block;
 }
 

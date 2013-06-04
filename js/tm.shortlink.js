@@ -32,13 +32,13 @@
         var popupOpts = {
             showArrow: true,
             customTemplate: customTemplate,
-            trigger: 'manual',
             height: '100px'
         };
 
         nodes.each(function(){
             var elem = $(this);
             var elData = elem.data();
+            var clip = null;
             if (elData.shortlink){
                 // already created
                 return;
@@ -48,59 +48,43 @@
                 elem.addClass(btnClass);
             }
 
-            if (tm.shortlinkFlashCopy){
-                // show the button
-                var btnContainer = popupOpts.customTemplate.find(".shortlink-btn-container");
-                btnContainer.css("display", "block");
-            }
-
             elem.tmPopup(popupOpts);
-
-            elem.on("click.tmShortlink", function(event) {
+            
+            elem.on("shown.tmShortlink", function(event) {
                 if (elem.tmPopup) {
-                    if (elem.next(".popover").length > 0) {
-                        elem.tmPopup('hide');
-                    }
-                    else {
-                        elem.tmPopup('show');
-                        var $popup = elem.next(".popover");
-                        var $input = $popup.find("input");
-                        var callback = function(val){
-                            if (!val){
-                                elem.tmPopup('hide');
-                            }
-                            $input.val(val).prop("disabled", false);
-                            if (tm.shortlinkFlashCopy){
-                                // enable flash copy-to-clipboard
-                                var clip = new ZeroClipboard.Client();
-                                clip.addEventListener('onComplete', function(){
-                                    popupOpts.customTemplate.find(".shortlink-copy em").css("display", "block");
-                                });
-                                clip.setText(val);
-                                var btn = btnContainer.find("button");
-                                clip.glue(btn.get(0), btn.get(0).parentNode);
-                            } else {
-                                $popup.find(".copy-instr").css("display", "block");
-                                $input.focus();
-                                $input.select();
-                            }
-                        };
-                        if ($popup.hasClass('in')){
-                            if (tm.resolveObject("window.parent.tm.helper.generateShortLink")) {
-                                // request shortlink
-                                var longurl = data.longurl || window.top.location.href;
-                                window.parent.tm.helper.generateShortLink(longurl, callback);
-                            } else {
-                                // no parent, assume standalone demo.html
-                                callback("http://tm360.com/abcdef1");
-                            }
+                    var $popup = elem.next(".popover");
+                    var $input = $popup.find("input");
+                    var callback = function(val){
+                        $input.val(val).prop("disabled", false);
+                        if (tm.shortlinkFlashCopy){
+                            // show the button
+                            var btnContainer = popupOpts.customTemplate.find(".shortlink-btn-container");
+                            btnContainer.css("display", "block");
+                            // enable flash copy-to-clipboard
+                            clip = new ZeroClipboard.Client();
+                            clip.addEventListener('onComplete', function(){
+                                popupOpts.customTemplate.find('em').show();
+                            });
+                            clip.clipText != val && clip.setText(val);
+                            clip.glue(btnContainer.find('button')[0], btnContainer[0]);
+                        } else {
+                            $popup.find(".copy-instr").css("display", "block");
+                            $input.focus();
+                            $input.select();
                         }
+                    };
+                    if (tm.resolveObject("window.parent.tm.helper.generateShortLink")) {
+                        // request shortlink
+                        var longurl = data.longurl || window.top.location.href;
+                        window.parent.tm.helper.generateShortLink(longurl, callback);
+                    } else {
+                        // no parent, assume standalone demo.html
+                        callback("http://tm360.com/abcdef1");
                     }
                 }
             });
             elem.on('hidden.tmShortlink', function() {
-                var $popup = elem.next(".popover");
-                $popup.find(".shortlink-copy em").css("display", "none");
+                popupOpts.customTemplate.find('em').hide();
             })
         });
     };
