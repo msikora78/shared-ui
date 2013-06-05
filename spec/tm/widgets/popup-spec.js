@@ -45,7 +45,7 @@ define(['injectable!tm/widgets/popup', 'mock/gadgetPrefMock', 'tm/core', './util
                 });
 
                 it('should keep event bindings', function() {
-                    expect($popup.find('#advanced-popup-template-close').data('events').click[0].handler).toBe(onClick);
+                    expect($('#advanced-popup-template-close').data('events').click[0].handler).toBe(onClick);
                 });
             }
         } 

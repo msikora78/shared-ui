@@ -625,3 +625,7 @@
 .tm360 .tmTooltip {
     z-index: 1020;
 }
+
+.tm360 .tmTooltip .popover-inner{
+    width: 140px;
+}

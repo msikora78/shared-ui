@@ -234,8 +234,9 @@
                 $popup.offset({left: adjust});
             }
 
-            if ($target.data('popover').options.showArrow && opts.secondaryPlacement
-                && $target.outerWidth() < $arrow.outerWidth() + arrowOffset * 2) {
+            var showArrow = $target.data('popover').options.showArrow;
+            var arrowIsMissPlaced = $target.outerWidth() < $arrow.outerWidth() + arrowOffset * 2;
+            if (showArrow && opts.secondaryPlacement && arrowIsMissPlaced) {
                 var horzAdjust = ($target.data('popover').options.secondaryPlacement == 'left') ? arrowOffset : arrowOffset * -1;
                 popupOffset = getOffset($popup);
                 $popup.offset({left: popupOffset.left + horzAdjust});
@@ -285,8 +286,9 @@
                 }
             }
 
-            if ($target.data('popover').options.showArrow && opts.secondaryPlacement
-                && $target.outerHeight() < $arrow.outerHeight() + arrowOffset * 2) {
+            var showArrow = $target.data('popover').options.showArrow;
+            var arrowIsMissPlaced = $target.outerHeight() < $arrow.outerHeight() + arrowOffset * 2;
+            if (showArrow && opts.secondaryPlacement && arrowIsMissPlaced) {
                 var vertAdjust = ($target.data('popover').options.secondaryPlacement == 'top') ? arrowOffset : arrowOffset * -1;
                 popupOffset = getOffset($popup);
                 $popup.offset({top: popupOffset.top + vertAdjust});

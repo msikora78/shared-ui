@@ -14,7 +14,7 @@
             showArrow: true,
             trigger: 'hover',
             template: '<div class="popover tmTooltip"><div class="arrow"></div><div class="popover-inner"><div class="popover-title"><p></p></div></div></div>',
-            width: '180px',
+            width: 'auto',
             height: 'auto'
         };
 
