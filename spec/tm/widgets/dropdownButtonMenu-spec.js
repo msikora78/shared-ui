@@ -31,7 +31,7 @@ define(['./util'], function(Util) {
                         $toggleMenu = $('<ul class="dropdown-menu"><li><a tabindex="-1" href="#1">Action 1</a></li></ul>');
 						$menuitem = $toggleMenu.find("a");
 						$buttonGroup = $('<div class="btn-group" style="position: absolute;" />').append($toggleButton, $toggleMenu);
-                        $container = $('<div class="tm360"/>').append($buttonGroup);
+                        $container = $('<div class="tm360 no-touch"/>').append($buttonGroup);
                         $('body').append($container);
 
                         if (disabled) {

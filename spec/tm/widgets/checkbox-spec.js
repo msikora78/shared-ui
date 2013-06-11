@@ -43,7 +43,7 @@ define(['injectable!tm/widgets/checkbox', 'tm/widgets/checkableBase', 'mock/gadg
                         }
                         
                         $checkbox = $('<input type="checkbox" ' + states.join(' ') + ' />');
-                        $container = $('<div class="tm360"/>').append($checkbox);
+                        $container = $('<div class="tm360 no-touch"/>').append($checkbox);
                         $('body').append($container);
                         
                         widget = new checkbox($checkbox);

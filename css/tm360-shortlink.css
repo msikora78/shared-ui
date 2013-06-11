@@ -1,10 +1,12 @@
 /* shortlink button */
 .tm360 .shortlink-btn.btn {
     min-width: 30px;
+    max-height: 28px;
+    padding: 6px;
 }
 
 .tm360 .shortlink-btn img {
-    margin-top: -4px;
+    margin-top: -2px;
 }
 
 /* popover content */

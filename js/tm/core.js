@@ -4,6 +4,20 @@
         var tm = window.tm || {};
 
         /**
+         * Allows to load device specific css classes
+         */    
+        window.document.ready = function() {
+            if ((/(iPad|iPhone|iPod|Android)/g).test(navigator.userAgent)) {
+                $('body').addClass('touch');
+                $('body').removeClass('no-touch');
+            }
+            else {
+                $('body').addClass('no-touch');
+                $('body').removeClass('touch');
+            }
+        };
+
+        /**
          * @function
          * Creates an empty object hierarchy representing the specified path 
          * to allow new properties to be attached.

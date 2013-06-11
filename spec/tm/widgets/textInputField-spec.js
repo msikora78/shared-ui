@@ -27,10 +27,10 @@ define(['./util'], function(Util) {
                             var errorDiv = $('<div class="control-group error"/>');
                             errorDiv.append($input);
                             errorDiv.append($inlineError);
-                            $container = $('<div class="tm360"/>').append(errorDiv);
+                            $container = $('<div class="tm360 no-touch"/>').append(errorDiv);
                         }
                         else {
-                            $container = $('<div class="tm360"/>').append($input);
+                            $container = $('<div class="tm360 no-touch"/>').append($input);
                         }
                         $('body').append($container);
                     });
