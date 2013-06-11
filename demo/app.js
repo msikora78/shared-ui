@@ -108,4 +108,5 @@ requirejs(['jquery', 'tm/core', url, 'jquery.throttle'], function($, tm, data) {
 	}));
 
 	tm.widthCheck(false);
+	tm.allowTouchDeviceSupport();
 });

@@ -4,16 +4,13 @@
         var tm = window.tm || {};
 
         /**
-         * Allows to load device specific css classes
+         * @function
+         * Allows to load touch device specific css classes
          */    
-        window.document.ready = function() {
-            if ((/(iPad|iPhone|iPod|Android)/g).test(navigator.userAgent)) {
+        tm.allowTouchDeviceSupport = function() {
+            if ((/(iPad|iPhone|iPod|Android)/).test(navigator.userAgent)) {
                 $('body').addClass('touch');
-                $('body').removeClass('no-touch');
-            }
-            else {
-                $('body').addClass('no-touch');
-                $('body').removeClass('touch');
+                document.addEventListener("touchstart", function(){}, true);
             }
         };
 
