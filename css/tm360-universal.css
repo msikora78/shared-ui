@@ -157,7 +157,6 @@
     top: 6px;
     position: relative;
     display: inline-block;
-    cursor: pointer;
     background: url("img/grfx-perm-01.png") no-repeat;
     background-position: -255px -10px;
 }
