@@ -39,7 +39,7 @@ define(['./util'], function(Util) {
                         }
 
                         $button = $('<button type="button" class="' + classes.join(' ') + '">' + text + '</button>');
-                        $container = $('<div class="tm360 no-touch"/>').append($button);
+                        $container = $('<div class="tm360"/>').append($button);
                         $('body').append($container);
                     });
 

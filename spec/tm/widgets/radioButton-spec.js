@@ -43,7 +43,7 @@ define(['injectable!tm/widgets/radiobutton', 'tm/widgets/checkableBase', 'mock/g
                         }
                         
                         $radio = $('<input type="radio" ' + states.join(' ') + ' />');
-                        $container = $('<div class="tm360 no-touch"/>').append($radio);
+                        $container = $('<div class="tm360"/>').append($radio);
                         $('body').append($container);
                         
                         widget = new radiobutton($radio);

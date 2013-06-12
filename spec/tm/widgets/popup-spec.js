@@ -30,7 +30,7 @@ define(['injectable!tm/widgets/popup', 'mock/gadgetPrefMock', 'tm/core', './util
                     $template = $('<div id="advanced-popup-template" style="height: 100px; width: 200px;">\n\
                                         <button id="advanced-popup-template-close" type="button" class="btn btn-primary" style="float: right; clear: both;">Close</button>\n\
                                 </div>');
-                    $container = $('<div class="tm360 no-touch"></div>').append($target).append($template);
+                    $container = $('<div class="tm360"></div>').append($target).append($template);
                     $('#advanced-popup-template-close').click(onClick);
                     $('body').append($container);
                     
@@ -87,7 +87,7 @@ define(['injectable!tm/widgets/popup', 'mock/gadgetPrefMock', 'tm/core', './util
                     attributes.push('data-placement="' + position + '"');
                     beforeEach(function() {
                         $target = $('<button id="target" type="button" class="btn" style="position: fixed; top: 50%; left: 50%; min-width: 30px;" data-trigger="manual" ' + attributes.join(' ') + '>?</button>');
-                        $container = $('<div class="tm360 no-touch"></div>').append($target);
+                        $container = $('<div class="tm360"></div>').append($target);
                         $('body').append($container);
                         
                         widget = new popup($target);

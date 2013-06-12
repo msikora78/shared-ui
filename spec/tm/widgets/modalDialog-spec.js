@@ -48,7 +48,7 @@ define(['injectable!tm/widgets/modalDialog', 'mock/gadgetPrefMock', './util'], f
                                 '</div>' +
                                 '</div>');
                         }
-                        $container = $('<div class="tm360 no-touch" />').append($modal);
+                        $container = $('<div class="tm360" />').append($modal);
                         $('body').append($container);
 
                         primaryButton = {
