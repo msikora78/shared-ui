@@ -151,6 +151,25 @@
     padding-top: 3px;
 }
 
+.tm360 .help-error-icon {
+    width: 22px;
+    height: 17px;
+    top: 6px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    background: url("img/grfx-perm-01.png") no-repeat;
+    background-position: -255px -10px;
+}
+
+.tm360 .help-block {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #4f5158;
+    margin-bottom: 0px;
+}
+
 .tm360 textarea,
 .tm360 input[type="text"],
 .tm360 input[type="password"] {
@@ -379,9 +398,9 @@
     text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25);
 }
 
-.tm360 .btn.disabled, 
+.tm360 .btn.disabled,
 .tm360 .btn[disabled],
-.tm360 .btn.disabled:hover, 
+.tm360 .btn.disabled:hover,
 .tm360 .btn[disabled]:hover {
     background-color: #fff !important;
     text-shadow: none !important;
