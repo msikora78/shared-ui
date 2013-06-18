@@ -34,8 +34,13 @@ define(['jquery', 'angular', 'tm/core', 'widget!tm/widgets/popup'], function($, 
                 }
 
                 $scope.edit = function() {
-                    previousState = $.extend({}, $scope.object);
-                    $scope.objectToEdit = $scope.object; //This triggers popup.show
+                    if ($scope.objectToEdit == null) {
+                        previousState = $.extend({}, $scope.object);
+                        $scope.objectToEdit = $scope.object; //This triggers popup.show
+                    }
+                    else {
+                        $scope.cancel();
+                    }
                 };
 
                 $scope.save = function() {
@@ -61,7 +66,6 @@ define(['jquery', 'angular', 'tm/core', 'widget!tm/widgets/popup'], function($, 
                     link: function(scope, iElement, iAttrs) {
                         var popup = iElement.tmPopup({
                             trigger: 'manual',
-                            autoClose: true,
                             height: '175px'
                         });
 
