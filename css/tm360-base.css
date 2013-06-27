@@ -9,6 +9,11 @@
     font-weight: normal;
     font-style: normal;
 }
+.atSep1 {
+    /* Leave these ".atSep*" declarations even though they aren't used, otherwise lessc 
+    places the @font-face and @media declarations on the same line, which breaks them. */
+    padding: 0;
+} 
 @font-face {
     font-family: 'MuseoSans700';
     src: url('MuseoSans/museo-sans-700.eot');
@@ -18,6 +23,19 @@
     font-weight: normal;
     font-style: normal;
 }
+.atSep2 {
+    padding: 0;
+}
+
+::-webkit-selection{ background: #2d93d4; color:#fff; text-shadow: none; }
+::-moz-selection{    background: #2d93d4; color:#fff; text-shadow: none; }
+::selection {        background: #2d93d4; color:#fff; text-shadow: none; }
+
+.hidden { display: none; visibility: hidden; } 
+
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; visibility: hidden; } 
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
 
 html {
   height: 100%;
@@ -25,70 +43,73 @@ html {
 }
 
 body {
-	font-family: 'MuseoSans500', Arial, sans-serif;
-	font-size: 13px;
-	height: 100%;
-  overflow: auto;
-  position: relative;
-  *text-align: center; /* IE7 doesnt center content with margin: 0 auto; */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+    *text-align: center; /* IE7 doesnt center content with margin: 0 auto; */
 }
 
 
 /* common tm360 styles */
 body {
-  background-color: #696a6e;
-  background-image: url(img/bg-workspace.png);
-  background-repeat: repeat-x;
+    background-color: #696a6e;
+    background-image: url(img/bg-workspace.png);
+    background-repeat: repeat-x;
 }
 
 
 /* adaptive (2-width) sizing */
 #container {
-  width: 1252px;
-  background-color: #ffffff;
-  padding: 0;
-  margin: 0 auto;
-  *text-align: left;
+    width: 1252px;
+    background-color: #ffffff;
+    color: #4f5158;
+    padding: 0;
+    margin: 0 auto;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    *text-align: left;
 }
 
 .small-screen #container {
-  width: 944px;
+    width: 944px;
 }
 
 /* non-adaptive sizing: https://confluence.tm.tmcs/confluence/display/UE/TM360#TM360-1280Mattefor1024Apps */
 #container.non-adaptive {
-  background-color: #d3d3d7;
+    background-color: #d3d3d7;
 }
 #container.non-adaptive > div {
-  background-color: #ffffff;
-  margin: 0 auto;
-  width: 944px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    width: 944px;
 }
-
-/* begin: jQuery UI Datepicker moving pixels fix */
-  table.ui-datepicker-calendar {border-collapse: separate;}
-  .ui-datepicker-calendar td {border: 1px solid transparent;}
-/* end: jQuery UI Datepicker moving pixels fix */
-
-/* begin: jQuery UI Datepicker emphasis on selected dates */
-.ui-datepicker .ui-datepicker-calendar .ui-state-highlight a {
-  background: #743620 none; /* a color that fits the widget theme */
-  color: white; /* a color that is readeable with the color above */
-}
-/* end: jQuery UI Datepicker emphasis on selected dates */
 
 
 /* For general iPad layouts */
 @media only screen and (device-width: 768px) {
 
 }
+.atSep3 {
+    padding: 0;
+}
 
 /* For iPad portrait layouts only */
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
-
+    body {
+        zoom: 81.355932%;
+    }
+}
+.atSep4 {
+    padding: 0;
 }
 
 /* For iPad landscape layouts only */
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
-
+    body {
+        zoom: 108.474576%;
+    }
+}
+.atSep5 {
+    padding: 0;
 }

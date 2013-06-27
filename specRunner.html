@@ -1,45 +1,43 @@
 <!DOCTYPE html>
+<!-- ******************************************************************
+    Run this specRunner.html page on a local server or at
+    http://tm360.github.com/shared-ui/specRunner.html
+****************************************************************** --> 
 <html>
     <head>
-        <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-        <title>tm360 Shared UI - Jasmine Spec Runner</title>
+        <title>tm360 spec runner</title>
 
-        <link rel="stylesheet" type="text/css" href="jasmine-1.2.0/jasmine.css"/>
-        <script type="text/javascript" src="jasmine-1.2.0/jasmine.js"></script>
-        <script type="text/javascript" src="jasmine-1.2.0/jasmine-html.js"></script>
+        <link rel="stylesheet" type="text/css" href="lib/jasmine-1.2.0/jasmine.css">
+        <script type="text/javascript" src="lib/jasmine-1.2.0/jasmine.js"></script>
+        <script type="text/javascript" src="lib/jasmine-1.2.0/jasmine-html.js"></script>
+
+        <!-- 
+            TODO: Refactor spec/tm/widgets/* (and /mock/* and /plugin/*) 
+                  for this non-requirejs version of specRunner. 
+        -->
 
         <!-- 3rd party Shared JS Libs (not in git repo) -->
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/json2.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-1.7.2.min.js"></script>
-        <!-- script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-ui-1.8.22.custom.min.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ui.multidatespicker-1.6.1.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ba-throttle-debounce-1.1.min.js"></script -->
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/underscore_1.3.3.min.js"></script>
-        <!-- script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.1.0.min.js"></script -->
-        <!-- *** Note: You need to be on the TM/LN corporate network for these links to work! *** -->
-
+        <script type="text/javascript" src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/json2.js"></script>
+        <script type="text/javascript" src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/underscore_1.3.3.min.js"></script>
+        <!-- *** Note: You need to be on the TM/LN corporate network for "websys.tmcs" links to work! *** -->
 
 
         <!-- ******************************************************************
              1. Include source files here...
              ****************************************************************** -->
-        <script type="text/javascript" src="js/tm.js"></script>
-        <script type="text/javascript" src="js/tm.string.js"></script>
-        <script type="text/javascript" src="js/tm.date.js"></script>
-        <script type="text/javascript" src="js/tm.cookie.js"></script>
+        <script type="text/javascript" src="js/tm/core.js"></script>
+        <script type="text/javascript" src="js/tm/string.js"></script>
+        <script type="text/javascript" src="js/tm/date.js"></script>
+        <script type="text/javascript" src="js/tm/cookie.js"></script>
 
         <!-- ******************************************************************
-             2. Include spec files here...
+             2. Include spec and mock files here...
              ****************************************************************** -->
-        <script type="text/javascript" src="spec/tmSpec.js"></script>
-        <script type="text/javascript" src="spec/tm.stringSpec.js"></script>
-        <script type="text/javascript" src="spec/tm.dateSpec.js"></script>
-        <script type="text/javascript" src="spec/tm.cookieSpec.js"></script>
-
-        <!-- ******************************************************************
-             3. Run this specRunner.html page on a local server or at
-                http://tm360.github.com/shared-ui/specRunner.html
-             ****************************************************************** -->
+        <script type="text/javascript" src="spec/tm/coreSpec.js"></script>
+        <script type="text/javascript" src="spec/tm/stringSpec.js"></script>
+        <script type="text/javascript" src="spec/tm/dateSpec.js"></script>
+        <script type="text/javascript" src="spec/tm/cookieSpec.js"></script>
 
 
         <script type="text/javascript">
@@ -58,7 +56,7 @@
                     }
                     execJasmine();
                 };
-                function execJasmine() {
+                function execJasmine(){
                     jasmineEnv.execute();
                 }
             })();
