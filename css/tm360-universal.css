@@ -5,21 +5,99 @@
 }
 
 .tm360 .museo {
-    font-family: 'MuseoSans500';
+    font-family: MuseoSans500;
 }
 
 .tm360 .museoBold {
-    font-family: 'MuseoSans700';
+    font-family: MuseoSans700;
 }
 
-/* override boilerplate hot pink (ew!) */
-::-moz-selection {
-    background: #2d93d4;
+.tm360 h1 {
+    font-family: MuseoSans500, Arial, sans-serif;
+    font-size: 30px;
+    font-weight: normal;
+    color: #4f5158;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.25);
 }
 
-::selection {
-    background: #2d93d4;
+.tm360 h2 {
+    font-family: MuseoSans500, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 24px;
+    color: #4f5158;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.25);
 }
+
+.tm360 h2 a:link,
+.tm360 h2 a:visited {
+    color: #4f5158;
+    text-decoration: none;
+}
+
+.tm360 h2 a:hover,
+.tm360 h2 a:active {
+    color: #1f2127;
+    text-decoration: underline;
+}
+
+.tm360 p {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #4f5158;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.25);
+}
+
+.tm360 p a:link,
+.tm360 p a:visited {
+    color: #4f5158;
+    text-decoration: none;
+}
+
+.tm360 p a:hover,
+.tm360 p a:active {
+    color: #2d93d4;
+    text-decoration: underline;
+}
+
+.tm360 .textOnDark h1 {
+    color: #ffffff;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.tm360 .textOnDark h2 {
+    color: #ffffff;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.tm360 .textOnDark h2 a:link,
+.tm360 .textOnDark h2 a:visited {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.tm360 .textOnDark h2 a:hover,
+.tm360 .textOnDark h2 a:active {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.tm360 .textOnDark  p {
+    color: #ffffff;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.tm360 .textOnDark p a:link,
+.tm360 .textOnDark p a:visited {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.tm360 .textOnDark p a:hover,
+.tm360 .textOnDark p a:active {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
 
 /* bootstrap overrides */
 .tm360 label {
@@ -88,7 +166,6 @@
     margin-left: 6px;
 }
 
-
 .tm360 input[disabled],
 .tm360 select[disabled],
 .tm360 textarea[disabled],
@@ -97,6 +174,9 @@
 .tm360 textarea[readonly] {
     border: 1px solid #ebebee;
     background-color: #f5f5f7;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
 }
 
 .tm360 textarea:focus,
@@ -108,6 +188,12 @@
     box-shadow: 1px 1px 3px rgba(45, 147, 212, 0.35) inset;
 }
 
+.tm360 textarea.placeholder,
+.tm360 input.placeholder[type="text"],
+.tm360 input.placeholder[type="password"] {
+    color: #aaa;
+}
+
 .tm360 .control-group.error > label {
     color: #4F5158;
     font-weight: bold;
@@ -117,7 +203,7 @@
 .tm360 .control-group.error .radio,*/
 .tm360 .control-group.error input,
 .tm360 .control-group.error select,
-.tm360 .tm360 .control-group.error textarea {
+.tm360 .control-group.error textarea {
     color: #4F5158;
     border-color: #f03848;
     -webkit-box-shadow: 1px 1px 1px rgba(240, 56, 72, 0.25) inset;
@@ -130,10 +216,10 @@
 .tm360 .control-group.error input:focus,
 .tm360 .control-group.error select:focus,
 .tm360 .control-group.error textarea:focus {
-    border-color: #9296a3;
-    -webkit-box-shadow: -1px 0 3px rgba(240, 56, 72, 0.25) inset;
-    -moz-box-shadow: -1px 0 3px rgba(240, 56, 72, 0.25) inset;
-    box-shadow: -1px 0 3px rgba(240, 56, 72, 0.25) inset;
+    border-color: #f03848;
+    -webkit-box-shadow: 1px 1px 1px rgba(240, 56, 72, 0.25) inset;
+    -moz-box-shadow: 1px 1px 1px rgba(240, 56, 72, 0.25) inset;
+    box-shadow: 1px 1px 1px rgba(240, 56, 72, 0.25) inset;
 }
 
 .tm360 .control-group.error .help-error {
@@ -475,8 +561,76 @@
     filter: alpha(opacity=0);
 }
 
+.tm360 .search-filter-bg {
+    background-color: #eff0f3; 
+    background-repeat: repeat-x; 
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#eff0f3), to(#c5d2db)); 
+    background: -webkit-linear-gradient(top, #eff0f3, #c5d2db); 
+    background: -moz-linear-gradient(top, #eff0f3, #c5d2db); 
+    background: -ms-linear-gradient(top, #eff0f3, #c5d2db); 
+    background: -o-linear-gradient(top, #eff0f3, #c5d2db);
+}
+
+.tm360 .search-clear-icon {
+    display: none;
+    position: absolute;
+    top: 6px;
+    left: -21px; /* positioned via JS to right of input */
+    width: 16px;
+    height: 16px;
+    background-image: url(img/grfx-tm360SDK.png);
+    background-position: -282px -10px;
+    background-size: 350px 196px;
+    background-repeat: no-repeat;    
+}
+
+.tm360 .search-clear-icon:hover {
+    background-position: -282px -34px;
+}
+
+.tm360 input.search-query {
+  padding-right: 24px;
+  padding-right: 14px \9;
+  padding-left: 14px;
+  padding-left: 4px \9;
+  margin-bottom: 0;
+  -webkit-border-radius: 15px;
+     -moz-border-radius: 15px;
+          border-radius: 15px;
+}
+
+.tm360 input[type="text"].search-query {
+    -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.35) inset;
+    -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.35) inset;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.35) inset;
+}
+
+.tm360 input[type="text"].search-query:focus {
+    border: 1px solid #9296a3;
+    -webkit-box-shadow: 2px 2px 4px rgba(45, 147, 212, 0.45) inset, 1px 1px 0 rgba(255, 255, 255, 0.40);
+    -moz-box-shadow: 2px 2px 4px rgba(45, 147, 212, 0.45) inset, 1px 1px 0 rgba(255, 255, 255, 0.40);
+    box-shadow: 2px 2px 4px rgba(45, 147, 212, 0.45) inset, 1px 1px 0 rgba(255, 255, 255, 0.40);
+}
+
+.tm360 .darker input[type="text"].search-query {
+    border: 1px solid #9296a3;
+    -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.35) inset, 1px 1px 0px rgba(255, 255, 255, 0.40);
+    -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.35) inset, 1px 1px 0px rgba(255, 255, 255, 0.40);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.35) inset, 1px 1px 0px rgba(255, 255, 255, 0.40);
+}
+
+.tm360 .darker input[type="text"].search-query:focus {
+    border: 1px solid #4f5158;
+    -webkit-box-shadow: 2px 2px 4px rgba(45, 147, 212, 0.45) inset, 1px 1px 0px rgba(255, 255, 255, 0.40);
+    -moz-box-shadow: 2px 2px 4px rgba(45, 147, 212, 0.45) inset, 1px 1px 0px rgba(255, 255, 255, 0.40);
+    box-shadow: 2px 2px 4px rgba(45, 147, 212, 0.45) inset, 1px 1px 0px rgba(255, 255, 255, 0.40);
+}
+
+
+
 @media (min-resolution: 120dpi), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 1.25dppx) { 
-    .tm360 .help-error-icon {
+    .tm360 .help-error-icon,
+    .tm360 .search-clear-icon {
         background-image: url(img/grfx-tm360SDK@2x.png);
     }
 }

@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!-- 
+    Demo page for implementation of shared and UX spec'd Reusable Components
+    https://confluence.tm.tmcs/confluence/display/UE/TM360+SDK+-+Reusable+UI+Components
+-->
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
@@ -8,24 +12,29 @@
 
         <!-- 3rd party Shared CSS Libs (not in git repo) -->
         <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/normalize-1.1.0.css" />
-        <!-- <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/jquery-ui/ui-lightness/jquery-ui-1.8.22.custom.css" /> -->
         <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/bootstrap-2.1.0/css/bootstrap.min.css" />
 
         <!-- tm360 Shared-UI CSS -->
         <link rel="stylesheet" href="css/tm360-base.css" />
         <link rel="stylesheet" href="css/tm360-universal.css" />
-        <!-- <link rel="stylesheet" href="css/tm360-shortlink.css" /> -->
-        <!-- <link rel="stylesheet" href="css/bootstrap-content-rewrite-fix.css" /> -->
 
-
-        <!-- tm360 Shared-UI LESS -->
-        <!-- Add *.less files to "less/" folder, then include them here -->
+        <!-- tm360 Shared-UI LESS (Add *.less files to "less/" folder, then include them here) -->
         <link rel="stylesheet/less" type="text/css" href="less/tm360-sample.less" />
 
-        <!-- client-side LESS compiler for development -->
+        <!-- a few styles for this demo page only -->
+        <style>
+            .tm360 .well {
+                background-color: #FFFFFF;
+            }
+        </style>
+
+        <!-- 
+            Client-side LESS compiler for development.
+            - Append #!watch to URL to enable *.less file watch mode.
+        -->
         <script type="text/javascript">
             less = {
-                env: "development" // append #!watch to URL to enable *.less file watch mode
+                env: "development"
             };
         </script>
         <script src="lib/less-1.3.3/less-1.3.3.min.js"></script>
@@ -41,67 +50,107 @@
     </head>
     <body class="tm360">
         <div id="container">
-            <div class="container-fluid" style="padding-top:20px;">
+            <div class="container-fluid" style="background-color: #EBEBEE;">
                 <div class="row-fluid">
                     <div class="span12">
                         <h1>Shared UI Demos</h1>
                         <p style="padding-left: 1em" id="pIntro">This is the demo page for tm360 Shared-UI components. </p>
-                        <p style="padding-left: 1em">View <a href="https://confluence.tm.tmcs/confluence/display/UE/Reusable+UI+Components+Documentation" target="_blank">Reusable UI Components Doc</a> for visual specifications.</p>
                         <p style="padding-left: 1em">Javascript unit tests are available for <a href="specRunner.html" target="_blank">utility methods</a> and <a href="specRunner-requirejs.html" target="_blank">Widgets (uses RequireJS)</a>.</p>
-                        <p style="padding-left: 1em">This page references assets on Dev2. If layout isn't being rendered properly, <a href="https://portal.shared.dev2.websys.tmcs/" target="_blank">click here</a> to "unlock", then return to this page and refresh.
-                        <br/>&nbsp;</p>
+                        <p style="padding-left: 1em">Note: This page references assets on Dev2. If layout isn't being rendered properly, <a href="https://portal.shared.dev2.websys.tmcs/" target="_blank">click here</a> to "unlock", then return to this page and refresh.</p>
+                        <p>&nbsp;</p>
                     </div>
                 </div>
+
                 <div class="row-fluid">
                     <div class="span3">
-                        <h5>1. Snap Width</h5>
+                        <h5>Snap Width</h5>
                     </div>
                     <div class="span9">
                         <div class="well">
-                            The app/gadget you are viewing now has 2-width snapping enabled. Resize your browser window width around the 1244px threshold to see gadget maintain alignment with tm360 nav logo and icons. See <a href='https://confluence.tm.tmcs/confluence/display/PJ31/Shared+UI+components+for+new+app+development#SharedUIcomponentsfornewappdevelopment-Width"Snapping"' target="_blank">Width "Snapping"</a> for implementation details.
+                            <p>The app/gadget you are viewing now has 2-width snapping enabled. Resize your browser window width around the 1244px threshold to see gadget maintain alignment with tm360 nav logo and icons. See <a href='https://confluence.tm.tmcs/confluence/display/PJ31/Shared+UI+components+for+new+app+development#SharedUIcomponentsfornewappdevelopment-Width"Snapping"' target="_blank">Width "Snapping"</a> for implementation details.</p>
                         </div>
                     </div>
                 </div> <!-- .row-fluid -->
 
                 <div class="row-fluid">
                     <div class="span3">
-                        <h5>2. Form Elements</h5>
+                        <h5>Primary Text Styles</h5>
                     </div>
                     <div class="span9">
+                        <div class="well">
+                            <p>This sampling of text styles represents a safe standard for tm360 apps. However variations will arise on a design-by-design basis. But colors, link styles, and text shadows will all follow this standard.</p>
+                            <br/>
+                            <strong>Dark Text on White Background:</strong>
+                            <div style="padding: 10px 24px;">
+                                <h1>30px Museo Sans 500 &lt;h1&gt;</h1>
+                                <h2>24px Museo Sans 500 &lt;h2&gt; <a href="javascript:;">with link style</a></h2>
+                                <p>14px Arial Regular &lt;p&gt; <a href="javascript:;">with link style</a></p>
+                            </div>
+                            <br/>
+                            <strong>Dark Text on Gray Background:</strong>
+                            <div style="background-color: #d3d3d7; padding: 10px 24px;">
+                                <h1>30px Museo Sans 500 &lt;h1&gt;</h1>
+                                <h2>24px Museo Sans 500 &lt;h2&gt; <a href="javascript:;">with link style</a></h2>
+                                <p>14px Arial Regular &lt;p&gt; <a href="javascript:;">with link style</a></p>
+                            </div>
+                            <br/>
+                            <strong>White Text on Dark Background:</strong>
+                            <div class="textOnDark" style="background-color: #4f5258; padding: 10px 24px;">
+                                <h1>30px Museo Sans 500 &lt;h1&gt;</h1>
+                                <h2>24px Museo Sans 500 &lt;h2&gt; <a href="javascript:;">with link style</a></h2>
+                                <p>14px Arial Regular &lt;p&gt; <a href="javascript:;">with link style</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .row-fluid -->
 
-                        <form class="form-search">
-                            <div class="well">
-                                <input type="text" class="input-medium search-query">
-                                <button type="submit" class="btn">Search</button>
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>Search and Filter</h5>
+                    </div>
+                    <div class="span9">
+                        <div class="well">
+                            <p>Initially, there is an input hint in the field. This hint disappears when user clicks into the field.</p>
+                            <p>As user begins typing in the field, the “X” icon appears, which when clicked, clears out the search.</p>
+                            <strong>White Background:</strong>
+                            <div style="padding: 10px 24px;">
+                                <form class="form-search" style="margin-top: 20px">
+                                    <div style="position: relative;">
+                                        <input type="text" class="input-medium search-query" placeholder="Search 1" />
+                                        <i class="search-clear-icon"></i>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
-                        <!-- 
-                        <form class="form-inline">
-                            <div class="well">
-                                <input type="text" class="input-small" placeholder="Email">
-                                <input type="password" class="input-small" placeholder="Password">
-                                <label class="checkbox">
-                                    <input type="checkbox"> Remember me
-                                </label>
-                                <button type="submit" class="btn">Sign in</button>
+                            <br/>
+                            <strong>Darker Background:</strong>
+                            <div class="search-filter-bg" style="padding: 10px 24px;">
+                                <form class="form-search" style="margin-top: 20px">
+                                    <div class="darker" style="position: relative;">
+                                        <input type="text" class="input-medium search-query" placeholder="Search 2" />
+                                        <i class="search-clear-icon"></i>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
-                        -->
+                        </div>
+                    </div>
+                </div> <!-- .row-fluid -->
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>Text Input Fields</h5>
+                    </div>
+                    <div class="span9">
                         <form>
                             <div class="well">
                                 <div class="control-group">
                                     <label class="control-label" for="input1">Input Label</label>
                                     <div class="controls">
                                         <input type="text" id="input1" />
-                                        <span class="help-inline">Inline help text</span>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <div class="controls">
                                         <input type="text" value="Disabled" disabled />
-                                        <!--
-                                        <span class="help-block">Block help text</span>
-                                        -->
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -118,74 +167,18 @@
                                         <span class="help-error">Error help text</span>
                                     </div>
                                 </div>
-                                <!--
-                                <div class="control-group">
-                                    <div class="controls">
-                                        <label class="checkbox inline">
-                                            <input type="checkbox" value="" />
-                                            Checkbox 1
-                                        </label>
-                                        <label class="checkbox inline">
-                                            <input type="checkbox" value="" />
-                                            Checkbox 2
-                                        </label>
-                                        <label class="checkbox inline">
-                                            <input type="checkbox" value="" disabled />
-                                            Checkbox Disabled
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <div class="controls">
-                                        <label class="radio">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked />
-                                            Radio 1
-                                        </label>
-                                        <label class="radio">
-                                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" />
-                                            Radio 2
-                                        </label>
-                                        <label class="radio">
-                                            <input type="radio" disabled />
-                                            Disabled
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <div class="controls">
-                                        <div class="btn-group">
-                                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                                                Dropdown Label
-                                                <span class="caret"></span>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a tabindex="-1" href="#1">Item 1</a></li>
-                                                <li><a tabindex="-1" href="#2">Item 2</a></li>
-                                                <li><a tabindex="-1" href="#3">Item 3</a></li>
-                                                <li><a tabindex="-1" href="#4">Item 4</a></li>
-                                                <li><a tabindex="-1" href="#5">Item 5</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <div class="controls">
-                                        <div class="btn-group">
-                                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                                                Extra Long Dropdown Label Extra Long
-                                                <span class="caret"></span>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a tabindex="-1" href="#1">Item 1 with an extra, extra, extra, extra long label</a></li>
-                                                <li><a tabindex="-1" href="#2">Item 2</a></li>
-                                                <li><a tabindex="-1" href="#3">Item 3</a></li>
-                                                <li><a tabindex="-1" href="#4">Item 4</a></li>
-                                                <li><a tabindex="-1" href="#5">Item 5</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                -->
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- .row-fluid -->
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>Buttons</h5>
+                    </div>
+                    <div class="span9">
+                        <form>
+                            <div class="well">
                                 <div class="control-group">
                                     <div class="controls">
                                         <button type="button" class="btn btn-primary">Primary</button>
@@ -231,7 +224,7 @@
 
                 <div class="row-fluid">
                     <div class="span3">
-                        <h5>3. Modal Dialog</h5>
+                        <h5>Modal Dialog</h5>
                     </div>
                     <div class="span9">
                         <div class="well">
@@ -245,32 +238,11 @@
                         </div>
                     </div>
                 </div> <!-- .row-fluid -->
-                <!--
-                <div class="row-fluid">
-                    <div class="span3">
-                        <h5>5. jQuery UI</h5>
-                    </div>
-                    <div class="span9">
-                        <div class="well">
-                            <div class="control-group">
-                                <label class="control-label" for="dateselect">Date:</label>
-                                <div class="controls">
-                                    <input type="text" id="dateselect" />
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label" for="multidateselect">Multi Date:</label>
-                                <div class="controls">
-                                    <input type="text" id="multidateselect" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --> <!-- .row-fluid -->
+
                 <!-- 
                 <div class="row-fluid">
                     <div class="span3">
-                        <h5>5. ShortLink Component</h5>
+                        <h5>ShortLink Component</h5>
                     </div>
                     <div class="span9">
                         <div class="well">
@@ -285,45 +257,20 @@
                             <p>See the <a href="https://confluence.tm.tmcs/confluence/display/PJ31/URL+Shortening+in+tm360" target="_blank">URL Shortening in tm360</a> Confluence page for more info.</p>
                         </div>
                     </div>
-                </div> --> <!-- .row-fluid -->
-
-                <div class="row-fluid">
-                    <div class="span3">
-                        <h5>TBD</h5>
-                    </div>
-                    <div class="span9">
-                        <div class="well">
-                            More coming soon!!!
-                        </div>
-                    </div>
-                </div> <!-- .row-fluid -->
+                </div> --> <!-- .row-fluid -->                
 
             </div>
 
         </div>
 
         <!-- 3rd party Shared JS Libs (not in git repo) -->
-        <!-- <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/json2.js"></script> -->
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-1.7.2.min.js"></script>
-        <!-- <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-ui-1.8.22.custom.min.js"></script> -->
-        <!-- <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ui.multidatespicker-1.6.1.js"></script> -->
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ba-throttle-debounce-1.1.min.js"></script>
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/underscore_1.3.3.min.js"></script>
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.1.0.min.js"></script>        
-        <!-- Plugin for x-browser Copy-to-Clipboard http://code.google.com/p/zeroclipboard -->
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/ZeroClipboard.js"></script>
-        <script>
-            ZeroClipboard.setMoviePath( 'https://portal.shared.dev2.websys.tmcs/shared/js/lib/ZeroClipboard.swf' );
-        </script>
 
         <!-- tm360 Shared-UI JS -->
         <script src="js/tm/core.js"></script>
-        <!-- 
-        <script src="js/tm/cookie.js"></script>
-        <script src="js/tm/string.js"></script>
-        <script src="js/tm/date.js"></script>
-        <script src="js/tm/shortlink.js"></script>
-        -->
         <script src="js/tm/widgets/widgetFactory.js"></script>
         <script src="js/tm/widgets/modalDialog.js"></script>
 
@@ -338,6 +285,74 @@
                         tm.widthCheck();
                     });
                     $(window).resize( resizeHandler );
+                }
+
+                function activateSearchFields(){
+                    var fields = $("input.search-query[placeholder]");
+
+                    fields.focus(function(){
+                        var input = $(this);
+                        if (input.val() === input.attr("placeholder")) {
+                            input.val("");
+                            input.removeClass("placeholder");
+                        }
+                    })
+                    .blur(function(){
+                        var input = $(this);
+                        if (input.val() === "" || input.val() === input.attr("placeholder")) {
+                            input.addClass("placeholder");
+                            input.val(input.attr("placeholder"));
+                        }
+                    });
+
+                    // initialize
+                    fields.blur();
+
+                    // prevent submitting placeholder as value
+                    fields.parents("form").submit(function() {
+                        $(this).find("[placeholder]").each(function() {
+                            var input = $(this);
+                            if (input.val() === input.attr("placeholder")) {
+                                input.val("");
+                            }
+                        })
+                    });
+
+                    var showHideIcon = function(){
+                        if (this.data("iconActive")) {
+                            if (this.val() === "" || this.val() === this.attr("placeholder")){
+                                // hide icon
+                                this.siblings(".search-clear-icon").css({
+                                    display: "none"
+                                });
+                                this.data("iconActive", false);
+                            }
+                        } else {
+                            if (this.val() !== "" && this.val() !== this.attr("placeholder")){
+                                // position and show icon
+                                this.siblings(".search-clear-icon").css({
+                                    display: "block",
+                                    left: this.outerWidth() - 21
+                                });
+                                this.data("iconActive", true);
+                            }
+                        }
+                    };
+
+                    // init clear icon click handler
+                    fields.siblings(".search-clear-icon").click(function(){
+                        var input = $(this).siblings(".search-query");
+                        input.addClass("placeholder");
+                        input.val(input.attr("placeholder"));
+                        showHideIcon.apply(input);
+                    });
+
+                    // check to show/hide clear icon now and on keyup
+                    fields.each(function(){
+                        showHideIcon.apply($(this));
+                    }).keyup(function(){
+                        showHideIcon.apply($(this));
+                    });
                 }
 
                 function activateModalDialog(){
@@ -369,14 +384,7 @@
 
                 function init(){
                     adjustDisplayArea();
-
-                    // date picker
-                    //$("#dateselect").datepicker();
-                    //$("#multidateselect").multiDatesPicker();
-
-                    //tm.shortlink();
-                    //tm.shortlinkFlashCopy = true;
-
+                    activateSearchFields();
                     activateModalDialog();
 
                     // disable iOS overscroll
