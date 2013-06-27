@@ -332,7 +332,6 @@
 .tm360.touch .btn.btn-primary:hover,
 .tm360.touch .btn.btn-primary.hover {
     color: #FFFFFF;
-    border: 1px solid #9296a3;
     text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25);
     background-color: #6bbefd;
     background-image: -ms-linear-gradient(top, #6bbefd, #2d93d4);
@@ -455,6 +454,10 @@
     border-left: 4px solid transparent;
 }
 
+.tm360 .btn.btn-primary .caret {
+    border-top: 4px solid #fff;
+}
+
 .tm360.touch .btn-group > .dropdown-toggle:hover,
 .tm360 .btn-group > .dropdown-toggle {
     padding-right: 28px;
@@ -466,6 +469,12 @@
     background-color: #ffffff;
 }
 
+.tm360 .btn-group > .btn-primary.dropdown-toggle:hover,
+.tm360 .btn-group > .btn-primary.dropdown-toggle.hover {
+    background: none;
+    background-color: #2D93D4;
+}
+
 .tm360 .btn-group .dropdown-menu {
     margin-top: 2px;
     border: 1px solid #9296a3;
@@ -473,7 +482,7 @@
     -moz-border-radius: 0;
     border-radius: 0;
     padding: 8px 0px 10px;
-    /*min-width: 99.5%;*/
+    min-width: auto;
 }
 
 .tm360 .btn-group.open > .btn.dropdown-toggle,
@@ -516,9 +525,9 @@
 }
 
 .tm360 .dropdown-menu a.nowrap {
-    overflow-x: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow-x: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
 }
 
 .tm360 .dropdown-menu a.hover,

@@ -68,7 +68,7 @@
                     this._generateListFromOpts();
                 }
             }
-
+            this.ul.find('a').addClass('nowrap');
             this._bind();
 
         }
@@ -79,7 +79,8 @@
                 var self = this;
 
                 this.btn.click(function(e) {
-                    self.ul.css("min-width", $(this).innerWidth() + "px");
+                    // self.ul.css("min-width", $(this).innerWidth() + "px");
+                    self.ul.css("width", $(this).innerWidth() + "px");
                 });
 
             },
