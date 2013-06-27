@@ -1,21 +1,21 @@
-define(['jquery', 'bootstrap'], function($){
-	'use strict';
+define(['jquery', 'bootstrap', 'widget!tm/widgets/dropdownMenu'], function($) {
+    'use strict';
 
-	var data = {
-		legend: 'Overview',
-		description: 'A standard Bootstrap dropdown menu. Not to confuse with combobox, this control triggers an action rather than letting the user pick a value from a set.',
-		html: '\
+    var data = {
+        legend: 'Overview',
+        description: 'A standard Bootstrap dropdown menu. You can provide "text", "value" and "link url" to each items. (A Callback can be also provide if you pass an array of items).',
+        html: '\
 			<div id="dropdown-overview-container" class="demo-container">\n\
 	            <div class="demo-group">\n\
 		            <div class="btn-group" style="display: inline-block;">\n\
-		                <a id="overview-dropdown-link1" class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">Select action<span class="caret" /></a>\n\
+		                <a id="overview-dropdown-link1" class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">Select action<span class="caret" /></a>\n\
 		                <ul class="dropdown-menu">\n\
 		                    <li><a tabindex="-1" href="#dropDownMenu#1">Action 1</a></li>\n\
 		                    <li><a tabindex="-1" href="#dropDownMenu#2">Action 2</a></li>\n\
 		                </ul>\n\
 		            </div>\n\
 		            <div class="btn-group" style="display: inline-block;">\n\
-		                <a id="overview-dropdown-link2" class="btn dropdown-toggle disabled" data-toggle="dropdown" href="javascript:void(0)">Select action<span class="caret" /></a>\n\
+		                <a id="overview-dropdown-link2" class="btn dropdown-toggle disabled" data-toggle="dropdown" href="javascript:void(0);">Select action<span class="caret" /></a>\n\
 		                <ul class="dropdown-menu">\n\
 		                    <li><a tabindex="-1" href="#dropDownMenu#1">Action 1</a></li>\n\
 		                    <li><a tabindex="-1" href="#dropDownMenu#2">Action 2</a></li>\n\
@@ -38,8 +38,14 @@ define(['jquery', 'bootstrap'], function($){
 		                </ul>\n\
 		            </div>\n\
 	            </div>\n\
-	        </div>'
-	};
+	        </div>',
+        js: function() {
+            $("#overview-dropdown-link1").tmDropdownMenu();
+            $("#overview-dropdown-link2").tmDropdownMenu();
+            $("#overview-dropdown-btn1").tmDropdownMenu();
+            $("#overview-dropdown-btn2").tmDropdownMenu();
+        }
+    };
 
-	return data;
+    return data;
 });

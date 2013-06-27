@@ -287,7 +287,7 @@
     padding: 7px 10px 5px 10px;
     border: 1px solid #9296a3;
     text-shadow: 0 0 1px rgba(255, 255, 255, 0.25);
-    min-width: 82px;
+    /*min-width: 82px;*/
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -473,7 +473,7 @@
     -moz-border-radius: 0;
     border-radius: 0;
     padding: 8px 0px 10px;
-    min-width: 99.5%;
+    /*min-width: 99.5%;*/
 }
 
 .tm360 .btn-group.open > .btn.dropdown-toggle,

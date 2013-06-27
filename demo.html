@@ -69,6 +69,9 @@
         <script src="js/tm/widgets/radiobutton.js"></script>
         <script src="js/tm/widgets/popup.js"></script>
         <script src="js/tm/widgets/tooltip.js"></script>
+        <script src="js/tm/widgets/dropdownMenu.js"></script>
+        <script src="js/tm/widgets/dropdown.js"></script>
+
     </head>
     <body class="tm360">
         <div id="container">
@@ -261,7 +264,7 @@
                                 <div class="control-group top-hr">
                                     <div class="controls demo-group">
                                         <div class="btn-group">
-                                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                            <a id="dropdownMenu1" class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                                                 Dropdown Label
                                                 <span class="caret"></span>
                                             </a>
@@ -276,7 +279,7 @@
                                     </div>
                                     <div class="controls demo-group">
                                         <div class="btn-group">
-                                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                            <a id="dropdownMenu2" class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                                                 Extra Long Dropdown Label Extra Long
                                                 <span class="caret"></span>
                                             </a>
@@ -289,10 +292,45 @@
                                             </ul>
                                         </div>
 										<div style="margin-top: 10px;">
-		                                    <a href="demo/index.html?url=demo%2Fdropdown-button-with-menu-examples%2Fall">See more dropdowns ...</a>
+		                                    <a href="demo/index.html?url=demo%2Fdropdown-button-with-menu-examples%2Fall">See more dropdown menus ...</a>
 		                                </div>
                                     </div>
                                 </div>
+                                <!-- <div class="control-group top-hr">
+                                    <div class="controls demo-group">
+                                        <div class="btn-group">
+                                            <a id="dropdownList1" class="btn dropdown-toggle" style="width:80px" data-toggle="dropdown" href="#">
+                                                Select
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a tabindex="-1" href="#1">Item 1</a></li>
+                                                <li><a tabindex="-1" href="#2">Item 2</a></li>
+                                                <li><a tabindex="-1" href="#3">Item 3</a></li>
+                                                <li><a tabindex="-1" href="#4">Item 4</a></li>
+                                                <li><a tabindex="-1" href="#5">Item 5</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="controls demo-group">
+                                        <div class="btn-group">
+                                            <a id="dropdownList2" class="btn dropdown-toggle" style="width:180px" data-toggle="dropdown" href="#">
+                                                Select
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li><a tabindex="-1" href="#1">Item 1 with an extra, extra, extra, extra long label</a></li>
+                                                <li><a tabindex="-1" href="#2">Item 2</a></li>
+                                                <li><a tabindex="-1" href="#3">Item 3</a></li>
+                                                <li><a tabindex="-1" href="#4">Item 4</a></li>
+                                                <li><a tabindex="-1" href="#5">Item 5</a></li>
+                                            </ul>
+                                        </div>
+                                        <div style="margin-top: 10px;">
+                                            <a href="demo/index.html?url=demo%2Fdropdown-examples%2Fall">See more dropdowns ...</a>
+                                        </div>
+                                    </div>
+                                </div> -->
 
                             </div>
                         </form>
@@ -480,6 +518,12 @@
         		$('#button-list-button').click(function() {
         		    dialog.tmModalDialog('show');
         		});
+
+                $("#dropdownMenu1").tmDropdownMenu();
+                $("#dropdownMenu2").tmDropdownMenu();
+
+                $("#dropdownList1").tmDropdown();
+                $("#dropdownList2").tmDropdown();
 
                 // jquery onload
                 $(init);
