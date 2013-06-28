@@ -9,19 +9,31 @@
             this.opts = opts;
             this.element = element.tmDropdownMenu(this.opts);
 
-            this.dropdownMenu = this.element.data('tmDropdownMenu');
-            this.dropdownMenu.getButton().attr('data-value', 'null');
+            this.widget = this.element.data('tmDropdownMenu');
+
+            // Preserve width when selecting a smaller/bigger element
+            this.widget.btn.width(this.widget.btn.width());
+            this.widget.ul.addClass('dropdown-list');
+
+            this._bind();
         }
 
         Dropdown.prototype = {
 
             _bind: function() {
+                var self = this;
 
+                this.widget.ul.bind('change', function(e) {
+                    var text = self.widget.getTextByValue($(e.target).data('selected-value'));
+                    if (text) {
+                        self.widget.setButtonText(text);
+                    }
+                });
             },
 
             /**
              * Add Item to the list
-             * @param  {Object} item > { text: "String", value: "String", href: "String" }
+             * @param  {Object} item > { text: "String", value: "String", href: "String", callback: "Function" }
              */
             addItem: function(item) {
                 this.tmDropdownMenu.addItem(item);
@@ -32,31 +44,19 @@
              * @param  {String} value
              */
             removeItem: function(value) {
-                this.dropdownMenu.removeItem(value);
+                this.widget.removeItem(value);
             },
 
             getData: function() {
-                return this.dropdownMenu.getButton().data('value');
+                return this.widget.ul.data('selected-value') || null;
             },
 
             setData: function(value) {
-
-                var btn = this.dropdownMenu.getBtn();
-
-                var item = this._getMenuItemByValue(value);
-
-                if (item !== null) {
-                    btn.text(item.text());
-                    btn.data('value', item.data('value'));
-                } else {
-                    btn.text(this.opts.buttonText);
-                    btn.data('value', "null");
-                }
-
+                this.widget.delegate.setValue(value);
             },
 
             _getMenuItemByValue: function(value) {
-                var menu = this.dropdownMenu.getMenu();
+                var menu = this.widget.getMenu();
                 menu.find('li a').each(function(val, item) {
                     var el = $(item);
                     if (el.data('value') === value) {

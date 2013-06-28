@@ -4,6 +4,43 @@
     function factory($, gadgets) {
         var gadgetPrefs = new gadgets.Prefs();
 
+        /**
+         * Delegate to handle widget generation type.
+         */
+        var SelectDelegate = function(ul, select) {
+            this.ul = ul;
+            this.select = select;
+        };
+        SelectDelegate.prototype.setValue = function(value) {
+            if (value !== this.select.val()) {
+                this.select.val(value);
+                this.select.change();
+            }
+        };
+        var ULDelegate = function(ul) {
+            this.ul = ul;
+        };
+        ULDelegate.prototype.setValue = function(value) {};
+        var ArrayDelegate = function(ul, list) {
+            this.ul = ul;
+            this.list = list;
+        };
+        ArrayDelegate.prototype.setValue = function(value) {
+            for (var i = 0; i < this.list.length; i++) {
+                if (value && this.list[i].value == value) {
+                    if (this.list[i].callback) {
+                        this.list[i].callback();
+                    }
+                    break;
+                }
+            }
+        }
+
+        /**
+         * Widget
+         * @param  {$Element} element
+         * @param  {Object} opts
+         */
         var DropdownMenu = function(element, opts) {
 
             this.opts = $.extend({
@@ -34,14 +71,16 @@
             if (isElementBtn) {
                 this.btn = $(element);
             } else {
-                this.btn = $(element).find(".btn").length  || $('<button>' + this.opts.buttonText + '</button>');
+                this.btn = $(element).find(".btn").length  || $('<button></button>');
+                this.setButtonText(this.opts.buttonText);
             }
             this.btn.addClass('btn dropdown-toggle').attr('data-toggle', "dropdown");
 
             //Render Caret
-            var caret = this.btn.find('.caret');
-            if (!caret.length) {
-                this.btn.append('<span class="caret" />');
+            this.caret = this.btn.find('.caret');
+            if (!this.caret.length) {
+                this.caret = $('<span class="caret" />');
+                this.btn.append(this.caret);
             }
 
             //Render Menu
@@ -54,7 +93,7 @@
                 this.ul = ul;
             }
 
-            this.ul.addClass('dropdown-menu');
+            this.ul.addClass('dropdown-menu').attr('data-selected-value', 'null');
 
             // Append to DOM
             // this.group.append(this.btn, this.ul);
@@ -62,12 +101,17 @@
                 this.group.append(this.btn, this.ul);
                 this._generateListFromSelect();
                 this.group.insertAfter(this.element);
+                this.delegate = new SelectDelegate(this.ul, this.element);
             } else {
                 if (!this.ul.find('li').length && !isMarkupWrite) {
                     this.group.append(this.btn, this.ul);
                     this._generateListFromOpts();
+                    this.delegate = new ArrayDelegate(this.ul, this.opts.items);
+                } else {
+                    this.delegate = new ULDelegate(this.ul);
                 }
             }
+
             this.ul.find('a').addClass('nowrap');
             this._bind();
 
@@ -79,8 +123,17 @@
                 var self = this;
 
                 this.btn.click(function(e) {
-                    // self.ul.css("min-width", $(this).innerWidth() + "px");
                     self.ul.css("width", $(this).innerWidth() + "px");
+                });
+
+                this.ul.click(function(e) {
+                    var a = $(e.target).closest('a', this);
+                    if (a.length) {
+                        var value = a.data('value') || null;
+                        self.ul.data('selected-value', value);
+                        self.delegate.setValue(value);
+                        self.ul.change();
+                    }
                 });
 
             },
@@ -112,35 +165,26 @@
                 });
             },
 
-            /**
-             * Get Button Jquery Element
-             * @return ${Element}
-             */
-            $getButton: function(){
-                return this.btn;
+            setButtonText: function(text){
+                this.btn.text(text).append(this.caret);
             },
 
-            $getMenu: function(){
-                return this.ul;
+            getTextByValue: function(value){
+                
+                var text = null;
+                this.ul.find('a').each(function(val, item){
+                    if ($(item).data('value') === value){
+                        text = $(item).text();
+                    }
+                });
+
+                return text;
             },
 
             _$createMenuItem: function(text, value, href) {
-                var self = this;
 
                 var defaultHref = href ? href : "javaScript:void(0);";
-
-                var link = $('<a href="' + defaultHref + '" data-value="' + value + '" tabindex="-1">' + text + '</a>');
-                link.click(function(e) {
-                    var value = $(this).data('value');
-                    for (var i = 0; i < self.opts.items.length; i++) {
-                        if (value && self.opts.items[i].value == value) {
-                            if (self.opts.items[i].callback) {
-                                self.opts.items[i].callback();
-                            }
-                            break;
-                        }
-                    }
-                });
+                var link = $('<a class="nowrap" href="' + defaultHref + '" data-value="' + value + '" tabindex="-1">' + text + '</a>');
 
                 return $('<li>').append(link);
             },
