@@ -36,7 +36,7 @@
              * @param  {Object} item > { text: "String", value: "String", href: "String", callback: "Function" }
              */
             addItem: function(item) {
-                this.tmDropdownMenu.addItem(item);
+                this.widget.addItem(item);
             },
 
             /**
@@ -44,6 +44,10 @@
              * @param  {String} value
              */
             removeItem: function(value) {
+                var isValueAlreadySelected = this.getData() == value;
+                if (isValueAlreadySelected) {
+                    this.setData(null);
+                }
                 this.widget.removeItem(value);
             },
 
@@ -53,6 +57,7 @@
 
             setData: function(value) {
                 this.widget.delegate.setValue(value);
+                this.widget.setButtonText(this.widget.getTextByValue(value));
             },
 
             _getMenuItemByValue: function(value) {
@@ -74,7 +79,7 @@
 
     // If requirejs is present, we want to use it, otherwise, we want to use the global declarations to get the dependencies
     if (typeof define === 'function' && define.amd) {
-        define(['jquery', 'global!gadgets', 'bootstrap'], factory);
+        define(['jquery', 'global!gadgets', 'bootstrap', 'widget!tm/widgets/dropdownMenu'], factory);
     } else {
         tm.widgets.widgetFactory.make('tmDropdown', factory($, gadgets));
     }

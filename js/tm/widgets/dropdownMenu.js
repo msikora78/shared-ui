@@ -10,17 +10,22 @@
         var SelectDelegate = function(ul, select) {
             this.ul = ul;
             this.select = select;
+            var self = this;
+            this.select.change(function() {
+                self.ul.data('selected-value', $(this).val());
+            });
+
         };
         SelectDelegate.prototype.setValue = function(value) {
-            if (value !== this.select.val()) {
-                this.select.val(value);
-                this.select.change();
-            }
+            this.select.val(value);
+            this.select.change();
         };
         var ULDelegate = function(ul) {
             this.ul = ul;
         };
-        ULDelegate.prototype.setValue = function(value) {};
+        ULDelegate.prototype.setValue = function(value) {
+            this.ul.data('selected-value', value);
+        };
         var ArrayDelegate = function(ul, list) {
             this.ul = ul;
             this.list = list;
@@ -34,6 +39,7 @@
                     break;
                 }
             }
+            this.ul.data('selected-value', value);
         }
 
         /**
@@ -57,8 +63,8 @@
             } else {
                 var group = element.parent();
                 if (group && !group.hasClass('btn-group')) {
-                    this.group = $('<div>');
-                    this.group.appendTo(element);
+                    element.wrap($('<div class="toto">'));
+                    this.group = element.parent();
                 } else {
                     this.group = group;
                 }
@@ -67,11 +73,11 @@
             this.group.addClass('btn-group');
 
             //Render Button
-            var isElementBtn = $(element).hasClass('btn');
+            var isElementBtn = element.hasClass('btn');
             if (isElementBtn) {
-                this.btn = $(element);
+                this.btn = element;
             } else {
-                this.btn = $(element).find(".btn").length  || $('<button></button>');
+                this.btn = $('<button></button>');
                 this.setButtonText(this.opts.buttonText);
             }
             this.btn.addClass('btn dropdown-toggle').attr('data-toggle', "dropdown");
@@ -115,7 +121,7 @@
             this.ul.find('a').addClass('nowrap');
             this._bind();
 
-        }
+        };
 
         DropdownMenu.prototype = {
 
@@ -135,7 +141,6 @@
                         self.ul.change();
                     }
                 });
-
             },
 
             /**
@@ -165,15 +170,17 @@
                 });
             },
 
-            setButtonText: function(text){
-                this.btn.text(text).append(this.caret);
+            setButtonText: function(text) {
+                var targetText = text != null ? text : this.opts.buttonText
+                this.btn.text(targetText).append(this.caret);
+
             },
 
-            getTextByValue: function(value){
-                
+            getTextByValue: function(value) {
+
                 var text = null;
-                this.ul.find('a').each(function(val, item){
-                    if ($(item).data('value') === value){
+                this.ul.find('a').each(function(val, item) {
+                    if ($(item).data('value') === value) {
                         text = $(item).text();
                     }
                 });
