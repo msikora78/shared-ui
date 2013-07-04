@@ -78,6 +78,7 @@
                 this.btn = $('<button></button>');
                 this.setButtonText(this.opts.buttonText);
             }
+
             this.btn.addClass('btn dropdown-toggle').attr('data-toggle', "dropdown");
 
             //Render Caret

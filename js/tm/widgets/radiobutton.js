@@ -4,7 +4,7 @@
 	function factory($, gadgets, tm, checkableBase) {
 
 		var Radiobutton = function(element, opts) {
-			this.spriteLeft = "342";
+			this.spriteLeft = "184";
 			this.spriteHeight = "24";
 			this.spriteWidth = "24";
 			this.spriteTop = "6";

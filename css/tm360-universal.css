@@ -223,7 +223,7 @@
     margin-bottom: -2px;
     display: inline-block;
     cursor: pointer;
-    background: url("img/grfx-perm-01.png") no-repeat;
+    background: url("img/grfx-tm360SDK.png") no-repeat;
 }
 
 .tm360 .tmRadiobutton {
@@ -233,7 +233,7 @@
     margin-bottom: -2px;
     display: inline-block;
     cursor: pointer;
-    background: url("img/grfx-perm-01.png") no-repeat;
+    background: url("img/grfx-tm360SDK.png") no-repeat;
 }
 
 .tm360 .control-group.error .checkbox,

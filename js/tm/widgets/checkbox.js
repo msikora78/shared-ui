@@ -4,9 +4,9 @@
 	function factory($, gadgets, tm, checkableBase) {
 
 		var Checkbox = function(element, opts) {
-			this.spriteLeft = "178";
+			this.spriteLeft = "232";
 			this.spriteHeight = "24";
-			this.spriteWidth = "20";
+			this.spriteWidth = "24";
 			this.spriteTop = "6";
 			this.className = "tmCheckbox";
 

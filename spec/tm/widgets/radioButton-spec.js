@@ -58,22 +58,22 @@ define(['injectable!tm/widgets/radiobutton', 'tm/widgets/checkableBase', 'mock/g
                             expect($radio.prop("disabled")).toBe(true);
                             expect($radio.prop("checked")).toBe(true);
                         });
-                        it('should have background-position at -366px -30px', function() {
-                            expect($radio.next().css("background-position")).toBe("-366px -30px");
+                        it('should have background-position at -208px -30px', function() {
+                            expect($radio.next().css("background-position")).toBe("-208px -30px");
                         })
                     } else if (disabled)  {
                         it('should be disabled', function() {
                             expect($radio.prop("disabled")).toBe(true);
                         });
-                        it('should have background-position at -366px -6px', function() {
-                            expect($radio.next().css("background-position")).toBe("-366px -6px");
+                        it('should have background-position at -208px -6px', function() {
+                            expect($radio.next().css("background-position")).toBe("-208px -6px");
                         })
                     } else if (checked) {
                         it('should be checked', function() {
                             expect($radio.prop("checked")).toBe(true);
                         });                            
-                        it('should have background-position at -342px -30px', function() {
-                            expect($radio.next().css("background-position")).toBe("-342px -30px");
+                        it('should have background-position at -184px -30px', function() {
+                            expect($radio.next().css("background-position")).toBe("-184px -30px");
                         })
                     }
                     else {
@@ -81,8 +81,8 @@ define(['injectable!tm/widgets/radiobutton', 'tm/widgets/checkableBase', 'mock/g
                             expect($radio.attr("checked")).toBe(undefined);
                             expect($radio.attr("disabled")).toBe(undefined);
                         });                            
-                        it('should have background-position at -342px -6px', function() {
-                            expect($radio.next().css("background-position")).toBe("-342px -6px");
+                        it('should have background-position at -184px -6px', function() {
+                            expect($radio.next().css("background-position")).toBe("-184px -6px");
                         })
                     }
 
