@@ -1,4 +1,4 @@
-define(['./util' 'injectable!tm/widgets/dropdownMenu'], function(Util, injectableDropdownMenu) {
+define(['./util', 'injectable!tm/widgets/dropdownMenu'], function(Util, injectableDropdownMenu) {
 
     var USING_SELECT = "USING_SELECT";
     var USING_BUTTON = "USING_BUTTON";
