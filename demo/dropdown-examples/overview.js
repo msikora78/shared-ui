@@ -10,22 +10,22 @@ define(['jquery', 'bootstrap', 'widget!tm/widgets/dropdownMenu', 'widget!tm/widg
                     <div class="btn-group" style="display: inline-block;">\n\
                         <a id="overview-dropdown-link1" class="btn dropdown-toggle" href="javascript:void(0);">Select action<span class="caret" /></a>\n\
                         <ul class="dropdown-menu">\n\
-                            <li><a href="#dropDownList#1" data-value="Action1">Action 1</a></li>\n\
-                            <li><a href="#dropDownList#2" data-value="Action2">Action 2</a></li>\n\
+                            <li><a data-value="Action1">Action 1</a></li>\n\
+                            <li><a data-value="Action2">Action 2</a></li>\n\
                         </ul>\n\
                     </div>\n\
                     <div class="btn-group" style="display: inline-block;">\n\
                         <a id="overview-dropdown-link2" class="btn dropdown-toggle disabled" href="javascript:void(0);">Select action<span class="caret" /></a>\n\
                         <ul class="dropdown-menu">\n\
-                            <li><a href="#dropDownList#1" data-value="Action1">Action 1</a></li>\n\
-                            <li><a href="#dropDownList#2" data-value="Action2">Action 2</a></li>\n\
+                            <li><a data-value="Action1">Action 1</a></li>\n\
+                            <li><a data-value="Action2">Action 2</a></li>\n\
                         </ul>\n\
                     </div>\n\
                     <div class="btn-group" style="display: inline-block;">\n\
                         <a id="overview-dropdown-btn1" class="btn btn-primary dropdown-toggle">Button action primary<span class="caret" /></a>\n\
                         <ul class="dropdown-menu">\n\
-                            <li><a href="#dropDownList#1" data-value="Action1">Action 1</a></li>\n\
-                            <li><a href="#dropDownList#2" data-value="Action2">Action 2</a></li>\n\
+                            <li><a data-value="Action1">Action 1</a></li>\n\
+                            <li><a data-value="Action2">Action 2</a></li>\n\
                         </ul>\n\
                     </div>\n\
                 </div>\n\
