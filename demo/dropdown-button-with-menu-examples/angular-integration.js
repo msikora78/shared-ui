@@ -29,10 +29,13 @@ define(['jquery', 'angular', 'bootstrap', 'widget!tm/widgets/dropdownMenu'], fun
             app.directive('tmDropdownMenu', function(){
                 return {
                     restrict: 'A',
-                    link: function(scope, iElement, iAttrs){
+                    compile: function(tElement, tAttrs){
 
-                        $(iElement).tmDropdownMenu();
+                        tElement.tmDropdownMenu();
 
+                        return function link(scope, iElement, iAttrs){
+                            //TODO Binding if necessary
+                        }
                     }
                 };
             });

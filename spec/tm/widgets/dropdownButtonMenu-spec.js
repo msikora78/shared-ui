@@ -1,10 +1,5 @@
-define(['./util', 'mock/gadgetPrefMock', 'injectable!tm/widgets/dropdownMenu'], function(Util, gadgetPrefMock, injectableDropdownMenu) {
-    var gadgetPrefs = gadgetPrefMock({});
-    var gadgets = {
-        Prefs: function() {
-            return gadgetPrefs;
-        }
-    };
+define(['./util' 'injectable!tm/widgets/dropdownMenu'], function(Util, injectableDropdownMenu) {
+
     var USING_SELECT = "USING_SELECT";
     var USING_BUTTON = "USING_BUTTON";
     var USING_ELEMENT_AND_ARRAY = "USING_ELEMENT_AND_ARRAY";
@@ -14,7 +9,7 @@ define(['./util', 'mock/gadgetPrefMock', 'injectable!tm/widgets/dropdownMenu'], 
         for (var version in jquery) {
             for (var i = 0; i < renderType.length; i++) {
                 if (jquery.hasOwnProperty(version)) {
-                    var DropdownMenu = injectableDropdownMenu(jquery[version], gadgets);
+                    var DropdownMenu = injectableDropdownMenu(jquery[version]);
                     runTest(jquery[version], Util, DropdownMenu, i);
                 }
             }
@@ -292,7 +287,7 @@ define(['./util', 'mock/gadgetPrefMock', 'injectable!tm/widgets/dropdownMenu'], 
 
                             var rgb = Util.convertHexaToRgb("2d93d4");
                             expect($toggleButton.css('background-color')).toBe(rgb);
-                            Util.evaluateBorderColor($toggleButton, Util.convertHexaToRgb("4F5158"));
+                            Util.evaluateBorderColor($toggleButton, Util.convertHexaToRgb("9296a3"));
                         });
 
                     } else {

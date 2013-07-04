@@ -334,6 +334,7 @@
 .tm360.touch .btn.btn-primary.hover {
     color: #FFFFFF;
     text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25);
+    border: 1px solid #9296a3; /* todo waiting for meghan to put 4F5158 instead of 9296a3*/
     background-color: #2d93d4;
     background-image: -ms-linear-gradient(top, #6bbefd, #2d93d4);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6bbefd), to(#2d93d4));

@@ -1,9 +1,7 @@
 (function() {
     "use strict";
 
-    function factory($, gadgets) {
-        var gadgetPrefs = new gadgets.Prefs();
-
+    function factory($) {
         /**
          * Delegate to handle widget generation type.
          */
@@ -135,7 +133,7 @@
                 this.ul.click(function(e) {
                     var a = $(e.target).closest('a', this);
                     if (a.length) {
-                        var value = a.data('value') || null;
+                        var value = typeof a.data('value') === 'undefined' ? null : a.data('value');
                         self.ul.data('selected-value', value);
                         self.delegate.setValue(value);
                         self.ul.change();
@@ -191,7 +189,7 @@
             _$createMenuItem: function(text, value, href) {
 
                 var defaultHref = href ? href : "javaScript:void(0);";
-                var link = $('<a class="nowrap" href="' + defaultHref + '" data-value="' + value + '" tabindex="-1">' + text + '</a>');
+                var link = $('<a class="nowrap" href="' + defaultHref + '" data-value="' + value + '" tabindex="-1"></a>').text(text);
 
                 return $('<li>').append(link);
             },
@@ -228,8 +226,8 @@
 
     // If requirejs is present, we want to use it, otherwise, we want to use the global declarations to get the dependencies
     if (typeof define === 'function' && define.amd) {
-        define(['jquery', 'global!gadgets', 'bootstrap'], factory);
+        define(['jquery', 'bootstrap'], factory);
     } else {
-        tm.widgets.widgetFactory.make('tmDropdownMenu', factory($, gadgets));
+        tm.widgets.widgetFactory.make('tmDropdownMenu', factory($));
     }
 })();

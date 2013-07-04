@@ -1,8 +1,7 @@
 (function() {
     "use strict";
 
-    function factory($, gadgets) {
-        var gadgetPrefs = new gadgets.Prefs();
+    function factory($) {
 
         var Dropdown = function(element, opts) {
 
@@ -79,8 +78,8 @@
 
     // If requirejs is present, we want to use it, otherwise, we want to use the global declarations to get the dependencies
     if (typeof define === 'function' && define.amd) {
-        define(['jquery', 'global!gadgets', 'bootstrap', 'widget!tm/widgets/dropdownMenu'], factory);
+        define(['jquery', 'bootstrap', 'widget!tm/widgets/dropdownMenu'], factory);
     } else {
-        tm.widgets.widgetFactory.make('tmDropdown', factory($, gadgets));
+        tm.widgets.widgetFactory.make('tmDropdown', factory($));
     }
 })();
