@@ -11,7 +11,7 @@ define(['jquery', 'widget!tm/widgets/dropdownMenu', 'widget!tm/widgets/dropdown'
                 items: [{
                     text: "foo",
                     value: "FOO",
-                    href: "#dropDownMenu#1"
+                    href: "#dropDownList#1"
                 }, {
                     text: "bar",
                     value: "BAR",

@@ -6,8 +6,8 @@ define(['jquery', 'widget!tm/widgets/dropdownMenu', 'widget!tm/widgets/dropdown'
         description: '',
         html: '\
                <select>\n\
-                   <option data-href="#dropDown#1">Foo</option>\n\
-                   <option data-href="#dropDown#2">Bar</option>\n\
+                   <option data-href="#dropDownList#1">Foo</option>\n\
+                   <option data-href="#dropDownList#2">Bar</option>\n\
                    <option>Foo Bar</option>\n\
                </select>',
         js: function() {
