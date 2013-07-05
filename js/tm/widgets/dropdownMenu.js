@@ -48,7 +48,7 @@
         var DropdownMenu = function(element, opts) {
 
             this.opts = $.extend({
-                buttonText: "Select",
+                buttonText: "",
                 items: []
             }, opts);
 
@@ -76,8 +76,9 @@
                 this.btn = element;
             } else {
                 this.btn = $('<button></button>');
-                this.setButtonText(this.opts.buttonText);
             }
+
+            this._initButtonText();
 
             this.btn.addClass('btn dropdown-toggle').attr('data-toggle', "dropdown");
 
@@ -141,7 +142,22 @@
                     }
                 });
             },
+            _initButtonText: function() {
 
+                var useDefaultText = true;
+                if (this.btn.text() != "") {
+                    this.setButtonText(this.btn.text());
+                    useDefaultText = false;
+                } 
+
+                if (this.opts.buttonText != "") {
+                    this.setButtonText(this.opts.buttonText);
+                    useDefaultText = false;
+                }
+                if (useDefaultText){
+                    this.setButtonText("Select");
+                }
+            },
             /**
              * Add Item to the list
              * @param  {Object} item > { text: "String", value: "String", href: "String" }
