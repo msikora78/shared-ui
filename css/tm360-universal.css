@@ -547,7 +547,8 @@
     filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
 
-.tm360 .dropdown-menu.dropdown-list a:active{
+.tm360 .dropdown-menu.dropdown-list a:active,
+.tm360 .dropdown-menu.dropdown-list a.selected{
     color: white;
     background-color: #4f5158;
     background-image: -ms-linear-gradient(top, #4f5158, #4f5158);

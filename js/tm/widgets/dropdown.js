@@ -23,10 +23,12 @@
                 var self = this;
 
                 this.widget.ul.bind('change', function(e) {
-                    var text = self.widget.getTextByValue($(e.target).data('selected-value'));
+                    var value = $(e.target).data('selected-value');
+                    var text = self.widget.getTextByValue(value);
                     if (text) {
                         self.widget.setButtonText(text);
                     }
+                    self._applySelectedItem(value);
                 });
             },
 
@@ -48,6 +50,7 @@
                     this.setData(null);
                 }
                 this.widget.removeItem(value);
+                this._applySelectedItem(value);
             },
 
             getData: function() {
@@ -57,18 +60,28 @@
             setData: function(value) {
                 this.widget.delegate.setValue(value);
                 this.widget.setButtonText(this.widget.getTextByValue(value));
+                this._applySelectedItem(value);
+            },
+
+            _applySelectedItem: function(value) {
+                this.widget.ul.find('a').removeClass('selected');
+                var item = this._getMenuItemByValue(value);
+                if (item && item.length) {
+                    item.addClass('selected');
+                }
             },
 
             _getMenuItemByValue: function(value) {
-                var menu = this.widget.getMenu();
-                menu.find('li a').each(function(val, item) {
+                var menu = this.widget.ul;
+                var result = null;
+                menu.find('a').each(function(val, item) {
                     var el = $(item);
                     if (el.data('value') === value) {
-                        return $(item);
+                        result = $(item);
                     }
                 });
 
-                return null;
+                return result;
             }
 
         };

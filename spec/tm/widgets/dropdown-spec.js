@@ -102,6 +102,7 @@ function(Util, injectableDropdown, injectableDropdownMenu, injectableWidgetFacto
                         it('should return selected value', function() {
                             dropdown.setData('Value1');
                             expect(dropdown.getData()).toBe("Value1");
+                            expect(dropdown._getMenuItemByValue("Value1").hasClass('selected')).toBe(true);
                             expect(dropdown.widget.btn.text()).toBe('Action 1');
                         });
                     }
@@ -113,6 +114,7 @@ function(Util, injectableDropdown, injectableDropdownMenu, injectableWidgetFacto
                         it('should return selected value', function() {
                             dropdown.setData('Value1');
                             expect(dropdown.getData()).toBe('Value1');
+                            expect(dropdown._getMenuItemByValue("Value1").hasClass('selected')).toBe(true);
                         });
                     }
 
@@ -127,9 +129,12 @@ function(Util, injectableDropdown, injectableDropdownMenu, injectableWidgetFacto
                         });
                         it('should remove first item and and selected value change to null', function() {
                             dropdown.setData('Value1');
+                            expect(dropdown.getData()).toBe('Value1');
+                            expect(dropdown._getMenuItemByValue("Value1").hasClass('selected')).toBe(true);
                             expect(dropdown.widget.ul.find('a').length).toBe(2);
                             dropdown.removeItem('Value1');
                             expect(dropdown.getData()).toBe(null);
+                            expect(dropdown.widget.ul.find('.selected').length).toBe(0);
                             expect(dropdown.widget.ul.find('a').length).toBe(1);
                         });
                         it('should remove first item and and selected value still the same', function() {
@@ -138,6 +143,14 @@ function(Util, injectableDropdown, injectableDropdownMenu, injectableWidgetFacto
                             dropdown.removeItem('Value1');
                             expect(dropdown.getData()).toBe('Value2');
                             expect(dropdown.widget.ul.find('a').length).toBe(1);
+                        });
+                        it('should not found .selected class when set null value', function() {
+                            dropdown.setData('Value2');
+                            expect(dropdown.getData()).toBe("Value2");
+                            expect(dropdown.widget.ul.find('.selected').length).toBe(1);
+                            dropdown.setData(null);
+                            expect(dropdown.getData()).toBe(null);
+                            expect(dropdown.widget.ul.find('.selected').length).toBe(0);
                         });
                     }
                 });
