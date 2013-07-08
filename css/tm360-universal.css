@@ -138,7 +138,7 @@
 .tm360 label {
     font-size: 12px;
     font-family: Arial,sans-serif;
-    color: #9296a3;
+    color: #4f5158;
     margin-bottom: 2px;
 }
 
@@ -213,13 +213,13 @@
 }
 
 .tm360 .checkbox input[type="checkbox"] {
-	margin-top: 2px;
+    margin-top: 2px;
 }
 
 .tm360 .tmCheckbox {
-    width: 13px;
+    width: 18px;
     height: 18px;
-    padding-right: 5px;
+    padding-right: 3px;
     margin-bottom: -2px;
     display: inline-block;
     cursor: pointer;
@@ -227,13 +227,18 @@
 }
 
 .tm360 .tmRadiobutton {
-    width: 13px;
+    width: 18px;
     height: 18px;
-    padding-right: 5px;
+    padding-right: 3px;
     margin-bottom: -2px;
     display: inline-block;
     cursor: pointer;
     background: url("img/grfx-tm360SDK.png") no-repeat;
+}
+
+.tm360 .well .tmCheckbox,
+.tm360 .well .tmRadiobutton{
+    padding-right: 1px;
 }
 
 .tm360 .control-group.error .checkbox,
