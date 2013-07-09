@@ -1,23 +1,23 @@
 requirejs.config({
-	baseUrl: '../js',
-	paths: {
-		'jquery': 'http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min',
-		'bootstrap': 'http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min',
-		'angular': 'http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min',
-		'jquery.throttle': '../lib/jquery.ba-throttle-debounce-1.1/jquery.ba-throttle-debounce.min',
-		'widget': '../plugin/widget',
-		'mock': '../mock',
-		'demo': '../demo',
-		'global': '../plugin/global'
-	},
-	shim: {
-		bootstrap: ['jquery'],
-		angular: {
-			exports: 'angular',
-			deps: ['jquery']
-		},
-		'jquery.throttle': ['jquery']
-	}
+    baseUrl: '../js',
+    paths: {
+        'jquery': 'https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-1.7.2.min',
+        'bootstrap': 'https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.1.0.min',
+        'angular': '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min',
+        'jquery.throttle': 'https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ba-throttle-debounce-1.1.min',
+        'widget': '../plugin/widget',
+        'mock': '../mock',
+        'demo': '../demo',
+        'global': '../plugin/global'
+    },
+    shim: {
+        bootstrap: ['jquery'],
+        angular: {
+            exports: 'angular',
+            deps: ['jquery']
+        },
+        'jquery.throttle': ['jquery']
+    }
 });
 
 define('global!gadgets', ['mock/gadgetPrefMock'], function(gadgetPrefMock) {

@@ -1,5 +1,9 @@
+/** 
+ * @namespace window.tm  Global Ticketmaster/Livenation namespace.
+ */
 (function() {
 
+    // factory method invoked by requirejs if present, else directly to populate window.tm
     function factory(window, navigator) {
         var tm = window.tm || {};
 
@@ -177,6 +181,7 @@
         return tm;
     }
 
+    // Use requirejs to manage dependencies, if available
     if (typeof define === 'function' && define.amd) {
         define(['global!window', 'global!navigator'], factory);
     }
@@ -201,9 +206,6 @@
             console.log("missing jQuery");
         }
 
-        /** 
-         * @namespace  Global Ticketmaster/Livenation namespace.
-         */
         window.tm = factory(window, navigator);
     }
 

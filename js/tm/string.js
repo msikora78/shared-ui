@@ -1,3 +1,6 @@
+/**
+ * @namespace tm.string  Convenience methods for tmString manipulation.
+ */
 (function() {
 
     function factory(_) {
@@ -109,16 +112,12 @@
         return tmString;
     }
 
+    // Use requirejs to manage dependencies, if available
     if (typeof define === 'function' && define.amd) {
         define(['underscore'], factory);
     }
     else {
-
-        /**
-         * @namespace Convenience methods for tmString manipulation.
-         */
         tm.namespace("tm.string");
-
         tm.string = factory(_);        
     }
 
