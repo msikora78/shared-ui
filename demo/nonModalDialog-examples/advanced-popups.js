@@ -1,4 +1,4 @@
-define(['jquery', 'widget!tm/widgets/popup'], function($) {
+define(['jquery', 'widget!tm/widgets/tooltip', 'widget!tm/widgets/popup'], function($) {
     'use strict';
 
     var data = {

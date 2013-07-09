@@ -1,5 +1,21 @@
 /* Note: All styles depend on class="tm360" wrapper element (on body or specific div) */
 
+.tm360 ::-ms-clear {
+    display: none;
+}
+
+.tm360 :focus {
+    outline: none;
+}
+
+.tm360 {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.tm360 ::-moz-focus-inner {
+    border:0;
+} 
+
 .tm360 .arial {
     font-family: Arial, sans-serif;
 }
@@ -129,6 +145,10 @@
     background-repeat: no-repeat;
 }
 
+.tm360 input {
+    outline-style: none !important;
+}
+
 .tm360 textarea,
 .tm360 input[type="text"],
 .tm360 input[type="password"] {
@@ -251,14 +271,22 @@
     display: block;
 }
 
+.tm360.touch .btn:active,
+.tm360.touch .btn.active {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
 .tm360 .btn,
-.tm360 .modal .btn {
+.tm360 .modal .btn,
+.tm360.touch .btn:hover,
+.tm360.touch .btn:active {
     font-family: MuseoSans500,sans-serif;
     font-size: 12px;
     color: #4F5158;
     line-height: 14px;
     padding: 7px 10px 5px 10px;
- /* ie78 */
     border: 1px solid #9296a3;
     text-shadow: 0 0 1px rgba(255, 255, 255, 0.25);
     min-width: 82px;
@@ -278,6 +306,9 @@
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+    background-position: 0% 0%;
+    background-repeat: repeat-x;
+    background-size: auto;
 }
 
 .tm360 .modal .btn {
@@ -299,13 +330,12 @@
     transition: none 0s ease 0s;
 }
 
-.tm360 .btn.btn-primary {
+.tm360 .btn.btn-primary,
+.tm360.touch .btn.btn-primary:hover,
+.tm360.touch .btn.btn-primary.hover {
     color: #FFFFFF;
     border: 1px solid #9296a3;
     text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25);
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
     background-color: #2d93d4;
     background-image: -ms-linear-gradient(top, #6bbefd, #2d93d4);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6bbefd), to(#2d93d4));
@@ -316,6 +346,9 @@
     background-repeat: repeat-x;
     filter: progid:dximagetransform.microsoft.gradient(startColorstr='#6bbefd', endColorstr='#2d93d4', GradientType=0);
     filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+    background-position: 0% 0%;
+    background-repeat: repeat-x;
+    background-size: auto;
 }
 
 .tm360 .btn.btn-primary:hover,
@@ -339,16 +372,15 @@
     transition: none 0s ease 0s;
 }
 
-.tm360 .btn.btn-success {
+.tm360 .btn.btn-success,
+.tm360.touch .btn.btn-success:hover,
+.tm360.touch .btn.btn-success.hover {
     color: #FFFFFF;
     border: 1px solid #4f5158;
     font-size: 14px;
     min-width: 140px;
     height: 34px;
     text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25);
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
     background-color: #38c56a;
     background-image: -ms-linear-gradient(top, #38c56a, #10a946);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#38c56a), to(#10a946));
@@ -359,6 +391,9 @@
     background-repeat: repeat-x;
     filter: progid:dximagetransform.microsoft.gradient(startColorstr='#38c56a', endColorstr='#10a946', GradientType=0);
     filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+    background-position: 0% 0%;
+    background-repeat: repeat-x;
+    background-size: auto;
 }
 
 .tm360 .btn.btn-success:hover,
@@ -408,7 +443,6 @@
     box-shadow: none;
 }
 
-
 .tm360 .modal {
     /*border: 10px solid rgb(153, 153, 153);*/
     width: 482px;
@@ -425,10 +459,16 @@
 }
 
 .tm360 .modal.fade {
-  -webkit-transition: initial;
-     -moz-transition: initial;
-       -o-transition: initial;
-          transition: initial;
+    top: 50%;
+    -webkit-transition: opacity 0.10s linear;
+    -moz-transition: opacity 0.10s linear;
+    -o-transition: opacity 0.10s linear;
+    transition: opacity 0.10s linear;
+}
+
+.tm360 .modal.fade.in,
+.tm360 .modal.in {
+    opacity: 100%;
 }
 
 .tm360 .modal.large {
@@ -448,7 +488,7 @@
 }
 
 .tm360 .modal-header {
-    padding: 16px 20px 3px 20px;
+    padding: 14px 20px 14px;
     border: none;
 }
 
@@ -458,7 +498,7 @@
 }
 
 .tm360 .modal-body {
-    padding: 10px 20px 6px 20px;
+    padding: 1px 20px;
     border: none;
     font-family: Arial;
     font-size: 14px;
@@ -470,10 +510,25 @@
 }
 
 .tm360 .modal-footer {
-    padding: 20px 21px 21px 20px;
-    margin-top: 20px;
+    padding: 20px;
+    margin-top: 15px;
     background-color: #f5f5f7;
     border-top: 1px solid #ebebee;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.modal-backdrop {
+    background-color: #000;
+    opacity: 0.0;
+    filter: alpha(opacity=0);
+}  
+
+.modal-backdrop.fade.in,
+.modal-backdrop.in {
+    opacity: 0.25;
+    filter: alpha(opacity=25);
 }
 
 .modal-backdrop.fade.in,
