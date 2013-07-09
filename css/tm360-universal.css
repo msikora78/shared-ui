@@ -105,7 +105,7 @@
     font-family: Arial,sans-serif;
     color: #4F5158;
     margin-bottom: -1px;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .tm360 .help-error {
@@ -199,8 +199,8 @@
     font-weight: bold;
 }
 
-/*.tm360 .control-group.error .checkbox,
-.tm360 .control-group.error .radio,*/
+.tm360 .control-group.error .checkbox,
+.tm360 .control-group.error .radio,
 .tm360 .control-group.error input,
 .tm360 .control-group.error select,
 .tm360 .control-group.error textarea {
@@ -211,8 +211,8 @@
     box-shadow: -1px 0px 3px 0px rgba(240, 56, 72, 0.35) inset;
 }
 
-/*.tm360 .control-group.error .checkbox:focus,
-.tm360 .control-group.error .radio:focus,*/
+.tm360 .control-group.error .checkbox:focus,
+.tm360 .control-group.error .radio:focus,
 .tm360 .control-group.error input:focus,
 .tm360 .control-group.error select:focus,
 .tm360 .control-group.error textarea:focus {

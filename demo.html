@@ -211,6 +211,63 @@
 
                 <div class="row-fluid">
                     <div class="span3">
+                        <h5>Checkbox and Radio button</h5>
+                    </div>
+                    <div class="span9">
+                        <form>
+                            <div class="well">
+
+                                <div class="control-group top-hr">
+                                    <div class="controls">
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="" />
+                                            Checkbox
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="" checked />
+                                            Checked checkbox
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="" disabled />
+                                            Disabled checkbox
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="" disabled checked />
+                                            Disabled checked checkbox
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="radiobutton" value="option1" />
+                                            Radio
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="selected-radiobutton" value="option2" checked />
+                                            Selected radio
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" id="inactive-radiobutton" disabled />
+                                            Disabled radio
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" id="inactive-selected-radiobutton" disabled checked />
+                                            Disabled selected radio
+                                        </label>
+                                    </div>
+                                    <div style="margin-top: 10px;">
+                                        <a href="demo/index.html?url=demo%2Fcheckboxes-and-radiobuttons-examples%2Fall">See more checkboxes and radiobuttons ...</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- .row-fluid -->
+
+                <div class="row-fluid">
+                    <div class="span3">
                         <h5>Dropdown menu</h5>
                     </div>
                     <div class="span9">
@@ -329,10 +386,9 @@
                     </div>
                 </div> <!-- .row-fluid -->
 
-                <!-- 
                 <div class="row-fluid">
                     <div class="span3">
-                        <h5>ShortLink Component</h5>
+                        <h5>6. ShortLink Component</h5>
                     </div>
                     <div class="span9">
                         <div class="well">
@@ -341,13 +397,13 @@
                                     <img src="css/img/link-icon.png"/></button>
                             </p>
                             <p>And another, where the popover appears to the right:
-                                <button class="shortlink-btn btn" data-placement="right">
+                                <button class="shortlink-btn btn" data-placement="right-bottom">
                                     <img src="css/img/link-icon.png"/></button>
                             </p>
                             <p>See the <a href="https://confluence.tm.tmcs/confluence/display/PJ31/URL+Shortening+in+tm360" target="_blank">URL Shortening in tm360</a> Confluence page for more info.</p>
                         </div>
                     </div>
-                </div> --> <!-- .row-fluid -->                
+                </div> <!-- .row-fluid -->
 
             </div>
 
@@ -488,10 +544,22 @@
                     activateSearchFields();
                     activateModalDialog();
 
+                    // Checkables
+                    $('input[type="checkbox"]').tmCheckbox();
+                    $('input[type="radio"]').tmRadiobutton();
+                    
+                    // dropdown menu/list
                     $("#dropdownMenu1").tmDropdownMenu();
                     $("#dropdownMenu2").tmDropdownMenu();
                     $("#dropdownList1").tmDropdown();
                     $("#dropdownList2").tmDropdown();
+
+                    // Non-modals
+                    $("#tooltipTarget").tmTooltip();
+                    $("#popupTarget").tmPopup();
+                    $("#popupWithArrowTarget").tmPopup();
+                    $("#popupWithArrowTargetLittle").tmPopup();
+                    $("#popupWithNoTitle").tmPopup();
 
                     // disable iOS overscroll
                     if (tm.iOS){
