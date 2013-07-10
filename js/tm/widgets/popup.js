@@ -142,12 +142,6 @@
                 }
             }
 
-            if (opts.trigger == 'hover') {
-                element.click(function() {
-                    element.popover('hide');
-                });
-            } 
-
             this.options = opts;
             this.element = element;
         };

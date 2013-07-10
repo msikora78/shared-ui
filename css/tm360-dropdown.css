@@ -11,6 +11,10 @@
  /* ie7 */
 }
 
+.dropdown-menu{
+    min-width: 30px;
+}
+
 .tm360 .btn-group > .btn,
 .tm360 .btn-group > .dropdown-menu {
     font-size: 12px;

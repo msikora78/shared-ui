@@ -2,7 +2,7 @@ requirejs.config({
     baseUrl: '../js',
     paths: {
         'jquery': 'https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-1.7.2.min',
-        'bootstrap': 'https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.1.0.min',
+        'bootstrap': '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min',
         'angular': '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min',
         'jquery.throttle': 'https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ba-throttle-debounce-1.1.min',
         'widget': '../plugin/widget',

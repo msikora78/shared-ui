@@ -39,16 +39,16 @@
 }
 
 .tm360 .popover.top .arrow {
-    border-top-color: rgba(146, 150, 163, 1);
+    border-top-color: #9296a3;
 }
 .tm360 .popover.bottom .arrow {
-    border-bottom-color: rgba(146, 150, 163, 1);
+    border-bottom-color: #9296a3;
 }
 .tm360 .popover.left .arrow {
-    border-left-color: rgba(146, 150, 163, 1);
+    border-left-color: #9296a3;
 }
 .tm360 .popover.right .arrow {
-    border-right-color: rgba(146, 150, 163, 1);
+    border-right-color: #9296a3;
 }
 
 .tm360 .popover-footer {
@@ -62,4 +62,17 @@
 
 .tm360 .tmTooltip .popover-inner{
     width: 140px;
+}
+
+.tm360 .popover.top .arrow:after{
+    border-top-color: #fff !important;
+}
+.tm360 .popover.bottom .arrow:after{
+    border-bottom-color: #fff !important;
+}
+.tm360 .popover.left .arrow:after{
+    border-left-color: #fff !important;
+}
+.tm360 .popover.right .arrow:after{
+    border-right-color: #fff !important;
 }

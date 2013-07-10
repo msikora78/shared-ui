@@ -180,12 +180,6 @@
     line-height: 26px;
 }
 
-.tm360 input[type="text"] + .btn,
-.tm360 input[type="password"] + .btn,
-.tm360 .btn + .btn {
-    margin-left: 6px;
-}
-
 .tm360 input[disabled],
 .tm360 select[disabled],
 .tm360 textarea[disabled],
