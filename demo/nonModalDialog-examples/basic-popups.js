@@ -5,33 +5,22 @@ define(['jquery', 'widget!tm/widgets/popup', 'widget!tm/widgets/checkbox'], func
         legend: 'Popups',
         description: 'This example demonstrates the positioning of popups. The popup should always be fully visible within the boundaries of the browser window, changing orientation automatically if needed.',
         html:'\
-            <div id="basic-popups-container" class="demo-container">\n\
-                <p><button type="button" class="btn" \n\
-                        title="Popup\'s title" \n\
-                        data-content="It\'s so simple to create a popup for my website!"\n\
-                        data-placement="top-left">Top left\n\
-                    </button>\n\
+            <div id="basic-popups-container" class="demo-container row-fluid">\n\
+                <p class="span6">\n\
                     <button type="button" class="btn" \n\
                         title="Popup\'s title"\n\
                         data-content="It\'s so simple to create a popup for my website!"\n\
                         data-placement="top-right">Top right\n\
                     </button>\n\
-                </p>\n\
-                <p><button type="button" class="btn" \n\
+                    <button type="button" class="btn" \n\
                         title="Popup\'s title"\n\
                         data-content="It\'s so simple to create a popup for my website!"\n\
-                        data-placement="left-top">Left top\n\
+                        data-placement="bottom-right">Bottom right\n\
                     </button>\n\
                     <button type="button" class="btn" \n\
                         title="Popup\'s title"\n\
                         data-content="It\'s so simple to create a popup for my website!"\n\
                         data-placement="right-top">Right top\n\
-                    </button>\n\
-                </p>\n\
-                <p><button type="button" class="btn" \n\
-                        title="Popup\'s title"\n\
-                        data-content="It\'s so simple to create a popup for my website!"\n\
-                        data-placement="left-bottom">Left bottom\n\
                     </button>\n\
                     <button type="button" class="btn" \n\
                         title="Popup\'s title"\n\
@@ -39,7 +28,13 @@ define(['jquery', 'widget!tm/widgets/popup', 'widget!tm/widgets/checkbox'], func
                         data-placement="right-bottom">Right bottom\n\
                     </button>\n\
                 </p>\n\
-                <p><button type="button" class="btn" \n\
+                <p class="span6">\n\
+                    <button type="button" class="btn" \n\
+                        title="Popup\'s title" \n\
+                        data-content="It\'s so simple to create a popup for my website!"\n\
+                        data-placement="top-left">Top left\n\
+                    </button>\n\
+                    <button type="button" class="btn" \n\
                         title="Popup\'s title"\n\
                         data-content="It\'s so simple to create a popup for my website!"\n\
                         data-placement="bottom-left">Bottom left\n\
@@ -47,10 +42,14 @@ define(['jquery', 'widget!tm/widgets/popup', 'widget!tm/widgets/checkbox'], func
                     <button type="button" class="btn" \n\
                         title="Popup\'s title"\n\
                         data-content="It\'s so simple to create a popup for my website!"\n\
-                        data-placement="bottom-right">Bottom right\n\
+                        data-placement="left-top">Left top\n\
+                    </button>\n\
+                    <button type="button" class="btn" \n\
+                        title="Popup\'s title"\n\
+                        data-content="It\'s so simple to create a popup for my website!"\n\
+                        data-placement="left-bottom">Left bottom\n\
                     </button>\n\
                 </p>\n\
-                <label><input id="uxShowArrows" type="checkbox" />Display popups arrows</label>\n\
             </div>',
         js: function() {
             $("#basic-popups-container .btn").tmPopup();

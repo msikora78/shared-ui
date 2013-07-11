@@ -76,3 +76,14 @@
 .tm360 .popover.right .arrow:after{
     border-right-color: #fff !important;
 }
+.tm360 .btn.tmPopupTarget.active,
+.tm360 .btn.tmPopupTarget.active:hover{
+    border-color: #1f2127;
+    color: #fff;
+    background-image: none;
+    background-color: #4F5158;
+    *background-color: #e6e6e6;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}

@@ -10,7 +10,6 @@ define(['jquery', 'widget!tm/widgets/tooltip'], function($) {
                 <p>\n\
                     <button type="button" id="javascriptPopupTarget" class="btn">Pop up</button>\n\
                     <button type="button" id="javascriptPopupWithNoTitle" class="btn">Pop up with no title</button>\n\
-                    <button type="button" id="javascriptPopupWithArrowTarget" class="btn">Pop up with arrow</button>\n\
                 </p>\n\
             </div>',
         js: function() {
@@ -26,13 +25,6 @@ define(['jquery', 'widget!tm/widgets/tooltip'], function($) {
             });
             $('#javascriptPopupWithNoTitle').tmPopup({
                 content: "It's so easy to create a popup for my website using only javascript."
-            });
-            $('#javascriptPopupWithArrowTarget').tmPopup({
-                title: "Popup's title",
-                content: "It's so easy to create a popup for my website using only javascript.",
-                showArrow: true,
-                width: '450px',
-                height: 'auto'
             });
         }
     };

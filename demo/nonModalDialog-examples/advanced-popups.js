@@ -8,8 +8,7 @@ define(['jquery', 'widget!tm/widgets/tooltip', 'widget!tm/widgets/popup'], funct
             <div id="advanced-popups-container" class="demo-container">\n\
                 <button id="advanced-popups-target" type="button" class="btn target" \n\
                     title="Templated popup"\n\
-                    data-custom-template-id="advanced-popup-template"\n\
-                    data-show-arrow="true">Click me</button>\n\
+                    data-custom-template-id="advanced-popup-template">Click me</button>\n\
                 Hello <span id="yourName" />!\n\
                 <div id="advanced-popup-template" style="height: 100px;">\n\
                     <label>Enter name<input type="text"></input></label>\n\

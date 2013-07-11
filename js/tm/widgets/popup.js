@@ -30,7 +30,6 @@
          *  @param {Object} opts creation options
          */
         var Popup = function(element, opts) {
-            var self = this;
             var opts = $.extend({}, defaults, opts);
             var customTemplate = null;
             if (opts.placement == null) {
@@ -68,6 +67,7 @@
             $.extend(element.data('popover').options, opts);
 
             element.on('shown.tmPopup', function(e) {
+                $(this).addClass('active');
                 var $target = $(e.target),
                     $popup = $target.next('.popover');
 
@@ -120,6 +120,7 @@
             });
 
             element.on('hidden.tmPopup', function(e) {
+                $(this).removeClass('active');
                 var $target = $(e.target),
                     $popup = $target.next('.popover');
 
@@ -134,8 +135,15 @@
                 element.addClass('tmPopupAutoClose');
                 if (!bodyInitialized) {
                     $('body').on('click', '.tmPopupTarget, .popover', false).on('click.tmPopup', function(e) {
-                        if ($('.popover.in').length > 0) {
-                            $('.tmPopupAutoClose').tmPopup('hide');
+                        var $popIn = $('.popover.in');
+                        if ($popIn.length > 0) {
+                            // this checkup was made if user click on body and quickly click on another popup button.
+                            var $autoClosePopopBtns = $('.tmPopupAutoClose');
+                            for(var i = 0; i < $autoClosePopopBtns.length; i++){
+                                var $targetBtn = $($autoClosePopopBtns[i]);
+                                if ($targetBtn.data('tmPopup').getPopup().length)
+                                $targetBtn.tmPopup('hide');
+                            }
                         }
                     });
                     bodyInitialized = true;
