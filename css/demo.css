@@ -9,6 +9,10 @@
 	padding: 5px;
 }
 
+.tm360 .well {
+    background-color: #FFFFFF;
+}
+
 /*Buttons examples*/
 #overview-buttons-container {
 	padding-bottom: 20px;
@@ -21,4 +25,39 @@
 #overview-buttons-container table tr td {
 	padding-right: 20px;
 	width: 50%;
+}
+
+/*Text Styles examples */
+#text-styles-container,
+#text-styles-container-gray,
+#text-styles-container-dark {
+    padding: 1px 10px; 
+    margin-bottom: 20px;
+}
+
+#text-styles-container-gray {
+    background-color: #d3d3d7;
+}
+
+#text-styles-container-dark {
+    background-color: #4f5258;
+}
+
+/*Search and Filter examples */
+#search-filter-container {
+    padding: 0;
+    margin: 0 0 20px;
+}
+
+#search-filter-container .form-search {
+    margin: 0;
+}
+
+#search-filter-container-dark {
+    padding: 10px 24px;
+    margin: 0 0 20px;
+}
+
+.form-search {
+    margin: 20px 0;
 }

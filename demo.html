@@ -21,12 +21,8 @@
         <!-- tm360 Shared-UI LESS (Add *.less files to "less/" folder, then include them here) -->
         <link rel="stylesheet/less" type="text/css" href="less/tm360-sample.less" />
 
-        <!-- a few styles for this demo page only -->
-        <style>
-            .tm360 .well {
-                background-color: #FFFFFF;
-            }
-        </style>
+        <!-- a few styles for demo pages only -->
+        <link rel="stylesheet" href="css/demo.css" />
 
         <!-- 
             Client-side LESS compiler for development.
@@ -56,7 +52,6 @@
                         <h1>Shared UI Demos</h1>
                         <p style="padding-left: 1em" id="pIntro">This is the demo page for tm360 Shared-UI components. </p>
                         <p style="padding-left: 1em">Javascript unit tests are available for <a href="specRunner.html" target="_blank">utility methods</a> and <a href="specRunner-requirejs.html" target="_blank">Widgets (uses RequireJS)</a>.</p>
-                        <p style="padding-left: 1em">Note: This page references assets on Dev2. If layout isn't being rendered properly, <a href="https://portal.shared.dev2.websys.tmcs/" target="_blank">click here</a> to "unlock", then return to this page and refresh.</p>
                         <p>&nbsp;</p>
                     </div>
                 </div>
@@ -67,7 +62,10 @@
                     </div>
                     <div class="span9">
                         <div class="well">
-                            <p>The app/gadget you are viewing now has 2-width snapping enabled. Resize your browser window width around the 1244px threshold to see gadget maintain alignment with tm360 nav logo and icons. See <a href='https://confluence.tm.tmcs/confluence/display/PJ31/Shared+UI+components+for+new+app+development#SharedUIcomponentsfornewappdevelopment-Width"Snapping"' target="_blank">Width "Snapping"</a> for implementation details.</p>
+                            <p>This page has 2-width snapping enabled. The content width will be set to 944px or 1252px depending on the total available width of the browser window.</p>
+                            <div>
+                                <a href="demo/index.html?url=demo%2FsnapWidth-examples%2Fall" target="_blank">See more snap-width samples</a>
+                            </div>
                         </div>
                     </div>
                 </div> <!-- .row-fluid -->
@@ -78,27 +76,11 @@
                     </div>
                     <div class="span9">
                         <div class="well">
-                            <p>This sampling of text styles represents a safe standard for tm360 apps. However variations will arise on a design-by-design basis. But colors, link styles, and text shadows will all follow this standard.</p>
-                            <br/>
-                            <strong>Dark Text on White Background:</strong>
-                            <div style="padding: 10px 24px;">
-                                <h1>30px Museo Sans 500 &lt;h1&gt;</h1>
-                                <h2>24px Museo Sans 500 &lt;h2&gt; <a href="javascript:;">with link style</a></h2>
-                                <p>14px Arial Regular &lt;p&gt; <a href="javascript:;">with link style</a></p>
-                            </div>
-                            <br/>
-                            <strong>Dark Text on Gray Background:</strong>
-                            <div style="background-color: #d3d3d7; padding: 10px 24px;">
-                                <h1>30px Museo Sans 500 &lt;h1&gt;</h1>
-                                <h2>24px Museo Sans 500 &lt;h2&gt; <a href="javascript:;">with link style</a></h2>
-                                <p>14px Arial Regular &lt;p&gt; <a href="javascript:;">with link style</a></p>
-                            </div>
-                            <br/>
-                            <strong>White Text on Dark Background:</strong>
-                            <div class="textOnDark" style="background-color: #4f5258; padding: 10px 24px;">
-                                <h1>30px Museo Sans 500 &lt;h1&gt;</h1>
-                                <h2>24px Museo Sans 500 &lt;h2&gt; <a href="javascript:;">with link style</a></h2>
-                                <p>14px Arial Regular &lt;p&gt; <a href="javascript:;">with link style</a></p>
+                            <h1>30px Museo Sans 500 &lt;h1&gt; <a href="javascript:;">with link style</a></h1>
+                            <h2>24px Museo Sans 500 &lt;h2&gt; <a href="javascript:;">with link style</a></h2>
+                            <p>14px Arial Regular &lt;p&gt; <a href="javascript:;">with link style</a></p>
+                            <div>
+                                <a href="demo/index.html?url=demo%2FtextStyles-examples%2Fall" target="_blank">See more Text Style samples</a>
                             </div>
                         </div>
                     </div>
@@ -110,26 +92,16 @@
                     </div>
                     <div class="span9">
                         <div class="well">
-                            <p>Initially, there is an input hint in the field. This hint disappears when user clicks into the field.</p>
-                            <p>As user begins typing in the field, the “X” icon appears, which when clicked, clears out the search.</p>
-                            <strong>White Background:</strong>
-                            <div style="padding: 10px 24px;">
-                                <form class="form-search" style="margin-top: 20px">
+                            <div id="search-filter-container">
+                                <form class="form-search">
                                     <div style="position: relative;">
-                                        <input type="text" class="input-medium search-query" placeholder="Search 1" />
+                                        <input type="text" class="input-medium search-query" placeholder="Search" />
                                         <i class="search-clear-icon"></i>
                                     </div>
                                 </form>
                             </div>
-                            <br/>
-                            <strong>Darker Background:</strong>
-                            <div class="search-filter-bg" style="padding: 10px 24px;">
-                                <form class="form-search" style="margin-top: 20px">
-                                    <div class="darker" style="position: relative;">
-                                        <input type="text" class="input-medium search-query" placeholder="Search 2" />
-                                        <i class="search-clear-icon"></i>
-                                    </div>
-                                </form>
+                            <div>
+                                <a href="demo/index.html?url=demo%2FsearchAndFilter-examples%2Fall" target="_blank">See more Search and Filter samples</a>
                             </div>
                         </div>
                     </div>
@@ -273,6 +245,7 @@
         <script src="js/tm/core.js"></script>
         <script src="js/tm/widgets/widgetFactory.js"></script>
         <script src="js/tm/widgets/modalDialog.js"></script>
+        <script src="js/tm/widgets/searchAndFilter.js"></script>
 
         <script>
             (function(){
@@ -288,71 +261,7 @@
                 }
 
                 function activateSearchFields(){
-                    var fields = $("input.search-query[placeholder]");
-
-                    fields.focus(function(){
-                        var input = $(this);
-                        if (input.val() === input.attr("placeholder")) {
-                            input.val("");
-                            input.removeClass("placeholder");
-                        }
-                    })
-                    .blur(function(){
-                        var input = $(this);
-                        if (input.val() === "" || input.val() === input.attr("placeholder")) {
-                            input.addClass("placeholder");
-                            input.val(input.attr("placeholder"));
-                        }
-                    });
-
-                    // initialize
-                    fields.blur();
-
-                    // prevent submitting placeholder as value
-                    fields.parents("form").submit(function() {
-                        $(this).find("[placeholder]").each(function() {
-                            var input = $(this);
-                            if (input.val() === input.attr("placeholder")) {
-                                input.val("");
-                            }
-                        })
-                    });
-
-                    var showHideIcon = function(){
-                        if (this.data("iconActive")) {
-                            if (this.val() === "" || this.val() === this.attr("placeholder")){
-                                // hide icon
-                                this.siblings(".search-clear-icon").css({
-                                    display: "none"
-                                });
-                                this.data("iconActive", false);
-                            }
-                        } else {
-                            if (this.val() !== "" && this.val() !== this.attr("placeholder")){
-                                // position and show icon
-                                this.siblings(".search-clear-icon").css({
-                                    display: "block",
-                                    left: this.outerWidth() - 21
-                                });
-                                this.data("iconActive", true);
-                            }
-                        }
-                    };
-
-                    // init clear icon click handler
-                    fields.siblings(".search-clear-icon").click(function(){
-                        var input = $(this).siblings(".search-query");
-                        input.addClass("placeholder");
-                        input.val(input.attr("placeholder"));
-                        showHideIcon.apply(input);
-                    });
-
-                    // check to show/hide clear icon now and on keyup
-                    fields.each(function(){
-                        showHideIcon.apply($(this));
-                    }).keyup(function(){
-                        showHideIcon.apply($(this));
-                    });
+                    $("input.search-query[placeholder]").tmSearchAndFilter();
                 }
 
                 function activateModalDialog(){
@@ -386,13 +295,6 @@
                     adjustDisplayArea();
                     activateSearchFields();
                     activateModalDialog();
-
-                    // disable iOS overscroll
-                    if (tm.iOS){
-                        $(document).on('touchmove', function(e) {
-                            e.preventDefault(); 
-                        });
-                    }
                 }
 
                 // jquery onload

@@ -150,6 +150,14 @@
          */
         tm.hiResDisplay = !!(window.devicePixelRatio && window.devicePixelRatio >= 2);
 
+        /**
+         * Add notouch class to html node if touch device (like Modernizr)
+         */
+        var docEl = document.documentElement;
+        if ('ontouchstart' in docEl === false){
+            docEl.className = docEl.className.length ? (docEl.className + " notouch") : "notouch";
+        }
+
         return tm;
     }
 

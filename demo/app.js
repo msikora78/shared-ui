@@ -76,19 +76,39 @@ requirejs(['jquery', 'tm/core', url, 'jquery.throttle'], function($, tm, data) {
     }
 
     $.each(data.examples, function(i, example) {
-        var $javascript = example.setup ? $('<pre/>').addClass('prettyprint lang-javascript').text(cleanCode(example.setup.toString())) : null;
-        var $description = example.description ? $('<p/>').html(cleanCode(example.description)) : $('<div/>');
+        var current = $('<fieldset/>');
 
-        previous = $('<fieldset/>').append(
-            $('<legend/>').text(example.legend),
-            $description,
-            $('<div/>').html(example.html),
-            $('<pre/>').addClass('prettyprint lang-html').text(cleanCode(example.html)),
-            $javascript
-        ).insertAfter(previous);
+        current.append($('<legend/>').text(example.legend));
+
+        // description
+        if (example.description){
+            current.append($('<p/>').html(cleanCode(example.description)));
+        }
+
+        // html to render and/or display
+        if (example.html){
+            current.append($('<div/>').html(example.html));
+        }
+        if (example.html || example.htmlString){
+            var hStr = example.html || example.htmlString;
+            current.append($('<pre/>').addClass('prettyprint lang-html').text(cleanCode(hStr)));
+        }
+
+        // javascript to run and/or display
+        if (example.setup || example.setupString){
+            var sStr = example.setup ? example.setup.toString() : example.setupString;
+            current.append($('<pre/>').addClass('prettyprint lang-javascript').text(cleanCode(sStr)));
+        }
+
+        previous = current.insertAfter(previous);
 
         if (example.setup) {
             example.setup();
+        }
+
+        // javascript to run only (not displayed)
+        if (example.runScript){
+            example.runScript(current);
         }
     });
 
