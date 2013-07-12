@@ -12,11 +12,15 @@
 
         <!-- 3rd party Shared CSS Libs (not in git repo) -->
         <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/normalize-1.1.0.css" />
-        <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/bootstrap-2.1.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/bootstrap-2.3.2/css/bootstrap.min.css" />
 
         <!-- tm360 Shared-UI CSS -->
-        <link rel="stylesheet" href="css/tm360-base.css" />
-        <link rel="stylesheet" href="css/tm360-universal.css" />
+        <link rel="stylesheet" type="text/css" href="css/tm360-base.css" />
+        <link rel="stylesheet" type="text/css" href="css/tm360-universal.css" />
+        <link rel="stylesheet" type="text/css" href="css/tm360-shortlink.css" />
+        <link rel="stylesheet" type="text/css" href="css/tm360-dropdown.css" />
+        <link rel="stylesheet" type="text/css" href="css/tm360-popover.css" />
+        <link rel="stylesheet" href="css/demo.css" />
 
         <!-- tm360 Shared-UI LESS (Add *.less files to "less/" folder, then include them here) -->
         <link rel="stylesheet/less" type="text/css" href="less/tm360-sample.less" />
@@ -177,6 +181,149 @@
                     </div>
                 </div> <!-- .row-fluid -->
 
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>Checkbox and Radio button</h5>
+                    </div>
+                    <div class="span9">
+                        <form>
+                            <div class="well">
+
+                                <div class="control-group top-hr">
+                                    <div class="controls">
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="" />
+                                            Checkbox
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="" checked />
+                                            Checked checkbox
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="" disabled />
+                                            Disabled checkbox
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="" disabled checked />
+                                            Disabled checked checkbox
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="radiobutton" value="option1" />
+                                            Radio
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="selected-radiobutton" value="option2" checked />
+                                            Selected radio
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" id="inactive-radiobutton" disabled />
+                                            Disabled radio
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" id="inactive-selected-radiobutton" disabled checked />
+                                            Disabled selected radio
+                                        </label>
+                                    </div>
+                                    <div style="margin-top: 10px;">
+                                        <a href="demo/index.html?url=demo%2Fcheckboxes-and-radiobuttons-examples%2Fall">See more checkboxes and radiobuttons ...</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- .row-fluid -->
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>Dropdown menu</h5>
+                    </div>
+                    <div class="span9">
+                        <form>
+                            <div class="well">
+                                <div class="control-group">
+                                    <div class="controls demo-group">
+                                        <div class="btn-group">
+                                            <a id="dropdownMenu1" class="btn dropdown-toggle" data-toggle="dropdown" href="#">Dropdown Label</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#1">Item 1</a></li>
+                                                <li><a href="#2">Item 2</a></li>
+                                                <li><a href="#3">Item 3</a></li>
+                                                <li><a href="#4">Item 4</a></li>
+                                                <li><a href="#5">Item 5</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- control-group -->
+                                <div class="control-group">
+                                    <div class="controls demo-group">
+                                        <div class="btn-group">
+                                            <a id="dropdownMenu2" class="btn dropdown-toggle" data-toggle="dropdown" href="#">Extra Long Dropdown Label Extra Long</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#1">Item 1 with an extra, extra, extra, extra long label</a></li>
+                                                <li><a href="#2">Item 2</a></li>
+                                                <li><a href="#3">Item 3</a></li>
+                                                <li><a href="#4">Item 4</a></li>
+                                                <li><a href="#5">Item 5</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- control-group -->
+
+                                <div style="margin-top: 10px;">
+                                    <a href="demo/index.html?url=demo%2Fdropdown-button-with-menu-examples%2Fall">See more dropdown menus ...</a>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- .row-fluid -->
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>Dropdown list</h5>
+                    </div>
+                    <div class="span9">
+                        <form>
+                            <div class="well">
+                                <div class="control-group">
+                                    <div class="controls demo-group">
+                                        <div class="btn-group">
+                                            <a id="dropdownList1" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">Dropdown Label</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a data-value="Action1">Action 1</a></li>
+                                                <li><a data-value="Action2">Action 2</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- control-group -->
+                                <div class="control-group">
+                                    <div class="controls demo-group">
+                                        <div class="btn-group">
+                                            <a id="dropdownList2" class="btn dropdown-toggle" data-toggle="dropdown" href="#">Extra Long Dropdown Label Extra Long</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a data-value="Action1">Item 1 with an extra, extra long label</a></li>
+                                                <li><a data-value="Action2">Action 2</a></li>
+                                                <li><a data-value="Action3">Action 3</a></li>
+                                                <li><a data-value="Action4">Action 4</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- control-group -->
+
+                                <div style="margin-top: 10px;">
+                                    <a href="demo/index.html?url=demo%2Fdropdown-examples%2Fall">See more dropdown list ...</a>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- .row-fluid -->
+
                 <!--
                 <div class="row-fluid">
                     <div class="span3">
@@ -211,10 +358,37 @@
                     </div>
                 </div> <!-- .row-fluid -->
 
-                <!-- 
                 <div class="row-fluid">
                     <div class="span3">
-                        <h5>ShortLink Component</h5>
+                        <h5>8. Non-Modal Dialogs</h5>
+                    </div>
+                    <div class="span9">
+                        <div class="well">
+                            <div class="control-group">
+                                <p><a id="tooltipTarget"
+                                    title="It's so simple to create a tooltip!"
+                                    data-placement="top">Tooltip</a></p>
+                                <p><button type="button" class="btn" id="popupTarget"
+                                    title="Popup's title" 
+                                    data-content="It's so simple to create a popup!">Pop up</button>
+                                <button type="button" class="btn" id="popupWithNoTitle"
+                                    data-content="It's so simple to create a popup!">Pop up with no Title</button>
+                                <button type="button" class="btn" id="popupWithArrowTargetLittle"
+                                    title="Popup's title" 
+                                    data-content="It's so simple to create a popup!"
+                                    style="min-width: 30px;">+</button></p>
+                            </div>
+                            <div class="control-group">
+                                <a href="demo/index.html?url=demo%2FnonModalDialog-examples%2Fall">See more non-modal dialogs</a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .row-fluid -->
+
+                <!--
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>6. ShortLink Component</h5>
                     </div>
                     <div class="span9">
                         <div class="well">
@@ -223,13 +397,14 @@
                                     <img src="css/img/link-icon.png"/></button>
                             </p>
                             <p>And another, where the popover appears to the right:
-                                <button class="shortlink-btn btn" data-placement="right">
+                                <button class="shortlink-btn btn" data-placement="right-bottom">
                                     <img src="css/img/link-icon.png"/></button>
                             </p>
                             <p>See the <a href="https://confluence.tm.tmcs/confluence/display/PJ31/URL+Shortening+in+tm360" target="_blank">URL Shortening in tm360</a> Confluence page for more info.</p>
                         </div>
                     </div>
-                </div> --> <!-- .row-fluid -->                
+                </div>
+                -->
 
             </div>
 
@@ -239,13 +414,24 @@
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-1.7.2.min.js"></script>
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ba-throttle-debounce-1.1.min.js"></script>
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/underscore_1.3.3.min.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.1.0.min.js"></script>        
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.3.2.min.js"></script>
 
         <!-- tm360 Shared-UI JS -->
         <script src="js/tm/core.js"></script>
+        <script src="js/tm/cookie.js"></script>
+        <script src="js/tm/string.js"></script>
+        <script src="js/tm/date.js"></script>
+        <script src="js/tm/shortlink.js"></script>
         <script src="js/tm/widgets/widgetFactory.js"></script>
         <script src="js/tm/widgets/modalDialog.js"></script>
         <script src="js/tm/widgets/searchAndFilter.js"></script>
+        <script src="js/tm/widgets/checkableBase.js"></script>
+        <script src="js/tm/widgets/checkbox.js"></script>
+        <script src="js/tm/widgets/radiobutton.js"></script>
+        <script src="js/tm/widgets/popup.js"></script>
+        <script src="js/tm/widgets/tooltip.js"></script>
+        <script src="js/tm/widgets/dropdownMenu.js"></script>
+        <script src="js/tm/widgets/dropdown.js"></script>
 
         <script>
             (function(){
@@ -295,6 +481,22 @@
                     adjustDisplayArea();
                     activateSearchFields();
                     activateModalDialog();
+
+                    // Checkables
+                    $('input[type="checkbox"]').tmCheckbox();
+                    $('input[type="radio"]').tmRadiobutton();
+                    
+                    // dropdown menu/list
+                    $("#dropdownMenu1").tmDropdownMenu();
+                    $("#dropdownMenu2").tmDropdownMenu();
+                    $("#dropdownList1").tmDropdown();
+                    $("#dropdownList2").tmDropdown();
+
+                    // Non-modals
+                    $("#tooltipTarget").tmTooltip();
+                    $("#popupTarget").tmPopup();
+                    $("#popupWithArrowTargetLittle").tmPopup();
+                    $("#popupWithNoTitle").tmPopup();
                 }
 
                 // jquery onload

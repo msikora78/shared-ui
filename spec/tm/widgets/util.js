@@ -39,7 +39,18 @@
         }
 
         function convertHexaToRgb(hexa) {
-            return "rgb(" + convertHexaToNumber(hexa.substr(0, 2)) + ", " + convertHexaToNumber(hexa.substr(2, 2)) + ", " + convertHexaToNumber(hexa.substr(4, 2)) + ")";
+            if (hexa.substring(0,3) == 'rgb') {
+                return hexa;
+            }
+            hexa = hexa.replace('#', '');
+
+            // manage shrinked values
+            if (hexa.length == 3) {
+                return "rgb(" + convertHexaToNumber(hexa.substr(0, 1) + hexa.substr(0, 1)) + ", " + convertHexaToNumber(hexa.substr(1, 1) + hexa.substr(1, 1)) + ", " + convertHexaToNumber(hexa.substr(2, 1) + hexa.substr(2, 1)) + ")";
+            }
+            else {
+                return "rgb(" + convertHexaToNumber(hexa.substr(0, 2)) + ", " + convertHexaToNumber(hexa.substr(2, 2)) + ", " + convertHexaToNumber(hexa.substr(4, 2)) + ")";
+            }
         }
 
         function convertHexaToRgba(hexa, opacity) {
@@ -48,6 +59,11 @@
 
         function parseRGBA(value) {
             var r = /^rgba\((\d),\s*(\d),\s*(\d),\s*(.*?)\)$/;
+            
+            if (value == "transparent") {
+                return { rgba: { r: 0, g: 0, b: 0, a: 0 }};
+            }
+
             var m = r.exec(value);
             var parsedValue = {
                 rgba: {
@@ -65,28 +81,81 @@
             return parsedValue;
         }
 
-        function parseShadowValue(value) {
+        function parseShadowValue(value, parseSpread) {
             var r = /^rgba\((\d+),\s*(\d+),\s*(\d+),\s*(.*?)\)\s*(.*?)$/;
-            var m = r.exec(value);
-            var mArgs = m[5].split(" ");
-            var parsedValue = {
-                rgba: {
-                    r: parseInt(m[1]),
-                    g: parseInt(m[2]),
-                    b: parseInt(m[3]),
-                    a: Math.round(parseFloat(m[4]) * 100) / 100
-                },
-                hShadow: mArgs[0],
-                vShadow: mArgs[1],
-                blur: mArgs[2],
-                spread: mArgs[3]
+            var inset = false;
+
+            if (parseSpread == undefined) {
+                parseSpread = true;
             }
 
-            parsedValue.toString = function() {
-                return "rgba(" + this.rgba.r + ', ' + this.rgba.g + ', ' + this.rgba.b + ', ' + this.rgba.a + ') ' + this.hShadow + ' ' + this.vShadow + ' ' + this.blur + ((this.spread) ? ' ' + this.spread : '');
-            }
+            if (value && value != 'none') {
+                if (value.indexOf("inset") > -1) {
+                    inset = true;
+                    value = value.replace('inset', '');
+                }
 
-            return parsedValue;
+                if (r.test(value)) {
+                    var m = r.exec(value);
+
+                    var mArgs = m[5].split(" ");
+                    var parsedValue = {
+                        rgba: {
+                            r: parseInt(m[1]),
+                            g: parseInt(m[2]),
+                            b: parseInt(m[3]),
+                            a: Math.round(parseFloat(m[4]) * 100) / 100
+                        },
+                        hShadow: mArgs[0] || '0px',
+                        vShadow: mArgs[1] || '0px',
+                        blur: mArgs[2] || '0px',
+                        spread: mArgs[3] || '0px',
+                        inset: inset
+                    }
+                }
+                else {                   
+                    r = /^(.*?)\s*rgba\((\d+),\s*(\d+),\s*(\d+),\s*(.*?)\)$/;
+                    m = r.exec(value);
+
+                    var mArgs = m[1].split(" ");
+                    if (mArgs[0] == '') {
+                        mArgs.shift();
+                    }
+                    var parsedValue = {
+                        rgba: {
+                            r: parseInt(m[2]),
+                            g: parseInt(m[3]),
+                            b: parseInt(m[4]),
+                            a: Math.round(parseFloat(m[5]) * 100) / 100
+                        },
+                        hShadow: mArgs[0] || '0px',
+                        vShadow: mArgs[1] || '0px',
+                        blur: mArgs[2] || '0px',
+                        spread: mArgs[3] || '0px',
+                        inset: inset
+                    }
+                }
+
+                if (parseSpread) {
+                    parsedValue.toString = function() {
+                        return "rgba(" + this.rgba.r + ', ' + this.rgba.g + ', ' + this.rgba.b + ', ' + this.rgba.a + ') ' + ((this.inset) ? 'inset ' : '') + this.hShadow + ' ' + this.vShadow + ' ' + this.blur + ((this.spread) ? ' ' + this.spread : ' 0px');
+                    }
+                }
+                else {
+                    parsedValue.toString = function() {
+                        return "rgba(" + this.rgba.r + ', ' + this.rgba.g + ', ' + this.rgba.b + ', ' + this.rgba.a + ') ' + this.hShadow + ' ' + this.vShadow + ' ' + this.blur;
+                    }   
+                }
+
+                return parsedValue;
+            }
+            else {
+                return value;
+            }
+        }
+
+        function parseTextShadowValue(value) {
+            return parseShadowValue(value, false);
         }
 
         function wait(duration) {
@@ -99,10 +168,16 @@
             return deferred.promise();
         }
 
+        function evaluateBorderStyle($component, style, directions) {
+            directions = directions ? directions : ['top', 'bottom', 'left', 'right'];
+            for (var i = 0; i < directions.length; i++) {
+                var direction = directions[i];
+                expect($component.css(styleSupport($component, 'border-' + direction + '-style'))).toBe(style);
+            };
+        }
+
         function evaluateBorderWidth($component, size, directions) {
             directions = directions ? directions : ['top', 'bottom', 'left', 'right'];
-
-            expect(styleSupport($component, 'border-width')).toBeTruthy();
             for (var i = 0; i < directions.length; i++) {
                 var direction = directions[i];
                 expect($component.css(styleSupport($component, 'border-' + direction + '-width'))).toBe(size);
@@ -111,25 +186,74 @@
 
         function evaluateBorderColor($component, color, directions, isRgba) {
             directions = directions ? directions : ['top', 'bottom', 'left', 'right'];
-            expect(styleSupport($component, 'border-color')).toBeTruthy();
             for (var i = 0; i < directions.length; i++) {
                 var direction = directions[i];
-                var cssColor = $component.css(styleSupport($component, 'border-' + direction + '-color'));
+                var cssColor = convertHexaToRgb($component.css(styleSupport($component, 'border-' + direction + '-color')));
                 if (isRgba) {
                     cssColor = parseRGBA(cssColor).toString();
                 }
-                expect(cssColor).toBe(color);
-
+                expect(cssColor.replace(/\s/g, '')).toBe(color.replace(/\s/g, ''));
             };
         }
 
         function evaluateBorderRadius($component, size, directions) {
             directions = directions ? directions : ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
-            expect(styleSupport($component, 'border-radius')).toBeTruthy();
             for (var i = 0; i < directions.length; i++) {
                 var direction = directions[i];
-                expect($component.css(styleSupport($component, 'border-' + direction + '-radius'))).toBe(size);
+                var cssStyleAttribute = styleSupport($component, 'border-' + direction + '-radius');
+
+                if (cssStyleAttribute) {
+                    actualSize = $component.css(cssStyleAttribute);
+                    expect(actualSize).toBe(size);
+                }
             };
+        }
+
+        function evaluateColor($component, color) {
+            var expectedrgb = convertHexaToRgb(color);
+            var actualrgb = convertHexaToRgb($component.css('color'));
+            expect(actualrgb).toBe(expectedrgb);
+        }
+
+        function evaluateBackgroundColor($component, color) {
+            var expectedrgb = convertHexaToRgb(color);
+            var actualrgb = convertHexaToRgb($component.css('background-color'));
+            expect(actualrgb).toBe(expectedrgb);
+        }
+
+        function evaluateTextShadow($component, value) {
+            var actualValue = $component.css('text-shadow');
+
+            if (typeof actualValue != 'undefined') {
+                // ie doesn't return 'none'
+                if (value == 'none' && convertHexaToRgb(actualValue) == $component.css('color')) {
+                    actualValue = 'none';
+                }
+                expect(parseTextShadowValue(actualValue).toString() || 'none').toBe(value);
+            }
+        }
+
+        function evaluateBoxShadow($component, value) {
+            var actualValue = $component.css('box-shadow');
+
+            // ie doesn't return 'none'
+            if (value == 'none' && convertHexaToRgb(actualValue) == $component.css('color')) {
+                actualValue = 'none';
+            }
+
+            if (actualValue != undefined) {
+                expect(parseShadowValue(actualValue).toString() || 'none').toBe(value);
+            }
+        }
+
+        function evaluateGradient($component, top, bottom) {
+            var rgbTop = convertHexaToRgb(top);
+            var rgbBottom = convertHexaToRgb(bottom);
+            var gradient = gradientSupport($component);
+
+            if (typeof gradient != 'undefined') {
+                expect($component.css(styleSupport($component, 'background-image'))).toContain(rgbTop + ', ' + rgbBottom);
+            }
         }
 
         function calculateDistance($component, direction) {
@@ -154,10 +278,18 @@
             convertHexaToRgba: convertHexaToRgba,
             wait: wait,
             calculateDistance: calculateDistance,
+            evaluateBorderStyle: evaluateBorderStyle,
             evaluateBorderWidth: evaluateBorderWidth,
             evaluateBorderColor: evaluateBorderColor,
             evaluateBorderRadius: evaluateBorderRadius,
-            parseShadowValue: parseShadowValue
+            evaluateBackgroundColor: evaluateBackgroundColor,
+            evaluateColor: evaluateColor,
+            evaluateTextShadow: evaluateTextShadow,
+            evaluateBoxShadow: evaluateBoxShadow,
+            evaluateGradient: evaluateGradient,
+            parseShadowValue: parseShadowValue,
+            parseTextShadowValue: parseTextShadowValue,
+            parseRGBA: parseRGBA
         }
     }
 

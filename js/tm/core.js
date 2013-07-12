@@ -9,6 +9,17 @@
 
         /**
          * @function
+         * Allows to load touch device specific css classes
+         */    
+        tm.allowTouchDeviceSupport = function() {
+            if ((/(iPad|iPhone|iPod|Android)/).test(navigator.userAgent)) {
+                $('body').addClass('touch');
+                document.addEventListener("touchstart", function(){}, true);
+            }
+        };
+
+        /**
+         * @function
          * Creates an empty object hierarchy representing the specified path 
          * to allow new properties to be attached.
          *
@@ -73,6 +84,23 @@
             return current;
         };
 
+        /**
+         * @function
+         * Allows to "inherit" the methods from a baseclass.
+         *
+         * Example:
+         *  tm.inheritMethods(checkableBase, Checkbox);
+         *
+         * @param {Object} baseClass Object to inherit from.
+         * @param {Object} currentClass Object that will receive the methods of baseClass
+         */
+        tm.inheritMethods = function(baseClass, currentClass) {
+            var inheritedMethods = function() {
+            };
+            inheritedMethods.prototype = baseClass.prototype;
+            currentClass.prototype = new inheritedMethods();
+        };
+        
         /**
          * @function
          * Copies all properties from one or more objects into a new object. 

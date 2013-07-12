@@ -1,3 +1,16 @@
+.top-hr {
+	border-top: 1px solid #E5E5E5;
+	padding-top: 10px;
+}
+
+.demo-container {
+	padding-bottom: 20px;
+}
+
+.demo-group {
+	padding-bottom: 10px;
+}
+
 .console {
 	height: 100px; 
 	width: 250px; 
@@ -7,6 +20,7 @@
 	border-color: #CCCCCC;
 	border-width: 1px;
 	padding: 5px;
+	font-size: 11px;
 }
 
 .tm360 .well {
@@ -14,17 +28,12 @@
 }
 
 /*Buttons examples*/
-#overview-buttons-container {
-	padding-bottom: 20px;
-}
-
-#overview-buttons-container div {
-	padding-bottom: 10px;
-}
-
-#overview-buttons-container table tr td {
+.demo-container td {
 	padding-right: 20px;
-	width: 50%;
+}
+
+.demo-container tr {
+	vertical-align: top;
 }
 
 /*Text Styles examples */

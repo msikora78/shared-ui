@@ -8,7 +8,7 @@ define(['jquery'], function($) {
             snap-width functionality for both adaptive and non-adaptive layouts.<br><button \
             type="button" id="toggleAdaptive" class="btn btn-primary">Enable Non-adaptive</button> \
             (resize your browser window width around the 1244px threshold)',
-        runScript: function(currentElement){
+        jsExecute: function(currentElement){
             $("#toggleAdaptive").click(function(){
                 var el = $("#container");
                 if (el.hasClass("non-adaptive")) {

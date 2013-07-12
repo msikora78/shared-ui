@@ -11,17 +11,15 @@ define(['jquery', 'widget!tm/widgets/searchAndFilter'], function($) {
     </div>\n\
   </form>\n\
 </div>',
-        setupString: "function(){\n\
-            var input = $('#search-filter-container-dark .search-query');\n\
-            input.tmSearchAndFilter();\n\
-            input.parents('form').submit(function(){\n\
-                alert('submitted \"' + input.val() + '\"');\n\
-                return false;\n\
-            });\n\
-        }"
+        js: function(){
+            var input = $('#search-filter-container-dark .search-query');
+            input.tmSearchAndFilter();
+            input.parents('form').submit(function(){
+                alert('submitted \"' + input.val() + '\"');
+                return false;
+            });
+        }
     };
-
-    data.setup = new Function('$', 'return ' + data.setupString).call(this, $);
 
     return data;
 });
