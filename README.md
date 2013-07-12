@@ -2,11 +2,20 @@
 
 This is the codebase root for the tm360 shared-ui.
 
-Please see the [project wiki](https://github.com/tm360/shared-ui/wiki) for details of how to use these resources in your tm360 app and how you can contribute.
+Please see the [project wiki](https://github.com/tm360/shared-ui/wiki) for details of how to use these resources in your tm360 app and [how you can contribute](https://github.com/tm360/shared-ui/wiki/Contribute).
 
 https://github.com/tm360/shared-ui/wiki
 
 ### RELEASE HISTORY
+
+#### tm360-2.3.5
+* added UX approved text styles for h1, h2, and p tags
+* added text input field
+* added search and filter input
+
+#### tm360-2.3
+* added buttons
+* added modal dialog
 
 #### tm360-2.2
 * added ShortLink component

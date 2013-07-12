@@ -82,8 +82,7 @@ define(['./util'], function(Util) {
                     if (disabled)  {
                         describe('inactive state', function() {
                             it('should have a #fff background', function() {
-                                var rgb = Util.convertHexaToRgb("ffffff");
-                                expect($button.css('background-color')).toBe(rgb);
+                                Util.evaluateBackgroundColor($button, "ffffff");
                             });
 
                             it('should have border #c8c9ce', function() {
@@ -91,15 +90,13 @@ define(['./util'], function(Util) {
                             });
 
                             it('should have #c8c9ce color', function() {
-                                var rgb = Util.convertHexaToRgb("c8c9ce");
-                                expect($button.css('color')).toBe(rgb);
+                                Util.evaluateColor($button, "c8c9ce");
                             });
                         });
                     } else if (hover) {
                         describe('hover state', function() {
                             it('should have a #2d93d4 background', function() {
-                                var rgb = Util.convertHexaToRgb("2d93d4");
-                                expect($button.css('background-color')).toBe(rgb);
+                                Util.evaluateBackgroundColor($button, "2d93d4");
                             });
 
                             it('should have border #9296a3', function() {
@@ -107,28 +104,21 @@ define(['./util'], function(Util) {
                             });
 
                             it('should have #fff color', function() {
-                                var rgb = Util.convertHexaToRgb("ffffff");
-                                expect($button.css('color')).toBe(rgb);
+                                Util.evaluateColor($button, "ffffff");
                             });
 
-                            it('should have box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25)', function() {
-                                var boxShadow = Util.parseShadowValue($button.css('box-shadow'));
-                                expect(boxShadow.toString()).toBe('rgba(0, 0, 0, 0.25) 0px 2px 3px 0px');
+                            it('should have box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25)', function() {
+                                Util.evaluateBoxShadow($button, 'rgba(0, 0, 0, 0.25) 0px 2px 5px 0px')
                             });
 
                             it('should have text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25) ', function() {
-                                var textShadow = Util.parseShadowValue($button.css('text-shadow'));
-                                expect(textShadow.toString()).toBe('rgba(0, 0, 0, 0.25) -1px -1px 1px');
+                                Util.evaluateTextShadow($button, 'rgba(0, 0, 0, 0.25) -1px -1px 1px')
                             });
                         });
                     } else {
                         describe('default state', function() {
                             it('should have a gradient #6bbefd at top to #2d93d4 at bottom', function() {
-                                var rgbTop = Util.convertHexaToRgb("6bbefd");
-                                var rgbBottom = Util.convertHexaToRgb("2d93d4");
-                                var gradient = Util.gradientSupport($button);
-                                expect(gradient).toBeTruthy();
-                                expect($button.css(Util.styleSupport($button, 'background-image'))).toContain(rgbTop + ', ' + rgbBottom);
+                                Util.evaluateGradient($button, "#6bbefd", "#2d93d4")
                             });
 
                             it('should be border #9296a3', function() {
@@ -136,13 +126,11 @@ define(['./util'], function(Util) {
                             });
 
                             it('should have #fff color ', function() {
-                                var rgb = Util.convertHexaToRgb("ffffff");
-                                expect($button.css('color')).toBe(rgb);
+                                Util.evaluateColor($button, "ffffff");
                             });
 
                             it('should have text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25) ', function() {
-                                var boxShadow = Util.parseShadowValue($button.css('text-shadow'));
-                                expect(boxShadow.toString()).toBe('rgba(0, 0, 0, 0.25) -1px -1px 1px');
+                                Util.evaluateTextShadow($button, 'rgba(0, 0, 0, 0.25) -1px -1px 1px')
                             });
                         });
                     }

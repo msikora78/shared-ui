@@ -12,21 +12,21 @@
 
         <!-- 3rd party Shared CSS Libs (not in git repo) -->
         <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/normalize-1.1.0.css" />
-        <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/bootstrap-2.1.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/bootstrap-2.3.2/css/bootstrap.min.css" />
 
         <!-- tm360 Shared-UI CSS -->
-        <link rel="stylesheet" href="css/tm360-base.css" />
-        <link rel="stylesheet" href="css/tm360-universal.css" />
+        <link rel="stylesheet" type="text/css" href="css/tm360-base.css" />
+        <link rel="stylesheet" type="text/css" href="css/tm360-universal.css" />
+        <link rel="stylesheet" type="text/css" href="css/tm360-shortlink.css" />
+        <link rel="stylesheet" type="text/css" href="css/tm360-dropdown.css" />
+        <link rel="stylesheet" type="text/css" href="css/tm360-popover.css" />
+        <link rel="stylesheet" href="css/demo.css" />
 
         <!-- tm360 Shared-UI LESS (Add *.less files to "less/" folder, then include them here) -->
         <link rel="stylesheet/less" type="text/css" href="less/tm360-sample.less" />
 
-        <!-- a few styles for this demo page only -->
-        <style>
-            .tm360 .well {
-                background-color: #FFFFFF;
-            }
-        </style>
+        <!-- a few styles for demo pages only -->
+        <link rel="stylesheet" href="css/demo.css" />
 
         <!-- 
             Client-side LESS compiler for development.
@@ -56,7 +56,6 @@
                         <h1>Shared UI Demos</h1>
                         <p style="padding-left: 1em" id="pIntro">This is the demo page for tm360 Shared-UI components. </p>
                         <p style="padding-left: 1em">Javascript unit tests are available for <a href="specRunner.html" target="_blank">utility methods</a> and <a href="specRunner-requirejs.html" target="_blank">Widgets (uses RequireJS)</a>.</p>
-                        <p style="padding-left: 1em">Note: This page references assets on Dev2. If layout isn't being rendered properly, <a href="https://portal.shared.dev2.websys.tmcs/" target="_blank">click here</a> to "unlock", then return to this page and refresh.</p>
                         <p>&nbsp;</p>
                     </div>
                 </div>
@@ -67,7 +66,10 @@
                     </div>
                     <div class="span9">
                         <div class="well">
-                            <p>The app/gadget you are viewing now has 2-width snapping enabled. Resize your browser window width around the 1244px threshold to see gadget maintain alignment with tm360 nav logo and icons. See <a href='https://confluence.tm.tmcs/confluence/display/PJ31/Shared+UI+components+for+new+app+development#SharedUIcomponentsfornewappdevelopment-Width"Snapping"' target="_blank">Width "Snapping"</a> for implementation details.</p>
+                            <p>This page has 2-width snapping enabled. The content width will be set to 944px or 1252px depending on the total available width of the browser window.</p>
+                            <div>
+                                <a href="demo/index.html?url=demo%2FsnapWidth-examples%2Fall" target="_blank">See more snap-width samples</a>
+                            </div>
                         </div>
                     </div>
                 </div> <!-- .row-fluid -->
@@ -78,27 +80,11 @@
                     </div>
                     <div class="span9">
                         <div class="well">
-                            <p>This sampling of text styles represents a safe standard for tm360 apps. However variations will arise on a design-by-design basis. But colors, link styles, and text shadows will all follow this standard.</p>
-                            <br/>
-                            <strong>Dark Text on White Background:</strong>
-                            <div style="padding: 10px 24px;">
-                                <h1>30px Museo Sans 500 &lt;h1&gt;</h1>
-                                <h2>24px Museo Sans 500 &lt;h2&gt; <a href="javascript:;">with link style</a></h2>
-                                <p>14px Arial Regular &lt;p&gt; <a href="javascript:;">with link style</a></p>
-                            </div>
-                            <br/>
-                            <strong>Dark Text on Gray Background:</strong>
-                            <div style="background-color: #d3d3d7; padding: 10px 24px;">
-                                <h1>30px Museo Sans 500 &lt;h1&gt;</h1>
-                                <h2>24px Museo Sans 500 &lt;h2&gt; <a href="javascript:;">with link style</a></h2>
-                                <p>14px Arial Regular &lt;p&gt; <a href="javascript:;">with link style</a></p>
-                            </div>
-                            <br/>
-                            <strong>White Text on Dark Background:</strong>
-                            <div class="textOnDark" style="background-color: #4f5258; padding: 10px 24px;">
-                                <h1>30px Museo Sans 500 &lt;h1&gt;</h1>
-                                <h2>24px Museo Sans 500 &lt;h2&gt; <a href="javascript:;">with link style</a></h2>
-                                <p>14px Arial Regular &lt;p&gt; <a href="javascript:;">with link style</a></p>
+                            <h1>30px Museo Sans 500 &lt;h1&gt; <a href="javascript:;">with link style</a></h1>
+                            <h2>24px Museo Sans 500 &lt;h2&gt; <a href="javascript:;">with link style</a></h2>
+                            <p>14px Arial Regular &lt;p&gt; <a href="javascript:;">with link style</a></p>
+                            <div>
+                                <a href="demo/index.html?url=demo%2FtextStyles-examples%2Fall" target="_blank">See more Text Style samples</a>
                             </div>
                         </div>
                     </div>
@@ -110,26 +96,16 @@
                     </div>
                     <div class="span9">
                         <div class="well">
-                            <p>Initially, there is an input hint in the field. This hint disappears when user clicks into the field.</p>
-                            <p>As user begins typing in the field, the “X” icon appears, which when clicked, clears out the search.</p>
-                            <strong>White Background:</strong>
-                            <div style="padding: 10px 24px;">
-                                <form class="form-search" style="margin-top: 20px">
+                            <div id="search-filter-container">
+                                <form class="form-search">
                                     <div style="position: relative;">
-                                        <input type="text" class="input-medium search-query" placeholder="Search 1" />
+                                        <input type="text" class="input-medium search-query" placeholder="Search" />
                                         <i class="search-clear-icon"></i>
                                     </div>
                                 </form>
                             </div>
-                            <br/>
-                            <strong>Darker Background:</strong>
-                            <div class="search-filter-bg" style="padding: 10px 24px;">
-                                <form class="form-search" style="margin-top: 20px">
-                                    <div class="darker" style="position: relative;">
-                                        <input type="text" class="input-medium search-query" placeholder="Search 2" />
-                                        <i class="search-clear-icon"></i>
-                                    </div>
-                                </form>
+                            <div>
+                                <a href="demo/index.html?url=demo%2FsearchAndFilter-examples%2Fall" target="_blank">See more Search and Filter samples</a>
                             </div>
                         </div>
                     </div>
@@ -205,6 +181,149 @@
                     </div>
                 </div> <!-- .row-fluid -->
 
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>Checkbox and Radio button</h5>
+                    </div>
+                    <div class="span9">
+                        <form>
+                            <div class="well">
+
+                                <div class="control-group top-hr">
+                                    <div class="controls">
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="" />
+                                            Checkbox
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="" checked />
+                                            Checked checkbox
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="" disabled />
+                                            Disabled checkbox
+                                        </label>
+                                        <label class="checkbox">
+                                            <input type="checkbox" value="" disabled checked />
+                                            Disabled checked checkbox
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="radiobutton" value="option1" />
+                                            Radio
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="optionsRadios" id="selected-radiobutton" value="option2" checked />
+                                            Selected radio
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" id="inactive-radiobutton" disabled />
+                                            Disabled radio
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" id="inactive-selected-radiobutton" disabled checked />
+                                            Disabled selected radio
+                                        </label>
+                                    </div>
+                                    <div style="margin-top: 10px;">
+                                        <a href="demo/index.html?url=demo%2Fcheckboxes-and-radiobuttons-examples%2Fall">See more checkboxes and radiobuttons ...</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- .row-fluid -->
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>Dropdown menu</h5>
+                    </div>
+                    <div class="span9">
+                        <form>
+                            <div class="well">
+                                <div class="control-group">
+                                    <div class="controls demo-group">
+                                        <div class="btn-group">
+                                            <a id="dropdownMenu1" class="btn dropdown-toggle" data-toggle="dropdown" href="#">Dropdown Label</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#1">Item 1</a></li>
+                                                <li><a href="#2">Item 2</a></li>
+                                                <li><a href="#3">Item 3</a></li>
+                                                <li><a href="#4">Item 4</a></li>
+                                                <li><a href="#5">Item 5</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- control-group -->
+                                <div class="control-group">
+                                    <div class="controls demo-group">
+                                        <div class="btn-group">
+                                            <a id="dropdownMenu2" class="btn dropdown-toggle" data-toggle="dropdown" href="#">Extra Long Dropdown Label Extra Long</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#1">Item 1 with an extra, extra, extra, extra long label</a></li>
+                                                <li><a href="#2">Item 2</a></li>
+                                                <li><a href="#3">Item 3</a></li>
+                                                <li><a href="#4">Item 4</a></li>
+                                                <li><a href="#5">Item 5</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- control-group -->
+
+                                <div style="margin-top: 10px;">
+                                    <a href="demo/index.html?url=demo%2Fdropdown-button-with-menu-examples%2Fall">See more dropdown menus ...</a>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- .row-fluid -->
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>Dropdown list</h5>
+                    </div>
+                    <div class="span9">
+                        <form>
+                            <div class="well">
+                                <div class="control-group">
+                                    <div class="controls demo-group">
+                                        <div class="btn-group">
+                                            <a id="dropdownList1" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">Dropdown Label</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a data-value="Action1">Action 1</a></li>
+                                                <li><a data-value="Action2">Action 2</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- control-group -->
+                                <div class="control-group">
+                                    <div class="controls demo-group">
+                                        <div class="btn-group">
+                                            <a id="dropdownList2" class="btn dropdown-toggle" data-toggle="dropdown" href="#">Extra Long Dropdown Label Extra Long</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a data-value="Action1">Item 1 with an extra, extra long label</a></li>
+                                                <li><a data-value="Action2">Action 2</a></li>
+                                                <li><a data-value="Action3">Action 3</a></li>
+                                                <li><a data-value="Action4">Action 4</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- control-group -->
+
+                                <div style="margin-top: 10px;">
+                                    <a href="demo/index.html?url=demo%2Fdropdown-examples%2Fall">See more dropdown list ...</a>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- .row-fluid -->
+
                 <!--
                 <div class="row-fluid">
                     <div class="span3">
@@ -239,10 +358,37 @@
                     </div>
                 </div> <!-- .row-fluid -->
 
-                <!-- 
                 <div class="row-fluid">
                     <div class="span3">
-                        <h5>ShortLink Component</h5>
+                        <h5>8. Non-Modal Dialogs</h5>
+                    </div>
+                    <div class="span9">
+                        <div class="well">
+                            <div class="control-group">
+                                <p><a id="tooltipTarget"
+                                    title="It's so simple to create a tooltip!"
+                                    data-placement="top">Tooltip</a></p>
+                                <p><button type="button" class="btn" id="popupTarget"
+                                    title="Popup's title" 
+                                    data-content="It's so simple to create a popup!">Pop up</button>
+                                <button type="button" class="btn" id="popupWithNoTitle"
+                                    data-content="It's so simple to create a popup!">Pop up with no Title</button>
+                                <button type="button" class="btn" id="popupWithArrowTargetLittle"
+                                    title="Popup's title" 
+                                    data-content="It's so simple to create a popup!"
+                                    style="min-width: 30px;">+</button></p>
+                            </div>
+                            <div class="control-group">
+                                <a href="demo/index.html?url=demo%2FnonModalDialog-examples%2Fall">See more non-modal dialogs</a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .row-fluid -->
+
+                <!--
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>6. ShortLink Component</h5>
                     </div>
                     <div class="span9">
                         <div class="well">
@@ -251,13 +397,14 @@
                                     <img src="css/img/link-icon.png"/></button>
                             </p>
                             <p>And another, where the popover appears to the right:
-                                <button class="shortlink-btn btn" data-placement="right">
+                                <button class="shortlink-btn btn" data-placement="right-bottom">
                                     <img src="css/img/link-icon.png"/></button>
                             </p>
                             <p>See the <a href="https://confluence.tm.tmcs/confluence/display/PJ31/URL+Shortening+in+tm360" target="_blank">URL Shortening in tm360</a> Confluence page for more info.</p>
                         </div>
                     </div>
-                </div> --> <!-- .row-fluid -->                
+                </div>
+                -->
 
             </div>
 
@@ -267,12 +414,24 @@
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-1.7.2.min.js"></script>
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ba-throttle-debounce-1.1.min.js"></script>
         <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/underscore_1.3.3.min.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.1.0.min.js"></script>        
+        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.3.2.min.js"></script>
 
         <!-- tm360 Shared-UI JS -->
         <script src="js/tm/core.js"></script>
+        <script src="js/tm/cookie.js"></script>
+        <script src="js/tm/string.js"></script>
+        <script src="js/tm/date.js"></script>
+        <script src="js/tm/shortlink.js"></script>
         <script src="js/tm/widgets/widgetFactory.js"></script>
         <script src="js/tm/widgets/modalDialog.js"></script>
+        <script src="js/tm/widgets/searchAndFilter.js"></script>
+        <script src="js/tm/widgets/checkableBase.js"></script>
+        <script src="js/tm/widgets/checkbox.js"></script>
+        <script src="js/tm/widgets/radiobutton.js"></script>
+        <script src="js/tm/widgets/popup.js"></script>
+        <script src="js/tm/widgets/tooltip.js"></script>
+        <script src="js/tm/widgets/dropdownMenu.js"></script>
+        <script src="js/tm/widgets/dropdown.js"></script>
 
         <script>
             (function(){
@@ -288,71 +447,7 @@
                 }
 
                 function activateSearchFields(){
-                    var fields = $("input.search-query[placeholder]");
-
-                    fields.focus(function(){
-                        var input = $(this);
-                        if (input.val() === input.attr("placeholder")) {
-                            input.val("");
-                            input.removeClass("placeholder");
-                        }
-                    })
-                    .blur(function(){
-                        var input = $(this);
-                        if (input.val() === "" || input.val() === input.attr("placeholder")) {
-                            input.addClass("placeholder");
-                            input.val(input.attr("placeholder"));
-                        }
-                    });
-
-                    // initialize
-                    fields.blur();
-
-                    // prevent submitting placeholder as value
-                    fields.parents("form").submit(function() {
-                        $(this).find("[placeholder]").each(function() {
-                            var input = $(this);
-                            if (input.val() === input.attr("placeholder")) {
-                                input.val("");
-                            }
-                        })
-                    });
-
-                    var showHideIcon = function(){
-                        if (this.data("iconActive")) {
-                            if (this.val() === "" || this.val() === this.attr("placeholder")){
-                                // hide icon
-                                this.siblings(".search-clear-icon").css({
-                                    display: "none"
-                                });
-                                this.data("iconActive", false);
-                            }
-                        } else {
-                            if (this.val() !== "" && this.val() !== this.attr("placeholder")){
-                                // position and show icon
-                                this.siblings(".search-clear-icon").css({
-                                    display: "block",
-                                    left: this.outerWidth() - 21
-                                });
-                                this.data("iconActive", true);
-                            }
-                        }
-                    };
-
-                    // init clear icon click handler
-                    fields.siblings(".search-clear-icon").click(function(){
-                        var input = $(this).siblings(".search-query");
-                        input.addClass("placeholder");
-                        input.val(input.attr("placeholder"));
-                        showHideIcon.apply(input);
-                    });
-
-                    // check to show/hide clear icon now and on keyup
-                    fields.each(function(){
-                        showHideIcon.apply($(this));
-                    }).keyup(function(){
-                        showHideIcon.apply($(this));
-                    });
+                    $("input.search-query[placeholder]").tmSearchAndFilter();
                 }
 
                 function activateModalDialog(){
@@ -387,12 +482,21 @@
                     activateSearchFields();
                     activateModalDialog();
 
-                    // disable iOS overscroll
-                    if (tm.iOS){
-                        $(document).on('touchmove', function(e) {
-                            e.preventDefault(); 
-                        });
-                    }
+                    // Checkables
+                    $('input[type="checkbox"]').tmCheckbox();
+                    $('input[type="radio"]').tmRadiobutton();
+                    
+                    // dropdown menu/list
+                    $("#dropdownMenu1").tmDropdownMenu();
+                    $("#dropdownMenu2").tmDropdownMenu();
+                    $("#dropdownList1").tmDropdown();
+                    $("#dropdownList2").tmDropdown();
+
+                    // Non-modals
+                    $("#tooltipTarget").tmTooltip();
+                    $("#popupTarget").tmPopup();
+                    $("#popupWithArrowTargetLittle").tmPopup();
+                    $("#popupWithNoTitle").tmPopup();
                 }
 
                 // jquery onload

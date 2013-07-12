@@ -72,7 +72,8 @@ define(['injectable!tm/widgets/modalDialog', 'mock/gadgetPrefMock', './util'], f
                         spyOn(secondaryButton, 'callback').andCallThrough();
 
                         var options = {
-                            buttons: [secondaryButton, primaryButton]
+                            buttons: [secondaryButton, primaryButton],
+                            fade: false
                         };
 
                         widget = new ModalDialog($modal, options);
@@ -85,13 +86,11 @@ define(['injectable!tm/widgets/modalDialog', 'mock/gadgetPrefMock', './util'], f
                     });
 
                     it('should have a Lightbox Overlay of #000 at 25% opacity', function() {
-                        var $modalBackground = $('.modal-backdrop.fade.in');
+                        var $modalBackground = $('.modal-backdrop');
 
                         expect($modalBackground.css('background-color')).toBe(Util.convertHexaToRgb('000000'));
-                        Util.wait(2000).done(function() {
-                            var opacity = Math.round($modalBackground.css('opacity') * 100) / 100;
-                            expect(opacity).toBe(0.25);
-                        });
+                        var opacity = Math.round($modalBackground.css('opacity') * 100) / 100;
+                        expect(opacity).toBe(0.25);
                     });
 
                     it('should have a #FFF background with a 10px border that’s #000 at 25% opacity', function() {
