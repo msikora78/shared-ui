@@ -13,5 +13,6 @@ define([
     'spec/tm/widgets/checkbox-spec',
     'spec/tm/widgets/dropdownButtonMenu-spec',
     'spec/tm/widgets/dropdown-spec',
-    'spec/tm/widgets/popup-spec'
+    'spec/tm/widgets/popup-spec',
+    'spec/tm/widgets/tabbedContainer-spec'
 ]);
