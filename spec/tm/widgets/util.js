@@ -269,6 +269,16 @@
             return (padding + margin + border) + "px";
         }
 
+        function evaluateFontWeight($component, isBold){
+            var weight = $component.css('font-weight'); // normal|400|'400'|bold|700|'700'
+            if (weight == '700'){
+                weight = 'bold';
+            } else if (weight == '400'){
+                weight = 'normal';
+            }
+            expect(weight).toBe(isBold ? 'bold' : 'normal');
+        }
+
         return {
             styleSupport: styleSupport,
             gradientSupport: gradientSupport,
@@ -289,7 +299,8 @@
             evaluateGradient: evaluateGradient,
             parseShadowValue: parseShadowValue,
             parseTextShadowValue: parseTextShadowValue,
-            parseRGBA: parseRGBA
+            parseRGBA: parseRGBA,
+            evaluateFontWeight: evaluateFontWeight
         }
     }
 
