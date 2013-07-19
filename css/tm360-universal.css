@@ -169,7 +169,7 @@
     padding-top: 3px;
 }
 .tm360 .help-error-icon {
-    display: inline-block;
+    display: none;
     width: 16px;
     height: 16px;
     line-height: 16px;
@@ -181,6 +181,10 @@
     background-repeat: no-repeat;
 }
 
+.tm360 .error .help-error-icon {
+    display: inline-block;
+}
+
 .tm360 input {
     outline-style: none !important;
 }
@@ -188,7 +192,7 @@
 .tm360 textarea,
 .tm360 input[type="text"],
 .tm360 input[type="password"] {
-    border: 1px solid #C8C9CE;
+    border: 1px solid #B6B7BD;
     color: #4F5158;
     font-size: 12px;
     font-family: Arial,sans-serif;
@@ -196,9 +200,9 @@
     -webkit-border-radius: 0 0 0 0;
     -moz-border-radius: 0 0 0 0;
     border-radius: 0 0 0 0;
-    -webkit-box-shadow: -1px 0px 3px 0px rgba(0, 0, 0, 0.15) inset;
-    -moz-box-shadow: -1px 0px 3px 0px rgba(0, 0, 0, 0.15) inset;
-    box-shadow: -1px 0px 3px 0px rgba(0, 0, 0, 0.15) inset;
+    -webkit-box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.15) inset;
+    -moz-box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.15) inset;
+    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.15) inset;
     -webkit-transition: none 0s ease 0s;
     -moz-transition: none 0s ease 0s;
     transition: none 0s ease 0s;
@@ -222,7 +226,7 @@
 .tm360 input[readonly],
 .tm360 select[readonly],
 .tm360 textarea[readonly] {
-    border: 1px solid #ebebee;
+    border: 1px solid #c8c9ce;
     background-color: #f5f5f7;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
@@ -244,9 +248,12 @@
     color: #aaa;
 }
 
+.tm360 .control-group > label {
+    font-weight: bold;
+}
+
 .tm360 .control-group.error > label {
     color: #4F5158;
-    font-weight: bold;
 }
 
 .tm360 .control-group.error .checkbox,
@@ -256,9 +263,9 @@
 .tm360 .control-group.error textarea {
     color: #4F5158;
     border-color: #f03848;
-    -webkit-box-shadow: -1px 0px 3px 0px rgba(240, 56, 72, 0.35) inset;
-    -moz-box-shadow: -1px 0px 3px 0px rgba(240, 56, 72, 0.35) inset;
-    box-shadow: -1px 0px 3px 0px rgba(240, 56, 72, 0.35) inset;
+    -webkit-box-shadow: 1px 1px 1px 0 rgba(240, 56, 72, 0.25) inset;
+    -moz-box-shadow: 1px 1px 1px 0 rgba(240, 56, 72, 0.25) inset;
+    box-shadow: 1px 1px 1px 0 rgba(240, 56, 72, 0.25) inset;
 }
 
 .tm360 .control-group.error .checkbox:focus,
