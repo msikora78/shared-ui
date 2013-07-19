@@ -81,6 +81,101 @@
     -webkit-border-radius: 0px 0px 5px 5px;
     border-radius: 0px 0px 5px 5px;
 }
+
+.tm360.bg-soft-grey,
+.tm360 .bg-soft-grey{
+    background-color: #ebebee;
+}
+
+.tm360.bg-soft-grey .tabbed-container .tab-content,
+.tm360 .bg-soft-grey .tabbed-container .tab-content{
+    border: none;
+}
+}
+
+/* tab nav */
+.tm360 .tabbed-container .nav{
+    height: 34px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    background: #8d919d;
+    background-image: -ms-linear-gradient(top, #8d919d, #6e7075);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#8d919d), to(#6e7075));
+    background-image: -webkit-linear-gradient(top, #8d919d, #6e7075);
+    background-image: -o-linear-gradient(top, #8d919d, #6e7075);
+    background-image: -moz-linear-gradient(top, #8d919d, #6e7075);
+    background-image: linear-gradient(top, #8d919d, #6e7075);
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#8d919d', endColorstr='#6e7075', GradientType=0);
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+
+    -webkit-border-radius: 5px 5px 0px 0px;
+            border-radius: 5px 5px 0px 0px;
+}
+
+.tm360 .tabbed-container .nav > li{
+    margin: 5px 0px 5px 5px;
+    height: 24px;
+    max-height: 24px;
+}
+.tm360 .tabbed-container .nav > li:first-child{
+    margin: 5px 0px 5px 10px;
+}
+
+
+.tm360 .tabbed-container .nav > li a{
+
+    font-family: MuseoSans500;
+    height: 14px;
+    max-height: 14px;
+    color: #fff;
+    padding: 7px 10px 3px 10px;
+    margin: 0;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.3);
+
+    -webkit-border-radius: 3px;
+            border-radius: 3px;
+}
+
+.tm360 .tabbed-container .nav > li a:hover{
+    background: #6c6f78;
+    background-image: -ms-linear-gradient(top, #6c6f78, #494b51);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6c6f78), to(#494b51));
+    background-image: -webkit-linear-gradient(top, #6c6f78, #494b51);
+    background-image: -o-linear-gradient(top, #6c6f78, #494b51);
+    background-image: -moz-linear-gradient(top, #6c6f78, #494b51);
+    background-image: linear-gradient(top, #6c6f78, #494b51);
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#6c6f78', endColorstr='#494b51', GradientType=0);
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+
+.tm360 .tabbed-container .nav > li.active a,
+.tm360 .tabbed-container .nav > li.active a:hover{
+    background: #4f5158;
+    background-image: -ms-linear-gradient(top, #4f5158, #202228);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4f5158), to(#202228));
+    background-image: -webkit-linear-gradient(top, #4f5158, #202228);
+    background-image: -o-linear-gradient(top, #4f5158, #202228);
+    background-image: -moz-linear-gradient(top, #4f5158, #202228);
+    background-image: linear-gradient(top, #4f5158, #202228);
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#4f5158', endColorstr='#202228', GradientType=0);
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+
+/* tab content */
+.tm360 .tabbed-container .tab-content{
+    border: solid 1px #c8c9ce;
+    border-top: none;
+    padding: 20px;
+    background: #fff;
+    -webkit-border-radius: 0px 0px 5px 5px;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.tm360.bg-soft-grey,
+.tm360 .bg-soft-grey{
+    background-color: #ebebee;
+}
+
 .tm360.bg-soft-grey .tabbed-container .tab-content,
 .tm360 .bg-soft-grey .tabbed-container .tab-content{
     border: none;

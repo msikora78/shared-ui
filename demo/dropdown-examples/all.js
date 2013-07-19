@@ -6,7 +6,7 @@ define([
 
 function() {
     return {
-        title: 'Dropdown list - combobox',
+        title: 'Dropdown List - Combobox',
         examples: Array.prototype.slice.call(arguments)
     };
 });

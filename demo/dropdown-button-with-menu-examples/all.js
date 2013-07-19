@@ -8,7 +8,7 @@ define([
 
 function() {
     return {
-        title: 'Dropdown button with menu',
+        title: 'Dropdown Menu',
         examples: Array.prototype.slice.call(arguments)
     };
 });
