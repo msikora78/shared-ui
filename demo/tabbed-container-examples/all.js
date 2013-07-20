@@ -1,12 +1,11 @@
 define([
     './overview',
-    './from-a-select',
-    './from-a-simple-element'
+    './javascript'
 ], 
 
 function() {
     return {
-        title: 'Dropdown List - Combobox',
+        title: 'Tabbed Container',
         examples: Array.prototype.slice.call(arguments)
     };
 });

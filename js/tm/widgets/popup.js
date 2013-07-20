@@ -4,8 +4,8 @@
     var bodyInitialized = false;
 
     /**
-     *  Creates the modal dialog prototype
-     *  @returns {Function} modal dialog prototype
+     *  Creates the popup prototype
+     *  @returns {Function} popup prototype
      */
     function factory($, gadgets, tm) {
         var gadgetPrefs = new gadgets.Prefs();
