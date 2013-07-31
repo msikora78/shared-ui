@@ -49,6 +49,7 @@
                 input.addClass("placeholder");
                 input.val(input.attr("placeholder"));
                 showHideIcon.apply(input);
+                input.focus();
             });
 
             // check to show/hide clear icon now and on keyup
@@ -78,7 +79,7 @@
                 // position and show icon
                 this.siblings(".search-clear-icon").css({
                     display: "block",
-                    left: this.outerWidth() - 23
+                    left: this.outerWidth() - 25
                 });
                 this.data("iconActive", true);
             }

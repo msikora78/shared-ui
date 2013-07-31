@@ -89,6 +89,7 @@ body {
 @media only screen and (device-width: 768px) {
 
 }
+/* fix to keep @media declarations on a new line after less compilation */
 .atSep3 {
     padding: 0;
 }
