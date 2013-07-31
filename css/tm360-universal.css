@@ -78,13 +78,17 @@
 }
 
 .tm360 p a:link,
-.tm360 p a:visited {
+.tm360 li a:link,
+.tm360 p a:visited,
+.tm360 li a:visited {
     color: #2d93d4;
     text-decoration: none;
 }
 
 .notouch .tm360 p a:hover,
-.tm360 p a:active {
+.notouch .tm360 li a:hover,
+.tm360 p a:active,
+.tm360 li a:active {
     color: #2d93d4;
     text-decoration: underline;
 }
@@ -139,13 +143,17 @@
 }
 
 .tm360 .textOnDark p a:link,
-.tm360 .textOnDark p a:visited {
+.tm360 .textOnDark li a:link,
+.tm360 .textOnDark p a:visited,
+.tm360 .textOnDark li a:visited {
     color: #b6b7bd;
     text-decoration: none;
 }
 
 .notouch .tm360 .textOnDark p a:hover,
-.tm360 .textOnDark p a:active {
+.notouch .tm360 .textOnDark li a:hover,
+.tm360 .textOnDark p a:active,
+.tm360 .textOnDark li a:active {
     color: #ffffff;
     text-decoration: none;
 }
