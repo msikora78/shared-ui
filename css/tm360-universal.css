@@ -662,9 +662,9 @@
 /* For iPad landscape layouts only */
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
     .tm360 .help-error-icon {
-        width: 17px;
-        height: 17px;
-        line-height: 17px;
+        width: 18px;
+        height: 18px;
+        line-height: 18px;
         margin-top: 2px;
     }
 }
