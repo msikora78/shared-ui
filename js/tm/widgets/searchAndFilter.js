@@ -44,7 +44,8 @@
             });
 
             // init clear icon click handler
-            element.siblings(".search-clear-icon").click(function(){
+            var clearIcon = element.siblings(".search-clear-icon");
+            clearIcon.click(function(){
                 var input = $(this).siblings(".search-query");
                 input.addClass("placeholder");
                 input.val(input.attr("placeholder"));
@@ -54,9 +55,23 @@
 
             // check to show/hide clear icon now and on keyup
             element.each(function(){
-                showHideIcon.apply($(this));
-            }).keyup(function(){
-                showHideIcon.apply($(this));
+                var el = $(this);
+
+                if (tm.touchDevice){
+                    // add clear div for larger click area on touch devices
+                    var clearClickArea = $("<div>").addClass("search-clear-click-area");
+                    element.parent().append(clearClickArea);
+                    clearClickArea.click(function(){
+                        $(this).siblings(".search-clear-icon").click();
+                        return false;
+                    });
+                }
+
+                showHideIcon.apply(el);
+
+                el.keyup(function(){
+                    showHideIcon.apply($(this));
+                });
             });
 
         };
@@ -72,12 +87,20 @@
                 this.siblings(".search-clear-icon").css({
                     display: "none"
                 });
+                this.siblings(".search-clear-click-area").css({
+                    display: "none"
+                });
+
                 this.data("iconActive", false);
             }
         } else {
             if (this.val() !== "" && this.val() !== this.attr("placeholder")){
                 // position and show icon
                 this.siblings(".search-clear-icon").css({
+                    display: "block",
+                    left: this.outerWidth() - 25
+                });
+                this.siblings(".search-clear-click-area").css({
                     display: "block",
                     left: this.outerWidth() - 25
                 });
