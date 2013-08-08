@@ -8,6 +8,10 @@ https://github.com/tm360/shared-ui/wiki
 
 ### RELEASE HISTORY
 
+#### tm360-2.3.7
+* added tabbed container
+* iPad rendering improvements for text styles, text inputs, searchAndFilter, buttons, and modal dialog
+
 #### tm360-2.3.5
 * added UX approved text styles for h1, h2, and p tags
 * added text input field

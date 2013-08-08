@@ -179,10 +179,16 @@
         tm.hiResDisplay = !!(window.devicePixelRatio && window.devicePixelRatio >= 2);
 
         /**
+         * @boolean
+         * Convenience flag set to true if touch device detected.
+         */
+        tm.touchDevice = 'ontouchstart' in document.documentElement;
+
+        /**
          * Add notouch class to html node if touch device (like Modernizr)
          */
-        var docEl = document.documentElement;
-        if ('ontouchstart' in docEl === false){
+        if (!tm.touchDevice){
+            var docEl = document.documentElement;
             docEl.className = docEl.className.length ? (docEl.className + " notouch") : "notouch";
         }
 

@@ -6,7 +6,7 @@
      *  @returns {Function} search-and-filter prototype
      */
 
-    function factory($) {
+    function factory($, tm) {
         /**
          *	Search-and-Filter's prototype with all the tm specific behaviors
          *	@class
@@ -44,18 +44,34 @@
             });
 
             // init clear icon click handler
-            element.siblings(".search-clear-icon").click(function(){
+            var clearIcon = element.siblings(".search-clear-icon");
+            clearIcon.click(function(){
                 var input = $(this).siblings(".search-query");
                 input.addClass("placeholder");
                 input.val(input.attr("placeholder"));
                 showHideIcon.apply(input);
+                input.focus();
             });
 
             // check to show/hide clear icon now and on keyup
             element.each(function(){
-                showHideIcon.apply($(this));
-            }).keyup(function(){
-                showHideIcon.apply($(this));
+                var el = $(this);
+
+                if (tm.touchDevice){
+                    // add clear div for larger click area on touch devices
+                    var clearClickArea = $("<div>").addClass("search-clear-click-area");
+                    element.parent().append(clearClickArea);
+                    clearClickArea.click(function(){
+                        $(this).siblings(".search-clear-icon").click();
+                        return false;
+                    });
+                }
+
+                showHideIcon.apply(el);
+
+                el.keyup(function(){
+                    showHideIcon.apply($(this));
+                });
             });
 
         };
@@ -71,6 +87,10 @@
                 this.siblings(".search-clear-icon").css({
                     display: "none"
                 });
+                this.siblings(".search-clear-click-area").css({
+                    display: "none"
+                });
+
                 this.data("iconActive", false);
             }
         } else {
@@ -78,7 +98,11 @@
                 // position and show icon
                 this.siblings(".search-clear-icon").css({
                     display: "block",
-                    left: this.outerWidth() - 23
+                    left: this.outerWidth() - 25
+                });
+                this.siblings(".search-clear-click-area").css({
+                    display: "block",
+                    left: this.outerWidth() - 25
                 });
                 this.data("iconActive", true);
             }
@@ -87,9 +111,9 @@
 
     // If requirejs is present, we want to use it, otherwise, we want to use the global declarations to get the dependencies
     if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
+        define(['jquery', 'tm/core'], factory);
     } else {
-        tm.widgets.widgetFactory.make('tmSearchAndFilter', factory($));
+        tm.widgets.widgetFactory.make('tmSearchAndFilter', factory($, tm));
     }
 
 })();

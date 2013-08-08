@@ -11,8 +11,8 @@
         <title>tm360 Shared UI Demo</title>
 
         <!-- 3rd party Shared CSS Libs (not in git repo) -->
-        <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/normalize-1.1.0.css" />
-        <link rel="stylesheet" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/bootstrap-2.3.2/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/normalize-1.1.0.css" />
+        <link rel="stylesheet" type="text/css" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/bootstrap-2.3.2/css/bootstrap.min.css" />
 
         <!-- tm360 Shared-UI CSS -->
         <link rel="stylesheet" type="text/css" href="css/tm360-base.css" />
@@ -21,13 +21,13 @@
         <link rel="stylesheet" type="text/css" href="css/tm360-dropdown.css" />
         <link rel="stylesheet" type="text/css" href="css/tm360-popover.css" />
         <link rel="stylesheet" type="text/css" href="css/tm360-tabbedContainer.css" />
-        <link rel="stylesheet" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
 
         <!-- tm360 Shared-UI LESS (Add *.less files to "less/" folder, then include them here) -->
         <link rel="stylesheet/less" type="text/css" href="less/tm360-sample.less" />
 
         <!-- a few styles for demo pages only -->
-        <link rel="stylesheet" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
 
         <!-- 
             Client-side LESS compiler for development.
@@ -38,10 +38,10 @@
                 env: "development"
             };
         </script>
-        <script src="lib/less-1.3.3/less-1.3.3.min.js"></script>
+        <script type="text/javascript" src="lib/less-1.3.3/less-1.3.3.min.js"></script>
         <!-- Note: LESS files will be compiled to CSS via command line before checking into tm360 versioned "shared" folder for deployment. -->
 
-        <script>
+        <script type="text/javascript">
             // mock gadgets.Prefs for modalDialog
             var Prefs = function(){};
             Prefs.prototype.getMsg = function() {};
@@ -69,9 +69,9 @@
                     <div class="span9">
                         <div class="well">
                             <p>This page has 2-width snapping enabled. The content width will be set to 944px or 1252px depending on the total available width of the browser window.</p>
-                            <div>
+                            <p class="more-link">
                                 <a href="demo/index.html?url=demo%2FsnapWidth-examples%2Fall" target="_blank">See more snap-width samples</a>
-                            </div>
+                            </p>
                         </div>
                     </div>
                 </div> <!-- .row-fluid -->
@@ -82,12 +82,12 @@
                     </div>
                     <div class="span9">
                         <div class="well">
-                            <h1>30px Museo Sans 500 &lt;h1&gt; <a href="javascript:;">with link style</a></h1>
-                            <h2>24px Museo Sans 500 &lt;h2&gt; <a href="javascript:;">with link style</a></h2>
-                            <p>14px Arial Regular &lt;p&gt; <a href="javascript:;">with link style</a></p>
-                            <div>
+                            <h1>30px Museo Sans 500 &lt;h1&gt; <a href="#h1">with link style</a></h1>
+                            <h2>24px Museo Sans 500 &lt;h2&gt; <a href="#h2">with link style</a></h2>
+                            <p>14px Arial Regular &lt;p&gt; <a href="#p">with link style</a></p>
+                            <p class="more-link">
                                 <a href="demo/index.html?url=demo%2FtextStyles-examples%2Fall" target="_blank">See more Text Style samples</a>
-                            </div>
+                            </p>
                         </div>
                     </div>
                 </div> <!-- .row-fluid -->
@@ -106,9 +106,9 @@
                                     </div>
                                 </form>
                             </div>
-                            <div>
+                            <p class="more-link">
                                 <a href="demo/index.html?url=demo%2FsearchAndFilter-examples%2Fall" target="_blank">See more Search and Filter samples</a>
-                            </div>
+                            </p>
                         </div>
                     </div>
                 </div> <!-- .row-fluid -->
@@ -145,9 +145,9 @@
                                         <span class="help-error">Error help text</span>
                                     </div>
                                 </div>
-                                <div>
+                                <p class="more-link">
                                     <a href="demo/index.html?url=demo%2FtextInputFields-examples%2Fall" target="_blank">See more Text Input Field samples</a>
-                                </div>
+                                </p>
                             </div>
                         </form>
                     </div>
@@ -178,9 +178,9 @@
                                         <button type="button" class="btn btn-success disabled" disabled>Disabled</button>
                                     </div>
                                 </div>
-                                <div>
+                                <p class="more-link">
                                     <a href="demo/index.html?url=demo%2Fbuttons-examples%2Fall" target="_blank">See more buttons</a>
-                                </div>
+                                </p>
                             </div>
                         </form>
                     </div>
@@ -194,7 +194,7 @@
                         <form>
                             <div class="well">
 
-                                <div class="control-group top-hr">
+                                <div class="control-group">
                                     <div class="controls">
                                         <label class="checkbox">
                                             <input type="checkbox" value="" />
@@ -233,9 +233,9 @@
                                             Disabled selected radio
                                         </label>
                                     </div>
-                                    <div style="margin-top: 10px;">
+                                    <p class="more-link">
                                         <a href="demo/index.html?url=demo%2Fcheckboxes-and-radiobuttons-examples%2Fall">See more checkboxes and radiobuttons ...</a>
-                                    </div>
+                                    </p>
                                 </div>
 
                             </div>
@@ -279,9 +279,9 @@
                                     </div>
                                 </div><!-- control-group -->
 
-                                <div style="margin-top: 10px;">
+                                <p class="more-link">
                                     <a href="demo/index.html?url=demo%2Fdropdown-button-with-menu-examples%2Fall">See more dropdown menus ...</a>
-                                </div>
+                                </p>
 
                             </div>
                         </form>
@@ -320,9 +320,9 @@
                                     </div>
                                 </div><!-- control-group -->
 
-                                <div style="margin-top: 10px;">
+                                <p class="more-link">
                                     <a href="demo/index.html?url=demo%2Fdropdown-examples%2Fall">See more dropdown list ...</a>
-                                </div>
+                                </p>
 
                             </div>
                         </form>
@@ -356,9 +356,9 @@
                                 <div id="button-list"></div>
                                 <button type="button" id="button-list-button" class="btn btn-primary">Click me</button>
                             </div>
-                            <div>
+                            <p class="more-link">
                                 <a href="demo/index.html?url=demo%2FmodalDialog-examples%2Fall" target="_blank">See more modal dialogs</a>
-                            </div>
+                            </p>
                         </div>
                     </div>
                 </div> <!-- .row-fluid -->
@@ -383,9 +383,9 @@
                                     data-content="It's so simple to create a popup!"
                                     style="min-width: 30px;">+</button></p>
                             </div>
-                            <div class="control-group">
+                            <p class="more-link">
                                 <a href="demo/index.html?url=demo%2FnonModalDialog-examples%2Fall">See more non-modal dialogs</a>
-                            </div>
+                            </p>
                         </div>
                     </div>
                 </div><!-- .row-fluid -->
@@ -443,9 +443,9 @@
                                     <div id="tab5" class="tab-pane">Container for Tab Five</div>
                                 </div>
                             </div>
-                            <div class="control-group">
+                            <p class="more-link">
                                 <a href="demo/index.html?url=demo%2Ftabbed-container-examples%2Fall">See more tabbed container</a>
-                            </div>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -455,30 +455,30 @@
         </div>
 
         <!-- 3rd party Shared JS Libs (not in git repo) -->
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-1.7.2.min.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ba-throttle-debounce-1.1.min.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/underscore_1.3.3.min.js"></script>
-        <script src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.3.2.min.js"></script>
+        <script type="text/javascript" src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ba-throttle-debounce-1.1.min.js"></script>
+        <script type="text/javascript" src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/underscore_1.3.3.min.js"></script>
+        <script type="text/javascript" src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.3.2.min.js"></script>
 
         <!-- tm360 Shared-UI JS -->
-        <script src="js/tm/core.js"></script>
-        <script src="js/tm/cookie.js"></script>
-        <script src="js/tm/string.js"></script>
-        <script src="js/tm/date.js"></script>
-        <script src="js/tm/shortlink.js"></script>
-        <script src="js/tm/widgets/widgetFactory.js"></script>
-        <script src="js/tm/widgets/modalDialog.js"></script>
-        <script src="js/tm/widgets/searchAndFilter.js"></script>
-        <script src="js/tm/widgets/checkableBase.js"></script>
-        <script src="js/tm/widgets/checkbox.js"></script>
-        <script src="js/tm/widgets/radiobutton.js"></script>
-        <script src="js/tm/widgets/popup.js"></script>
-        <script src="js/tm/widgets/tooltip.js"></script>
-        <script src="js/tm/widgets/dropdownMenu.js"></script>
-        <script src="js/tm/widgets/dropdown.js"></script>
-        <script src="js/tm/widgets/tabbedContainer.js"></script>
+        <script type="text/javascript" src="js/tm/core.js"></script>
+        <script type="text/javascript" src="js/tm/cookie.js"></script>
+        <script type="text/javascript" src="js/tm/string.js"></script>
+        <script type="text/javascript" src="js/tm/date.js"></script>
+        <script type="text/javascript" src="js/tm/shortlink.js"></script>
+        <script type="text/javascript" src="js/tm/widgets/widgetFactory.js"></script>
+        <script type="text/javascript" src="js/tm/widgets/modalDialog.js"></script>
+        <script type="text/javascript" src="js/tm/widgets/searchAndFilter.js"></script>
+        <script type="text/javascript" src="js/tm/widgets/checkableBase.js"></script>
+        <script type="text/javascript" src="js/tm/widgets/checkbox.js"></script>
+        <script type="text/javascript" src="js/tm/widgets/radiobutton.js"></script>
+        <script type="text/javascript" src="js/tm/widgets/popup.js"></script>
+        <script type="text/javascript" src="js/tm/widgets/tooltip.js"></script>
+        <script type="text/javascript" src="js/tm/widgets/dropdownMenu.js"></script>
+        <script type="text/javascript" src="js/tm/widgets/dropdown.js"></script>
+        <script type="text/javascript" src="js/tm/widgets/tabbedContainer.js"></script>
 
-        <script>
+        <script type="text/javascript">
             (function(){
 
                 function adjustDisplayArea(){

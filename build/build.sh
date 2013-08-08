@@ -23,6 +23,15 @@ cp ../js/tm/date.js $OUTDIR_JS/tm.date.js
 cp ../js/tm/shortlink.js $OUTDIR_JS/tm.shortlink.js
 cp ../js/tm/widgets/widgetFactory.js $OUTDIR_JS/tm.widgets.widgetFactory.js
 cp ../js/tm/widgets/modalDialog.js $OUTDIR_JS/tm.widgets.modalDialog.js
+cp ../js/tm/widgets/checkableBase.js $OUTDIR_JS/tm.widgets.checkableBase.js
+cp ../js/tm/widgets/radiobutton.js $OUTDIR_JS/tm.widgets.radiobutton.js
+cp ../js/tm/widgets/checkbox.js $OUTDIR_JS/tm.widgets.checkbox.js
+cp ../js/tm/widgets/dropdownMenu.js $OUTDIR_JS/tm.widgets.dropdownMenu.js
+cp ../js/tm/widgets/dropdown.js $OUTDIR_JS/tm.widgets.dropdown.js
+cp ../js/tm/widgets/popup.js $OUTDIR_JS/tm.widgets.popup.js
+cp ../js/tm/widgets/tooltip.js $OUTDIR_JS/tm.widgets.tooltip.js
+cp ../js/tm/widgets/tabbedContainer.js $OUTDIR_JS/tm.widgets.tabbedContainer.js
+cp ../js/tm/widgets/searchAndFilter.js $OUTDIR_JS/tm.widgets.searchAndFilter.js
 
 echo "Concatenating Javascript (tm-all.js)"
 cat $OUTDIR_JS/tm.js \
@@ -32,6 +41,15 @@ cat $OUTDIR_JS/tm.js \
     $OUTDIR_JS/tm.shortlink.js \
     $OUTDIR_JS/tm.widgets.widgetFactory.js \
     $OUTDIR_JS/tm.widgets.modalDialog.js \
+    $OUTDIR_JS/tm.widgets.checkableBase.js \
+    $OUTDIR_JS/tm.widgets.radiobutton.js \
+    $OUTDIR_JS/tm.widgets.checkbox.js \
+    $OUTDIR_JS/tm.widgets.dropdownMenu.js \
+    $OUTDIR_JS/tm.widgets.dropdown.js \
+    $OUTDIR_JS/tm.widgets.popup.js \
+    $OUTDIR_JS/tm.widgets.tooltip.js \
+    $OUTDIR_JS/tm.widgets.tabbedContainer.js \
+    $OUTDIR_JS/tm.widgets.searchAndFilter.js \
     > $OUTDIR_JS/tm-all.js
 
 echo "Uglifying Javascript (tm-all.min.js)"
@@ -50,6 +68,9 @@ echo "Concatenating CSS (tm360-all.css)"
 cat $OUTDIR_CSS/tm360-base.css \
     $OUTDIR_CSS/tm360-universal.css \
     $OUTDIR_CSS/tm360-shortlink.css \
+    $OUTDIR_CSS/tm360-dropdown.css \
+    $OUTDIR_CSS/tm360-popover.css \
+    $OUTDIR_CSS/tm360-tabbedContainer.css \
     > $OUTDIR_CSS/tm360-all.css
 
 echo "Minifying CSS (tm360-all.min.css)"
