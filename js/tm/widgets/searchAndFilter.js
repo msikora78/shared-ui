@@ -6,7 +6,7 @@
      *  @returns {Function} search-and-filter prototype
      */
 
-    function factory($) {
+    function factory($, tm) {
         /**
          *	Search-and-Filter's prototype with all the tm specific behaviors
          *	@class
@@ -111,9 +111,9 @@
 
     // If requirejs is present, we want to use it, otherwise, we want to use the global declarations to get the dependencies
     if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
+        define(['jquery', 'tm/core'], factory);
     } else {
-        tm.widgets.widgetFactory.make('tmSearchAndFilter', factory($));
+        tm.widgets.widgetFactory.make('tmSearchAndFilter', factory($, tm));
     }
 
 })();
