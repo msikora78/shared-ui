@@ -7,6 +7,7 @@
      *  Creates the popup prototype
      *  @returns {Function} popup prototype
      */
+
     function factory($, gadgets, tm) {
         var gadgetPrefs = new gadgets.Prefs();
         var defaultTemplate = '<div class="popover tmPopup"><div class="arrow"></div><div class="popover-inner"><h1 class="popover-title"></h1><div class="popover-content"></div></div></div>';
@@ -56,7 +57,7 @@
             if (opts.content == null) {
                 opts.content = element.attr('data-content') || '\n';
             }
-            opts.secondaryPlacement = opts.placement.split('-')[1]
+            opts.secondaryPlacement = opts.placement.split('-')[1];
             opts.placement = opts.placement.split('-')[0];
 
             if (element.attr('data-trigger') != null) {
@@ -81,10 +82,10 @@
 
                 if (opts.trigger != 'hover') {
                     $popup.focus();
-                    $('.popover').each(function(i, popup) { 
+                    $('.popover').each(function(i, popup) {
                         var $popupTarget = $(popup).prev();
                         if ($popupTarget[0] != element[0]) {
-                            $popupTarget.popover('hide'); 
+                            $popupTarget.popover('hide');
                         }
                     });
                 }
@@ -93,20 +94,18 @@
 
                 if ($target.data('popover').options.title != '') {
                     $popup.find('.popover-content').addClass('with-title');
-                }
-                else {
+                } else {
                     $popup.find('.popover-title').remove();
                 }
 
                 testPosition($target);
-                
+
                 if (opts.placement == 'bottom' || opts.placement == 'top') {
                     adjustVerticalPosition(opts, $target, $popup);
-                }
-                else {
+                } else {
                     adjustHorizontalPosition(opts, $target, $popup);
                 }
-                
+
                 // Fixes a bug where the arrow doesn't paint correctly on ie8
                 $popup.parent().addClass('ie8fix').removeClass('ie8fix');
 
@@ -116,7 +115,6 @@
                 else {
                     $popup.find('.arrow').show();
                 }
-
             });
 
             element.on('hidden.tmPopup', function(e) {
@@ -131,21 +129,35 @@
 
             element.addClass('tmPopupTarget');
 
+            var hideAllPopups = function() {
+                var $popIn = $('.popover.in');
+                if ($popIn.length > 0) {
+                    // this checkup was made if user click on body and quickly click on another popup button.
+                    var $autoClosePopopBtns = $('.tmPopupAutoClose');
+                    for (var i = 0; i < $autoClosePopopBtns.length; i++) {
+                        var $targetBtn = $($autoClosePopopBtns[i]);
+                        if ($targetBtn.data('tmPopup').getPopup().length) {
+                            $targetBtn.tmPopup('hide');
+                        }
+                    }
+                }
+            };
+
             if (opts.autoClose) {
                 element.addClass('tmPopupAutoClose');
                 if (!bodyInitialized) {
                     $('body').on('click', '.tmPopupTarget, .popover', false).on('click.tmPopup', function(e) {
-                        var $popIn = $('.popover.in');
-                        if ($popIn.length > 0) {
-                            // this checkup was made if user click on body and quickly click on another popup button.
-                            var $autoClosePopopBtns = $('.tmPopupAutoClose');
-                            for(var i = 0; i < $autoClosePopopBtns.length; i++){
-                                var $targetBtn = $($autoClosePopopBtns[i]);
-                                if ($targetBtn.data('tmPopup').getPopup().length)
-                                $targetBtn.tmPopup('hide');
-                            }
-                        }
+                        hideAllPopups();
                     });
+
+                    if (tm.touchDevice) {
+                        $('body').on('touchstart', function(e) {
+                            if (!$(e.target).hasClass('popover') && !$(e.target).hasClass('tmTooltip') && !$(e.target).parents('.popover').length) {
+                                hideAllPopups();
+                            }
+                        });
+                    }
+
                     bodyInitialized = true;
                 }
             }
@@ -171,7 +183,7 @@
             getPopup: function() {
                 return this.element.next('.popover');
             }
-        }
+        };
 
         function testPosition($target) {
             var $popup = $target.next('.popover');
@@ -181,14 +193,13 @@
                 if (offset.top - $target.offsetParent().scrollTop() < 0) {
                     $target.data('popover').options.placement = 'bottom';
                     $popup.removeClass('top').addClass('bottom');
-                } 
+                }
 
                 if (offset.bottom > $('body').innerHeight() + $target.offsetParent().scrollTop()) {
                     $target.data('popover').options.placement = 'top';
                     $popup.removeClass('bottom').addClass('top');
                 }
-            }
-            else {
+            } else {
                 if (offset.left - $target.offsetParent().scrollLeft() < 0) {
                     $target.data('popover').options.placement = 'right';
                     $popup.removeClass('left').addClass('right');
@@ -221,19 +232,23 @@
             }
 
             // Patch bootstrap's placement
-            $popup.offset({top: adjust});
+            $popup.offset({
+                top: adjust
+            });
 
             if (secondaryPlacement) {
                 switch (secondaryPlacement) {
                     case 'left':
-                        adjust = $target.offset().left + $target.outerWidth() - $popup.outerWidth()
+                        adjust = $target.offset().left + $target.outerWidth() - $popup.outerWidth();
                         break;
                     case 'right':
                         adjust = $target.offset().left;
                         break;
                 }
                 adjust = (adjust < 0) ? 0 : adjust;
-                $popup.offset({left: adjust});
+                $popup.offset({
+                    left: adjust
+                });
             }
 
             var showArrow = $target.data('popover').options.showArrow;
@@ -241,13 +256,15 @@
             if (showArrow && opts.secondaryPlacement && arrowIsMissPlaced) {
                 var horzAdjust = ($target.data('popover').options.secondaryPlacement == 'left') ? arrowOffset : arrowOffset * -1;
                 popupOffset = getOffset($popup);
-                $popup.offset({left: popupOffset.left + horzAdjust});
+                $popup.offset({
+                    left: popupOffset.left + horzAdjust
+                });
             }
 
             // Reposition arrow in middle of target
-            $arrow.css({ 
-                left: function() { 
-                    return ($target.offset().left - $popup.offset().left) + $target.outerWidth() / 2; 
+            $arrow.css({
+                left: function() {
+                    return ($target.offset().left - $popup.offset().left) + $target.outerWidth() / 2;
                 }
             });
         }
@@ -270,21 +287,27 @@
                     break;
             }
 
-            $popup.offset({left: (adjust < 0) ? 0 : adjust});
+            $popup.offset({
+                left: (adjust < 0) ? 0 : adjust
+            });
 
             if (opts.secondaryPlacement) {
                 switch (opts.secondaryPlacement) {
                     case 'top':
-                        adjust = $target.offset().top + $target.outerHeight() - $popup.outerHeight()
+                        adjust = $target.offset().top + $target.outerHeight() - $popup.outerHeight();
                         break;
                     case 'bottom':
                         adjust = $target.offset().top;
                         break;
                 }
                 adjust = (adjust < 0) ? 0 : adjust;
-                $popup.offset({top: adjust});
+                $popup.offset({
+                    top: adjust
+                });
                 if (popupOffset.bottom > $('body').innerHeight() + $target.offsetParent().scrollTop()) {
-                    $popup.offset({top: $('body').innerHeight() + $target.offsetParent().scrollTop() - $popup.outerHeight()});
+                    $popup.offset({
+                        top: $('body').innerHeight() + $target.offsetParent().scrollTop() - $popup.outerHeight()
+                    });
                 }
             }
 
@@ -293,13 +316,15 @@
             if (showArrow && opts.secondaryPlacement && arrowIsMissPlaced) {
                 var vertAdjust = ($target.data('popover').options.secondaryPlacement == 'top') ? arrowOffset : arrowOffset * -1;
                 popupOffset = getOffset($popup);
-                $popup.offset({top: popupOffset.top + vertAdjust});
+                $popup.offset({
+                    top: popupOffset.top + vertAdjust
+                });
             }
 
             // Replace arrow in middle of target
-            $arrow.css({ 
-                top: function() { 
-                    return ($target.offset().top - $popup.offset().top) + $target.outerHeight() / 2; 
+            $arrow.css({
+                top: function() {
+                    return ($target.offset().top - $popup.offset().top) + $target.outerHeight() / 2;
                 }
             });
         }
@@ -313,7 +338,7 @@
                 right: left + $element.outerWidth(),
                 top: top,
                 bottom: top + $element.outerHeight()
-            }
+            };
         }
 
         return Popup;

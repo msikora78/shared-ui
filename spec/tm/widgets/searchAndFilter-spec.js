@@ -1,9 +1,9 @@
-define(['injectable!tm/widgets/searchAndFilter', './util'], function(searchAndFilterInjectable, Util) {
+define(['injectable!tm/widgets/searchAndFilter', 'tm/core', './util'], function(searchAndFilterInjectable, core, Util) {
 
     describe('tm.widgets.searchAndFilter', function() {
         for (var version in jquery) {
             if (jquery.hasOwnProperty(version)) {
-                var SearchAndFilter = searchAndFilterInjectable(jquery[version]);
+                var SearchAndFilter = searchAndFilterInjectable(jquery[version], core);
                 runTest(jquery[version], Util, SearchAndFilter);
             }
         }

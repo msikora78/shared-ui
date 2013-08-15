@@ -520,7 +520,7 @@
 
 .tm360 .modal.fade.in,
 .tm360 .modal.in {
-    opacity: 100%;
+    opacity: 1;
 }
 
 .tm360 .modal.large {
@@ -688,5 +688,12 @@
     .tm360 .help-error-icon,
     .tm360 .search-clear-icon {
         background-image: url(img/grfx-tm360SDK@2x.png);
+    }
+
+    .tm360 .tmCheckbox,
+    .tm360 .tmRadiobutton{
+        margin-bottom: -4px;
+        background: url(img/grfx-tm360SDK@2x.png) no-repeat;
+        background-size: 350px 196px;
     }
 }

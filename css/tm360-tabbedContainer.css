@@ -1,7 +1,6 @@
 
 /* tab container */
 .tm360 .tabbed-container{
-
 }
 
 /* tab nav */
@@ -42,7 +41,7 @@
     padding: 7px 10px 3px 10px;
     margin: 0;
     text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.3);
-
+    text-decoration: none;
     -webkit-border-radius: 3px;
             border-radius: 3px;
 }
@@ -70,6 +69,9 @@
     background-image: linear-gradient(top, #4f5158, #202228);
     filter: progid:dximagetransform.microsoft.gradient(startColorstr='#4f5158', endColorstr='#202228', GradientType=0);
     filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
+.tm360 .tabbed-container .nav > li a:focus{
+    background: none;
 }
 
 /* tab content */

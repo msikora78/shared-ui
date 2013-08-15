@@ -4,19 +4,8 @@
 (function() {
 
     // factory method invoked by requirejs if present, else directly to populate window.tm
-    function factory(window, navigator) {
+    function factory(window, navigator, $) {
         var tm = window.tm || {};
-
-        /**
-         * @function
-         * Allows to load touch device specific css classes
-         */    
-        tm.allowTouchDeviceSupport = function() {
-            if ((/(iPad|iPhone|iPod|Android)/).test(navigator.userAgent)) {
-                $('body').addClass('touch');
-                document.addEventListener("touchstart", function(){}, true);
-            }
-        };
 
         /**
          * @function
@@ -47,7 +36,7 @@
             var current = window;
             for (var i=0, len=parts.length; i < len; i++) {
                 var next = current[parts[i]];
-                if (typeof(next) !== 'object' || jQuery.isArray(next)) {
+                if (typeof(next) !== 'object' || $.isArray(next)) {
                     current = current[parts[i]] = {};
                 }
                 else {
@@ -100,7 +89,7 @@
             inheritedMethods.prototype = baseClass.prototype;
             currentClass.prototype = new inheritedMethods();
         };
-        
+
         /**
          * @function
          * Copies all properties from one or more objects into a new object. 
@@ -127,7 +116,6 @@
             }
             return combined;
         };
-
 
         /**
          * @function
@@ -185,9 +173,11 @@
         tm.touchDevice = 'ontouchstart' in document.documentElement;
 
         /**
-         * Add notouch class to html node if touch device (like Modernizr)
+         * Add notouch class to html tag if not touch device (like Modernizr), else add touch class to body tag
          */
-        if (!tm.touchDevice){
+        if (tm.touchDevice){
+            $('body').addClass('touch');
+        } else {
             var docEl = document.documentElement;
             docEl.className = docEl.className.length ? (docEl.className + " notouch") : "notouch";
         }
@@ -197,7 +187,7 @@
 
     // Use requirejs to manage dependencies, if available
     if (typeof define === 'function' && define.amd) {
-        define(['global!window', 'global!navigator'], factory);
+        define(['global!window', 'global!navigator', 'jquery'], factory);
     }
     else {
         /** Prevent console.log from blowing up if it's not available. */
@@ -215,15 +205,7 @@
             }
         }
 
-        /** Check for jQuery */
-        if (!window.jQuery){
-            console.log("missing jQuery");
-        }
-
-        window.tm = factory(window, navigator);
+        window.tm = factory(window, navigator, $);
     }
 
 })();
-
-
-

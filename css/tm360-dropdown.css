@@ -77,7 +77,10 @@
     padding: 8px 0 10px 0;
     min-width: auto;
 }
-
+.tm360 .btn-group .dropdown-menu li a,
+.tm360 .btn-group .dropdown-menu li a:hover{
+    text-decoration: none;
+}
 .tm360 .btn-group.open > .btn.dropdown-toggle,
 .tm360.touch .btn-group.open > .btn.dropdown-toggle {
     background-image: none;
@@ -111,9 +114,9 @@
     padding: 0;
 }
 
-.tm360 .dropdown-menu a,
-.tm360 .dropdown-menu a:visited,
-.tm360 .dropdown-menu a:focus {
+.tm360 .dropdown-menu li a,
+.tm360 .dropdown-menu li a:visited,
+.tm360 .dropdown-menu li a:focus {
     color: #4F5158;
     background-color: transparent;
     background-image: none;
@@ -127,14 +130,18 @@
     white-space: normal;
 }
 
-.tm360 .dropdown-menu a.nowrap {
+.tm360 .dropdown-menu li a:focus{
+    background-color: #ebebee;
+}
+
+.tm360 .dropdown-menu li a.nowrap {
     overflow-x: hidden !important;
     text-overflow: ellipsis !important;
     white-space: nowrap !important;
 }
 
-.tm360 .dropdown-menu a.hover,
-.tm360 .dropdown-menu a:hover,
+.tm360 .dropdown-menu li a.hover,
+.tm360 .dropdown-menu li a:hover,
 .tm360 .dropdown-menu li > a:hover,
 .tm360 .dropdown-menu .active a:hover {
     color: #4F5158;
@@ -147,10 +154,13 @@
     background-image: linear-gradient(top, #ebebee, #ebebee);
     filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ebebee', endColorstr='#ebebee', GradientType=0);
     filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+
+    text-shadow: none;
+    filter: dropshadow(color=#0, offx=0, offy=0);
 }
 
-.tm360 .dropdown-menu.dropdown-list a:active,
-.tm360 .dropdown-menu.dropdown-list a.selected{
+.tm360 .dropdown-menu.dropdown-list li a:active,
+.tm360 .dropdown-menu.dropdown-list li a.selected{
     color: white;
     background-color: #4f5158;
     background-image: -ms-linear-gradient(top, #4f5158, #4f5158);
@@ -161,4 +171,7 @@
     background-image: linear-gradient(top, #4f5158, #4f5158);
     filter: progid:dximagetransform.microsoft.gradient(startColorstr='#4f5158', endColorstr='#4f5158', GradientType=0);
     filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+
+    text-shadow: none;
+    filter: dropshadow(color=#0, offx=0, offy=0);
 }

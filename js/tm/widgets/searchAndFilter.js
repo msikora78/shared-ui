@@ -7,6 +7,7 @@
      */
 
     function factory($, tm) {
+
         /**
          *	Search-and-Filter's prototype with all the tm specific behaviors
          *	@class

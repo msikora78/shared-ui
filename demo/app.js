@@ -21,59 +21,59 @@ requirejs.config({
 });
 
 define('global!gadgets', ['mock/gadgetPrefMock'], function(gadgetPrefMock) {
-	var prefs = gadgetPrefMock({
-		'tm.widgets.modalDialog.ok': 'OK'
-	});
+    var prefs = gadgetPrefMock({
+        'tm.widgets.modalDialog.ok': 'OK'
+    });
 
-	return {
-		Prefs: function() {
-			return prefs;
-		}
-	};
+    return {
+        Prefs: function() {
+            return prefs;
+        }
+    };
 });
 
 define('console', ['jquery'], function($) {
-	return console || (function() {
-		var noOp = function() {};
-		var surrogate = {};
+    return console || (function() {
+        var noOp = function() {};
+        var surrogate = {};
 
-		$.each(['info', 'log', 'warn', 'error', 'dir'], function(i, name) {
-			surrogate[name] = noOp;
-		});
+        $.each(['info', 'log', 'warn', 'error', 'dir'], function(i, name) {
+            surrogate[name] = noOp;
+        });
 
-		return surrogate;
-	})();
+        return surrogate;
+    })();
 });
 
 define('navigator', [], function() {
-	return navigator;
+    return navigator;
 });
 
 define('window', [], function() {
-	return window;
+    return window;
 });
 
 var url = decodeURIComponent(location.search.match(/\burl=(.*)(?:&|$)/)[1]);
 
 requirejs(['jquery', 'tm/core', url, 'jquery.throttle'], function($, tm, data) {
-	var previous = $('#examples');
+    var previous = $('#examples');
 
-	$('h1').text(data.title);
+    $('h1').text(data.title);
 
-	function cleanCode(code) {
-		var lines = code.replace(/\t/g, '    ').split('\n');
-		var spaceCount = lines[lines.length - 1].search(/\S/);
+    function cleanCode(code) {
+        var lines = code.replace(/\t/g, '    ').split('\n');
+        var spaceCount = lines[lines.length - 1].search(/\S/);
 
-		for (var i = 0; i < lines.length; i++) {
-			var index = lines[i].search(/\S/);
+        for (var i = 0; i < lines.length; i++) {
+            var index = lines[i].search(/\S/);
 
-			if (index >= spaceCount) {
-				lines[i] = lines[i].substr(spaceCount);
-			}
-		}
+            if (index >= spaceCount) {
+                lines[i] = lines[i].substr(spaceCount);
+            }
+        }
 
-		return lines.join('\n');
-	}
+        return lines.join('\n');
+    }
 
     $.each(data.examples, function(i, example) {
         // new dom node for this example
@@ -119,12 +119,11 @@ requirejs(['jquery', 'tm/core', url, 'jquery.throttle'], function($, tm, data) {
         }
     });
 
-	prettyPrint();
+    prettyPrint();
 
-	$(window).resize($.throttle(200, function() {
-		tm.widthCheck(false);
-	}));
+    $(window).resize($.throttle(200, function() {
+        tm.widthCheck(false);
+    }));
 
-	tm.widthCheck(false);
-	tm.allowTouchDeviceSupport();
+    tm.widthCheck(false);
 });

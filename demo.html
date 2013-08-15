@@ -127,8 +127,9 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
+                                    <label class="control-label" for="inputDisabled">Disabled Input</label>
                                     <div class="controls">
-                                        <input type="text" value="Disabled" disabled />
+                                        <input type="text" id="inputDisabled" value="Disabled" disabled />
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -234,7 +235,7 @@
                                         </label>
                                     </div>
                                     <p class="more-link">
-                                        <a href="demo/index.html?url=demo%2Fcheckboxes-and-radiobuttons-examples%2Fall">See more checkboxes and radiobuttons ...</a>
+                                        <a href="demo/index.html?url=demo%2Fcheckboxes-and-radiobuttons-examples%2Fall" target="_blank">See more checkboxes and radiobuttons ...</a>
                                     </p>
                                 </div>
 
@@ -253,34 +254,30 @@
                                 <div class="control-group">
                                     <div class="controls demo-group">
                                         <div class="btn-group">
-                                            <a id="dropdownMenu1" class="btn dropdown-toggle" data-toggle="dropdown" href="#">Dropdown Label</a>
+                                            <a id="dropdownMenu1" class="btn dropdown-toggle" data-toggle="dropdown" href="#">Select Action</a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="#1">Item 1</a></li>
-                                                <li><a href="#2">Item 2</a></li>
-                                                <li><a href="#3">Item 3</a></li>
-                                                <li><a href="#4">Item 4</a></li>
-                                                <li><a href="#5">Item 5</a></li>
+                                                <li><a href="#1">Action 1</a></li>
+                                                <li><a href="#2">Action 2</a></li>
+                                                <li><a href="#3">Action 3</a></li>
+                                                <li><a href="#4">Action 4</a></li>
+                                                <li><a href="#5">Action 5</a></li>
                                             </ul>
                                         </div>
-                                    </div>
-                                </div><!-- control-group -->
-                                <div class="control-group">
-                                    <div class="controls demo-group">
                                         <div class="btn-group">
-                                            <a id="dropdownMenu2" class="btn dropdown-toggle" data-toggle="dropdown" href="#">Extra Long Dropdown Label Extra Long</a>
+                                            <a id="dropdownMenu2" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">Select Action</a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="#1">Item 1 with an extra, extra, extra, extra long label</a></li>
-                                                <li><a href="#2">Item 2</a></li>
-                                                <li><a href="#3">Item 3</a></li>
-                                                <li><a href="#4">Item 4</a></li>
-                                                <li><a href="#5">Item 5</a></li>
+                                                <li><a href="#1">Action 1</a></li>
+                                                <li><a href="#2">Action 2</a></li>
+                                                <li><a href="#3">Action 3</a></li>
+                                                <li><a href="#4">Action 4</a></li>
+                                                <li><a href="#5">Action 5</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div><!-- control-group -->
 
                                 <p class="more-link">
-                                    <a href="demo/index.html?url=demo%2Fdropdown-button-with-menu-examples%2Fall">See more dropdown menus ...</a>
+                                    <a href="demo/index.html?url=demo%2Fdropdown-button-with-menu-examples%2Fall" target="_blank">See more dropdown menus ...</a>
                                 </p>
 
                             </div>
@@ -298,30 +295,17 @@
                                 <div class="control-group">
                                     <div class="controls demo-group">
                                         <div class="btn-group">
-                                            <a id="dropdownList1" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">Dropdown Label</a>
+                                            <a id="dropdownList1" class="btn dropdown-toggle" data-toggle="dropdown" href="#">Select</a>
                                             <ul class="dropdown-menu">
-                                                <li><a data-value="Action1">Action 1</a></li>
-                                                <li><a data-value="Action2">Action 2</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div><!-- control-group -->
-                                <div class="control-group">
-                                    <div class="controls demo-group">
-                                        <div class="btn-group">
-                                            <a id="dropdownList2" class="btn dropdown-toggle" data-toggle="dropdown" href="#">Extra Long Dropdown Label Extra Long</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a data-value="Action1">Item 1 with an extra, extra long label</a></li>
-                                                <li><a data-value="Action2">Action 2</a></li>
-                                                <li><a data-value="Action3">Action 3</a></li>
-                                                <li><a data-value="Action4">Action 4</a></li>
+                                                <li><a data-value="Action1">Item 1</a></li>
+                                                <li><a data-value="Action2">Item 2</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div><!-- control-group -->
 
                                 <p class="more-link">
-                                    <a href="demo/index.html?url=demo%2Fdropdown-examples%2Fall">See more dropdown list ...</a>
+                                    <a href="demo/index.html?url=demo%2Fdropdown-examples%2Fall" target="_blank">See more dropdown list ...</a>
                                 </p>
 
                             </div>
@@ -365,7 +349,7 @@
 
                 <div class="row-fluid">
                     <div class="span3">
-                        <h5>8. Non-Modal Dialogs</h5>
+                        <h5>Non-Modal Dialogs</h5>
                     </div>
                     <div class="span9">
                         <div class="well">
@@ -373,18 +357,16 @@
                                 <p><a id="tooltipTarget"
                                     title="It's so simple to create a tooltip!"
                                     data-placement="top">Tooltip</a></p>
-                                <p><button type="button" class="btn" id="popupTarget"
-                                    title="Popup's title" 
-                                    data-content="It's so simple to create a popup!">Pop up</button>
-                                <button type="button" class="btn" id="popupWithNoTitle"
-                                    data-content="It's so simple to create a popup!">Pop up with no Title</button>
-                                <button type="button" class="btn" id="popupWithArrowTargetLittle"
-                                    title="Popup's title" 
-                                    data-content="It's so simple to create a popup!"
-                                    style="min-width: 30px;">+</button></p>
+                                <p>
+                                    <button type="button" class="btn" id="popupTarget"
+                                        title="Popup's title" 
+                                        data-content="It's so simple to create a popup!">Pop up</button>
+                                    <button type="button" class="btn" id="popupWithNoTitle"
+                                        data-content="It's so simple to create a popup!">Pop up with no Title</button>
+                                </p>
                             </div>
                             <p class="more-link">
-                                <a href="demo/index.html?url=demo%2FnonModalDialog-examples%2Fall">See more non-modal dialogs</a>
+                                <a href="demo/index.html?url=demo%2FnonModalDialog-examples%2Fall" target="_blank">See more non-modal dialogs</a>
                             </p>
                         </div>
                     </div>
@@ -444,7 +426,7 @@
                                 </div>
                             </div>
                             <p class="more-link">
-                                <a href="demo/index.html?url=demo%2Ftabbed-container-examples%2Fall">See more tabbed container</a>
+                                <a href="demo/index.html?url=demo%2Ftabbed-container-examples%2Fall" target="_blank">See more tabbed container</a>
                             </p>
                         </div>
                     </div>
@@ -535,12 +517,10 @@
                     $("#dropdownMenu1").tmDropdownMenu();
                     $("#dropdownMenu2").tmDropdownMenu();
                     $("#dropdownList1").tmDropdown();
-                    $("#dropdownList2").tmDropdown();
 
                     // Non-modals
                     $("#tooltipTarget").tmTooltip();
                     $("#popupTarget").tmPopup();
-                    $("#popupWithArrowTargetLittle").tmPopup();
                     $("#popupWithNoTitle").tmPopup();
 
                     $('#tabbed-container-overview1').tmTabbedContainer();
