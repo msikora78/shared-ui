@@ -156,7 +156,7 @@
     filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 
     text-shadow: none;
-    filter: dropshadow(color=#0, offx=0, offy=0);
+    filter: dropshadow(color=#000, offx=0, offy=0);
 }
 
 .tm360 .dropdown-menu.dropdown-list li a:active,
@@ -173,5 +173,5 @@
     filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 
     text-shadow: none;
-    filter: dropshadow(color=#0, offx=0, offy=0);
+    filter: dropshadow(color=#000, offx=0, offy=0);
 }

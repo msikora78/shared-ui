@@ -656,7 +656,6 @@
     border: 1px solid #4f5158;
 }
 
-/* For iPad portrait layouts only */
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
     .tm360 .help-error-icon {
         width: 18px;
@@ -665,12 +664,10 @@
         margin-top: 2px;
     }
 }
-/* fix to keep @media declarations on a new line after less compilation */
 .lessSep1 {
     zoom: 1;
 }
 
-/* For iPad landscape layouts only */
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
     .tm360 .help-error-icon {
         width: 18px;
@@ -683,7 +680,6 @@
     zoom: 1;
 }
 
-/* high-resolution (Retina) */
 @media (min-resolution: 120dpi), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 1.25dppx) { 
     .tm360 .help-error-icon,
     .tm360 .search-clear-icon {

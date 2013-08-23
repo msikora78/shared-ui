@@ -85,16 +85,7 @@ body {
     width: 944px;
 }
 
-/* For general iPad layouts */
-@media only screen and (device-width: 768px) {
 
-}
-/* fix to keep @media declarations on a new line after less compilation */
-.atSep3 {
-    padding: 0;
-}
-
-/* For iPad portrait layouts only */
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
     body {
         zoom: 81.355932%;
@@ -104,7 +95,6 @@ body {
     padding: 0;
 }
 
-/* For iPad landscape layouts only */
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
     body {
         zoom: 108.474576%;
