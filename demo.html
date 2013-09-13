@@ -11,8 +11,13 @@
         <title>tm360 Shared UI Demo</title>
 
         <!-- 3rd party Shared CSS Libs (not in git repo) -->
-        <link rel="stylesheet" type="text/css" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/normalize-1.1.0.css" />
-        <link rel="stylesheet" type="text/css" href="https://portal.shared.dev2.websys.tmcs/shared/css/lib/bootstrap-2.3.2/css/bootstrap.min.css" />
+        <!-- Use these when committing to tm360 SVN instead of cdnjs.
+        <link rel="stylesheet" type="text/css" href="/shared/css/lib/normalize-1.1.0.css" />
+        <link rel="stylesheet" type="text/css" href="/shared/css/lib/bootstrap-2.3.2/css/bootstrap.min.css" />
+        -->
+
+        <link rel="stylesheet" type="text/css" href="https://raw.github.com/necolas/normalize.css/v1.1.0/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" />
 
         <!-- tm360 Shared-UI CSS -->
         <link rel="stylesheet" type="text/css" href="css/tm360-base.css" />
@@ -62,7 +67,6 @@
                         <h1>Shared UI Demos</h1>
                         <p style="padding-left: 1em" id="pIntro">This is the demo page for tm360 Shared-UI components. </p>
                         <p style="padding-left: 1em">Javascript unit tests are available for <a href="specRunner.html" target="_blank">utility methods</a> and <a href="specRunner-requirejs.html" target="_blank">Widgets (uses RequireJS)</a>.</p>
-                        <p style="padding-left: 1em">Note: This page references assets on Dev2. If layout isn't being rendered properly, <a href="https://portal.shared.dev2.websys.tmcs/" target="_blank">click here</a> to "unlock", then return to this page and refresh.</p>
                         <p>&nbsp;</p>
                     </div>
                 </div>
@@ -459,10 +463,18 @@
         </div>
 
         <!-- 3rd party Shared JS Libs (not in git repo) -->
-        <script type="text/javascript" src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery-1.7.2.min.js"></script>
-        <script type="text/javascript" src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/jquery.ba-throttle-debounce-1.1.min.js"></script>
-        <script type="text/javascript" src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/underscore_1.3.3.min.js"></script>
-        <script type="text/javascript" src="https://portal.shared.dev2.websys.tmcs/shared/js/lib/bootstrap-2.3.2.min.js"></script>
+        <!-- Use these when committing to tm360 SVN instead of cdnjs.
+        <script type="text/javascript" src="/shared/js/lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="/shared/js/lib/jquery.ba-throttle-debounce-1.1.min.js"></script>
+        <script type="text/javascript" src="/shared/js/lib/underscore_1.3.3.min.js"></script>
+        <script type="text/javascript" src="/shared/js/lib/bootstrap-2.3.2.min.js"></script>
+        -->
+
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+
 
         <!-- tm360 Shared-UI JS -->
         <script type="text/javascript" src="js/tm/core.js"></script>
