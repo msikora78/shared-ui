@@ -27,6 +27,7 @@
          */
         var Tooltip = function(element, opts) {
             var opts = $.extend({}, defaults, opts);
+            opts.autoClose = true;
 
             if (opts.placement == null) {
                 opts.placement = element.attr('data-placement') || 'bottom';
@@ -40,7 +41,7 @@
 
     // If requirejs is present, we want to use it, otherwise, we want to use the global declarations to get the dependencies
     if (typeof define === 'function' && define.amd) {
-        define(['jquery', 'global!gadgets', 'tm/core', 'tm/widgets/popup' ], factory);
+        define(['jquery', 'global!gadgets', 'tm/core', 'tm/widgets/popup'], factory);
     } else {
         tm.widgets.widgetFactory.make('tmTooltip', factory($, gadgets, tm));
     }

@@ -15,5 +15,6 @@ define([
     'spec/tm/widgets/popup-spec',
     'spec/tm/widgets/tabbedContainer-spec',
     'spec/tm/widgets/textInputField-spec',
-    'spec/tm/widgets/searchAndFilter-spec'
+    'spec/tm/widgets/searchAndFilter-spec',
+    'spec/tm/errorDialog-spec'
 ]);

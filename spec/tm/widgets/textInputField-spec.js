@@ -65,11 +65,10 @@ define(['./util'], function(Util) {
                         expect($input.outerHeight()).toBe(28);
                     });
 
-                    it('should be 12px Arial Regular, #4f5158', function() {
+                    it('should be 12px Arial Regular', function() {
                         expect($input.css('font-family')).toContain('Arial');
                         expect($input.css('font-size')).toBe('12px');
                         Util.evaluateFontWeight($input, false);
-                        Util.evaluateColor($input, '4f5158');
                     });
 
                     it('should have label with 12px Arial Bold, #4f5158', function() {
@@ -81,14 +80,18 @@ define(['./util'], function(Util) {
 
                     if (opts.isDisabled){
                         // disabled
+                        it('should have #c8c9ce text', function() {
+                            Util.evaluateColor($input, 'c8c9ce');
+                        });
+
                         it('should have a #f5f5f7 background', function() {
                             Util.evaluateBackgroundColor($input, Util.convertHexaToRgb("f5f5f7"));
                         });
 
                         //it('should have a 1px #ebebee border', function() {
-                        it('should have a 1px #c8c9ce border', function() {
+                        it('should have a 1px #ebebee border', function() {
                             Util.evaluateBorderWidth($input, '1px');
-                            Util.evaluateBorderColor($input,  Util.convertHexaToRgb("c8c9ce"));
+                            Util.evaluateBorderColor($input,  Util.convertHexaToRgb("ebebee"));
                         });
 
                         it('should have no shadow', function() {
@@ -103,6 +106,10 @@ define(['./util'], function(Util) {
 
                     } else {
                         // not disabled
+                        it('should have #4f5158 text', function() {
+                            Util.evaluateColor($input, '4f5158');
+                        });
+
                         it('should have a #fff background', function() {
                             Util.evaluateBackgroundColor($input, Util.convertHexaToRgb("ffffff"));
                         });
@@ -120,12 +127,10 @@ define(['./util'], function(Util) {
                                 expect(shadow.toString()).toBe(Util.convertHexaToRgba('f03848', '0.25') + ' inset 1px 1px 1px 0px');
                             });
 
-                            it('should have a 16x16 graphic icon using sprite grfx-tm360SDK.png with -44px -82px offset', function(){
+                            it('should have a graphic icon using sprite grfx-tm360SDK.png with -44px -82px offset', function(){
                                 expect($errorIcon.css('display')).toBe('inline-block');
                                 expect($errorIcon.css('background-image')).toContain('grfx-tm360SDK.png');
                                 expect($errorIcon.css('background-position')).toBe("-44px -82px");
-                                expect($errorIcon.css('width')).toBe('16px');
-                                expect($errorIcon.css('height')).toBe('16px');
                             });
 
                             it('should have error text with 11px Arial Regular #f03848', function(){

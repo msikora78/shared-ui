@@ -20,10 +20,14 @@
 .tm360 .popover .popover-content.with-title {
     padding-top: 15px;
 }
-
+.tm360 .popover .popover-content .btn{
+    margin: 0 3px 0 3px;
+}
 .tm360 .popover .popover-title {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
     color: #4f5158;
-    font-family: "MuseoSans500";
     opacity: 1;
     padding: 0px;
     -webkit-border-radius: 0px;
@@ -34,6 +38,7 @@
 }
 
 .tm360 .popover h1.popover-title {
+    font-family: "MuseoSans500";
     font-size: 18px;
     line-height: normal;
 }
@@ -75,6 +80,13 @@
 }
 .tm360 .popover.right .arrow:after{
     border-right-color: #fff !important;
+}
+.tm360 a.tmPopupTarget{
+    cursor: pointer;
+}
+.tm360.touch .tmPopupTarget.active{
+    text-decoration: none;
+    color: #08c;
 }
 .tm360 .btn.tmPopupTarget.active,
 .notouch .tm360 .btn.tmPopupTarget.active:hover{

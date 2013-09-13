@@ -7,7 +7,7 @@ define(['jquery', 'angular', 'bootstrap', 'widget!tm/widgets/dropdownMenu'], fun
         html: '\
             <div id="angularIntegrationContainer" class="demo-container" ng-controller="dropdownController">\n\
                 <div class="btn-group">\n\
-                    <button class="btn dropdown-toggle" tm-dropdown-menu >Select action<span class="caret"/></button>\n\
+                    <button class="btn dropdown-toggle" tm-dropdown-menu >Select Action<span class="caret"/></button>\n\
                     <ul class="dropdown-menu">\n\
                         <li ng-repeat="item in items"><a tabindex="-1" href="#dropDownMenu{{item.url}}">{{item.title}}</a></li>\n\
                     </ul>\n\

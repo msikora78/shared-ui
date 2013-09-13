@@ -1,64 +1,69 @@
 (function() {
-	"use strict";
+    "use strict";
 
-	function factory($, gadgets, tm, checkableBase) {
+    function factory($, gadgets, tm, checkableBase) {
 
-		var Radiobutton = function(element, opts) {
-			this.spriteLeft = "184";
-			this.spriteHeight = "24";
-			this.spriteWidth = "24";
-			this.spriteTop = "6";
-			this.className = "tmRadiobutton";
+        var Radiobutton = function(element, opts) {
 
-			checkableBase.call(this, element, opts);
+            if (tm.hiResDisplay) {
+                this.spriteTop = "8";
+            } else {
+                this.spriteTop = "6";
+            }
+            this.spriteLeft = "184";
+            this.spriteHeight = "24";
+            this.spriteWidth = "24";
+            this.className = "tmRadiobutton";
 
-			this.groupName = $(this.element).attr("name");
-			this.parentForm = this.element.closest('form');
-			if (this.parentForm.length == 0) {
-				this.parentForm = $("body");
-			};
-		};
+            checkableBase.call(this, element, opts);
 
-		tm.inheritMethods(checkableBase, Radiobutton);
+            this.groupName = $(this.element).attr("name");
+            this.parentForm = this.element.closest('form');
+            if (this.parentForm.length == 0) {
+                this.parentForm = $("body");
+            }
+        };
 
-		Radiobutton.prototype._manageRadiobuttonGroupState = function() {
-			var self = this,
-				groupName = this.element.attr("name");
-			$.each($('input[name="' + groupName + '"]'), function(index, element){
-				self._setState(false, $(element));
-			});
-			
-			this._setState(true);
-		}
+        tm.inheritMethods(checkableBase, Radiobutton);
 
-		Radiobutton.prototype.getGroupSelection = function() {
-			this.group = this.parentForm.find('input[type="radio"][name="' + this.groupName + '"]');
+        Radiobutton.prototype._manageRadiobuttonGroupState = function() {
+            var self = this,
+                groupName = this.element.attr("name");
+            $.each($('input[name="' + groupName + '"]'), function(index, element) {
+                self._setState(false, $(element));
+            });
 
-			for (var i = 0; i < this.group.length; i++) {
-				if ($(this.group[i]).prop("checked")) {
-					return $(this.group[i]);
-				}
-			}
+            this._setState(true);
+        };
 
-			return undefined;
-		};
+        Radiobutton.prototype.getGroupSelection = function() {
+            this.group = this.parentForm.find('input[type="radio"][name="' + this.groupName + '"]');
 
-		Radiobutton.prototype._onClick = function(e) {
-			this._manageRadiobuttonGroupState();
-		}
-		
-		Radiobutton.prototype._onElementClick = function(e) {
-			this._manageRadiobuttonGroupState();
-		}
+            for (var i = 0; i < this.group.length; i++) {
+                if ($(this.group[i]).prop("checked")) {
+                    return $(this.group[i]);
+                }
+            }
 
-		return Radiobutton;
-	}
+            return undefined;
+        };
 
-	// If requirejs is present, we want to use it, otherwise, we want to use the global declarations to get the dependencies
-	if (typeof define === 'function' && define.amd) {
-		define(['jquery', 'global!gadgets', 'tm/core', 'tm/widgets/checkableBase', 'bootstrap'], factory);
-	} else {
-		tm.widgets.widgetFactory.make('tmRadiobutton', factory($, gadgets, tm, tm.widgets.checkableBase));
-	}
+        Radiobutton.prototype._onClick = function(e) {
+            this._manageRadiobuttonGroupState();
+        };
+
+        Radiobutton.prototype._onElementClick = function(e) {
+            this._manageRadiobuttonGroupState();
+        };
+
+        return Radiobutton;
+    }
+
+    // If requirejs is present, we want to use it, otherwise, we want to use the global declarations to get the dependencies
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery', 'global!gadgets', 'tm/core', 'tm/widgets/checkableBase', 'bootstrap'], factory);
+    } else {
+        tm.widgets.widgetFactory.make('tmRadiobutton', factory($, gadgets, tm, tm.widgets.checkableBase));
+    }
 
 })();

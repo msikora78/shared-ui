@@ -8,7 +8,7 @@ define(['jquery', 'angular', 'tm/core', 'widget!tm/widgets/popup'], function($, 
             <div id="angular-integration" ng-controller="angularIntegrationCtrl">\n\
                 <div id="popupTemplate">\n\
                     <div class="popup-body">\n\
-                        Enter your name: <input type="text" ng-model="objectToEdit.name" />\n\
+                        <label>Enter name<input type="text" ng-model="objectToEdit.name"></label>\n\
                     </div>\n\
                     <div class="popover-footer">\n\
                         <button type="button" ng-click="cancel()" class="btn">Cancel</button>\n\

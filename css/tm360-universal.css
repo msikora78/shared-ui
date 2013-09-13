@@ -520,7 +520,7 @@
 
 .tm360 .modal.fade.in,
 .tm360 .modal.in {
-    opacity: 100%;
+    opacity: 1;
 }
 
 .tm360 .modal.large {
@@ -559,6 +559,19 @@
 
 .tm360 .modal-body p {
     margin: 0;
+}
+
+.tm360 .modal .error-message {
+    line-height: 24px;
+}
+
+.tm360 .modal .error-message:before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    background: url(img/grfx-tm360SDK.png) -10px -82px no-repeat;
+    float: left; 
+    margin: 0 10px 6px 0; 
 }
 
 .tm360 .modal-footer {
@@ -656,7 +669,6 @@
     border: 1px solid #4f5158;
 }
 
-/* For iPad portrait layouts only */
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
     .tm360 .help-error-icon {
         width: 18px;
@@ -665,12 +677,10 @@
         margin-top: 2px;
     }
 }
-/* fix to keep @media declarations on a new line after less compilation */
 .lessSep1 {
     zoom: 1;
 }
 
-/* For iPad landscape layouts only */
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
     .tm360 .help-error-icon {
         width: 18px;
@@ -683,10 +693,17 @@
     zoom: 1;
 }
 
-/* high-resolution (Retina) */
 @media (min-resolution: 120dpi), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 1.25dppx) { 
     .tm360 .help-error-icon,
-    .tm360 .search-clear-icon {
+    .tm360 .search-clear-icon,
+    .tm360 .modal .error-message:before {
         background-image: url(img/grfx-tm360SDK@2x.png);
+    }
+
+    .tm360 .tmCheckbox,
+    .tm360 .tmRadiobutton{
+        margin-bottom: -4px;
+        background: url(img/grfx-tm360SDK@2x.png) no-repeat;
+        background-size: 350px 196px;
     }
 }
