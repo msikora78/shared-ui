@@ -273,11 +273,18 @@
                 this.unbindBackdropClick();
             },
             /**
-             *	Sets the content and render it
-             * 	@param {Object} value to render
+             *  Sets the content and render it
+             *  @param {Object} value to render
              */
             setContent: function(value) {
                 this.body.empty().append(this.renderer(value));
+            },
+            /**
+             *  Sets the title and renders it
+             *  @param {String} value to render
+             */
+            setTitle: function(value) {
+                this.header.find("h3").text(value);
             }
         }
 

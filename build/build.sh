@@ -32,6 +32,7 @@ cp ../js/tm/widgets/popup.js $OUTDIR_JS/tm.widgets.popup.js
 cp ../js/tm/widgets/tooltip.js $OUTDIR_JS/tm.widgets.tooltip.js
 cp ../js/tm/widgets/tabbedContainer.js $OUTDIR_JS/tm.widgets.tabbedContainer.js
 cp ../js/tm/widgets/searchAndFilter.js $OUTDIR_JS/tm.widgets.searchAndFilter.js
+cp ../js/tm/errorDialog.js $OUTDIR_JS/tm.errorDialog.js
 
 echo "Concatenating Javascript (tm-all.js)"
 cat $OUTDIR_JS/tm.js \
@@ -50,6 +51,7 @@ cat $OUTDIR_JS/tm.js \
     $OUTDIR_JS/tm.widgets.tooltip.js \
     $OUTDIR_JS/tm.widgets.tabbedContainer.js \
     $OUTDIR_JS/tm.widgets.searchAndFilter.js \
+    $OUTDIR_JS/tm.errorDialog.js \
     > $OUTDIR_JS/tm-all.js
 
 echo "Uglifying Javascript (tm-all.min.js)"
