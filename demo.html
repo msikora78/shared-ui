@@ -44,7 +44,12 @@
         <script type="text/javascript">
             // mock gadgets.Prefs for modalDialog
             var Prefs = function(){};
-            Prefs.prototype.getMsg = function() {};
+            Prefs.prototype.getMsg = function(msg) {
+                if (msg === 'tm.widgets.modalDialog.ok'){
+                    return 'OK';
+                }
+                return '';
+            };
             gadgets = {Prefs : Prefs};
         </script>
 
@@ -349,6 +354,23 @@
 
                 <div class="row-fluid">
                     <div class="span3">
+                        <h5>Error Dialog</h5>
+                    </div>
+                    <div class="span9">
+                        <div class="well">
+                            <div class="control-group">
+                                <div id="error-container"></div>
+                                <button type="button" id="error-dialog-button" class="btn">Click me</button>
+                            </div>
+                            <p class="more-link">
+                                <a href="demo/index.html?url=demo%2FerrorDialog-examples%2Fall" target="_blank">See more error dialogs</a>
+                            </p>
+                        </div>
+                    </div>
+                </div> <!-- .row-fluid -->
+
+                <div class="row-fluid">
+                    <div class="span3">
                         <h5>Non-Modal Dialogs</h5>
                     </div>
                     <div class="span9">
@@ -459,6 +481,7 @@
         <script type="text/javascript" src="js/tm/widgets/dropdownMenu.js"></script>
         <script type="text/javascript" src="js/tm/widgets/dropdown.js"></script>
         <script type="text/javascript" src="js/tm/widgets/tabbedContainer.js"></script>
+        <script type="text/javascript" src="js/tm/errorDialog.js"></script>
 
         <script type="text/javascript">
             (function(){
@@ -504,10 +527,22 @@
                     });
                 }
 
+                function activateErrorDialogButton(){
+                    var errorDialogCount = 0;
+                    $('#error-dialog-button').click(function() {
+                        ++errorDialogCount;
+                        var content = 'Sorry, there is a general system error. Please try again later.';
+                        var title = 'System Error ' + errorDialogCount;
+
+                        tm.errorDialog(content, title);
+                    });
+                }
+
                 function init(){
                     adjustDisplayArea();
                     activateSearchFields();
                     activateModalDialog();
+                    activateErrorDialogButton();
 
                     // Checkables
                     $('input[type="checkbox"]').tmCheckbox();
