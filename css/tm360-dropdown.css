@@ -68,6 +68,27 @@
     background-color: #2D93D4;
 }
 
+.tm360.touch .btn-group > .btn-primary.dropdown-toggle:hover,
+.tm360.touch .btn-group > .btn-primary.dropdown-toggle.hover {
+    color: #FFFFFF;
+    border: 1px solid #9296a3;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.25);
+    background-color: #2d93d4;
+    background-image: -ms-linear-gradient(top, #6bbefd, #2d93d4);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6bbefd), to(#2d93d4));
+    background-image: -webkit-linear-gradient(top, #6bbefd, #2d93d4);
+    background-image: -o-linear-gradient(top, #6bbefd, #2d93d4);
+    background-image: -moz-linear-gradient(top, #6bbefd, #2d93d4);
+    background-image: linear-gradient(top, #6bbefd, #2d93d4);
+    background-repeat: repeat-x;
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='#6bbefd', endColorstr='#2d93d4', GradientType=0);
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+    background-position: 0% 0%;
+    background-repeat: repeat-x;
+    background-size: auto;
+    box-shadow: none;
+}
+
 .tm360 .btn-group .dropdown-menu {
     margin-top: 2px;
     border: 1px solid #9296a3;
@@ -117,6 +138,7 @@
 .tm360 .dropdown-menu li a,
 .tm360 .dropdown-menu li a:visited,
 .tm360 .dropdown-menu li a:focus {
+    font: 12px MuseoSans500, Arial, sans-serif;
     color: #4F5158;
     background-color: transparent;
     background-image: none;
