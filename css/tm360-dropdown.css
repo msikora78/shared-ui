@@ -117,6 +117,7 @@
 .tm360 .dropdown-menu li a,
 .tm360 .dropdown-menu li a:visited,
 .tm360 .dropdown-menu li a:focus {
+    font: 12px MuseoSans500, Arial, sans-serif;
     color: #4F5158;
     background-color: transparent;
     background-image: none;

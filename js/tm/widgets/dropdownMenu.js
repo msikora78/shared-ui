@@ -71,7 +71,7 @@
             } else {
                 var group = element.parent();
                 if (group && !group.hasClass('btn-group')) {
-                    element.wrap($('<div class="toto">'));
+                    element.wrap($('<div>'));
                     this.group = element.parent();
                 } else {
                     this.group = group;
@@ -85,7 +85,7 @@
             if (isElementBtn) {
                 this.btn = element;
             } else {
-                this.btn = $('<button></button>');
+                this.btn = $('<a href="javascript:void(0);"></a>');
             }
 
             this.btn.addClass('btn dropdown-toggle').attr('data-toggle', "dropdown");
@@ -139,6 +139,10 @@
 
                 this.btn.click(function(e) {
                     self._adjustMenuWidth();
+                    if (self.group.hasClass('open')) {
+                        self.group.removeClass('open');
+                        e.stopPropagation();
+                    }
                 });
 
                 this.ul.click(function(e) {

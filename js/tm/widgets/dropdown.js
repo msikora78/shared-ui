@@ -11,7 +11,7 @@
             this.widget = this.element.data('tmDropdownMenu');
 
             // Preserve width when selecting a smaller/bigger element
-            //this.widget.btn.width(this.widget.btn.width());
+            this.widget.btn.width(this.widget.btn.width());
             this.widget.ul.addClass('dropdown-list');
 
             this._bind();
