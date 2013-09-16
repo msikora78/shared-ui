@@ -202,14 +202,6 @@
                         e.stopPropagation();
                         return false;
                     }
-
-                    if (e.keyCode !== KEY.ARROW_UP || e.keyCode !== KEY.ARROW_DOWN) {
-                        setTimeout(function() {
-                            if (!self.ul.find('a:focus').length) {
-                                self.group.removeClass('open');
-                            }
-                        }, 0);
-                    }
                 });
             },
             _initButtonText: function() {
