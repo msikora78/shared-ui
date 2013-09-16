@@ -2,6 +2,14 @@
     "use strict";
 
     function factory($) {
+
+        var KEY = {
+            ENTER: 13,
+            ESC: 27,
+            ARROW_UP: 38,
+            ARROW_DOWN: 40
+        };
+
         /**
          * Delegate to handle widget generation type.
          */
@@ -156,7 +164,7 @@
                     var el = $(e.target);
 
                     // handle enter key
-                    if (e.keyCode === 13 && self.ul.hasClass('dropdown-list') && el.is('a')) {
+                    if (e.keyCode === KEY.ENTER && self.ul.hasClass('dropdown-list') && el.is('a')) {
                         var value = typeof el.data('value') === 'undefined' ? null : el.data('value');
                         self.ul.data('selected-value', value);
                         self.delegate.setValue(value);
@@ -167,21 +175,22 @@
                     }
 
                     // handle escape key
-                    if (e.keyCode === 27) {
+                    if (e.keyCode === KEY.ESC) {
                         self.group.removeClass('open');
+                        return false;
                     }
 
                     // handle up arrow | down arrow
-                    if (e.keyCode === 38 || e.keyCode === 40) {
-                        if (el.is(self.btn.get(0)) && e.keyCode === 40) {
+                    if (e.keyCode === KEY.ARROW_UP || e.keyCode === KEY.ARROW_DOWN) {
+                        if (el.is(self.btn.get(0)) && e.keyCode === KEY.ARROW_DOWN) {
                             self.ul.find('a:first').focus();
                             return false;
                         }
                         if (el.parents(self.ul).length) {
                             var nextTargetFocus;
-                            if (e.keyCode === 38) {
+                            if (e.keyCode === KEY.ARROW_UP) {
                                 nextTargetFocus = el.closest('li', this).prev().find('a');
-                            } else if (e.keyCode === 40) {
+                            } else if (e.keyCode === KEY.ARROW_DOWN) {
                                 nextTargetFocus = el.closest('li', this).next().find('a');
                             }
                             nextTargetFocus.focus();
@@ -190,7 +199,7 @@
                         return false;
                     }
 
-                    if (e.keyCode !== 38 ||  e.keyCode !== 40) {
+                    if (e.keyCode !== KEY.ARROW_UP || e.keyCode !== KEY.ARROW_DOWN) {
                         setTimeout(function() {
                             if (!self.ul.find('a:focus').length) {
                                 self.group.removeClass('open');
