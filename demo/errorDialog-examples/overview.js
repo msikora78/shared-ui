@@ -11,7 +11,7 @@ define(['jquery', 'tm/core', 'tm/errorDialog'], function($, tm) {
         js: function() {
             $('#fake-error-link').click(function() {
                 var title = 'System Error';
-                var content = 'Not really, but you get the idea.';
+                var content = 'This is a standard dialog for a basic, general system error. The text can be changed on a case-by-case basis.';
                 tm.errorDialog(content, title);
             });
         }

@@ -569,7 +569,10 @@
     content: "";
     width: 24px;
     height: 24px;
-    background: url(img/grfx-tm360SDK.png) -10px -82px no-repeat;
+    background-image: url(img/grfx-tm360SDK.png);
+    background-position: -10px -82px;
+    background-size: 350px 196px;
+    background-repeat: no-repeat;
     float: left; 
     margin: 0 10px 6px 0; 
 }
@@ -669,28 +672,22 @@
     border: 1px solid #4f5158;
 }
 
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
-    .tm360 .help-error-icon {
-        width: 18px;
-        height: 18px;
-        line-height: 18px;
-        margin-top: 2px;
-    }
-}
-.lessSep1 {
-    zoom: 1;
-}
 
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+@media only screen and (max-device-width: 1024px) {
     .tm360 .help-error-icon {
         width: 18px;
         height: 18px;
         line-height: 18px;
         margin-top: 2px;
     }
+
+    .tm360 .modal .error-message:before {
+        width: 25px;
+        height: 25px;
+    }
 }
-.lessSep2 {
-    zoom: 1;
+.atSep1 {
+    top: 0;
 }
 
 @media (min-resolution: 120dpi), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 1.25dppx) { 
@@ -706,4 +703,7 @@
         background: url(img/grfx-tm360SDK@2x.png) no-repeat;
         background-size: 350px 196px;
     }
+}
+.atSep2 {
+    top: 0;
 }
