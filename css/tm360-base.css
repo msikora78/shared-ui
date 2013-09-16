@@ -12,7 +12,7 @@
 .atSep1 {
     /* Leave these ".atSep*" declarations even though they aren't used, otherwise lessc 
     places the @font-face and @media declarations on the same line, which breaks them. */
-    padding: 0;
+    top: 0;
 } 
 @font-face {
     font-family: 'MuseoSans700';
@@ -24,7 +24,7 @@
     font-style: normal;
 }
 .atSep2 {
-    padding: 0;
+    top: 0;
 }
 
 ::-webkit-selection{ background: #2d93d4; color:#fff; text-shadow: none; }
@@ -86,20 +86,20 @@ body {
 }
 
 
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+@media only screen and (max-device-width: 1024px) and (orientation:portrait) {
     body {
         zoom: 81.355932%;
     }
 }
-.atSep4 {
-    padding: 0;
+.atSep3 {
+    top: 0;
 }
 
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+@media only screen and (max-device-width: 1024px) and (orientation:landscape) {
     body {
         zoom: 108.474576%;
     }
 }
-.atSep5 {
-    padding: 0;
+.atSep4 {
+    top: 0;
 }
