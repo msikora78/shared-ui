@@ -34,7 +34,7 @@
 
             /**
              * Add Item to the list
-             * @param  {Object} item > { text: "String", value: "String", href: "String", callback: "Function" }
+             * @param  {Object} item > {text: "String", value: "String", href: "String", callback: "Function"}
              */
             addItem: function(item) {
                 this.widget.addItem(item);
