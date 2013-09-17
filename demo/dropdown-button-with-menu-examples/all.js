@@ -2,8 +2,7 @@ define([
     './overview', 
     './javascript-event-triggering', 
     './from-a-select', 
-    './from-a-simple-element',
-    './angular-integration'
+    './from-a-simple-element'
 ], 
 
 function() {
