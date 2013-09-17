@@ -7,7 +7,8 @@
             ENTER: 13,
             ESC: 27,
             ARROW_UP: 38,
-            ARROW_DOWN: 40
+            ARROW_DOWN: 40,
+            TAB: 9
         };
 
         /**
@@ -128,6 +129,7 @@
             }
 
             this.ul.find('a').addClass('nowrap').attr('tabindex', 0);
+            this.btn.attr('href', 'javascript:void(0)');
             this._bind();
 
         };
@@ -201,6 +203,19 @@
                         }
                         e.stopPropagation();
                         return false;
+                    }
+
+                    if (e.keyCode === KEY.TAB) {
+                        setTimeout(function() {
+                            if(!checkFocus()){
+                                self.group.removeClass('open');
+                            }
+                        }, 0);
+                    }
+
+                    function checkFocus() {
+                        var found = self.ul.find('a:focus');
+                        return found.length > 0;
                     }
                 });
             },

@@ -6,12 +6,30 @@
         var Dropdown = function(element, opts) {
 
             this.opts = opts;
+
+            var isElementSelect = false;
+            var isElementHasGroup = false;
+            if (element[0].nodeName === "SELECT") {
+                isElementSelect = true;
+            } else {
+                var group = element.parent();
+                if (group && !group.hasClass('btn-group')) {
+                    isElementHasGroup = true;
+                }
+            }
+
+            if (isElementSelect ||  isElementHasGroup) {
+                this.opts = $.extend({
+                    buttonText: 'Select'
+                }, opts  ||  {});
+            }
+
             this.element = element.tmDropdownMenu(this.opts);
 
             this.widget = this.element.data('tmDropdownMenu');
 
             // Preserve width when selecting a smaller/bigger element
-            this.widget.btn.width(this.widget.btn.width());
+            // this.widget.btn.width(this.widget.btn.width());
             this.widget.ul.addClass('dropdown-list');
 
             this._bind();

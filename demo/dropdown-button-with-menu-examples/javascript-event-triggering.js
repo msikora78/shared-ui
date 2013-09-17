@@ -8,7 +8,7 @@ define(['jquery', 'bootstrap', 'widget!tm/widgets/dropdownMenu'], function($) {
             <div id="javascriptEventsContainer" class="demo-container">\n\
                 <table><tr><td>\n\
                         <div class="btn-group">\n\
-                            <a id="dropdownEventTrigering" class="btn dropdown-toggle" href="javascript:void(0);">Select Action<span class="caret" /></a>\n\
+                            <a id="dropdownEventTrigering" class="btn dropdown-toggle">Select Action<span class="caret" /></a>\n\
                             <ul class="dropdown-menu">\n\
                                 <li><a id="action1" href="javascript:void(0);">Action 1</a></li>\n\
                                 <li><a id="action2" href="javascript:void(0);">Action 2</a></li>\n\
