@@ -1,5 +1,6 @@
 define([
         './overview',
+        './popup-with-arrow',
         './all-javascript',
         './tooltips',
         './basic-popups',
