@@ -1,10 +1,11 @@
 define([
         './overview',
-        './all-javascript',
-        './tooltips',
-        './basic-popups',
-        './advanced-popups',
-        './angular-integration'
+        './popup-with-arrow'
+        // './all-javascript',
+        // './tooltips',
+        // './basic-popups',
+        // './advanced-popups',
+        // './angular-integration'
     ],
 
     function() {

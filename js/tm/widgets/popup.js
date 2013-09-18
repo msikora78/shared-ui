@@ -111,8 +111,7 @@
 
                 if (!$target.data('popover').options.showArrow) {
                     $popup.find('.arrow').hide();
-                }
-                else {
+                } else {
                     $popup.find('.arrow').show();
                 }
             });
@@ -221,6 +220,7 @@
             var popupOffset = getOffset($popup);
             var targetOffset = getOffset($target);
             var placementOffset = 1 + (opts.showArrow ? $arrow.outerHeight() : 1);
+            var documentWidth = $(document).outerWidth();
 
             switch ($target.data('popover').options.placement) {
                 case 'top':
@@ -245,19 +245,14 @@
                         adjust = $target.offset().left;
                         break;
                 }
-                adjust = (adjust < 0) ? 0 : adjust;
+                if (adjust < 0) {
+                    adjust = 0;
+                } else if (adjust + $popup.outerWidth() > documentWidth) {
+                    adjust = documentWidth - $popup.outerWidth();
+                }
+
                 $popup.offset({
                     left: adjust
-                });
-            }
-
-            var showArrow = $target.data('popover').options.showArrow;
-            var arrowIsMissPlaced = $target.outerWidth() < $arrow.outerWidth() + arrowOffset * 2;
-            if (showArrow && opts.secondaryPlacement && arrowIsMissPlaced) {
-                var horzAdjust = ($target.data('popover').options.secondaryPlacement == 'left') ? arrowOffset : arrowOffset * -1;
-                popupOffset = getOffset($popup);
-                $popup.offset({
-                    left: popupOffset.left + horzAdjust
                 });
             }
 
@@ -267,6 +262,46 @@
                     return ($target.offset().left - $popup.offset().left) + $target.outerWidth() / 2;
                 }
             });
+
+            var popupOffset = getOffset($popup);
+            var targetOffset = getOffset($target);
+
+            switch (secondaryPlacement) {
+                case 'right':
+                    var delta = popupOffset.left - targetOffset.left;
+                    if (delta > 0) {
+                        $arrow.css({
+                            left: popupOffset.left + delta + 30
+                        });
+                    } else {
+                        $arrow.css({
+                            left: 30 - delta
+                        });
+                    }
+                    break;
+                case 'left':
+                    var delta = $popup.outerWidth() - (targetOffset.left + $target.outerWidth());
+                    if (delta > 0) {
+                        $arrow.css({
+                            left: $popup.outerWidth() - delta - 30
+                        });
+                    } else {
+                        $arrow.css({
+                            left: $popup.outerWidth() - 30
+                        });
+                    }
+                    break;
+            }
+
+            // var showArrow = $target.data('popover').options.showArrow;
+            // var arrowIsMissPlaced = $target.outerWidth() < $arrow.outerWidth() + arrowOffset * 2;
+            // if (showArrow && opts.secondaryPlacement && arrowIsMissPlaced) {
+            //     var horzAdjust = ($target.data('popover').options.secondaryPlacement == 'left') ? arrowOffset : arrowOffset * -1;
+            //     popupOffset = getOffset($popup);
+            //     $popup.offset({
+            //         left: popupOffset.left + horzAdjust
+            //     });
+            // }
         }
 
         function adjustHorizontalPosition(opts, $target) {

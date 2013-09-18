@@ -29,6 +29,8 @@
             var opts = $.extend({}, defaults, opts);
             opts.autoClose = true;
 
+            element.addClass('tmTooltip');
+
             if (opts.placement == null) {
                 opts.placement = element.attr('data-placement') || 'bottom';
             }
