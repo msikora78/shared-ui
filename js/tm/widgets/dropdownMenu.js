@@ -112,7 +112,6 @@
             this.ul.addClass('dropdown-menu').attr('data-selected-value', 'null');
 
             // Append to DOM
-            // this.group.append(this.btn, this.ul);
             if (isElementSelect) {
                 this.group.append(this.btn, this.ul);
                 this._generateListFromSelect();
@@ -139,6 +138,7 @@
                 var self = this;
 
                 this.btn.click(function(e) {
+                    console.log('click');
                     self._adjustMenuWidth();
                     if (self.group.hasClass('open')) {
                         self.group.removeClass('open');
@@ -153,14 +153,6 @@
                         self.ul.data('selected-value', value);
                         self.delegate.setValue(value);
                         self.ul.change();
-                    }
-                });
-
-                this.btn.on('focus', function(e) {
-                    $('.btn-group').removeClass('open');
-                    self._adjustMenuWidth();
-                    if (!self.btn.hasClass('disabled')) {
-                        self.group.addClass('open');
                     }
                 });
 
