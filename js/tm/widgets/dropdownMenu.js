@@ -129,7 +129,6 @@
             }
 
             this.ul.find('a').addClass('nowrap').attr('tabindex', 0);
-            this.btn.attr('href', 'javascript:void(0)');
             this._bind();
 
         };
