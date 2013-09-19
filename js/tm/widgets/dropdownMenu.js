@@ -138,7 +138,6 @@
                 var self = this;
 
                 this.btn.click(function(e) {
-                    console.log('click');
                     self._adjustMenuWidth();
                     if (self.group.hasClass('open')) {
                         self.group.removeClass('open');
