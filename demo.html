@@ -379,9 +379,6 @@
                     <div class="span9">
                         <div class="well">
                             <div class="control-group">
-                                <p><a id="tooltipTarget"
-                                    title="It's so simple to create a tooltip!"
-                                    data-placement="top">Tooltip</a></p>
                                 <p>
                                     <button type="button" class="btn" id="popupTarget"
                                         title="Popup's title" 
@@ -392,6 +389,29 @@
                             </div>
                             <p class="more-link">
                                 <a href="demo/index.html?url=demo%2FnonModalDialog-examples%2Fall" target="_blank">See more non-modal dialogs</a>
+                            </p>
+                        </div>
+                    </div>
+                </div><!-- .row-fluid -->
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>Tooltips</h5>
+                    </div>
+                    <div class="span9">
+                        <div class="well">
+                            <div class="control-group">
+                                <p><a id="tooltipTarget" 
+                                    title="It's so simple to create a tooltip!" 
+                                    data-placement="top">Text Tooltip</a></p>
+                                <p><i 
+                                    id="tooltipIconTarget" class="check-icon" 
+                                    title="Tooltips provide additional information." 
+                                    data-placement="right"></i> (Icon Tooltip)</p>
+                                <p><a title="This is a standard browser tooltip.">System Tooltip</a></p>
+                            </div>
+                            <p class="more-link">
+                                <a href="demo/index.html?url=demo%2Ftooltip-examples%2Fall" target="_blank">See more tooltips</a>
                             </p>
                         </div>
                     </div>
@@ -565,9 +585,10 @@
                     $("#dropdownList1").tmDropdown();
 
                     // Non-modals
-                    $("#tooltipTarget").tmTooltip();
                     $("#popupTarget").tmPopup();
                     $("#popupWithNoTitle").tmPopup();
+                    $("#tooltipTarget").tmTooltip();
+                    $("#tooltipIconTarget").tmTooltip();
 
                     $('#tabbed-container-overview1').tmTabbedContainer();
                 }
