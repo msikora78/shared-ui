@@ -176,7 +176,8 @@
     display: none;
     padding-top: 3px;
 }
-.tm360 .help-error-icon {
+.tm360 .help-error-icon,
+.tm360 .check-icon {
     display: none;
     width: 16px;
     height: 16px;
@@ -187,6 +188,10 @@
     background-position: -44px -82px;
     background-size: 350px 196px;
     background-repeat: no-repeat;
+}
+.tm360 .check-icon {
+    display: inline-block;
+    background-position: -104px -82px;
 }
 
 .tm360 .error .help-error-icon {
@@ -674,7 +679,8 @@
 
 
 @media only screen and (max-device-width: 1024px) {
-    .tm360 .help-error-icon {
+    .tm360 .help-error-icon,
+    .tm360 .check-icon {
         width: 18px;
         height: 18px;
         line-height: 18px;
@@ -692,6 +698,7 @@
 
 @media (min-resolution: 120dpi), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 1.25dppx) { 
     .tm360 .help-error-icon,
+    .tm360 .check-icon,
     .tm360 .search-clear-icon,
     .tm360 .modal .error-message:before {
         background-image: url(img/grfx-tm360SDK@2x.png);

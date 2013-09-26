@@ -2,8 +2,8 @@
     'use strict';
 
     /**
-     *  Creates the modal dialog prototype
-     *  @returns {Function} modal dialog prototype
+     *  Creates the tooltip prototype
+     *  @returns {Function} tooltip prototype
      */
 
     function factory($, gadgets, tm, tmPopup) {

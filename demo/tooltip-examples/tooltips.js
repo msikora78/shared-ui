@@ -2,7 +2,7 @@ define(['jquery', 'bootstrap', 'widget!tm/widgets/tooltip'], function($) {
     'use strict';
 
     var data = {
-        legend: 'Tooltips',
+        legend: 'Tooltip positioning',
         description: 'This example demonstrates the positioning of tooltips. The tooltip should always be fully visible within the boundaries of the browser window, changing orientation automatically if needed.',
         html:'\
             <div id="tooltips-non-modal-container" class="demo-container row-fluid">\n\

@@ -28,7 +28,6 @@ define(['jquery', 'widget!tm/widgets/popup'], function($) {
                         data-placement="bottom-left"\n\
                         data-show-arrow="true">Bottom-left</a></p>\n\
                 <p class="span2"></p>\n\
-                <div id="popupContainer" class="tm360"></div>\n\
             </div>\n\
             <div class="demo-container row-fluid">\n\
                 <p class="span2"></p>\n\
@@ -53,7 +52,6 @@ define(['jquery', 'widget!tm/widgets/popup'], function($) {
                         data-placement="left-bottom"\n\
                         data-show-arrow="true">Left-bottom</a></p>\n\
                 <p class="span2"></p>\n\
-                <div id="popupContainer" class="tm360"></div>\n\
             </div>',
         js: function() {
             $(".popupWithArrow").tmPopup();
