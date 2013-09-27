@@ -156,17 +156,19 @@
                 });
 
                 this.group.on('keydown', function(e) {
-
                     var el = $(e.target);
 
                     // handle enter key
-                    if (e.keyCode === KEY.ENTER && self.ul.hasClass('dropdown-list') && el.is('a')) {
+                    if ((e.keyCode === KEY.ENTER || e.keyCode === KEY.TAB) && self.ul.hasClass('dropdown-menu') && el.is('a')) {
+                        self.ul.find('a:focus').click();
+                        /*
                         var value = typeof el.data('value') === 'undefined' ? null : el.data('value');
                         self.ul.data('selected-value', value);
                         self.delegate.setValue(value);
                         self.ul.change();
                         self.btn.focus();
                         self.group.removeClass('open');
+                        */
                         return false;
                     }
 
@@ -257,7 +259,7 @@
             },
 
             setButtonText: function(text) {
-                var targetText = text != null ? text : this.opts.buttonText
+                var targetText = text != null ? text : this.opts.buttonText;
                 this.btn.text(targetText).append(this.caret);
 
             },
