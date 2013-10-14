@@ -39,14 +39,11 @@
 
 html {
   height: 100%;
-  overflow: auto;
 }
 
 body {
     font-family: Arial, sans-serif;
     font-size: 14px;
-    /*height: 100%; enables scrolling for ipad but causes lag? */
-    overflow: auto;
     position: relative;
     *text-align: center; /* IE7 doesnt center content with margin: 0 auto; */
 }

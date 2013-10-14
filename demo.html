@@ -26,6 +26,7 @@
         <link rel="stylesheet" type="text/css" href="css/tm360-dropdown.css" />
         <link rel="stylesheet" type="text/css" href="css/tm360-popover.css" />
         <link rel="stylesheet" type="text/css" href="css/tm360-tabbedContainer.css" />
+        <link rel="stylesheet" type="text/css" href="css/tm360-backToTopButton.css" />
 
         <!-- tm360 Shared-UI LESS (Add *.less files to "less/" folder, then include them here) -->
         <link rel="stylesheet/less" type="text/css" href="less/tm360-sample.less" />
@@ -475,7 +476,24 @@
                             </p>
                         </div>
                     </div>
-                </div>
+                </div> <!-- .row-fluid -->
+
+                <div class="row-fluid">
+                    <div class="span3">
+                        <h5>Back to Top</h5>
+                    </div>
+                    <div class="span9">
+                        <div class="well">
+                            <div id="backToTop-container" style="height: 160px; width: 60%; overflow: auto; border: 1px solid #9296a3;">
+                                <p style="margin-bottom: 200px">Scroll down...</p>
+                                <p>bottom</p>
+                            </div>
+                            <p class="more-link">
+                                <a href="demo/index.html?url=demo%2FbackToTopButton-examples%2Fall" target="_blank">See more Back-to-Top buttons</a>
+                            </p>
+                        </div>
+                    </div>
+                </div> <!-- .row-fluid -->
 
             </div>
 
@@ -512,6 +530,7 @@
         <script type="text/javascript" src="js/tm/widgets/dropdownMenu.js"></script>
         <script type="text/javascript" src="js/tm/widgets/dropdown.js"></script>
         <script type="text/javascript" src="js/tm/widgets/tabbedContainer.js"></script>
+        <script type="text/javascript" src="js/tm/widgets/backToTopButton.js"></script>
         <script type="text/javascript" src="js/tm/errorDialog.js"></script>
 
         <script type="text/javascript">
@@ -591,6 +610,15 @@
                     $("#tooltipIconTarget").tmTooltip();
 
                     $('#tabbed-container-overview1').tmTabbedContainer();
+
+                    $("#container").tmBackToTopButton();
+                    $("#backToTop-container").addClass("scrollable").tmBackToTopButton({
+                        buttonText:'Scroll Back Up', 
+                        threshold: 20,
+                        showDuration: 400,
+                        hideDuration: 200,
+                        toTopDuration: 200
+                    });
                 }
 
                 // jquery onload
