@@ -184,7 +184,7 @@
     line-height: 16px;
     margin-left: 1px;
     vertical-align: text-top;
-    background-image: url(img/grfx-tm360SDK.png);
+    background-image: url(img/grfx-tm360SDK-01.png);
     background-position: -44px -82px;
     background-size: 350px 196px;
     background-repeat: no-repeat;
@@ -275,6 +275,11 @@
     color: #4F5158;
 }
 
+.controls > .radio:first-child, 
+.controls > .checkbox:first-child {
+    padding-top: 0; /* PORTAL-958 */
+}
+
 .tm360 .control-group.error .checkbox,
 .tm360 .control-group.error .radio,
 .tm360 .control-group.error input,
@@ -307,7 +312,7 @@
     margin-bottom: -2px;
     display: inline-block;
     cursor: pointer;
-    background: url("img/grfx-tm360SDK.png") no-repeat;
+    background: url("img/grfx-tm360SDK-01.png") no-repeat;
 }
 
 .tm360 .tmRadiobutton {
@@ -317,7 +322,7 @@
     margin-bottom: -2px;
     display: inline-block;
     cursor: pointer;
-    background: url("img/grfx-tm360SDK.png") no-repeat;
+    background: url("img/grfx-tm360SDK-01.png") no-repeat;
 }
 
 .tm360 .well .tmCheckbox,
@@ -574,7 +579,7 @@
     content: "";
     width: 24px;
     height: 24px;
-    background-image: url(img/grfx-tm360SDK.png);
+    background-image: url(img/grfx-tm360SDK-01.png);
     background-position: -10px -82px;
     background-size: 350px 196px;
     background-repeat: no-repeat;
@@ -627,7 +632,7 @@
     left: -21px; /* positioned via JS to right of input */
     width: 18px;
     height: 18px;
-    background-image: url(img/grfx-tm360SDK.png);
+    background-image: url(img/grfx-tm360SDK-01.png);
     background-position: -281px -9px;
     background-size: 350px 196px;
     background-repeat: no-repeat;
@@ -701,13 +706,13 @@
     .tm360 .check-icon,
     .tm360 .search-clear-icon,
     .tm360 .modal .error-message:before {
-        background-image: url(img/grfx-tm360SDK@2x.png);
+        background-image: url(img/grfx-tm360SDK-01@2x.png);
     }
 
     .tm360 .tmCheckbox,
     .tm360 .tmRadiobutton{
         margin-bottom: -4px;
-        background: url(img/grfx-tm360SDK@2x.png) no-repeat;
+        background: url(img/grfx-tm360SDK-01@2x.png) no-repeat;
         background-size: 350px 196px;
     }
 }

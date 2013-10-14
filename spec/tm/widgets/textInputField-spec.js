@@ -127,9 +127,9 @@ define(['./util'], function(Util) {
                                 expect(shadow.toString()).toBe(Util.convertHexaToRgba('f03848', '0.25') + ' inset 1px 1px 1px 0px');
                             });
 
-                            it('should have a graphic icon using sprite grfx-tm360SDK.png with -44px -82px offset', function(){
+                            it('should have a graphic icon using sprite grfx-tm360SDK-01.png with -44px -82px offset', function(){
                                 expect($errorIcon.css('display')).toBe('inline-block');
-                                expect($errorIcon.css('background-image')).toContain('grfx-tm360SDK.png');
+                                expect($errorIcon.css('background-image')).toContain('grfx-tm360SDK-01.png');
                                 expect($errorIcon.css('background-position')).toBe("-44px -82px");
                             });
 
