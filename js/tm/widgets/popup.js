@@ -98,13 +98,7 @@
                     $popup.find('.popover-title').remove();
                 }
 
-                testPosition($target);
-
-                if (opts.placement == 'bottom' || opts.placement == 'top') {
-                    adjustVerticalPosition(opts, $target, $popup);
-                } else {
-                    adjustHorizontalPosition(opts, $target, $popup);
-                }
+                adjustPosition(opts, $target, $popup);
 
                 // Fixes a bug where the arrow doesn't paint correctly on ie8
                 $popup.parent().addClass('ie8fix').removeClass('ie8fix');
@@ -113,6 +107,13 @@
                     $popup.find('.arrow').hide();
                 } else {
                     $popup.find('.arrow').show();
+                }
+
+                if (opts.trigger != 'hover') {
+                    // reposition on resize
+                    $(window).on('resize.tmPopup', function(){
+                        adjustPosition(opts, $target, $popup);
+                    });
                 }
             });
 
@@ -124,6 +125,8 @@
                 $target.data('popover').options.placement = opts.placement;
 
                 $('body').append(customTemplate.hide());
+
+                $(window).off('resize.tmPopup');
             });
 
             element.addClass('tmPopupTarget');
@@ -184,8 +187,17 @@
             }
         };
 
-        function testPosition($target) {
-            var $popup = $target.next('.popover');
+        function adjustPosition(opts, $target, $popup){
+            testPosition($target, $popup);
+
+            if (opts.placement == 'bottom' || opts.placement == 'top') {
+                adjustVerticalPosition(opts, $target, $popup);
+            } else {
+                adjustHorizontalPosition(opts, $target, $popup);
+            }
+        }
+
+        function testPosition($target, $popup) {
             var offset = getOffset($popup);
             var placement = $target.data('popover').options.placement;
             if (placement == 'bottom' || placement == 'top') {
@@ -211,8 +223,7 @@
             }
         }
 
-        function adjustVerticalPosition(opts, $target) {
-            var $popup = $target.next('.popover');
+        function adjustVerticalPosition(opts, $target, $popup) {
             var $arrow = $popup.find('.arrow');
             var adjust = 0;
             var placement = opts.placement;
@@ -304,8 +315,7 @@
             // }
         }
 
-        function adjustHorizontalPosition(opts, $target) {
-            var $popup = $target.next('.popover');
+        function adjustHorizontalPosition(opts, $target, $popup) {
             var $arrow = $popup.find('.arrow');
             var adjust = 0;
             var placement = opts.placement;

@@ -5,6 +5,7 @@
 
         var Dropdown = function(element, opts) {
 
+            /*
             this.opts = opts;
 
             var isElementSelect = false;
@@ -17,12 +18,13 @@
                     isElementHasGroup = true;
                 }
             }
+            */
 
-            if (isElementSelect ||  isElementHasGroup) {
+            //if (isElementSelect ||  isElementHasGroup) {
                 this.opts = $.extend({
                     buttonText: 'Select'
-                }, opts  ||  {});
-            }
+                }, opts || {});
+            //}
 
             this.element = element.tmDropdownMenu(this.opts);
 
