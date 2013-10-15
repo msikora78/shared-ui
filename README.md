@@ -8,6 +8,10 @@ https://github.com/tm360/shared-ui/wiki
 
 ### RELEASE HISTORY
 
+#### tm360-2.4
+* added Back-to-Top button
+* misc adjustments and fixes to existing components
+
 #### tm360-2.3.7
 * added tabbed container
 * iPad rendering improvements for text styles, text inputs, searchAndFilter, buttons, and modal dialog
