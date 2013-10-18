@@ -1,9 +1,9 @@
 requirejs.config({
     baseUrl: '../js',
     paths: {
-        //'jquery': '/shared/js/lib/jquery-1.7.2.min.js',
-        //'jquery.throttle': '/shared/js/lib/jquery.ba-throttle-debounce-1.1.min.js',
-        //'bootstrap': '/shared/js/lib/bootstrap-2.3.2.min.js',
+        //'jquery': '/shared/js/lib/jquery-1.7.2.min',
+        //'jquery.throttle': '/shared/js/lib/jquery.ba-throttle-debounce-1.1.min',
+        //'bootstrap': '/shared/js/lib/bootstrap-2.3.2.min',
         'jquery': '//cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min',
         'jquery.throttle': '//cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min',
         'bootstrap': '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min',

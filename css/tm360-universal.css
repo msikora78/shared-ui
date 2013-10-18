@@ -275,8 +275,8 @@
     color: #4F5158;
 }
 
-.controls > .radio:first-child, 
-.controls > .checkbox:first-child {
+.tm360 .controls > .radio:first-child, 
+.tm360 .controls > .checkbox:first-child {
     padding-top: 0; /* PORTAL-958 */
 }
 
