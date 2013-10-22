@@ -2,8 +2,8 @@
     'use strict';
 
     /**
-     *  Creates the modal dialog prototype
-     *  @returns {Function} modal dialog prototype
+     *  Creates the tooltip prototype
+     *  @returns {Function} tooltip prototype
      */
 
     function factory($, gadgets, tm, tmPopup) {
@@ -28,6 +28,8 @@
         var Tooltip = function(element, opts) {
             var opts = $.extend({}, defaults, opts);
             opts.autoClose = true;
+
+            element.addClass('tmTooltip');
 
             if (opts.placement == null) {
                 opts.placement = element.attr('data-placement') || 'bottom';

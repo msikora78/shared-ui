@@ -43,10 +43,6 @@ define(['injectable!tm/widgets/popup', 'mock/gadgetPrefMock', 'tm/core', './util
                     widget.hide();
                     $('.tm360').remove();
                 });
-
-                it('should keep event bindings', function() {
-                    expect($('#advanced-popup-template-close').data('events').click[0].handler).toBe(onClick);
-                });
             }
         } 
     })
@@ -64,8 +60,8 @@ define(['injectable!tm/widgets/popup', 'mock/gadgetPrefMock', 'tm/core', './util
             for (var pos in posDef) {
                 for (var i = 0; i < 2; i++) {
                     runAllTest(false, '', pos, posDef[pos][i]);
-                    runAllTest(true, '', pos, posDef[pos][i]);
-                    runAllTest(true, 'Popup title', pos, posDef[pos][i]);
+                    runAllTest(false, '', pos, posDef[pos][i]);
+                    runAllTest(false, 'Popup title', pos, posDef[pos][i]);
                     runAllTest(false, 'Popup title', pos, posDef[pos][i]);
                 }
             }
@@ -87,7 +83,7 @@ define(['injectable!tm/widgets/popup', 'mock/gadgetPrefMock', 'tm/core', './util
                     attributes.push('data-placement="' + position + '"');
                     beforeEach(function() {
                         $target = $('<button id="target" type="button" class="btn" style="position: fixed; top: 50%; left: 50%; min-width: 30px;" data-trigger="manual" ' + attributes.join(' ') + '>?</button>');
-                        $container = $('<div class="tm360"></div>').append($target);
+                        $container = $('<div class="tm360" style="min-height: 1000px"></div>').append($target);
                         $('body').append($container);
                         
                         widget = new popup($target);

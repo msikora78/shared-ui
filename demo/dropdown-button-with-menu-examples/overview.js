@@ -8,14 +8,14 @@ define(['jquery', 'bootstrap', 'widget!tm/widgets/dropdownMenu'], function($) {
             <div id="dropdown-overview-container" class="demo-container">\n\
                 <div class="demo-group">\n\
                     <div class="btn-group" style="display: inline-block;">\n\
-                        <a id="overview-dropdown-link1" class="btn dropdown-toggle" href="javascript:void(0);">Select Action<span class="caret" /></a>\n\
+                        <a id="overview-dropdown-link1" class="btn dropdown-toggle" href="javascript:void(0)">Select Action<span class="caret" /></a>\n\
                         <ul class="dropdown-menu">\n\
                             <li><a tabindex="-1" href="#dropDownMenu#1">Action 1</a></li>\n\
                             <li><a tabindex="-1" href="#dropDownMenu#2">Action 2</a></li>\n\
                         </ul>\n\
                     </div>\n\
                     <div class="btn-group" style="display: inline-block;">\n\
-                        <a id="overview-dropdown-link2" class="btn dropdown-toggle disabled" href="javascript:void(0);">Select action<span class="caret" /></a>\n\
+                        <a id="overview-dropdown-link2" class="btn dropdown-toggle disabled" href="javascript:void(0)">Select action<span class="caret" /></a>\n\
                         <ul class="dropdown-menu">\n\
                             <li><a tabindex="-1" href="#dropDownMenu#1">Action 1</a></li>\n\
                             <li><a tabindex="-1" href="#dropDownMenu#2">Action 2</a></li>\n\

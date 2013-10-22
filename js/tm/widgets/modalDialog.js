@@ -192,13 +192,6 @@
                             $actionElement = $btnPrimary;
                         }
                     }
-
-                    // Hide modal on esc even when no button is defined
-                    if ($btnPrimary.length == 0 && $btnSecondary.length == 0) {
-                        $actionElement = this.element;
-                        // Set default secondary action if only one secondary button is found
-                        triggerEvent = this.triggerDefaultSecondaryAction;
-                    }
                 }
 
                 $(document).on('keyup.tmModalDialog', function(e) {
@@ -212,10 +205,7 @@
                 var self = this;
                 $('.modal-backdrop').on('click', function() {
                     if ($btnSecondary.length == 0) {
-                        if ($btnPrimary.length == 0) {
-                            self.triggerDefaultSecondaryAction(self.element);
-                        }
-                        else {
+                        if ($btnPrimary.length > 0) {
                             self.triggerButtonClick($btnPrimary);
                         }
                     }

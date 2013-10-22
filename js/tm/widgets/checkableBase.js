@@ -10,7 +10,14 @@
 			}
 			this._labelsEventsHandledByBrowser = labelsEventsHandledByBrowser;
 			this.element = $(element).hide();
-			this.span = $('<span class="' + this.className + '" />').insertAfter(this.element);;
+			
+			if ($(element).next('.' + this.className).length == 0) {
+				this.span = $('<span class="' + this.className + '" />').insertAfter(this.element);;
+			}
+			else {
+				this.span = $(element).next('.' + this.className);
+			}
+
 			this.parentLabel = this.element.closest("label");
 			this.linkedLabels = $("label[for='" + this.element.attr('id') + "']");
 

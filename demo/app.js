@@ -1,10 +1,13 @@
 requirejs.config({
     baseUrl: '../js',
     paths: {
+        //'jquery': '/shared/js/lib/jquery-1.7.2.min',
+        //'jquery.throttle': '/shared/js/lib/jquery.ba-throttle-debounce-1.1.min',
+        //'bootstrap': '/shared/js/lib/bootstrap-2.3.2.min',
         'jquery': '//cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min',
+        'jquery.throttle': '//cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min',
         'bootstrap': '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min',
         'angular': '//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min',
-        'jquery.throttle': '//cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min',
         'widget': '../plugin/widget',
         'mock': '../mock',
         'demo': '../demo',
@@ -91,6 +94,7 @@ requirejs(['jquery', 'tm/core', url, 'jquery.throttle'], function($, tm, data) {
         if (example.html){
             current.append($('<div/>').html(example.html));
         }
+        // html to render and/or display
         if (example.html || example.htmlDisplay){ // either/or; dont include both!
             var htmlDisplayNode = $('<p/>').text('HTML Markup:');
             htmlDisplayNode.append($('<pre/>').addClass('prettyprint lang-html').text(cleanCode(example.html || example.htmlDisplay)));
@@ -113,7 +117,7 @@ requirejs(['jquery', 'tm/core', url, 'jquery.throttle'], function($, tm, data) {
             example.js();
         }
 
-        // run-only javascript (not displayed) passing this examples node (in case it's needed)
+        // run-only javascript (not displayed): this example node passed in
         if (example.jsExecute){
             example.jsExecute(current);
         }

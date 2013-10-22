@@ -2,6 +2,15 @@
     "use strict";
 
     function factory($) {
+
+        var KEY = {
+            ENTER: 13,
+            ESC: 27,
+            ARROW_UP: 38,
+            ARROW_DOWN: 40,
+            TAB: 9
+        };
+
         /**
          * Delegate to handle widget generation type.
          */
@@ -63,7 +72,7 @@
             } else {
                 var group = element.parent();
                 if (group && !group.hasClass('btn-group')) {
-                    element.wrap($('<div class="toto">'));
+                    element.wrap($('<div>'));
                     this.group = element.parent();
                 } else {
                     this.group = group;
@@ -77,7 +86,7 @@
             if (isElementBtn) {
                 this.btn = element;
             } else {
-                this.btn = $('<button></button>');
+                this.btn = $('<a href="javascript:void(0);"></a>');
             }
 
             this.btn.addClass('btn dropdown-toggle').attr('data-toggle', "dropdown");
@@ -103,7 +112,6 @@
             this.ul.addClass('dropdown-menu').attr('data-selected-value', 'null');
 
             // Append to DOM
-            // this.group.append(this.btn, this.ul);
             if (isElementSelect) {
                 this.group.append(this.btn, this.ul);
                 this._generateListFromSelect();
@@ -131,6 +139,10 @@
 
                 this.btn.click(function(e) {
                     self._adjustMenuWidth();
+                    if (self.group.hasClass('open')) {
+                        self.group.removeClass('open');
+                        e.stopPropagation();
+                    }
                 });
 
                 this.ul.click(function(e) {
@@ -143,45 +155,40 @@
                     }
                 });
 
-                this.btn.on('focus', function(e) {
-                    $('.btn-group').removeClass('open');
-                    self._adjustMenuWidth();
-                    if (!self.btn.hasClass('disabled')) {
-                        self.group.addClass('open');
-                    }
-                });
-
                 this.group.on('keydown', function(e) {
-
                     var el = $(e.target);
 
                     // handle enter key
-                    if (e.keyCode === 13 && self.ul.hasClass('dropdown-list') && el.is('a')) {
+                    if ((e.keyCode === KEY.ENTER || e.keyCode === KEY.TAB) && self.ul.hasClass('dropdown-menu') && el.is('a')) {
+                        self.ul.find('a:focus').click();
+                        /*
                         var value = typeof el.data('value') === 'undefined' ? null : el.data('value');
                         self.ul.data('selected-value', value);
                         self.delegate.setValue(value);
                         self.ul.change();
                         self.btn.focus();
                         self.group.removeClass('open');
+                        */
                         return false;
                     }
 
                     // handle escape key
-                    if (e.keyCode === 27) {
+                    if (e.keyCode === KEY.ESC) {
                         self.group.removeClass('open');
+                        return false;
                     }
 
                     // handle up arrow | down arrow
-                    if (e.keyCode === 38 || e.keyCode === 40) {
-                        if (el.is(self.btn.get(0)) && e.keyCode === 40) {
+                    if (e.keyCode === KEY.ARROW_UP || e.keyCode === KEY.ARROW_DOWN) {
+                        if (el.is(self.btn.get(0)) && e.keyCode === KEY.ARROW_DOWN) {
                             self.ul.find('a:first').focus();
                             return false;
                         }
                         if (el.parents(self.ul).length) {
                             var nextTargetFocus;
-                            if (e.keyCode === 38) {
+                            if (e.keyCode === KEY.ARROW_UP) {
                                 nextTargetFocus = el.closest('li', this).prev().find('a');
-                            } else if (e.keyCode === 40) {
+                            } else if (e.keyCode === KEY.ARROW_DOWN) {
                                 nextTargetFocus = el.closest('li', this).next().find('a');
                             }
                             nextTargetFocus.focus();
@@ -190,12 +197,17 @@
                         return false;
                     }
 
-                    if (e.keyCode !== 38 ||  e.keyCode !== 40) {
+                    if (e.keyCode === KEY.TAB) {
                         setTimeout(function() {
-                            if (!self.ul.find('a:focus').length) {
+                            if(!checkFocus()){
                                 self.group.removeClass('open');
                             }
                         }, 0);
+                    }
+
+                    function checkFocus() {
+                        var found = self.ul.find('a:focus');
+                        return found.length > 0;
                     }
                 });
             },
@@ -247,7 +259,7 @@
             },
 
             setButtonText: function(text) {
-                var targetText = text != null ? text : this.opts.buttonText
+                var targetText = text != null ? text : this.opts.buttonText;
                 this.btn.text(targetText).append(this.caret);
 
             },

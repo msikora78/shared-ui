@@ -176,17 +176,22 @@
     display: none;
     padding-top: 3px;
 }
-.tm360 .help-error-icon {
+.tm360 .help-error-icon,
+.tm360 .check-icon {
     display: none;
     width: 16px;
     height: 16px;
     line-height: 16px;
     margin-left: 1px;
     vertical-align: text-top;
-    background-image: url(img/grfx-tm360SDK.png);
+    background-image: url(img/grfx-tm360SDK-01.png);
     background-position: -44px -82px;
     background-size: 350px 196px;
     background-repeat: no-repeat;
+}
+.tm360 .check-icon {
+    display: inline-block;
+    background-position: -104px -82px;
 }
 
 .tm360 .error .help-error-icon {
@@ -270,6 +275,11 @@
     color: #4F5158;
 }
 
+.tm360 .controls > .radio:first-child, 
+.tm360 .controls > .checkbox:first-child {
+    padding-top: 0; /* PORTAL-958 */
+}
+
 .tm360 .control-group.error .checkbox,
 .tm360 .control-group.error .radio,
 .tm360 .control-group.error input,
@@ -302,7 +312,7 @@
     margin-bottom: -2px;
     display: inline-block;
     cursor: pointer;
-    background: url("img/grfx-tm360SDK.png") no-repeat;
+    background: url("img/grfx-tm360SDK-01.png") no-repeat;
 }
 
 .tm360 .tmRadiobutton {
@@ -312,7 +322,7 @@
     margin-bottom: -2px;
     display: inline-block;
     cursor: pointer;
-    background: url("img/grfx-tm360SDK.png") no-repeat;
+    background: url("img/grfx-tm360SDK-01.png") no-repeat;
 }
 
 .tm360 .well .tmCheckbox,
@@ -569,7 +579,10 @@
     content: "";
     width: 24px;
     height: 24px;
-    background: url(img/grfx-tm360SDK.png) -10px -82px no-repeat;
+    background-image: url(img/grfx-tm360SDK-01.png);
+    background-position: -10px -82px;
+    background-size: 350px 196px;
+    background-repeat: no-repeat;
     float: left; 
     margin: 0 10px 6px 0; 
 }
@@ -619,7 +632,7 @@
     left: -21px; /* positioned via JS to right of input */
     width: 18px;
     height: 18px;
-    background-image: url(img/grfx-tm360SDK.png);
+    background-image: url(img/grfx-tm360SDK-01.png);
     background-position: -281px -9px;
     background-size: 350px 196px;
     background-repeat: no-repeat;
@@ -669,41 +682,40 @@
     border: 1px solid #4f5158;
 }
 
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
-    .tm360 .help-error-icon {
-        width: 18px;
-        height: 18px;
-        line-height: 18px;
-        margin-top: 2px;
-    }
-}
-.lessSep1 {
-    zoom: 1;
-}
 
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
-    .tm360 .help-error-icon {
+@media only screen and (max-device-width: 1024px) {
+    .tm360 .help-error-icon,
+    .tm360 .check-icon {
         width: 18px;
         height: 18px;
         line-height: 18px;
         margin-top: 2px;
     }
+
+    .tm360 .modal .error-message:before {
+        width: 25px;
+        height: 25px;
+    }
 }
-.lessSep2 {
-    zoom: 1;
+.atSep1 {
+    top: 0;
 }
 
 @media (min-resolution: 120dpi), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 1.25dppx) { 
     .tm360 .help-error-icon,
+    .tm360 .check-icon,
     .tm360 .search-clear-icon,
     .tm360 .modal .error-message:before {
-        background-image: url(img/grfx-tm360SDK@2x.png);
+        background-image: url(img/grfx-tm360SDK-01@2x.png);
     }
 
     .tm360 .tmCheckbox,
     .tm360 .tmRadiobutton{
         margin-bottom: -4px;
-        background: url(img/grfx-tm360SDK@2x.png) no-repeat;
+        background: url(img/grfx-tm360SDK-01@2x.png) no-repeat;
         background-size: 350px 196px;
     }
+}
+.atSep2 {
+    top: 0;
 }
