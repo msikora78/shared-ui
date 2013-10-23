@@ -1,5 +1,4 @@
 (function() {
-    'use strict';
 
     //var bodyInitialized = false;
 
@@ -45,7 +44,7 @@
                 $("body").append(box);
                 box.css("position", "fixed");
             } else {
-                scroller.offsetParent().append(box);
+                container.offsetParent().append(box);
             }
         };
 
@@ -98,15 +97,16 @@
             });
 
             // already scrolled on load?
-            if (scroller.scrollTop() >= options.threshold){
-                showBox(box, options);
-            }
+            setTimeout(function(){
+                if (scroller.scrollTop() >= options.threshold){
+                    showBox(box, options);
+                }
+            }, 500);
 
             return box;
         }
 
         function positionBox(box){
-            //var btn = box.find("a"); // box width/height is 0 because btn is fixed
             var boxDims = {
                 height: box.height() + 20,
                 width: box.width() + 20
@@ -114,16 +114,29 @@
             var container = box.data("container");
             var scroller = box.data("scroller");
 
-            var offset = getOffset(container);
+            // jQuery's .offset() busted in iOS Safari (jquery ver < 1.9)
+            var containerOffset = tm.iOS ? {top : container.get(0).offsetTop, left: container.get(0).offsetLeft} : container.offset();
+            var y = 0;
             if (scroller.isWindow){
-                offset.bottom = scroller.height();
+                y = scroller.height();
+                if (tm.iOS){
+                    if (Math.abs(window.orientation) === 90){
+                        // adjust for landscape zoom
+                        y = Math.floor(y/1.08474576);
+                    } else {
+                        // adjust for portrait zoom
+                        y = Math.floor(y/0.81355932);
+                    }
+                }
             } else {
-                offset = getOffset(container);
+                y = containerOffset.top + container.height();
             }
 
+            y = y - boxDims.height;
+
             box.css({
-                top: offset.bottom - boxDims.height,
-                left: offset.right - boxDims.width
+                top: y,
+                left: containerOffset.left + container.width() - boxDims.width
             });
 
             if (tm.iOS){
@@ -181,16 +194,6 @@
             }
         }
 
-        function getOffset(elem) {
-            var o = elem.offset();
-            return {
-                top: o.top,
-                right: o.left + elem.outerWidth(),
-                bottom: o.top + elem.outerHeight(),
-                left: o.left
-            };
-        }
-
         function forceRedraw(){
             var ss = document.styleSheets[0];
             try { ss.addRule('.xxxxxx', 'position: relative'); }
@@ -199,7 +202,12 @@
 
         // reposition all buttons on window resize
         if (tm.iOS){
-            window.addEventListener("orientationchange", positionBoxes, false);
+            window.addEventListener("orientationchange", function(){
+                positionBoxes();
+                setTimeout(function(){
+                    positionBoxes();
+                }, 1100);
+            }, false);
         } else {
             $(window).on('resize', positionBoxes);
         }
