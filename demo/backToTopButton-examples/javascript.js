@@ -16,8 +16,7 @@ define(['jquery', 'widget!tm/widgets/backToTopButton'], function($) {
                 threshold: 10,          // px, scrollTop position where button is shown/hidden
                 showDuration: 2000,     // ms, button fade-in time
                 hideDuration: 3000,     // ms, button fade-out time
-                toTopDuration: 4000,    // ms, scrollTop time; or 1px/ms if null (default)
-                buttonText: 'Scroll Back Up'
+                toTopDuration: 4000     // ms, scrollTop time; or 1px/ms if null (default)
             });
         }
     };
