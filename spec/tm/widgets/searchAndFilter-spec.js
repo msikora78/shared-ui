@@ -98,9 +98,13 @@ define(['injectable!tm/widgets/searchAndFilter', 'tm/core', './util'], function(
                             Util.evaluateColor($input, '4f5158');
                         });
 
+
                         it('should display clear icon when value is not empty', function(){
-                            expect($icon.css('display')).toBe('block');
-                        });
+                            waits(0);
+                            runs(function() {
+                            	expect($icon.css('display')).toBe('block');
+                            });
+                        }); 
 
                     } else {
                         if (isDark){

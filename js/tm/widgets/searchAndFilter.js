@@ -52,6 +52,8 @@
                 input.val(input.attr("placeholder"));
                 showHideIcon.apply(input);
                 input.focus();
+                // trigger change event so user can bind to it
+                input.trigger('change');
             });
 
             // check to show/hide clear icon now and on keyup
@@ -70,11 +72,23 @@
 
                 showHideIcon.apply(el);
 
-                el.keyup(function(){
-                    showHideIcon.apply($(this));
+                el.bind('keydown keyup paste cut change focus blur', function(){
+                	// deferring the showHideIcon logic
+                	// to be executed after the stack clears,
+                	// since e.g. 'paste' event wouldn't populate
+                	// the input box with text right away
+                    setTimeout( $.proxy( showHideIcon,$(this) ) , 0 );
                 });
             });
-
+			
+			this.element = element;
+        };
+        
+        SearchAndFilter.prototype = {
+            getValue: function() {
+                var val = this.element.val();
+                return element.attr('placeholder') === val ? "" : val;
+            }       
         };
 
         return SearchAndFilter;
